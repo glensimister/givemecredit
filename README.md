@@ -17,7 +17,7 @@
 <p>IMPORTANT: Revenue from LVT, adverts and the lottery will be redistributed in the form of credits, which include: Social credits, Health Credits, and Education Credits.</p>
 
 
-<p><b>Social Credits:</b> When you give your social credits to either a public service, idea or start-up, you get a tax rebate of 10%, which acts as an incentive for users to participate. At the end of each quarter, any unused Social Credits will be redistributed. 
+<p><b>Social Credits:</b> When you give your social credits to either a public service, idea or start-up, you get a tax rebate of 10%, which acts as an incentive for users to participate. At the end of each month, any unused Social Credits will be redistributed. 
 </p>
 <p>
 <b>Health Credits:</b> These can be redeemed by registered private healthcare service providers, and will be used to compliment the NHS. 

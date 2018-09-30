@@ -1,291 +1,180 @@
-<div class="row">
-    <div class="col-md-3">
-        <div class="box box-primary">
-            <select class="form-control police-select">
-                <option>Devon &amp; Cornwall Police</option>
-                <option>Avon and Somerset Constabulary</option>
-                <option>Bedfordshire Police</option>
-                <option>Cambridgeshire Constabulary</option>
-                <option>Cheshire Constabulary</option>
-            </select>
-            <div class="box-body box-profile">
+<div class="grid-home-page">
+    <div id="tabs">
+        <input id="tab1" type="radio" name="tabs" checked>
+
+        <label for="tab1"><i class="fa fa-pencil"></i><span>About</span></label>
+
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2"><i class="fa fa-camera"></i><span>Reviews</span></label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3"><i class="fa fa-comment"></i><span>Employee Reviews</span></label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4"><i class="fa fa-comment"></i><span>Officers</span></label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5"><i class="fa fa-gear"></i><span>Budget</span></label>
+
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6"><i class="fa fa-info-circle"></i><span>Contact</span></label>
+
+        <input id="tab7" type="radio" name="tabs">
+        <label for="tab7"><i class="fa fa-gear"></i><span>Edit</span></label>
+
+
+        <section id="content1">
+            <h3>About Devon &amp; Cornwall Police</h3>
+            <p>
+                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet.
+            </p>
+            <p>
+                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+            </p>
+        </section>
+
+        <section id="content2">
+            <h3>Reviews</h3>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <br />
                 <div class="rateYo"></div>
-                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user2-160x160.jpg" alt="User profile picture">
-
-                <h3 class="profile-username text-center">Devon &amp; Cornwall</h3>
-
-                <ul class="list-group list-group-unbordered">
-                    <li class="list-group-item">
-                        <b>Representitive</b> <a class="pull-right">Glen Simister</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Telephone</b> <a class="pull-right">999 or 112</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Connections</b> <a class="pull-right">1,222</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Score</b> <a class="pull-right">4000</a>
-                    </li>
-                </ul>
-                <button class="btn btn-primary btn-block connect">CONNECT</button>
             </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-9">
+            <div class="form-group">
+                <button type="submit" class="btn btn-blue">Submit</button>
+            </div>
 
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Home</a></li>
-                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Feeback</a></li>
-                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Contact</a></li>
-                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Officers</a></li>
-                <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Forum</a></li>
-                <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">Reports</a></li>
-                <li class=""><a href="#tab_7" data-toggle="tab" aria-expanded="false">Budget</a></li>
-                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">About Us</h3>
-                        <p>Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.</p>
-                    </div>
+            <div class="post">
+                <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
+                <div class="post-desc">iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</div>
+                <button type="button" class="btn-small btn-blue"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                <button type="button" class="btn-small btn-yellow"><i class="fa fa-thumbs-o-down"></i> Dislike</button>
+                <button type="button" class="btn-small btn-red flag"><i class="fa fa-flag"></i> <span>Flag</span></button>
+                <span class="pull-right">45 likes - 2 comments</span>
+            </div>
+        </section>
 
+        <section id="content3">
+            <h3>Employee Reviews</h3>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <br />
+                <div class="rateYo"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-blue">Submit</button>
+            </div>
 
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Important News &amp; Anouncements</h3>
-                    </div>
-                    <div class="box-body">
-                        <ul class="products-list product-list-in-box">
-                            <li class="item">
-                                <a href="javascript:void(0)" class="product-title">Bitcoin's rollercoaster ride after hitting $17,000
-                      </a>
-                                <span class="product-description">
-                          Bitcoin continued its rollercoaster ride on Friday, hitting a new high above $17,000 (£12,615) …
-                        </span>
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-
-                                <a href="javascript:void(0)" class="product-title">Pound surges against the euro as markets give a thumbs-up to …
-                      </a>
-                                <span class="product-description">
-                          The pound surged to a six-month high against the euro this morning as markets signalled their …
-                        </span>
-
-                            </li>
-                            <!-- /.item -->
-                            <li class="item">
-
-                                <a href="javascript:void(0)" class="product-title">South Korea bitcoin ban? As cryptocurrency explodes, government flirts with regulation</a>
-                                <span class="product-description">
-                          South Korean is studying ways to regulate speculative trading in cryptocurrencies …
-                        </span>
-
-                            </li>
-                            <li class="item">
-                                <a href="javascript:void(0)" class="product-title">Bitcoin's rollercoaster ride after hitting $17,000
-                      </a>
-                                <span class="product-description">
-                          Bitcoin continued its rollercoaster ride on Friday, hitting a new high above $17,000 (£12,615) …
-                        </span>
-                            </li>
-                            <!-- /.item -->
-                        </ul>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">View All News Articles</a>
-                    </div>
-                    <!-- /.box-footer -->
+            <div class="post">
+                <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
+                <div class="post-desc">iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</div>
+                <button type="button" class="btn-small btn-blue"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                <button type="button" class="btn-small btn-yellow"><i class="fa fa-thumbs-o-down"></i> Dislike</button>
+                <button type="button" class="btn-small btn-red flag"><i class="fa fa-flag"></i> <span>Flag</span></button>
+                <span class="pull-right">45 likes - 2 comments</span>
+            </div>
+        </section>
+        <section id="content4">
+            <div class="grid-4-col">
+                <div class="profile-summary">
+                    <div class="rateYo"></div>
+                    <h4>Alexander Pierce</h4>
+                    <p>Cheif Constable</p>
+                    <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                    <p>Approval rating: <b>84%</b></p>
+                    <button class="btn btn-blue">VIEW PROFILE</button>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
-                    <div class="box-header">
-                        <div class="rate"></div>
-                        <div class="form-group">
-                            <label>Leave Feedback</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            <br />
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                            <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                            <span class="description">Shared publicly - 7:30 PM today</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <div class="rate"></div>
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
-                        </p>
-                        <ul class="list-inline">
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                            </li>
-                            <li class="pull-right">
-                                <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                        </ul>
-
-                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <br />
+                <div class="profile-summary">
+                    <div class="rateYo"></div>
+                    <h4>Alexander Pierce</h4>
+                    <p>Cheif Constable</p>
+                    <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                    <p>Approval rating: <b>91%</b></p>
+                    <button class="btn btn-blue">VIEW PROFILE</button>
                 </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_3">
-                    <div class="box-header">
-                        <h3 class="box-title">Contact Us</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>General enquiry</option>
-                                <option>Report a crime</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Your telephone number: [optional]</label>
-                            <input type="email" class="form-control" placeholder="Telephone">
-                        </div>
-                        <div class="form-group">
-                            <label>Please provide as much information as possible</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            <br />
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
+                <div class="profile-summary">
+                    <div class="rateYo"></div>
+                    <h4>Alexander Pierce</h4>
+                    <p>Cheif Constable</p>
+                    <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                    <p>Approval rating: <b>75%</b></p>
+                    <button class="btn btn-blue">VIEW PROFILE</button>
                 </div>
-                <!-- /.tab-pane -->
-
-                <div class="tab-pane" id="tab_4">
-                    <div class="box-header">
-                        <h3 class="box-title">Police Officers</h3>
-                    </div>
-                    <div class="box-body no-padding">
-                        <ul class="users-list clearfix">
-                            <li>
-                                <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Alexander Pierce</a>
-                                <span class="users-list-date">Today</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Norman</a>
-                                <span class="users-list-date">Yesterday</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Jane</a>
-                                <span class="users-list-date">12 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">John</a>
-                                <span class="users-list-date">12 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Alexander</a>
-                                <span class="users-list-date">13 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Sarah</a>
-                                <span class="users-list-date">14 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Nora</a>
-                                <span class="users-list-date">15 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Nadia</a>
-                                <span class="users-list-date">15 Jan</span>
-                            </li>
-                        </ul>
-                        <!-- /.users-list -->
-                    </div>
-                </div>
-                <!-- /.tab-pane -->
-
-                <div class="tab-pane" id="tab_5">
-                    <div class="box">
-                        <div class="box-header">
-                            <div class="input-group input-group-sm pull-right" style="width: 350px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary">ADD TOPIC</button>
-                            <br />
-                            <br />
-                            <h3 class="box-title">Community Forum</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                    <tr>
-                                        <th data-sort-order="posters" class="posters">User</th>
-                                        <th data-sort-order="default" class="default">Topic</th>
-                                        <th data-sort-order="category" class="category sortable">Region</th>
-                                        <th data-sort-order="posts" class="posts sortable num">Replies</th>
-                                        <th data-sort-order="views" class="views sortable num">Views</th>
-                                        <th data-sort-order="activity" class="activity sortable num">Date</th>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image"></td>
-                                        <td><i class="fa fa-thumb-tack d-icon d-icon-thumb-tack"></i> A new hosptial. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.</td>
-                                        <td><span class="label label-danger">Devon</span></td>
-                                        <td>12</td>
-                                        <td>41</td>
-                                        <td>10/08/2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="img-circle img-sm" src="../dist/img/user5-128x128.jpg" alt="User Image"></td>
-                                        <td>Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.</td>
-                                        <td><span class="label label-success">Cornwall</span></td>
-                                        <td>10</td>
-                                        <td>100</td>
-                                        <td>09/08/2018</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br />
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="tab_6">
-                    <div class="box-header">
-                        <h3 class="box-title">Reports</h3>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="tab_7">
-                    <div class="box-header">
-                        <h3 class="box-title">Budget</h3>
-                    </div>
+                <div class="profile-summary">
+                    <div class="rateYo"></div>
+                    <h4>Alexander Pierce</h4>
+                    <p>Cheif Constable</p>
+                    <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                    <p>Approval rating: <b>80%</b></p>
+                    <button class="btn btn-blue">VIEW PROFILE</button>
                 </div>
             </div>
-            <!-- /.tab-content -->
-        </div>
+        </section>
+        <section id="content5">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
+        <section id="content6">
+            <h3>Contact Us</h3>
+
+            <div class="form-group">
+                <select class="form-control">
+                    <option>General enquiry</option>
+                    <option>Report a crime</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Your telephone number: [optional]</label>
+                <input type="email" class="form-control" placeholder="Telephone">
+            </div>
+            <div class="form-group">
+                <label>Please provide as much information as possible</label>
+                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-blue">Submit</button>
+        </section>
+        <section id="content7">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
     </div>
-    <!-- /.col -->
+    <div class="profile-summary">
+        <select class="form-control police-select">
+            <option>Devon &amp; Cornwall</option>
+            <option>Avon and Somerset</option>
+            <option>Bedfordshire</option>
+            <option>Cambridgeshire</option>
+            <option>Cheshire</option>
+        </select>
+        <br />
+        <div class="rateYo"></div>
+        <h4>Glen Simister</h4>
+        <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+        <ul>
+            <li>
+                Constabulary<a class="pull-right">Devon &amp; Cornwall</a>
+            </li>
+            <li>
+                Telephone<a class="pull-right">999 or 112</a>
+            </li>
+            <li>
+                Approval Rating <a class="pull-right">65%</a>
+            </li>
+            <li>
+                Connections <a class="pull-right">1,322</a>
+            </li>
+        </ul>
+        <button class="btn btn-red connect">CONNECT</button>
+    </div>
 </div>
-<!-- /.row -->
