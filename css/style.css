@@ -279,14 +279,28 @@ a {
 
 /******* top nav *******/
 
-.top-nav input {
-    border: 1px solid #eee;
+
+.top-nav select {
+    padding: 5px 10px;
+    height: 27px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-right: 1px solid transparent;
+    color: #eee;
     border-top-left-radius: 3px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 3px;
+    color: #848484;
+}
+
+.top-nav input {
+    color: #848484;
+    border: 1px solid #eee;
     padding: 5px 10px;
-    width: 80%;
+    width: 100%;
 }
 
 .top-nav button {
@@ -370,7 +384,8 @@ a {
     display: block;
 }*/
 
-small.label-red {
+small.label-red,
+small.label-green {
     font-size: 12px;
     padding: 5px;
     border-radius: 3px;
@@ -966,4 +981,28 @@ ul.treeview-menu {
 
 .cards img {
     width: 100%;
+}
+
+/*** lottery ****/
+
+.lottery-numbers td {
+    text-align: center;
+    /*vertical-align: middle;*/
+}
+
+.lottery-numbers ul li {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 55px;
+    display: inline-block;
+    margin-right: 7px;
+    font-size: 171.4%;
+    background-color: #00c0ef;
+    color: #fff;
+}
+
+.lottery-numbers ul li:last-child {
+    background-color: #dd4b39;
 }

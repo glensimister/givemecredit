@@ -6,8 +6,8 @@ $(document).ready(function () {
     });
 
     $(document.body).on('click', '.donate-sc', function () {
-
         var input = $(this).prev().find('input').val();
+        console.log(input);
 
         //rebate
         var rebate = 10 / 100 * input;
