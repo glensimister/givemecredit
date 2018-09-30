@@ -1006,3 +1006,32 @@ ul.treeview-menu {
 .lottery-numbers ul li:last-child {
     background-color: #dd4b39;
 }
+
+
+/****** education **********/
+
+#tabs.course-builder-tabs > label {
+    padding: 5px 15px;
+    font-weight: 600;
+}
+
+#tabs.course-builder-tabs div label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/*
+#tabs.course-builder-tabs label i {
+    display: block;
+}*/
+
+.answers {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+}
