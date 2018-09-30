@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>GiveMeCredit V1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="js/sammy-latest.min.js"></script>
+    <script src="js/routing.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mustache.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+</head>
+
+<body>
+    <div class="grid">
+        <div class="logo"><a href="/">GiveMeCredit</a></div>
+        <div class="top-right">
+            <div class="grid-credits">
+                <div>SOCIAL</div>
+                <div class="sc">0</div>
+                <div>HEALTH</div>
+                <div class="hc">0</div>
+                <div>EDUCATION</div>
+                <div class="ec">0</div>
+                <div>REBATE</div>
+                <div class="rebate">0</div>
+            </div>
+        </div>
+
+        <div class="sidebar-header">MAIN NAVIGATION <a class="toggle-menu">&#9776;</a></div>
+
+        <div class="top-nav">
+            <div class="grid-2-col">
+                <div><input type="text" placeholder="Search..."><button type="submit" name="search" id="search-btn" class=""><i class="fa fa-search"></i></button></div>
+                <div class="dropdown-container">
+
+                    <div class="dropdown-content">
+                        <div class="read-all"><a href="#/mailbox/mailbox/">READ ALL MESSAGES</a></div>
+                        <ul>
+                            <li><img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                                <span><a href="">Sed ut perspiciatis unde omnis</a></span></li>
+                            <li><img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                                <span><a href="">Sed ut perspiciatis unde omnis</a></span></li>
+                            <li><img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                                <span><a href="">Sed ut perspiciatis unde omnis</a></span></li>
+                            <li><img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                                <span><a href="">Sed ut perspiciatis unde omnis</a></span></li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li class="has-dropdown"><a href="#"><i class="fa fa-list-alt"></i><span class="label label-green">12</span></a></li>
+                        <li class="has-dropdown"><a href="#"><i class="fa fa-user"></i><span class="label label-yellow">2</span></a></li>
+                        <li class="has-dropdown"><a href="#"><i class="fa fa-envelope-o"></i><span class="label label-blue">6</span></a></li>
+                        <li class="has-dropdown"><a href="#"><i class="fa fa fa-bell-o"></i><span class="label label-red">10</span></a></li>
+                        <li><a href="#/home"><img src="img/user2-160x160.jpg" class="user-image-small" alt="User Image"><span>Glen</span></a></li>
+                        <li><a href="#"><i class="fa fa-gears"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#/legal"><span>Legal</span></a>
+                </li>
+                <li>
+                    <a href="#/voting">
+                        <span>Voting</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/wallet">
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/land/landandhousing">
+                        <span>Land</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/modularhousing">
+                        <span>Housing</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#/land">
+                        <span>Public Services</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li>
+                            <a href="#/fundpublicservices/fundpublicservices">
+                                <span>Fund Public Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/policing">
+                                <span>Policing</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/healthcare/healthcare">
+                                <span>Healthcare</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#/education/education">
+                        <span>Education</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/business/business">
+                        <span>Business &amp; Employment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/lottery">
+                        <span>Lottery</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#/advertising">
+                        <span>Advertising</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/forum">
+                        <span>Forum</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#/plugins">
+                        <span>Plugins</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="#/plugins">
+                                <span>Manage Plugins</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Documentation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/news">
+                                <span>News</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Dating</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/documentation">
+                                <span>Classified Ads</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/documentation">
+                                <span>Ride Share</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+
+        </div>
+        <div class="footer">
+            <ul>
+                <li>Ambulance/Fire/Police: <b>999 or 112</b></li>
+                <li>Gas Emergency: <b>0800 111 999</b></li>
+                <li>NHS Direct (24 hour): <b>0845 4647</b></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
