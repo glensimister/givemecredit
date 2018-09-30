@@ -5,7 +5,7 @@
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EC3KMDEZ4282U)
 
 
-<img src="Capture.PNG" />
+<img src="screenshot.PNG" />
 
 <p><b>Public Profile:</b> Each profile has a social rating, which is determined by how you interact with other members on the platform. Each profile has a voting weight, which is calculated based on your age, education score (from the built-in education system) and social rating. 
 </p>
