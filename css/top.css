@@ -1,14 +1,3 @@
-.logo {
-    text-align: center;
-    border-right: 1px solid #464646;
-    background: #222d32;
-}
-
-.logo a {
-    color: #fff;
-    font-size: 19px;
-}
-
 .grid > div.top-right {
     background: #222d32;
     text-align: center;
