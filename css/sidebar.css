@@ -1,0 +1,101 @@
+/******* sidebar *******/
+
+.sidebar {
+    border-right: 1px solid #eee;
+}
+
+.grid > .sidebar {
+    padding: 0;
+}
+
+.sidebar i.fa.fa-angle-left.pull-right {
+    line-height: 31px;
+    height: 31px;
+}
+
+.rotate-angle {
+    transform: rotate(-90deg);
+}
+
+.sidebar-header {
+    border-right: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    line-height: 27px;
+    text-align: center;
+    color: #c5c5c5;
+}
+
+.sidebar ul {
+    display: none;
+}
+
+.toggle-menu {
+    border-radius: 3px;
+    display: block;
+    font-size: 20px;
+    float: right;
+}
+
+@media screen and (min-width: 600px) {
+    .sidebar ul {
+        display: block;
+    }
+
+    .toggle-menu {
+        display: none;
+    }
+}
+
+
+.sidebar ul li a {
+    border-bottom: 1px solid #eee;
+    line-height: 30px;
+    padding: 0 15px;
+    display: block;
+    text-decoration: none;
+    color: #848484;
+}
+
+.sidebar ul li .active,
+.sidebar ul li a:hover {
+    color: #dd4b39;
+    border-left: 3px solid #dd4b39;
+}
+
+.sidebar ul.treeview-menu li span:nth-child(1):before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+    content: "\f10c";
+    color: #dd4b39;
+}
+
+.sidebar ul.treeview-menu li a span:hover:nth-child(1):before {
+    content: "\f111";
+}
+
+.sidebar ul.treeview-menu li a:hover,
+.sidebar ul.treeview-menu li .active {
+    color: #dd4b39;
+    border-left: none;
+}
+
+.sidebar ul.treeview-menu li a {
+    border-bottom: none;
+}
+
+.sidebar ul.treeview-menu li a span {
+    display: block;
+}
+
+ul.treeview-menu {
+    padding: 10px 0;
+    /*background: #f9f9f9;*/
+    box-shadow:
+        inset 0px 11px 8px -10px #888,
+        inset 0px -11px 8px -10px #CCC;
+}
+
+/******* end sidebar *******/
