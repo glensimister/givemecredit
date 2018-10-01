@@ -7,6 +7,39 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.donate-sc', function () {
         var input = $(this).prev().find('input').val();
+        var select = $(this).parent().find('select option:selected').val();
+        var parent_class = $(this).parent().attr('class');
+
+        if (parent_class == 'topup-hc') {
+            if (select == 'Social Credits') {
+                transferCredits('.sc', '.hc', input);
+            } else if (select == 'Education Credits') {
+                transferCredits('.ec', '.hc', input);
+            }
+        } else if (parent_class == 'topup-ec') {
+            transferCredits('.sc', '.ec', input);
+        } else if (select == 'Social Credits') {
+            deductCredits('.sc', input);
+        } else if (select == 'Health Credits') {
+            deductCredits('.hc', input);
+        } else if (select == 'Education Credits') {
+            deductCredits('.ec', input);
+        };
+
+        function transferCredits(from, to, amount) {
+            var type_from = $(from).html();
+            type_from = (type_from - amount);
+            $(from).html(type_from.toFixed(0));
+            var type_to = $(to).html();
+            type_to = (parseInt(type_to) + parseInt(amount));
+            $(to).html(type_to.toFixed(0));
+        }
+
+        function deductCredits(type, amount) {
+            var current_value = $(type).html();
+            var new_value = (current_value - amount);
+            $(type).html(new_value.toFixed(0));
+        }
 
         //rebate
         var rebate = 10 / 100 * input;
@@ -14,11 +47,6 @@ $(document).ready(function () {
         result = $('.rebate').text();
         result = rebate + parseInt(result);
         $('.rebate').html(result.toFixed(0));
-
-        //deduct social credits
-        var sc = $('.sc').text();
-        sc = (sc - input);
-        $('.sc').html(sc.toFixed(0));
 
         /*
         var has_ec = $(this).closest("div.input-group").find("button").hasClass("transfer-ec");
