@@ -5,8 +5,18 @@
 }
 
 .logo a {
+    letter-spacing: 5px;
+    line-height: 27px;
     color: #fff;
-    font-size: 19px;
+    display: block;
+    font-size: 14px;
+}
+
+.logo a span {
+    position: relative;
+    font-size: 17px;
+    bottom: -1px;
+    color: #dd4b39;
 }
 
 /******* sidebar *******/
