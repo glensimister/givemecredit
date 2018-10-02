@@ -37,7 +37,7 @@ $(document).ready(function () {
 
         function deductCredits(type, amount) {
             var current_value = $(type).html();
-            var new_value = (current_value - amount);
+            var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
         }
 

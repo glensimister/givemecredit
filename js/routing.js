@@ -49,7 +49,7 @@
                     $(".content").html(result);
                     $.getScript("/js/initializeplugins.js");
                     if (page === 'courseexample') {
-                        $.getScript("/js/courseScript.js");
+                        $.getScript("/js/course.js");
                     }
                 }
             });
