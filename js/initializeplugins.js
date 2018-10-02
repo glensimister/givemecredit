@@ -3,3 +3,5 @@ $(".rateYo").rateYo({
     starWidth: "20px",
     readOnly: true
 });
+
+$('.select2').select2();

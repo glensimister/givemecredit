@@ -48,9 +48,7 @@
                 success: function (result) {
                     $(".content").html(result);
                     $.getScript("/js/initializeplugins.js");
-                    if (page === 'courseexample') {
-                        $.getScript("/js/course.js");
-                    }
+                    $.getScript("/js/main.js");
                 }
             });
             $(window).scrollTop(0);

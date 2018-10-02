@@ -222,6 +222,7 @@ a {
 
 .content {
     background: #fff;
+    margin-bottom: 90px;
 }
 
 /******* grid for 3 or 4 columns *******/
@@ -446,6 +447,7 @@ small.label-green {
     box-shadow: none;
 }
 
+#tab0:checked ~ #content0,
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
 #tab3:checked ~ #content3,
@@ -713,14 +715,14 @@ small.label-green {
 
 
 /****** education **********/
-
+/*
 #tabs.course-builder-tabs > label {
     padding: 5px 15px;
     font-weight: 600;
-}
+}*/
 
-#tabs.course-builder-tabs div label {
-    font-weight: 600;
+#tabs.course div label {
+    font-weight: 500;
     display: block;
     margin-bottom: 5px;
 }
@@ -738,4 +740,9 @@ small.label-green {
     -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+}
+
+.radio {
+    float: left;
+    margin-bottom: 30px;
 }
