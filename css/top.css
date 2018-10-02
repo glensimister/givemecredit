@@ -3,6 +3,17 @@
     text-align: center;
 }
 
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.top-margin {
+    margin-top: 47px;
+}
 
 /******* top nav *******/
 

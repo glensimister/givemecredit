@@ -11,12 +11,12 @@
 
 /******* sidebar *******/
 
-.sidebar {
-    border-right: 1px solid #eee;
-}
-
 .grid > .sidebar {
-    padding: 0;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 0 0 31px 0;
+    overflow-y: auto;
+    height: 520px;
 }
 
 .sidebar i.fa.fa-angle-left.pull-right {

@@ -50,8 +50,12 @@
 
     .grid-top-right {
         display: grid;
-        grid-template-columns: 4fr 2fr;
         grid-gap: 0;
+    }
+
+    .grid-horizontal {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
     }
 
     .grid-home-page {

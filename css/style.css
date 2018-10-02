@@ -239,6 +239,17 @@ a {
 
 /******* end grid for 3 or 4 columns *******/
 
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    -webkit-box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+}
+
 .footer,
 .top-nav {
     background: #fff;
