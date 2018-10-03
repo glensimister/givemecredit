@@ -742,19 +742,28 @@ small.label-green {
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
 
+
+.course {
+    text-align: center;
+}
+
 .course .radio {
     float: left;
 }
 
 .course .grid-2-col {
-    border-top: 1px solid #eee;
-    padding: 10px;
+    /*border-top: 1px solid #eee;
+    padding: 10px;*/
 }
 
 .course .radio label input {
     position: relative;
     top: 2px;
     margin-left: 15px;
+}
+
+.review-questions {
+    text-align: right;
 }
 
 /* these styles are for a horizontal checkbox

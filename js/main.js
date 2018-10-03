@@ -2,10 +2,11 @@ $(document).ready(function () {
     $(document.body).on('click', '.pay-tax', function () {
         $('.sc').html("240");
         $('.hc').html("141");
-        $('.ec').html("20");
+        $('.ec').html("0");
     });
 
-    $(document.body).on('click', '.donate-sc', function () {
+    $(document.body).on('click', '.donate-sc', function (e) {
+        e.stopImmediatePropagation();
         var input = $(this).prev().find('input').val();
         var select = $(this).parent().find('select option:selected').val();
         var parent_class = $(this).parent().attr('class');
@@ -26,9 +27,10 @@ $(document).ready(function () {
             deductCredits('.ec', input);
         };
 
+
         function transferCredits(from, to, amount) {
             var type_from = $(from).html();
-            type_from = (type_from - amount);
+            type_from = (parseInt(type_from) - parseInt(amount));
             $(from).html(type_from.toFixed(0));
             var type_to = $(to).html();
             type_to = (parseInt(type_to) + parseInt(amount));
@@ -39,14 +41,17 @@ $(document).ready(function () {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
+            payRebate(amount);
         }
 
         //rebate
-        var rebate = 10 / 100 * input;
-        var result = 0;
-        result = $('.rebate').text();
-        result = rebate + parseInt(result);
-        $('.rebate').html(result.toFixed(0));
+        function payRebate(amount) {
+            var rebate = 10 / 100 * amount;
+            var result = 0;
+            result = $('.rebate').text();
+            result = rebate + parseInt(result);
+            $('.rebate').html(result.toFixed(0));
+        }
 
         /*
         var has_ec = $(this).closest("div.input-group").find("button").hasClass("transfer-ec");
