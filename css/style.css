@@ -744,5 +744,43 @@ small.label-green {
 
 .course .radio {
     float: left;
-    margin-bottom: 30px;
 }
+
+.course .grid-2-col {
+    border-top: 1px solid #eee;
+    padding: 10px;
+}
+
+.course .radio label input {
+    position: relative;
+    top: 2px;
+    margin-left: 15px;
+}
+
+/* these styles are for a horizontal checkbox
+.grid-course-review {
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.grid-course-review > div {
+    padding: 5px;
+    text-align: center;
+}
+
+.grid-course-review > div:nth-child(even) {
+    cursor: pointer;
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+}
+
+.grid-course-review > div:nth-child(odd) {
+    -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+}
+
+.grid-course-review > div:last-child {
+    border-right: none;
+}*/

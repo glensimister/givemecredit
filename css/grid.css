@@ -91,4 +91,9 @@
     .grid-status-update-reminder {
         grid-template-columns: repeat(4, 2fr 1fr);
     }
+
+    .grid-course-review {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr 1fr);
+    }
 }

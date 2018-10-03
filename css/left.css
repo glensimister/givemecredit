@@ -26,6 +26,7 @@
     border-bottom: 1px solid #eee;
     padding: 0 0 31px 0;
     overflow-y: auto;
+    max-height: 520px;
 }
 
 .sidebar i.fa.fa-angle-left.pull-right {
