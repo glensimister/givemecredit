@@ -1,214 +1,156 @@
-<div class="nav-tabs-custom">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">1</a></li>
-        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">2</a></li>
-        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">3</a></li>
-        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-        <!--<li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">4</a></li>
-        <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">5</a></li>
-        <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">6</a></li>
-        <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">7</a></li>-->
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane active" id="tab_1">
-            <div class="box-body">
-                <div class="col-md-6">
-                    <div class="box-header">
-                        <h3 class="box-title">Register Your Business</h3>
-                        <h4>NOTE: You can edit/update your application at any time</h4>
-                    </div>
-                    <div class="form-group">
-                        <label>Are you a startup, existing business or charity?</label>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Startup
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked> Existing Business
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Charity
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">What date did you start trading?</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">What is the name of your business?</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                </div>
+<div id="tabs">
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">1</label>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Please provide the name of the Person in Charge (PIC)</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Please describe your business (300 words max)</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">How many employees do you have?</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">What is your annual turnover?</label>
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                </div>
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">2</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">3</label>
+
+
+    <section id="content1">
+        <h3>Register Your Business</h3>
+        <h4>NOTE: You can edit/update your application at any time</h4>
+        <div class="form-group">
+            <label>Are you a startup, existing business or charity?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Startup
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked> Existing Business
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Charity
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">What date did you start trading?</label>
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">What is the name of your business?</label>
+            <input type="text" class="form-control" placeholder="">
+        </div>
+    </section>
+
+    <section id="content2">
+        <div class="form-group">
+            <label>Does your business used third-party insurance or are you self-insured?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Self-Insured
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Third Party
+                </label>
             </div>
         </div>
 
-        <div class="tab-pane" id="tab_2">
-            <div class="col-md-6">
-                <br />
-
-                <div class="form-group">
-                    <label>Does your business used third-party insurance or are you self-insured?</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Self-Insured
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Third Party
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Who provides your business with insurance?</label>
-                    <input type="text" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Please provide details of your insurance plan</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Does your business allow third-party inspections?</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
-                        </label>
-                    </div>
-                </div>
-
+        <div class="form-group">
+            <label for="exampleInputEmail1">Who provides your business with insurance?</label>
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Please provide details of your insurance plan</label>
+            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+        </div>
+        <div class="form-group">
+            <label>Does your business allow third-party inspections?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
+                </label>
             </div>
-
-            <div class="col-md-6">
-                <br />
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Please provide details of any certificates you have</label>
-                    <input type="text" class="form-control" placeholder="Please enter the URL">
-                    <br />
-                    <a href="" class="btn btn-primary">ADD NEW</a>
-                </div>
-                <div class="form-group">
-                    <label>Does your company have any subsidiaries?</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Please provide details of these subsidiaries</label>
-                    <input type="text" class="form-control" placeholder="">
-                    <br />
-                    <a href="" class="btn btn-primary">ADD NEW</a>
-                </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
+                </label>
             </div>
-            <div style="clear:both"></div>
         </div>
-        <!-- /.tab-pane -->
-
-        <div class="tab-pane" id="tab_3">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Is your business a subsidiary of another company?</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Which company are you a subsidiary of?</label>
-                    <input type="text" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Please provide the address of your headquarters</label>
-                    <textarea class="form-control" rows="3" placeholder=""></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">Please upload your company logo</label>
-                    <input type="file" id="exampleInputFile">
-                </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Please provide details of any certificates you have</label>
+            <input type="text" class="form-control" placeholder="Please enter the URL">
+            <br />
+            <a href="" class="btn btn-primary">ADD NEW</a>
+        </div>
+        <div class="form-group">
+            <label>Does your company have any subsidiaries?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
+                </label>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Has your business been involved in any court cases?</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">What was the nature of the incident and what was the verdict?</label>
-                    <textarea class="form-control" rows="3" placeholder=""></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Website URL</label>
-                    <input type="text" class="form-control" placeholder="">
-                </div>
-                <a href="" class="btn btn-primary">REGISTER</a>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
+                </label>
             </div>
-            <div style="clear:both;"></div>
         </div>
-        <!-- /.tab-pane -->
-
-        <div class="tab-pane" id="tab_4">
-
+        <div class="form-group">
+            <label for="exampleInputEmail1">Please provide details of these subsidiaries</label>
+            <input type="text" class="form-control" placeholder="">
+            <br />
+            <a href="" class="btn btn-blue">ADD NEW</a>
         </div>
-        <!-- /.tab-pane -->
+    </section>
 
-        <div class="tab-pane" id="tab_5">
+    <section id="content3">
+        <div class="form-group">
+            <label>Is your business a subsidiary of another company?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
+                </label>
+            </div>
         </div>
-        <!-- /.tab-pane -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Which company are you a subsidiary of?</label>
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Please provide the address of your headquarters</label>
+            <textarea class="form-control" rows="3" placeholder=""></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Please upload your company logo</label>
+            <input type="file" id="exampleInputFile">
+        </div>
 
-        <div class="tab-pane" id="tab_6">
+        <div class="form-group">
+            <label>Has your business been involved in any court cases?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Yes
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> No
+                </label>
+            </div>
         </div>
-
-        <div class="tab-pane" id="tab_7">
+        <div class="form-group">
+            <label for="exampleInputEmail1">What was the nature of the incident and what was the verdict?</label>
+            <textarea class="form-control" rows="3" placeholder=""></textarea>
         </div>
-        <!-- /.tab-content -->
-    </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Website URL</label>
+            <input type="text" class="form-control" placeholder="">
+        </div>
+        <a href="" class="btn btn-blue">REGISTER</a>
+    </section>
+</div>
