@@ -35,6 +35,25 @@ a {
     text-decoration: none;
 }
 
+.sign-in {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+    box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+    border: 1px solid #eee;
+    padding: 20px;
+    z-index: 2000;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.blurred-bg {
+    background-color: #eee;
+}
+
 
 /* this layout use the "mobile first" approach. As such, the styles below are for mobile, and the media queries are for desktop */
 
@@ -343,6 +362,7 @@ small.label-green {
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
 
 .btn-red {
     background-color: #dd4b39;

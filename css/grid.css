@@ -88,6 +88,16 @@
         grid-template-columns: repeat(4, 2fr 1fr);
     }
 
+    .grid-toolbar {
+        display: grid;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        padding: 5px;
+        border: 1px solid #eee;
+        text-align: center;
+        grid-template-columns: repeat(4, 1fr 1fr);
+    }
+
     .grid-status-update-reminder {
         grid-template-columns: repeat(4, 2fr 1fr);
     }
