@@ -54,7 +54,6 @@ a {
     background-color: #eee;
 }
 
-
 /* this layout use the "mobile first" approach. As such, the styles below are for mobile, and the media queries are for desktop */
 
 .grid > div {
