@@ -119,6 +119,13 @@
         box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     }
 
+    .grid-toolbar > div:nth-child(1),
+    .grid-toolbar > div:nth-child(3),
+    .grid-toolbar > div:nth-child(5),
+    .grid-toolbar > div:nth-child(8) {
+        cursor: pointer;
+    }
+
     .grid-toolbar > div:nth-child(7) {
         border-top: 1px solid #eee;
         border-bottom: 1px solid #eee;
