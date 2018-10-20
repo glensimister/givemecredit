@@ -1,11 +1,15 @@
 ;
 (function ($) {
     var app = $.sammy(function () {
-
         this.get('/', function () {
-            $('.content').load('/pages/home.html');
-            $.getScript("/js/initializeplugins.js");
-            $.getScript("/js/main.js");
+            $.ajax({
+                url: "/pages/home.html",
+                success: function (result) {
+                    $(".content").hide().html(result).fadeIn();
+                    $.getScript("/js/initializeplugins.js");
+                    $.getScript("/js/main.js");
+                }
+            });
             $(window).scrollTop(0);
         });
 
@@ -13,7 +17,7 @@
             $.ajax({
                 url: "/pages/home.html",
                 success: function (result) {
-                    $(".content").html(result);
+                    $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/initializeplugins.js");
                     $.getScript("/js/main.js");
                 }
@@ -25,7 +29,6 @@
             $('.sidebar ul li a.active').removeClass('active');
             var page = this.params['page'];
             $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
-
             $.ajax({
                 url: '/pages/' + this.params['page'] + '.html',
                 success: function (result) {
@@ -46,7 +49,7 @@
             $.ajax({
                 url: '/pages/' + this.params['folder'] + '/' + this.params['page'] + '.html',
                 success: function (result) {
-                    $(".content").html(result);
+                    $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/initializeplugins.js");
                     $.getScript("/js/main.js");
                 }

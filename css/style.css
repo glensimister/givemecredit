@@ -391,9 +391,10 @@ small.label-green {
 }
 
 #tabs {
-    min-width: 320px;
+    /*min-width: 320px;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 auto;*/
+    width: 100%;
     background: #fff;
 }
 
@@ -610,6 +611,27 @@ small.label-green {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+.donate-input {
+    border-right: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.donate-sc {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #00acd6;
+    color: #fff;
+    cursor: pointer;
+}
+
 .table {
     width: 100%;
     border: 1px solid #eee;
@@ -638,7 +660,7 @@ small.label-green {
     width: 100%;
     border: 1px solid #eee;
     height: 7px;
-    margin: 10px 0;
+    margin: 15px 0 20px 0;
 }
 
 .progress-bar > div {
@@ -710,6 +732,7 @@ small.label-green {
 
 /*** lottery ****/
 
+
 .lottery-numbers td {
     text-align: center;
     /*vertical-align: middle;*/
@@ -728,9 +751,20 @@ small.label-green {
     color: #fff;
 }
 
-.lottery-numbers ul li:last-child {
+ul li.bonus-ball {
     background-color: #dd4b39;
 }
+
+.buy-ticket {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+
 
 
 /****** education **********/
@@ -785,6 +819,11 @@ small.label-green {
     text-align: right;
 }
 
+.feedback-confirmation {
+    width: 300px;
+    margin: auto;
+}
+
 /* these styles are for a horizontal checkbox
 .grid-course-review {
     border-radius: 3px;
@@ -812,3 +851,17 @@ small.label-green {
 .grid-course-review > div:last-child {
     border-right: none;
 }*/
+
+.funds-raised {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #eee;
+}
+
+.funds-raised li {
+    padding: 5px 10px;
+}
+
+.funds-raised li:nth-child(1) {
+    border-bottom: 1px solid #eee;
+}

@@ -7,9 +7,26 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();
-        var input = $(this).prev().find('input').val();
-        var select = $(this).parent().find('select option:selected').val();
-        var parent_class = $(this).parent().attr('class');
+        var input = $(this).parent().parent().find('input').val();
+        var select = $(this).parent().parent().parent().parent().find('select option:selected').val();
+        var parent_class = $(this).parent().parent().parent().parent().attr('class');
+
+        /*if ($(this).hasClass('topup-hc')) {
+                if (select == 'Social Credits') {
+                    transferCredits('.sc', '.hc', input);
+                } else if (select == 'Education Credits') {
+                    transferCredits('.ec', '.hc', input);
+                }
+            } else if ($(this).hasClass('topup-ec')) {
+                transferCredits('.sc', '.ec', input);
+            } else if (select == 'Social Credits') {
+                deductCredits('.sc', input);
+            } else if (select == 'Health Credits') {
+                deductCredits('.hc', input);
+            } else if (select == 'Education Credits') {
+                deductCredits('.ec', input);
+            }
+        }*/
 
         if (parent_class == 'topup-hc') {
             if (select == 'Social Credits') {
@@ -26,41 +43,49 @@ $(document).ready(function () {
         } else if (select == 'Education Credits') {
             deductCredits('.ec', input);
         };
-
-
-        function transferCredits(from, to, amount) {
-            var type_from = $(from).html();
-            type_from = (parseInt(type_from) - parseInt(amount));
-            $(from).html(type_from.toFixed(0));
-            var type_to = $(to).html();
-            type_to = (parseInt(type_to) + parseInt(amount));
-            $(to).html(type_to.toFixed(0));
-        }
-
-        function deductCredits(type, amount) {
-            var current_value = $(type).html();
-            var new_value = (parseInt(current_value) - parseInt(amount));
-            $(type).html(new_value.toFixed(0));
-            payRebate(amount);
-        }
-
-        //rebate
-        function payRebate(amount) {
-            var rebate = 10 / 100 * amount;
-            var result = 0;
-            result = $('.rebate').text();
-            result = rebate + parseInt(result);
-            $('.rebate').html(result.toFixed(0));
-        }
-
-        /*
-        var has_ec = $(this).closest("div.input-group").find("button").hasClass("transfer-ec");
-        if (has_ec) {
-            var ec = $('.ec').text();
-            ec = (parseInt(v) + parseInt(ec));
-            $('.ec').html(ec.toFixed(0));
-        }*/
     });
+
+    $(document.body).on('click', '.buy-ticket', function (e) {
+        e.stopImmediatePropagation();
+        var input = $(this).parent().prev().find('input').val();
+        payTax(input);
+    });
+
+    function payTax(amount) {
+        amount = amount * 10; //this is the price of a lottery ticket - although it is completely arbitrary
+        var sc = $('.sc').html();
+        var new_sc = (parseInt(sc) + parseInt(amount));
+        $('.sc').html(new_sc);
+
+        //var hc = $('.hc').html();
+        //var new_hc = (parseInt(ec) + parseInt(amount));
+        //$('.hc').html(new_hc);
+    }
+
+    function transferCredits(from, to, amount) {
+        var type_from = $(from).html();
+        type_from = (parseInt(type_from) - parseInt(amount));
+        $(from).html(type_from.toFixed(0));
+        var type_to = $(to).html();
+        type_to = (parseInt(type_to) + parseInt(amount));
+        $(to).html(type_to.toFixed(0));
+    }
+
+    function deductCredits(type, amount) {
+        var current_value = $(type).html();
+        var new_value = (parseInt(current_value) - parseInt(amount));
+        $(type).html(new_value.toFixed(0));
+        payRebate(amount);
+    }
+
+    //rebate
+    function payRebate(amount) {
+        var rebate = 10 / 100 * amount;
+        var result = 0;
+        result = $('.rebate').text();
+        result = rebate + parseInt(result);
+        $('.rebate').html(result.toFixed(0));
+    }
 
     $('.status-checkbox').click(function () {
         $(this).html('&#10004;');
@@ -94,7 +119,17 @@ $(document).ready(function () {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('.dropdown-content').fadeToggle('fast');
+        close_dropdown(true);
     });
+
+    function close_dropdown(is_dropdown_open) {
+        $('body').click(function (e) {
+            e.stopImmediatePropagation();
+            if (is_dropdown_open) {
+                $('.dropdown-content').fadeOut('slow');
+            }
+        });
+    }
 
     $('a.toggle-menu').click(function (e) {
         $('.sidebar ul').slideToggle('fast');
@@ -113,13 +148,13 @@ $(document).ready(function () {
 
     $('.flag').click(function () {
         if ($(this).hasClass("blurred")) {
-            $(this).closest('div').find('.post-desc').css("filter", "blur(0px)");
+            $(this).parent().parent().find('.post-desc').css("filter", "blur(0px)");
             $(this).removeClass('blurred');
-            $(this).find('span').text('Flag');
+            $(this).find('span').text('Flag'); //need to update this
         } else {
-            $(this).closest('div').find('.post-desc').css("filter", "blur(4px)");
+            $(this).parent().parent().find('.post-desc').css("filter", "blur(4px)");
             $(this).addClass('blurred');
-            $(this).find('span').text('Show');
+            $(this).find('span').text('Show'); //need to update this
         }
     });
 });

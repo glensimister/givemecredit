@@ -1,31 +1,38 @@
 <h3>Lottery</h3>
 <h4>Buy Ticket</h4>
 <p>1 ticket costs 1 ACV</p>
-<div class="form-group">
-    <label>Select Currency:</label>
-    <select class="form-control">
-        <option>Rebate</option>
-        <option>C20 - Crypto20 (Index Fund)</option>
-        <option>BTC - Bitcoin</option>
-        <option>ETH - Ethereum</option>
-        <option>LTC - Litecoin</option>
-        <option>DASH - Dash</option>
-    </select>
+
+<div class="grid-lottery">
+    <div class="form-group">
+        <select class="form-control">
+            <option>Select Currency</option>
+            <option>Rebate</option>
+            <option>C20 - Crypto20 (Index Fund)</option>
+            <option>BTC - Bitcoin</option>
+            <option>ETH - Ethereum</option>
+            <option>LTC - Litecoin</option>
+            <option>DASH - Dash</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control" id="num-of-tickets" placeholder="Enter number of tickets">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-blue buy-ticket">BUY</button>
+    </div>
 </div>
 
-<div class="form-group">
-    <label for="exampleInputPassword1">Number of tickets:</label>
-    <input type="number" class="form-control" id="num-of-tickets">
-</div>
-<div class="form-group">
-    <button type="submit" class="btn btn-blue buy-ticket">BUY</button>
-</div>
+
+
+
 <h3>Results</h3>
 <table class="table lottery-numbers">
+    <!--replace all tables with css grid -->
     <tr>
         <th>Date</th>
         <th>Jackpot</th>
         <th>Numbers</th>
+        <th>Bonus Ball</th>
     </tr>
     <tr>
         <td>Sat 23 Jun 2018</td>
@@ -38,7 +45,11 @@
                 <li>25</li>
                 <li>31</li>
                 <li>47</li>
-                <li>17</li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li class="bonus-ball">05</li>
             </ul>
         </td>
     </tr>
@@ -53,7 +64,11 @@
                 <li>11</li>
                 <li>38</li>
                 <li>41</li>
-                <li>37</li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li class="bonus-ball">14</li>
             </ul>
         </td>
     </tr>
