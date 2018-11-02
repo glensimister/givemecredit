@@ -6,8 +6,11 @@
 
 
 <img src="screenshot.PNG" />
+<p>The application is decentralised. To view it you will need to install the Beaker Browser (I will publish the URL shortly)</p>
 
-<p><b>Public Profile:</b> Each profile has a social rating, which is determined by how you interact with other members on the platform. Each profile has a voting weight, which is calculated based on your age, education score (from the built-in education system) and social rating. 
+<p><b>Public Profile:</b> Profile data will be stored by <a href=" https://solid.inrupt.com">Inrupt</a> in order to keep the data separate from the application. This allows you to keep control over your data and port it to different platform if you want. Inrupt is being developed by Tim berners-lee - the inventer of the WWW. </p>
+
+<p>Each profile has a social rating, which is determined by how you interact with other members on the platform. Each profile has a voting weight, which is calculated based on your age, education score (from the built-in education system) and social rating. 
 </p>
 
 <p><b>Universal cryptocurrency wallet: </b>This will be a plug-in. The application uses only cryptocurrencies, and everything is priced in ACV (Average Currency Value).</p>
