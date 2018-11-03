@@ -1,91 +1,18 @@
 $(document).ready(function () {
     $(document.body).on('click', '.pay-tax', function () {
-        $('.sc').html("240");
-        $('.hc').html("141");
-        $('.ec').html("0");
+        api.distributeCredits();
     });
 
     $(document.body).on('click', '.donate-sc', function (e) {
+        api.donateSocialCredits(this);
         e.stopImmediatePropagation();
-        var input = $(this).parent().parent().find('input').val();
-        var select = $(this).parent().parent().parent().parent().find('select option:selected').val();
-        var parent_class = $(this).parent().parent().parent().parent().attr('class');
-
-        /*if ($(this).hasClass('topup-hc')) {
-                if (select == 'Social Credits') {
-                    transferCredits('.sc', '.hc', input);
-                } else if (select == 'Education Credits') {
-                    transferCredits('.ec', '.hc', input);
-                }
-            } else if ($(this).hasClass('topup-ec')) {
-                transferCredits('.sc', '.ec', input);
-            } else if (select == 'Social Credits') {
-                deductCredits('.sc', input);
-            } else if (select == 'Health Credits') {
-                deductCredits('.hc', input);
-            } else if (select == 'Education Credits') {
-                deductCredits('.ec', input);
-            }
-        }*/
-
-        if (parent_class == 'topup-hc') {
-            if (select == 'Social Credits') {
-                transferCredits('.sc', '.hc', input);
-            } else if (select == 'Education Credits') {
-                transferCredits('.ec', '.hc', input);
-            }
-        } else if (parent_class == 'topup-ec') {
-            transferCredits('.sc', '.ec', input);
-        } else if (select == 'Social Credits') {
-            deductCredits('.sc', input);
-        } else if (select == 'Health Credits') {
-            deductCredits('.hc', input);
-        } else if (select == 'Education Credits') {
-            deductCredits('.ec', input);
-        };
     });
 
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
-        var input = $(this).parent().prev().find('input').val();
-        payTax(input);
+        api.buyLotteryTicket(this)
+
     });
-
-    function payTax(amount) {
-        amount = amount * 10; //this is the price of a lottery ticket - although it is completely arbitrary
-        var sc = $('.sc').html();
-        var new_sc = (parseInt(sc) + parseInt(amount));
-        $('.sc').html(new_sc);
-
-        //var hc = $('.hc').html();
-        //var new_hc = (parseInt(ec) + parseInt(amount));
-        //$('.hc').html(new_hc);
-    }
-
-    function transferCredits(from, to, amount) {
-        var type_from = $(from).html();
-        type_from = (parseInt(type_from) - parseInt(amount));
-        $(from).html(type_from.toFixed(0));
-        var type_to = $(to).html();
-        type_to = (parseInt(type_to) + parseInt(amount));
-        $(to).html(type_to.toFixed(0));
-    }
-
-    function deductCredits(type, amount) {
-        var current_value = $(type).html();
-        var new_value = (parseInt(current_value) - parseInt(amount));
-        $(type).html(new_value.toFixed(0));
-        payRebate(amount);
-    }
-
-    //rebate
-    function payRebate(amount) {
-        var rebate = 10 / 100 * amount;
-        var result = 0;
-        result = $('.rebate').text();
-        result = rebate + parseInt(result);
-        $('.rebate').html(result.toFixed(0));
-    }
 
     $('.status-checkbox').click(function () {
         $(this).html('&#10004;');
@@ -137,13 +64,7 @@ $(document).ready(function () {
     });
 
     $('.post-update button').click(function () {
-        var post = $('.status-update input').val();
-        var status_update = {
-            post: post
-        };
-        var template = $('#postTpl').html();
-        var html = Mustache.to_html(template, status_update);
-        $('.post-feed').prepend(html);
+        api.updateStatus();
     });
 
     $('.flag').click(function () {
