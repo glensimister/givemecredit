@@ -20,7 +20,7 @@ var api = {
     distributeCredits: function () {
         var credits = gun.get('credits')
         credits.put({
-            social: "240",
+            social: "240", //these are dummy values
             health: "50",
             education: "0"
         })

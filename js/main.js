@@ -4,14 +4,13 @@ $(document).ready(function () {
     });
 
     $(document.body).on('click', '.donate-sc', function (e) {
-        api.donateSocialCredits(this);
         e.stopImmediatePropagation();
+        api.donateSocialCredits(this);
     });
 
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
         api.buyLotteryTicket(this)
-
     });
 
     $('.status-checkbox').click(function () {
@@ -22,8 +21,6 @@ $(document).ready(function () {
         if ($(this).hasClass("disconnect")) {
             $(this).text("CONNECT");
             $(this).removeClass('disconnect');
-            //var position = $(this).parent().find('.position').html();
-            //console.log(position);
         } else {
             $(this).text("DISCONNECT");
             $(this).addClass('disconnect');
@@ -39,7 +36,6 @@ $(document).ready(function () {
         } else {
             i.addClass('rotate-angle');
         }
-
     });
 
     $('.top-nav ul li.has-dropdown a').click(function (e) {
