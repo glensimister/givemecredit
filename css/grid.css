@@ -124,8 +124,20 @@
         display: block;
     }
 
-    .grid-toolbar > div.yellow {
+    /*.grid-toolbar > div.yellow {
         color: #e08e0b;
+    }*/
+
+    .grid-toolbar .rateYoToolbar {
+        padding: 3px 20px;
+    }
+
+    .grid-toolbar input,
+    .grid-toolbar select {
+        width: 110px;
+        border: 1px solid transparent;
+        height: 21px;
+        color: #848484;
     }
 
     .grid-status-update-reminder {
