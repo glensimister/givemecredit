@@ -37,6 +37,11 @@ $(document).ready(function () {
         } else {
             i.addClass('rotate-angle');
         }
+        /* this code scrolls the menu up when the ul is shown. it's a bit buggy
+                var ulHeight = $(this).next()[0].scrollHeight;
+                $("html, body").animate({
+                    scrollTop: ulHeight
+                }, 500); */
     });
 
     $('.top-nav ul li.has-dropdown a').click(function (e) {
