@@ -873,3 +873,16 @@ ul li.bonus-ball {
 .funds-raised li:nth-child(1) {
     border-bottom: 1px solid #eee;
 }
+
+/***** healthcare ********/
+
+.healthcare i {
+    font-size: 50px;
+    color: #008d4c;
+}
+
+.service-provider-img {
+    width: 100%;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+}
