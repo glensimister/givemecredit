@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $(document.body).on('click', '.pay-tax', function () {
         api.distributeCredits();
     });

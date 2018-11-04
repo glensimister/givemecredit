@@ -30,6 +30,14 @@ h4 {
     float: right;
 }
 
+.content ul {
+    margin: 0 20px 20px 20px;
+}
+
+.content ul li {
+    list-style: circle;
+}
+
 a {
     color: #008d4c;
     text-decoration: none;

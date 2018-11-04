@@ -11,22 +11,43 @@
     <link rel="stylesheet" href="css/select2.min.css">
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
     <script src="js/select2.full.min.js"></script>
+    <script src="js/vendor/sea.js"></script>
+    <script src="js/vendor/gun.js"></script>
+    <script src="js/main.js"></script>
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <script>
+
+        var gun = Gun()
+    var user = gun.user()
+
+    $('.sign-in button').on('click', function (e) {
+        e.stopImmediatePropagation();
+        user.create($('#username').val(), $('#password').val())
+    });
+
+    $('.sign-in #form').on('click', function (e) {
+        e.stopImmediatePropagation();
+        user.auth($('#username').val(), $('#password').val())
+    });
+
+    gun.on('auth', function () {
+        console("hello");
+    })
+    </script>
 </head>
 
-<body class="blurred-bg">
+<body>
     <div class="sign-in">
         <!--<div class="logo"><a href="/">GIVEME<span>&copy;</span>REDIT</a></div>-->
         <p>Sign in to start your session</p>
 
-        <form action="index.html" method="post">
+        <form id="form" action="index.html" method="post">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="demo">
+                <input id="username" type="text" class="form-control" placeholder="demo">
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="*****************">
+                <input id="password" type="password" class="form-control" placeholder="*****************">
             </div>
 
             <div class="form-group checkbox icheck">
