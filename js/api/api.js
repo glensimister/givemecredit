@@ -15,6 +15,11 @@ var api = {
             var template = $('#postTpl').html();
             var html = Mustache.to_html(template, status_update);
             $('.post-feed').prepend(html);
+            $(".rateYoToolbar").rateYo({
+                rating: 4,
+                starWidth: "15px",
+                readOnly: true
+            });
         })
     },
     distributeCredits: function () {

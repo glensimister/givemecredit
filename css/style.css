@@ -126,6 +126,39 @@ a {
     color: #848484;
 }
 
+/*
+.status-update .select2-container--default .select2-selection--multiple {
+    border-radius: 0px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-top: none;
+    border-bottom: 1px solid #eee;
+    box-shadow: none;
+    padding: 5px;
+    width: 100%;
+    font-size: 14px;
+    color: #848484;
+}
+
+.status-update .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 0;
+}*/
+
+.status-update button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+    color: #00acd6;
+    cursor: pointer;
+}
+
+/*
+.status-update span {
+    line-height: 45px;
+}*/
+
 /*.status-update-reminder {
     margin-top: 20px;
     padding-top: 20px;
@@ -182,20 +215,6 @@ a {
 
 .grid-status-update-reminder > div:nth-child(7) {
     border-left: 1px solid #eee;
-}
-
-.status-update button {
-    display: block;
-    width: 100%;
-    border: none;
-    background: none;
-    text-align: center;
-    color: #00acd6;
-    cursor: pointer;
-}
-
-.status-update span {
-    line-height: 45px;
 }
 
 .post-update {

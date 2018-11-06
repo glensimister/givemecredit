@@ -22,7 +22,16 @@
 
         <section id="content1">
             <div class="status-update clearfix">
-                <input type="text" placeholder="What's on your mind, Glen?" />
+                <input type="text" class="input-box" placeholder="What's on your mind, Glen?" />
+                <!-- The code below allows users to select multiple categories that relate to their update. It could be useful for searching/categorising updates. The css is around line 130 in style.css
+                <select class="form-control select2" name="categories[]" multiple="multiple" data-placeholder="Select a category" style="width: 100%;">
+                    <option>Anouncement</option>
+                    <option>Fun</option>
+                    <option>Politics</option>
+                    <option>Art</option>
+                    <option>News</option>
+                    <option>Other</option>
+                </select>-->
                 <div class="status-update-reminder">
                     <div class="grid-status-update-reminder">
                         <div>Is it useful?</div>
@@ -43,16 +52,26 @@
                     <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
                     <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
                     <div class="post-desc">{{post}}</div>
-                   <div class="grid-toolbar">
+                    <div class="grid-toolbar">
                         <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
                         <div>90</div>
                         <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
                         <div>10</div>
-                        <div class="red flag"><a href=""><i class="fa fa-flag"></i></a></div>
-                        <div>0%</div>
-                        <div class="yellow"><i class="fa fa-star-half-o"></i></div>
-                        <div>90%</div>
-                        <div>12</div>
+                        <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                        <div>0</div>
+
+                        <div class="rateYoToolbar"></div>
+
+                        <div>
+                            <select>
+                                <option>Social Credits</option>
+                                <option>Bitcoin</option>
+                                <option>Crypto20</option>
+                                <option>Dash</option>
+                                <option>Ether</option>
+                            </select>
+                        </div>
+                        <div><input type="number" placeholder="1"></div>
                         <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
                     </div>
                 </div>
