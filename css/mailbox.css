@@ -1,0 +1,37 @@
+.grid-mailbox {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 3fr;
+}
+
+.grid-mailbox > div {
+    padding: 20px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+}
+
+.grid-mailbox > div ul {
+    margin: 10px 0 20px 0;
+}
+
+.grid-mailbox > div ul li {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.grid-mailbox > div table {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.grid-mailbox > div table td {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+}
+
+.mailbox-star i {
+    color: #e08e0b;
+}
