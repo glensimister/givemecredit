@@ -1,0 +1,176 @@
+body #comments_9345962 {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #848484;
+    line-height: 1.42857143;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#comments_9345962 h1,
+#comments_9345962 h2,
+#comments_9345962 h3,
+#comments_9345962 h4,
+#comments_9345962 h5,
+#comments_9345962 h6,
+#comments_9345962 p {
+    margin: 0 0 15px 0;
+}
+
+#comments_9345962 h4 {
+    font-size: 16px;
+}
+
+#comments_9345962 a {
+    color: #008d4c;
+    text-decoration: none;
+}
+
+#comments_9345962 .post {
+    margin: 20px 0;
+}
+
+#comments_9345962 .post > div {
+    margin: 15px 0;
+}
+
+#comments_9345962 .post span a {
+    font-weight: bold;
+}
+
+#comments_9345962 .user-image-medium {
+    float: left;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #848484;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#comments_9345962 {
+    width: 600px;
+    height: 400px;
+    overflow: auto;
+    padding: 20px;
+}
+
+#comments_9345962 .comments-box {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+}
+
+
+#comments_9345962 input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+}
+
+
+#comments_9345962 .grid-toolbar {
+    display: grid;
+    margin-bottom: 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+    grid-template-columns: repeat(5, 1fr 1fr);
+}
+
+#comments_9345962 .grid-toolbar > div {
+    padding: 0px 5px;
+    border-right: 1px solid #eee;
+}
+
+#comments_9345962 .grid-toolbar > div:last-child {
+    border-right: none;
+}
+
+#comments_9345962 .grid-toolbar > div.red a {
+    color: #dd4b39;
+    display: block;
+}
+
+#comments_9345962 .grid-toolbar > div.blue a {
+    color: #00acd6;
+    display: block;
+}
+
+
+#comments_9345962 .grid-toolbar .rateYoToolbar {
+    padding: 3px 20px;
+}
+
+#comments_9345962 .grid-toolbar input,
+#comments_9345962 .grid-toolbar select {
+    width: 110px;
+    border: 1px solid transparent;
+    height: 21px;
+    color: #848484;
+}
+
+
+#toolbar {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: fixed;
+    z-index: 99999;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+    color: #848484;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    -webkit-box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
+}
+
+#toolbar .grid-toolbar {
+    width: 800px;
+    margin: 0 auto;
+    display: grid;
+    text-align: center;
+    padding: 5px 0;
+    grid-template-columns: repeat(5, 1fr 1fr);
+}
+
+#toolbar .grid-toolbar > div {
+    padding: 0px 5px;
+    border-right: 1px solid #eee;
+}
+
+/*#toolbar .grid-toolbar > div:last-child {
+    border-right: none;
+}*/
+
+#toolbar .grid-toolbar > div:first-child {
+    border-left: 1px solid #eee;
+}
+
+#toolbar .grid-toolbar > div.red a {
+    color: #dd4b39;
+    display: block;
+}
+
+#toolbar .grid-toolbar > div.blue a {
+    color: #00acd6;
+    display: block;
+}
+
+#toolbar .grid-toolbar .rateYoToolbar {
+    padding: 3px 20px;
+}
+
+#toolbar .grid-toolbar input,
+#toolbar .grid-toolbar select {
+    width: 110px;
+    border: 1px solid transparent;
+    height: 21px;
+    color: #848484;
+}
