@@ -683,14 +683,14 @@ small.label-green {
 }
 
 .lottery-numbers ul li {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     text-align: center;
-    line-height: 55px;
+    line-height: 45px;
     display: inline-block;
     margin-right: 7px;
-    font-size: 171.4%;
+    font-size: 20px;
     background-color: #00c0ef;
     color: #fff;
 }

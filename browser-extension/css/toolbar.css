@@ -26,19 +26,19 @@ body #extension_9345962 {
     text-decoration: none;
 }
 
-#extension_9345962 .post {
+#extension_9345962 #comments .post {
     margin: 20px 0;
 }
 
-#extension_9345962 .post > div {
+#extension_9345962 #comments .post > div {
     margin: 15px 0;
 }
 
-#extension_9345962 .post span a {
+#extension_9345962 #comments .post span a {
     font-weight: bold;
 }
 
-#extension_9345962 .user-image-medium {
+#extension_9345962 #comments .user-image-medium {
     float: left;
     width: 36px;
     height: 36px;
@@ -47,14 +47,14 @@ body #extension_9345962 {
     margin-right: 10px;
 }
 
-#extension_9345962 {
+#extension_9345962 #comments {
     width: 600px;
     height: 400px;
     overflow: auto;
     padding: 20px;
 }
 
-#extension_9345962 .comments-box {
+#extension_9345962 #comments .comments-box {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -62,14 +62,14 @@ body #extension_9345962 {
 }
 
 
-#extension_9345962 input {
+#extension_9345962 #comments input {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #eee;
 }
 
 
-#extension_9345962 .grid-toolbar {
+#extension_9345962 #comments .grid-toolbar {
     display: grid;
     margin-bottom: 20px;
     text-align: center;
@@ -79,32 +79,32 @@ body #extension_9345962 {
     grid-template-columns: repeat(5, 1fr 1fr);
 }
 
-#extension_9345962 .grid-toolbar > div {
+#extension_9345962 #comments .grid-toolbar > div {
     padding: 0px 5px;
     border-right: 1px solid #eee;
 }
 
-#extension_9345962 .grid-toolbar > div:last-child {
+#extension_9345962 #comments .grid-toolbar > div:last-child {
     border-right: none;
 }
 
-#extension_9345962 .grid-toolbar > div.red a {
+#extension_9345962 #comments .grid-toolbar > div.red a {
     color: #dd4b39;
     display: block;
 }
 
-#extension_9345962 .grid-toolbar > div.blue a {
+#extension_9345962 #comments .grid-toolbar > div.blue a {
     color: #00acd6;
     display: block;
 }
 
 
-#extension_9345962 .grid-toolbar .rateYoToolbar {
+#extension_9345962 #comments .grid-toolbar .rateYoToolbar {
     padding: 3px 20px;
 }
 
-#extension_9345962 .grid-toolbar input,
-#extension_9345962 .grid-toolbar select {
+#extension_9345962 #comments .grid-toolbar input,
+#extension_9345962 #comments .grid-toolbar select {
     width: 110px;
     border: 1px solid transparent;
     height: 21px;
