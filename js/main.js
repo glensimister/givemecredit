@@ -31,17 +31,22 @@ $(document).ready(function () {
     $('.sidebar ul li.treeview a').click(function (e) {
         $(this).next().slideToggle('fast');
         e.stopImmediatePropagation();
+        /* this code scrolls the menu up when the ul is shown. 
+        NOTE: I still need to close any other ul that are open when the drop down is opened */
+        var ulHeight = $(this).next()[0].scrollHeight;
         var i = $(this).parent().find('i');
         if ((i).hasClass("rotate-angle")) {
             i.removeClass('rotate-angle');
+            $('.sidebar').animate({
+                'top': '0'
+            }, 500);
+
         } else {
             i.addClass('rotate-angle');
+            $('.sidebar').animate({
+                'top': '-' + ulHeight
+            }, 500);
         }
-        /* this code scrolls the menu up when the ul is shown. it's a bit buggy
-                var ulHeight = $(this).next()[0].scrollHeight;
-                $("html, body").animate({
-                    scrollTop: ulHeight
-                }, 500); */
     });
 
     $('.top-nav ul li.has-dropdown a').click(function (e) {
@@ -61,7 +66,7 @@ $(document).ready(function () {
     }
 
     $('a.toggle-menu').click(function (e) {
-        $('.sidebar ul').slideToggle('fast');
+        $('.sidebar ul:first-child').slideToggle('fast');
         e.stopImmediatePropagation();
     });
 

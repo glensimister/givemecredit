@@ -12,7 +12,21 @@
 }
 
 .top-margin {
-    margin-top: 47px;
+    margin-top: 132px;
+}
+
+.grid > div.top-nav {
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (min-width: 800px) {
+
+    /* if window is greater the 800px */
+    .top-margin {
+        margin-top: 47px;
+    }
 }
 
 /******* top nav *******/

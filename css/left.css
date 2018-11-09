@@ -24,9 +24,13 @@
 .grid > .sidebar {
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    padding: 0 0 40px 0;
-    overflow-y: auto;
-    height: 500px;
+    /*padding: 0 0 40px 0;*/
+    padding: 0;
+    /*overflow-y: auto;
+    max-height: 400px;*/
+    position: relative;
+    top: 0;
+    z-index: 0;
 }
 
 .sidebar i.fa.fa-angle-left.pull-right {
@@ -39,6 +43,7 @@
 }
 
 .sidebar-header {
+    background-color: #fff;
     border-right: 1px solid #eee;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
@@ -46,6 +51,10 @@
     line-height: 27px;
     text-align: center;
     color: #c5c5c5;
+    /* this is for when the menu slides up */
+    position: relative;
+    top: 0;
+    z-index: 1;
 }
 
 .sidebar ul {
