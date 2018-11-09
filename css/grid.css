@@ -98,7 +98,7 @@
     }
 
     .grid-credits {
-        grid-template-columns: repeat(4, 1fr 1fr);
+        grid-template-columns: repeat(4, 2fr 1fr);
     }
 
     .grid-toolbar {
