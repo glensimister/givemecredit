@@ -1,5 +1,6 @@
 - sort out top menu
 - organize css
-- maybe look into better fonts
+- add open sans font to browser extension
 - add pointer cursor to responsive nav button
 - fade out responsive menu after link has been clicked
+- finish mailbox (compose, read mail)
