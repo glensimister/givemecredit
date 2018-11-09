@@ -765,12 +765,16 @@ ul li.bonus-ball {
     margin-left: 15px;
 }
 
+.course-review {
+    text-align: center;
+}
+
 .review-questions {
     text-align: right;
 }
 
 .feedback-confirmation {
-    width: 300px;
+    max-width: 500px;
     margin: auto;
 }
 
