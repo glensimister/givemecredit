@@ -33,6 +33,7 @@ $(document).ready(function () {
         e.stopImmediatePropagation();
         var thisUL = $(this).next();
         var i = $(this).parent().find('i');
+        var ulHeight;
 
         if (thisUL.hasClass('open')) {
             thisUL.slideUp('fast');
@@ -45,7 +46,7 @@ $(document).ready(function () {
             $('.sidebar').find('i').removeClass('rotate-angle');
             $('ul.treeview-menu').not(thisUL).slideUp('fast');
             thisUL.slideDown('fast');
-            var ulHeight = $(this).next()[0].scrollHeight;
+            ulHeight = $(this).next()[0].scrollHeight;
             i.addClass('rotate-angle');
             $('.sidebar').animate({
                 'top': '-' + ulHeight
