@@ -1,3 +1,5 @@
 - sort out top menu
 - organize css
 - maybe look into better fonts
+- add pointer cursor to responsive nav button
+- fade out responsive menu after link has been clicked
