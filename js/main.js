@@ -28,31 +28,25 @@ $(document).ready(function () {
         }
     });
 
-    $('.sidebar ul li.treeview a').click(function (e) {
-        /* there seems to be a small bug in this. Sometimes, when i click on an anchor, it doesn't open. However, it rarely occurrs??? */
-        e.stopImmediatePropagation();
-        var thisUL = $(this).next();
-        var i = $(this).parent().find('i');
-        var ulHeight;
+    $('.sidebar ul li.treeview a:first-child').click(function (e) {
 
-        if (thisUL.hasClass('open')) {
-            thisUL.slideUp('fast');
-            i.removeClass('rotate-angle');
-            $('.sidebar').animate({
-                'top': '0'
-            }, 500);
-            thisUL.removeClass('open');
-        } else {
-            $('.sidebar').find('i').removeClass('rotate-angle');
-            $('ul.treeview-menu').not(thisUL).slideUp('fast');
-            thisUL.slideDown('fast');
-            ulHeight = $(this).next()[0].scrollHeight;
-            i.addClass('rotate-angle');
+        e.stopImmediatePropagation();
+        $(this).toggleClass("open").next().slideToggle('fast');
+        $(this).find('i').toggleClass('rotate-angle');
+
+        /* There seems to be a small bug in this. Uncomment and test the menu...*/
+        if ($(this).hasClass('open')) {
+            /*$('ul.treeview-menu').not($(this).next()).slideUp('fast');*/
+            var ulHeight = $(this).next()[0].scrollHeight;
             $('.sidebar').animate({
                 'top': '-' + ulHeight
             }, 500);
-            thisUL.addClass('open');
-        }
+        } else {
+            /*$('.sidebar').find('i').not($(this).find('i')).toggleClass('rotate-angle');*/
+            $('.sidebar').animate({
+                'top': '0'
+            }, 500);
+        };
     });
 
     $('.top-nav ul li.has-dropdown a').click(function (e) {
