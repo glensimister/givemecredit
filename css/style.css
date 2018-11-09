@@ -724,6 +724,11 @@ ul li.bonus-ball {
     font-weight: 600;
 }*/
 
+.education i {
+    font-size: 50px;
+    color: #dd4b39;
+}
+
 #tabs.course div label {
     font-weight: 500;
     display: block;

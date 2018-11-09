@@ -1,3 +1,6 @@
+- finish documentation
+- look into minds api
+- look into ATM card vendors for KYC/AML verification
 - sort out top menu
 - organize css
 - add open sans font to browser extension + sign up
@@ -5,3 +8,4 @@
 - fade out responsive menu after link has been clicked
 - finish mailbox (compose, read mail)
 - healthcare add new + get a quote
+- find some icons for business, education boxes, etc
