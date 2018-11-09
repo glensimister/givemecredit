@@ -29,23 +29,27 @@ $(document).ready(function () {
     });
 
     $('.sidebar ul li.treeview a').click(function (e) {
-        $(this).next().slideToggle('fast');
+        /* there seems to be a small bug in this. Sometimes, when i click on an anchor, it doesn't open. However, it rarely occurrs??? */
         e.stopImmediatePropagation();
-        /* this code scrolls the menu up when the ul is shown. 
-        NOTE: I still need to close any other ul that are open when the drop down is opened */
-        var ulHeight = $(this).next()[0].scrollHeight;
+        var thisUL = $(this).next();
         var i = $(this).parent().find('i');
-        if ((i).hasClass("rotate-angle")) {
+        $('ul.treeview-menu').not(thisUL).slideUp('fast');
+        $('.sidebar').find('i').removeClass('rotate-angle');
+        if (thisUL.hasClass('open')) {
+            thisUL.slideUp('fast');
             i.removeClass('rotate-angle');
             $('.sidebar').animate({
                 'top': '0'
             }, 500);
-
+            thisUL.removeClass('open');
         } else {
+            thisUL.slideDown('fast');
+            var ulHeight = $(this).next()[0].scrollHeight;
             i.addClass('rotate-angle');
             $('.sidebar').animate({
                 'top': '-' + ulHeight
             }, 500);
+            thisUL.addClass('open');
         }
     });
 
