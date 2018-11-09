@@ -28,7 +28,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.sidebar ul li.treeview a:first-child').click(function (e) {
+    $('.sidebar ul li.treeview a').click(function (e) {
 
         e.stopImmediatePropagation();
         $(this).toggleClass("open").next().slideToggle('fast');
