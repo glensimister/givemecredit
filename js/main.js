@@ -33,8 +33,7 @@ $(document).ready(function () {
         e.stopImmediatePropagation();
         var thisUL = $(this).next();
         var i = $(this).parent().find('i');
-        $('ul.treeview-menu').not(thisUL).slideUp('fast');
-        $('.sidebar').find('i').removeClass('rotate-angle');
+
         if (thisUL.hasClass('open')) {
             thisUL.slideUp('fast');
             i.removeClass('rotate-angle');
@@ -43,6 +42,8 @@ $(document).ready(function () {
             }, 500);
             thisUL.removeClass('open');
         } else {
+            $('.sidebar').find('i').removeClass('rotate-angle');
+            $('ul.treeview-menu').not(thisUL).slideUp('fast');
             thisUL.slideDown('fast');
             var ulHeight = $(this).next()[0].scrollHeight;
             i.addClass('rotate-angle');
