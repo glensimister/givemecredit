@@ -18,7 +18,7 @@
 .grid > div.top-nav {
     padding: 10px 20px;
     position: relative;
-    z-index: 1;
+    z-index: 100;
 }
 
 @media screen and (min-width: 800px) {
@@ -84,6 +84,7 @@
 .top-nav ul li {
     display: inline-block;
     margin-left: 10px;
+    position: relative;
 }
 
 .top-nav ul li a {
@@ -95,9 +96,10 @@
 }
 
 .dropdown-content {
+    text-align: left;
     display: none;
     position: absolute;
-    right: 113px;
+    right: -20px;
     top: 37px;
     background-color: #fff;
     min-width: 300px;
@@ -105,7 +107,6 @@
     padding: 10px;
     height: 210px;
     overflow: auto;
-    z-index: 20;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     border: 1px solid #eee;
@@ -114,11 +115,15 @@
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
 
-.read-all {
+.dropdown-content .drop-down-header {
+    font-weight: bold;
+    color: #008d4c;
+    width: 100%;
     text-align: center;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     font-size: 12px;
+    display: block;
 }
 
 .dropdown-content ul {

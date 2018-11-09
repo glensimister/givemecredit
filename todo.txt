@@ -1,0 +1,3 @@
+- sort out top menu
+- organize css
+- maybe look into better fonts

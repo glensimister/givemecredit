@@ -49,10 +49,11 @@ $(document).ready(function () {
         };
     });
 
-    $('.top-nav ul li.has-dropdown a').click(function (e) {
+    $('.top-nav ul li.has-dropdown > a').click(function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
-        $('.dropdown-content').fadeToggle('fast');
+        $(this).parent().siblings().find('.dropdown-content').hide();
+        $(this).parent().find('.dropdown-content').fadeToggle('fast');
         close_dropdown(true);
     });
 
