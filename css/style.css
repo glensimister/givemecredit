@@ -822,3 +822,18 @@ ul li.bonus-ball {
     border: 1px solid #eee;
     margin-bottom: 10px;
 }
+
+/*************************/
+.plugins img {
+    width: 100%;
+    overflow: hidden;
+    height: 100px;
+    display: block;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.plugins .plugin-desc {
+    height: 150px;
+    overflow: hidden;
+}
