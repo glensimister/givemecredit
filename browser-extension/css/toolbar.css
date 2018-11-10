@@ -1,8 +1,14 @@
-body #extension_9345962 {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-face {
+    font-family: "Open Sans";
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+body {
+    /*font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font-family: "Open Sans";
     font-weight: 400;
     color: #848484;
-    line-height: 1.42857143;
+    line-height: 1.5;
     font-size: 14px;
     box-sizing: border-box;
 }

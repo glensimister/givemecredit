@@ -1,5 +1,5 @@
 - finish documentation
-- look into minds api
+- look into minds api, or maybe use fritter (beaker browser social media app)
 - look into ATM card vendors for KYC/AML verification
 - sort out top menu
 - organize css
@@ -9,3 +9,6 @@
 - finish mailbox (compose, read mail)
 - healthcare add new + get a quote
 - find some icons for business, education boxes, etc
+- make border underneath side nav look better (e.g. round of corners + remove extra border)
+- improve images on course search page (remove inline css)
+- make course search reviews more consistant
