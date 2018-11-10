@@ -7,7 +7,10 @@
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EC3KMDEZ4282U)
 
 
-<img src="screenshot.PNG" />
+<p><img src="screenshot.PNG" /></p>
+<p><img src="screenshot-voting.PNG" /></p>
+<p><img src="screenshot-pubservices.PNG" /></p>
+<p><img src="screenshot-extension.PNG" /></p>
 <p>The application is decentralised. To view it you will need to install the Beaker Browser (I will publish the URL shortly)</p>
 
 <p><b>Public Profile:</b> Profile data will be stored by <a href="https://solid.inrupt.com">Inrupt</a> in order to keep the data separate from the application. This allows you to keep control over your data and port it to different platform if you want. Inrupt is being developed by Tim berners-lee - the inventer of the WWW. </p>
