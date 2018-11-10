@@ -19,6 +19,54 @@
     grid-gap: 10px;
 }
 
+.grid-toolbar {
+    display: grid;
+    margin-bottom: 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+    grid-template-columns: repeat(5, 1fr 1fr);
+}
+
+.grid-toolbar > div {
+    padding: 0px 5px;
+    border-right: 1px solid #eee;
+}
+
+.grid-toolbar > div:last-child {
+    border-right: none;
+}
+
+.grid-toolbar > div.red a {
+    color: #dd4b39;
+    display: block;
+}
+
+.grid-toolbar > div.blue a {
+    color: #00acd6;
+    display: block;
+}
+
+/*.grid-toolbar > div.yellow {
+        color: #e08e0b;
+    }*/
+
+.grid-toolbar .rateYoToolbar {
+    padding: 3px 20px;
+}
+
+.grid-toolbar input,
+.grid-toolbar select {
+    border: 1px solid transparent;
+    height: 21px;
+    color: #848484;
+}
+
+.grid-toolbar input {
+    width: 40px;
+}
+
 .grid-2-col {
     display: grid;
     grid-gap: 20px;
@@ -99,51 +147,6 @@
 
     .grid-credits {
         grid-template-columns: repeat(4, 2fr 1fr);
-    }
-
-    .grid-toolbar {
-        display: grid;
-        margin-bottom: 20px;
-        text-align: center;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #eee;
-        padding: 5px 0;
-        grid-template-columns: repeat(5, 1fr 1fr);
-    }
-
-    .grid-toolbar > div {
-        padding: 0px 5px;
-        border-right: 1px solid #eee;
-    }
-
-    .grid-toolbar > div:last-child {
-        border-right: none;
-    }
-
-    .grid-toolbar > div.red a {
-        color: #dd4b39;
-        display: block;
-    }
-
-    .grid-toolbar > div.blue a {
-        color: #00acd6;
-        display: block;
-    }
-
-    /*.grid-toolbar > div.yellow {
-        color: #e08e0b;
-    }*/
-
-    .grid-toolbar .rateYoToolbar {
-        padding: 3px 20px;
-    }
-
-    .grid-toolbar input,
-    .grid-toolbar select {
-        width: 110px;
-        border: 1px solid transparent;
-        height: 21px;
-        color: #848484;
     }
 
     .grid-status-update-reminder {
