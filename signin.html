@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/left.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/select2.min.css">
@@ -41,27 +42,29 @@
 
 <body>
     <div class="sign-in">
+        <div class="logo"><a href="/"><b>GIVEME<span><i class="fa fa-copyright"></i>REDIT</span></b></a></div>
+        <br />
 
-        <h3>SIGN IN WITH SOLID</h3>
+        <h4 style="text-align: center">SIGN IN WITH SOLID</h4>
         <p id="login">
             You are not logged in.
-            <button class="btn btn-blue">LOG IN</button>
+            <button class="btn btn-red">LOG IN</button>
         </p>
         <p id="logout">
             You are logged in as <span id="user"></span>.
-            <button class="btn btn-blue">LOG OUT</button>
+            <button class="btn btn-red">LOG OUT</button>
         </p>
         <form id="form" action="index.html" method="post">
             <div class="form-group">
-                <label for="profile">Profile:</label>
+                <!--<label for="profile">Profile:</label>-->
                 <div class="grid-input-button">
-                    <div><input id="profile" class="form-control donate-input"></div><!-- need to rename these classes -->
+                    <div><input id="profile" class="form-control donate-input" placeholder="Login as guest"></div><!-- need to rename these classes -->
                     <div><button type="submit" id="view" class="donate-sc">VIEW</button></div>
                 </div>
             </div>
         </form>
 
-        <!--<div class="logo"><a href="/">GIVEME<span>&copy;</span>REDIT</a></div>-->
+        <!--
         <h3>Or sign in as a guest</h3>
 
         <form id="form" action="index.html" method="post">
@@ -82,23 +85,22 @@
                 <button type="submit" class="btn btn-red">Sign In</button>
             </div>
         </form>
-        <!--
         <div class="form-group">
             <p>- OR -</p>
             <a href="#" class="btn btn-blue"><i class="fa fa-facebook"></i> Sign in using
                 Facebook</a>
             <a href="#" class="btn btn-blue"><i class="fa fa-google-plus"></i> Sign in using
                 Google+</a>
-        </div> -->
+        </div>
 
         <a href="#">I forgot my password</a>
         <br>
         <a href="#" class="text-center">Register a new membership</a>
-    </div>
+    </div>-->
 
-    <script src="/js/vendor/solid-auth-client.bundle.js"></script>
-    <script src="/js/vendor/rdflib.min.js"></script>
-    <script src="/js/login.js"></script>
+        <script src="/js/vendor/solid-auth-client.bundle.js"></script>
+        <script src="/js/vendor/rdflib.min.js"></script>
+        <script src="/js/login.js"></script>
 
 </body>
 
