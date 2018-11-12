@@ -111,6 +111,16 @@ a {
     text-transform: capitalize;
 }
 
+/*.profile-summary .profile-pic {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #848484;
+    border-radius: 50%;
+    background-image: url('/img/profilepic.jpg');
+}*/
+
 .rateYo {
     margin: 0 auto 20px auto;
 }
@@ -156,6 +166,7 @@ a {
 
 .status-update button {
     display: block;
+    line-height: 21px;
     width: 100%;
     border: none;
     background: none;

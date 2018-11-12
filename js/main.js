@@ -44,8 +44,8 @@ $(document).ready(function () {
 
         // Display their details
         const fullName = store.any($rdf.sym(person), FOAF('name'));
-        const img = store.any($rdf.sym(person), FOAF('image'));
-        console.log(img);
+        /*const img = store.any($rdf.sym(person), FOAF('image'));
+        console.log(img);*/
         $('.profile-summary h4#fullName').text(fullName && fullName.value);
 
         // Display their friends
