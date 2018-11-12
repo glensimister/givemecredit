@@ -6,6 +6,8 @@
                 url: "/pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
+                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("/js/vendor/rdflib.min.js");
                     $.getScript("/js/initializeplugins.js");
                     $.getScript("/js/main.js");
                 }
@@ -18,6 +20,8 @@
                 url: "/pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
+                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("/js/vendor/rdflib.min.js");
                     $.getScript("/js/initializeplugins.js");
                     $.getScript("/js/main.js");
                 }
