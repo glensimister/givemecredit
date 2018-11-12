@@ -36,6 +36,12 @@ $(document).ready(function () {
         const person = $('#profile').val();
         await fetcher.load(person);
 
+        /*var to = person.lastIndexOf('/');
+        to = to == -1 ? person.length : to + 1;
+        url = person.substring(0, to);
+
+        $('.profile-summary img').attr("src", url + "profile.jpg");*/
+
         // Display their details
         const fullName = store.any($rdf.sym(person), FOAF('name'));
         const img = store.any($rdf.sym(person), FOAF('image'));
