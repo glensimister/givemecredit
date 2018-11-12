@@ -21,6 +21,7 @@ $(document).ready(function () {
                 $('#profile').val(session.webId);
             loadProfile();
         } else {
+            $('.profile-summary h4#fullName').text("Guest User");
             /*window.location.replace("http://localhost:8000/signin.html");*/
         }
     });
