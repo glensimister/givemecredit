@@ -158,11 +158,13 @@
         </section>
         <section id="content5">
             <p>
-                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+                You have no connections yet.
             </p>
-            <p>
-                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
-            </p>
+            <dl id="viewer">
+                <dd>
+                    <ul id="friends"></ul>
+                </dd>
+            </dl>
         </section>
         <section id="content6">
             <p>
@@ -174,8 +176,15 @@
         </section>
     </div>
     <div class="profile-summary">
+        <div class="form-group">
+            <div class="grid-input-button">
+                <div><input id="profile" class="form-control donate-input"></div>
+                <div><button type="button" id="view" class="donate-sc">VIEW</button></div>
+            </div>
+        </div>
+
         <div class="rateYo"></div>
-        <h4>Guest User</h4>
+        <h4 id="fullName">Guest User</h4>
         <img src="img/profilepic.jpg" class="user-image-large" alt="User Image">
         <ul>
             <li>
@@ -197,3 +206,7 @@
         <button class="btn btn-red connect">CONNECT</button>
     </div>
 </div>
+
+<script src="/js/vendor/solid-auth-client.bundle.js"></script>
+<script src="/js/vendor/rdflib.min.js"></script>
+<script src="/js/main.js"></script>

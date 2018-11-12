@@ -7,18 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/select2.min.css">
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="js/select2.full.min.js"></script>
-    <script src="js/vendor/sea.js"></script>
-    <script src="js/vendor/gun.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/vendor/select2.full.min.js"></script>
+    <!--<script src="js/vendor/sea.js"></script>-->
+    <script src="/js/vendor/gun.js"></script>
+    <script src="/js/main.js"></script>
+
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
     <script>
+        $('#logout button').click(() => solid.auth.logout());
 
-        var gun = Gun()
+      /*  var gun = Gun()
     var user = gun.user()
 
     $('.sign-in button').on('click', function (e) {
@@ -33,14 +36,43 @@
 
     gun.on('auth', function () {
         console("hello");
-    })
+    })*/
     </script>
 </head>
 
 <body>
     <div class="sign-in">
+
+        <h3>SIGN IN WITH SOLID</h3>
+        <p id="login">
+            You are not logged in.
+            <button class="btn btn-blue">LOG IN</button>
+        </p>
+        <p id="logout">
+            You are logged in as <span id="user"></span>.
+            <button class="btn btn-blue">LOG OUT</button>
+        </p>
+        <form id="form" action="index.html" method="post">
+            <div class="form-group">
+                <label for="profile">Profile:</label>
+                <div class="grid-input-button">
+                    <div><input id="profile" class="form-control donate-input"></div><!-- need to rename these classes -->
+                    <div><button type="submit" id="view" class="donate-sc">VIEW</button></div>
+                </div>
+            </div>
+        </form>
+
+        <dl id="viewer">
+            <dt>Full name</dt>
+            <dd id="fullName"></dd>
+            <dt>Friends</dt>
+            <dd>
+                <ul id="friends"></ul>
+            </dd>
+        </dl>
+
         <!--<div class="logo"><a href="/">GIVEME<span>&copy;</span>REDIT</a></div>-->
-        <p>Sign in to start your session</p>
+        <h3>Or sign in as a guest</h3>
 
         <form id="form" action="index.html" method="post">
             <div class="form-group">
@@ -60,19 +92,23 @@
                 <button type="submit" class="btn btn-red">Sign In</button>
             </div>
         </form>
-
+        <!--
         <div class="form-group">
             <p>- OR -</p>
             <a href="#" class="btn btn-blue"><i class="fa fa-facebook"></i> Sign in using
                 Facebook</a>
             <a href="#" class="btn btn-blue"><i class="fa fa-google-plus"></i> Sign in using
                 Google+</a>
-        </div>
+        </div> -->
 
         <a href="#">I forgot my password</a>
         <br>
         <a href="#" class="text-center">Register a new membership</a>
     </div>
+
+    <script src="/js/vendor/solid-auth-client.bundle.js"></script>
+    <script src="/js/vendor/rdflib.min.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 

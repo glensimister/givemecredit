@@ -107,6 +107,10 @@ a {
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
 
+.profile-summary h4#fullName {
+    text-transform: capitalize;
+}
+
 .rateYo {
     margin: 0 auto 20px auto;
 }

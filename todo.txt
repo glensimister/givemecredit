@@ -12,3 +12,5 @@
 - make border underneath side nav look better (e.g. round of corners + remove extra border)
 - improve images on course search page (remove inline css)
 - make course search reviews more consistant
+- change extension toolbar to remove width on select + add 40px on input
+- on smaller screens swap rateyo with one yellow star and score

@@ -90,6 +90,12 @@
     margin-bottom: 20px;
 }
 
+
+.grid-input-button {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
 @media screen and (min-width: 800px) {
 
     /* applies to window size above 800px */
@@ -156,10 +162,5 @@
     .grid-course-review {
         display: grid;
         grid-template-columns: repeat(5, 1fr 1fr);
-    }
-
-    .grid-input-button {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
     }
 }
