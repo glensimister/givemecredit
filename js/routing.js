@@ -1,7 +1,10 @@
 ;
 (function ($) {
+
+    /*var pageURL = window.location.href;*/
+
     var app = $.sammy(function () {
-        this.get('/', function () {
+        this.get('', function () {
             $.ajax({
                 url: "pages/home.html",
                 success: function (result) {
