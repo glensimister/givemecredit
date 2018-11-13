@@ -3,7 +3,7 @@
     var app = $.sammy(function () {
         this.get('/', function () {
             $.ajax({
-                url: "/pages/home.html",
+                url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/vendor/solid-auth-client.bundle.js");
@@ -17,7 +17,7 @@
 
         this.get('/index.html', function () {
             $.ajax({
-                url: "/pages/home.html",
+                url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/vendor/solid-auth-client.bundle.js");
