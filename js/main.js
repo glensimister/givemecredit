@@ -109,7 +109,6 @@ $(document).ready(function () {
                 alert("You need to be logged in to post something");
             }
         });
-
     });
 
     $('.flag').click(function () {
