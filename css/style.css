@@ -53,6 +53,22 @@ a {
     text-decoration: none;
 }
 
+textarea.form-control {
+    height: auto;
+}
+
+.relative-container > div {
+    position: relative;
+}
+
+.relative-container .delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #bbb;
+    cursor: pointer;
+}
+
 .sign-in {
     position: fixed;
     top: 50%;

@@ -19,6 +19,36 @@
     grid-gap: 10px;
 }
 
+/*
+.grid-votes {
+    display: grid;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+    grid-template-columns: repeat(2, 1fr 1fr);
+}
+
+.grid-votes > div {
+    padding: 0px 5px;
+    border-right: 1px solid #eee;
+}
+
+.grid-votes > div.red a {
+    color: #dd4b39;
+    display: block;
+}
+
+.grid-votes > div.blue a {
+    color: #00acd6;
+    display: block;
+}
+
+.grid-votes > div:last-child {
+    border-right: none;
+}
+*/
+
 .grid-toolbar {
     display: grid;
     margin-bottom: 20px;
