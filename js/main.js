@@ -76,8 +76,14 @@ $(document).ready(function () {
         api.buyLotteryTicket(this)
     });
 
-    $('.status-checkbox').click(function () {
-        $(this).html('&#10004;');
+    $('.status-checkbox').on("click", function () {
+        if ($(this).hasClass('checked')) {
+            $(this).html('');
+            $(this).removeClass('checked');
+        } else {
+            $(this).html('&#10004;');
+            $(this).addClass('checked');
+        }
     });
 
     $('.connect, .disconnect').click(function () {
