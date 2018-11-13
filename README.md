@@ -11,7 +11,7 @@
 <p><img src="screenshot-voting.PNG" /></p>
 <p><img src="screenshot-pubservices.PNG" /></p>
 <p><img src="screenshot-extension.PNG" /></p>
-<p>The application is decentralised. To view it you will need to install the Beaker Browser (I will publish the URL shortly)</p>
+<p>The application will be decentralised. I'm developing the UI/prototype, but I still haven't decided which technologies to use yet. I'm particularly interested in Holochain and Maidsafe as they present a more scalable alternative to Ethereum. However, i'm open to suggestions.</p>
 
 <p><b>Public Profile:</b> In order to keep the data separate from the application, I will probably use something like Solid (solid.inrupt.com) for the profile data and single sign-on. </p>
 
