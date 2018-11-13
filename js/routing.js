@@ -4,7 +4,6 @@
         this.get('/', function () {
             $.ajax({
                 url: "pages/home.html",
-                dataType: "jsonp",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/vendor/solid-auth-client.bundle.js");
@@ -19,7 +18,6 @@
         this.get('/index.html', function () {
             $.ajax({
                 url: "pages/home.html",
-                dataType: "jsonp",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/vendor/solid-auth-client.bundle.js");
@@ -37,7 +35,6 @@
             $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
             $.ajax({
                 url: 'pages/' + this.params['page'] + '.html',
-                dataType: "jsonp",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/initializeplugins.js");
@@ -55,7 +52,6 @@
 
             $.ajax({
                 url: 'pages/' + this.params['folder'] + '/' + this.params['page'] + '.html',
-                dataType: "jsonp",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
                     $.getScript("/js/initializeplugins.js");
