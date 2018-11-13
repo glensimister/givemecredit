@@ -850,10 +850,11 @@ ul li.bonus-ball {
 
 .funds-raised li {
     padding: 5px 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.funds-raised li:nth-child(1) {
-    border-bottom: 1px solid #eee;
+.funds-raised li:last-child {
+    border-bottom: none;
 }
 
 /***** healthcare ********/
