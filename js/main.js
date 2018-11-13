@@ -140,7 +140,15 @@ $(document).ready(function () {
     });
 
     $('.post-update button').click(function () {
-        api.updateStatus();
+        solid.auth.trackSession(session => {
+            const loggedIn = !!session;
+            if (loggedIn) {
+                api.updateStatus();
+            } else {
+                alert("You need to be logged in to post something");
+            }
+        });
+
     });
 
     $('.flag').click(function () {
