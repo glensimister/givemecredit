@@ -15,8 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="js/vendor/select2.full.min.js"></script>
     <!--<script src="js/vendor/sea.js"></script>-->
-    <script src="js/vendor/gun.js"></script>
-
+    <!--<script src="js/vendor/gun.js"></script>-->
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
     <script>
         document.write("<base href='" + window.location.href + "' />");
@@ -38,15 +37,13 @@
             You are logged in as <span id="user"></span>.
             <button class="btn btn-red">LOG OUT</button>
         </p>
-        <form id="form" action="index.html" method="post">
-            <div class="form-group">
-                <!--<label for="profile">Profile:</label>-->
-                <div class="grid-input-button">
-                    <div><input id="profile" class="form-control donate-input" placeholder="Login as guest"></div><!-- need to rename these classes -->
-                    <div><button type="submit" id="view" class="donate-sc">VIEW</button></div>
-                </div>
+        <div class="form-group">
+            <!--<label for="profile">Profile:</label>-->
+            <div class="grid-input-button">
+                <div><input id="profile" class="form-control donate-input" placeholder="Login as guest"></div><!-- need to rename these classes -->
+                <div><button onclick="window.location.href='index.html'" type="submit" id="view" class="donate-sc">VIEW</button></div>
             </div>
-        </form>
+        </div>
 
         <!--
         <h3>Or sign in as a guest</h3>
