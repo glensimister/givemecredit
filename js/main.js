@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
-
     // Log the user in and out on click
     const popupUri = 'popup.html';
     $('#login  button').click(() => solid.auth.popupLogin({
@@ -19,48 +17,11 @@ $(document).ready(function () {
             // Use the user's WebID as default profile
             if (!$('#profile').val())
                 $('#profile').val(session.webId);
-            loadProfile();
+            api.loadSolidProfile();
         } else {
             $('.profile-summary h4#fullName').text("Guest User");
-            /*window.location.replace("http://localhost:8000/signin.html");*/
         }
     });
-
-    loadProfile();
-    async function loadProfile() {
-        // Set up a local data store and associated data fetcher
-        const store = $rdf.graph();
-        const fetcher = new $rdf.Fetcher(store);
-
-        // Load the person's data into the store
-        const person = $('#profile').val();
-        await fetcher.load(person);
-
-        /*var to = person.lastIndexOf('/');
-        to = to == -1 ? person.length : to + 1;
-        url = person.substring(0, to);
-
-        $('.profile-summary img').attr("src", url + "profile.jpg");*/
-
-        // Display their details
-        const fullName = store.any($rdf.sym(person), FOAF('name'));
-        /*const img = store.any($rdf.sym(person), FOAF('image'));
-        console.log(img);*/
-        $('.profile-summary h4#fullName').text(fullName && fullName.value);
-
-        // Display their friends
-        const friends = store.each($rdf.sym(person), FOAF('knows'));
-        $('#friends').empty();
-        friends.forEach(async (friend) => {
-            await fetcher.load(friend);
-            const fullName = store.any(friend, FOAF('name'));
-            $('#friends').append(
-                $('<li>').append(
-                    $('<a>').text(fullName && fullName.value || friend.value)
-                    .click(() => $('#profile').val(friend.value))
-                    .click(loadProfile)));
-        });
-    };
 
     $(document.body).on('click', '.pay-tax', function () {
         api.distributeCredits();

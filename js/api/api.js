@@ -86,5 +86,39 @@ var api = {
         var sc = $('.sc').html();
         var new_sc = (parseInt(sc) + parseInt(amount));
         $('.sc').html(new_sc);
+    },
+    loadSolidProfile: async function () {
+        const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+        // Set up a local data store and associated data fetcher
+        const store = $rdf.graph();
+        const fetcher = new $rdf.Fetcher(store);
+
+        // Load the person's data into the store
+        const person = $('#profile').val();
+        await fetcher.load(person);
+
+        /*var to = person.lastIndexOf('/');
+        to = to == -1 ? person.length : to + 1;
+        url = person.substring(0, to);
+
+        $('.profile-summary img').attr("src", url + "profile.jpg");*/
+
+        // Display their details
+        const fullName = store.any($rdf.sym(person), FOAF('name'));
+        /*const img = store.any($rdf.sym(person), FOAF('image'));*/
+        $('.profile-summary h4#fullName').text(fullName && fullName.value);
+
+        // Display their friends
+        const friends = store.each($rdf.sym(person), FOAF('knows'));
+        $('#friends').empty();
+        friends.forEach(async (friend) => {
+            await fetcher.load(friend);
+            const fullName = store.any(friend, FOAF('name'));
+            $('#friends').append(
+                $('<li>').append(
+                    $('<a>').text(fullName && fullName.value || friend.value)
+                    .click(() => $('#profile').val(friend.value))
+                    .click(loadProfile)));
+        });
     }
 }
