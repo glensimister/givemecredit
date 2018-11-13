@@ -9,10 +9,10 @@
                 url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
-                    $.getScript("/js/vendor/rdflib.min.js");
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("js/vendor/rdflib.min.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -23,10 +23,10 @@
                 url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
-                    $.getScript("/js/vendor/rdflib.min.js");
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("js/vendor/rdflib.min.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -40,8 +40,8 @@
                 url: 'pages/' + this.params['page'] + '.html',
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -57,8 +57,8 @@
                 url: 'pages/' + this.params['folder'] + '/' + this.params['page'] + '.html',
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
