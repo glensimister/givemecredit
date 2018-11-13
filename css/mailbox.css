@@ -35,3 +35,10 @@
 .mailbox-star i {
     color: #e08e0b;
 }
+
+.label-inbox {
+    padding: 3px;
+    color: #fff;
+    font-size: 9px;
+    border-radius: 3px;
+}
