@@ -11,9 +11,9 @@
 <p><img src="screenshot-voting.PNG" /></p>
 <p><img src="screenshot-pubservices.PNG" /></p>
 <p><img src="screenshot-extension.PNG" /></p>
-<p>The application will be decentralised. I'm developing the UI/prototype, but I still haven't decided which technologies to use yet. I'm particularly interested in Holochain and Maidsafe as they present a more scalable alternative to Ethereum. However, i'm open to suggestions.</p>
+<p>The application will be decentralised. I'm developing the UI/prototype, but I still haven't decided which technologies to use yet. I'm particularly interested in Holochain and Maidsafe as they present a more scalable alternative to Ethereum. However, i'm open to suggestions. Perhaps for the prototype I could use GunDB/Beaker Browser and Solid (solid.inrupt.com)</p>
 
-<p><b>Public Profile:</b> In order to keep the data separate from the application, I will probably use something like Solid (solid.inrupt.com) for the profile data and single sign-on. </p>
+<p><b>Public Profile:</b></p>
 
 <p>Each profile has a social rating, which is determined by how you interact with other members on the platform. Each profile has a voting weight, which is calculated based on your age, education score (from the built-in education system) and social rating. 
 </p>
