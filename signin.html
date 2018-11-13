@@ -13,30 +13,14 @@
     <link rel="stylesheet" href="css/select2.min.css">
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="/js/vendor/select2.full.min.js"></script>
+    <script src="js/vendor/select2.full.min.js"></script>
     <!--<script src="js/vendor/sea.js"></script>-->
-    <script src="/js/vendor/gun.js"></script>
+    <script src="js/vendor/gun.js"></script>
 
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
     <script>
+        document.write("<base href='" + window.location.href + "' />");
         $('#logout button').click(() => solid.auth.logout());
-
-      /*  var gun = Gun()
-    var user = gun.user()
-
-    $('.sign-in button').on('click', function (e) {
-        e.stopImmediatePropagation();
-        user.create($('#username').val(), $('#password').val())
-    });
-
-    $('.sign-in #form').on('click', function (e) {
-        e.stopImmediatePropagation();
-        user.auth($('#username').val(), $('#password').val())
-    });
-
-    gun.on('auth', function () {
-        console("hello");
-    })*/
     </script>
 </head>
 
@@ -97,9 +81,9 @@
         <br>
         <a href="#" class="text-center">Register a new membership</a>-->
     </div>
-    <script src="/js/vendor/solid-auth-client.bundle.js"></script>
-    <script src="/js/vendor/rdflib.min.js"></script>
-    <script src="/js/login.js"></script>
+    <script src="js/vendor/solid-auth-client.bundle.js"></script>
+    <script src="js/vendor/rdflib.min.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 
