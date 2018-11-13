@@ -14,3 +14,4 @@
 - make course search reviews more consistant
 - change extension toolbar to remove width on select + add 40px on input
 - on smaller screens swap rateyo with one yellow star and score
+- sort out business profile

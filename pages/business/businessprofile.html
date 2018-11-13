@@ -1,199 +1,166 @@
-<div class="row">
-    <div class="col-md-3">
+<p><a href="#/business/business">Business </a><i class="fa fa-caret-right"></i> Business Profile</p>
+<div class="grid-home-page">
+    <div id="tabs">
+        <input id="tab1" type="radio" name="tabs" checked>
 
-        <!-- Profile Image -->
-        <div class="box box-primary">
-            <div class="box-body box-profile">
-                <div id="rateYo"></div>
-                <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user2-160x160.jpg" alt="User profile picture">
-                <br />
+        <label for="tab1"><i class="fa fa-pencil"></i><span>About</span></label>
 
-                <ul class="list-group list-group-unbordered">
-                    <li class="list-group-item">
-                        <b>Representitive</b> <a class="pull-right">Glen Simister</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Transparency Score</b> <a class="pull-right">100%</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Social Rating</b> <a class="pull-right">3.6</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Connections</b> <a class="pull-right">13,287</a>
-                    </li>
-                </ul>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2"><i class="fa fa-camera"></i><span>Customer Reviews</span></label>
 
-                <a href="#" class="btn btn-primary btn-block">CONNECT</a>
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3"><i class="fa fa-comment"></i><span>Employee Reviews</span></label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4"><i class="fa fa-info-circle"></i><span>Profile</span></label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5"><i class="fa fa-gear"></i><span>Staff</span></label>
+
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6"><i class="fa fa-gear"></i><span>Contact</span></label>
+
+        <section id="content1">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
+
+        <section id="content2">
+            <h3>Submit a review</h3>
+            <div class="form-group">
+                <div class="rateYoToolbar"></div>
             </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-    </div>
-    <!-- /.col -->
-    <div class="col-md-9">
-
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">About</a></li>
-                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Customer Reviews</a></li>
-                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Reviews</a></li>
-                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Additional Info</a></li>
-                <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Staff</a></li>
-                <li class=""><a href="#tab_6" data-toggle="tab" aria-expanded="false">Contact</a></li>
-                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
-                    <div class="box-header with-border">
-
-                        <h3 class="box-title">Devon Website Design</h3>
-                    </div>
-                    <div class="box-body">
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-                        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                    </div>
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Certifiers</h3>
-                        <br />
-                    </div>
-                    <div class="col-lg-12" style="background:#fff; text-align:center;">
-                        <p><img src="../../dist/img/third-party-seals.jpeg" alt="seals"></p>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
-                    <div class="box-header">
-                        <div class="rate"></div>
-                        <div class="form-group">
-                            <label>Leave Feedback</label>
-                            <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
-                            <br />
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div class="user-block">
-                            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                            <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                            <span class="description">Shared publicly - 7:30 PM today</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <div class="rate"></div>
-                        <p>
-                            Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
-                        </p>
-                        <ul class="list-inline">
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                            <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                            </li>
-                            <li class="pull-right">
-                                <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                        </ul>
-
-                        <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                    </div>
-                    <br />
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_4">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Additional Info</h3>
-                    </div>
-                    <div class="box-body">
-                        <ul>
-                            <li>Years Trading : 5</li>
-                            <li>Number of employees: 56</li>
-                            <li>Annual turnover: 1000,000 ACV</li>
-                            <li>Insurance Provider: BestInsurance LTD</li>
-                            <li>Insurance Plan: Fill this in later</li>
-                            <li>Allow third-party inspections: Yes</li>
-                            <li>Devon Website Design is a subsidiary of: No one</li>
-                            <li>Devon Website Design subsidiaries include: None</li>
-                            <li>Legal History: No history</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="tab_5">
-                    <div class="box-header">
-                        <h3 class="box-title">Police Officers</h3>
-                    </div>
-                    <div class="box-body no-padding">
-                        <ul class="users-list clearfix">
-                            <li>
-                                <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Alexander Pierce</a>
-                                <span class="users-list-date">Today</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Norman</a>
-                                <span class="users-list-date">Yesterday</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Jane</a>
-                                <span class="users-list-date">12 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">John</a>
-                                <span class="users-list-date">12 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Alexander</a>
-                                <span class="users-list-date">13 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Sarah</a>
-                                <span class="users-list-date">14 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Nora</a>
-                                <span class="users-list-date">15 Jan</span>
-                            </li>
-                            <li>
-                                <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                                <a class="users-list-name" href="#">Nadia</a>
-                                <span class="users-list-date">15 Jan</span>
-                            </li>
-                        </ul>
-                        <!-- /.users-list -->
-                    </div>
-                </div>
-                <!-- /.tab-pane -->
-
-
-                <div class="tab-pane" id="tab_6">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Contact</h3>
-                    </div>
-                    <div class="box-body">
-                        <p>
-                            Address of your headquarters:
-                            <br />53 Crowder Park, South Brent, Devon, TQ10 9DB
-                            <br />
-                        </p>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="5" placeholder="Enter ..."></textarea>
-                            <br>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Title: e.g. Excellent Service!" />
             </div>
-            <!-- /.tab-content -->
-        </div>
+            <div class="form-group">
+                <textarea rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-blue">SUBMIT</button>
+            </div>
+            <div class="post-feed">
+                <div class="post">
+                    <div class="rateYoToolbar"></div>
+                    <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                    <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
+                    <div class="post-desc">iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</div>
+                    <div class="grid-toolbar">
+                        <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                        <div>90</div>
+                        <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                        <div>10</div>
+                        <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                        <div>0</div>
+
+                        <div class="rateYoToolbar"></div>
+
+                        <div>
+                            <select>
+                                <option>Bitcoin</option>
+                                <option>Crypto20</option>
+                                <option>Dash</option>
+                                <option>Ether</option>
+                            </select>
+                        </div>
+                        <div><input type="number" placeholder="1"></div>
+                        <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="content3">
+            <h3>Submit a review</h3>
+            <div class="form-group">
+                <div class="rateYoToolbar"></div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Title: e.g. Good company to work for!" />
+            </div>
+            <div class="form-group">
+                <textarea rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-blue">SUBMIT</button>
+            </div>
+            <div class="post-feed">
+                <div class="post">
+                    <div class="rateYoToolbar"></div>
+                    <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                    <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
+                    <div class="post-desc">iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</div>
+                    <div class="grid-toolbar">
+                        <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                        <div>90</div>
+                        <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                        <div>10</div>
+                        <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                        <div>0</div>
+
+                        <div class="rateYoToolbar"></div>
+
+                        <div>
+                            <select>
+                                <option>Bitcoin</option>
+                                <option>Crypto20</option>
+                                <option>Dash</option>
+                                <option>Ether</option>
+                            </select>
+                        </div>
+                        <div><input type="number" placeholder="1"></div>
+                        <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="content4">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
+        <section id="content5">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
+        <section id="content6">
+            <p>
+                Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+            </p>
+            <p>
+                Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+            </p>
+        </section>
     </div>
-    <!-- /.col -->
+    <div class="profile-summary">
+        <div class="rateYo"></div>
+        <h4>Bob's Plumbing Supplies</h4>
+        <img src="/img/avatar.png" class="user-image-large" alt="User Image">
+        <ul>
+            <li>
+                Representitive <a class="pull-right">Bob Smith</a>
+            </li>
+            <li>
+                Transparency Score <a class="pull-right">100%</a>
+            </li>
+            <li>
+                Social Rating <a class="pull-right">3.6</a>
+            </li>
+            <li>
+                Connections <a class="pull-right">1,322</a>
+            </li>
+        </ul>
+        <button class="btn btn-red disconnect">DISCONNECT</button>
+    </div>
 </div>
-<!-- /.row -->
