@@ -6,10 +6,10 @@
                 url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
-                    $.getScript("/js/vendor/rdflib.min.js");
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("js/vendor/rdflib.min.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -20,10 +20,10 @@
                 url: "pages/home.html",
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/vendor/solid-auth-client.bundle.js");
-                    $.getScript("/js/vendor/rdflib.min.js");
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/vendor/solid-auth-client.bundle.js");
+                    $.getScript("js/vendor/rdflib.min.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -34,11 +34,11 @@
             var page = this.params['page'];
             $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
             $.ajax({
-                url: '/pages/' + this.params['page'] + '.html',
+                url: 'pages/' + this.params['page'] + '.html',
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
@@ -51,11 +51,11 @@
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
 
             $.ajax({
-                url: '/pages/' + this.params['folder'] + '/' + this.params['page'] + '.html',
+                url: 'pages/' + this.params['folder'] + '/' + this.params['page'] + '.html',
                 success: function (result) {
                     $(".content").hide().html(result).fadeIn();
-                    $.getScript("/js/initializeplugins.js");
-                    $.getScript("/js/main.js");
+                    $.getScript("js/initializeplugins.js");
+                    $.getScript("js/main.js");
                 }
             });
             $(window).scrollTop(0);
