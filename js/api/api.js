@@ -100,18 +100,14 @@ var api = {
         const person = $('#profile').val();
         await fetcher.load(person);
 
-        var to = person.lastIndexOf('/');
-        to = to == -1 ? person.length : to + 1;
-        url = person.substring(0, to);
-
-        $('.profile-summary img').attr("src", url + "profilepic.jpg");
-
         // Display their details
         const fullName = store.any($rdf.sym(person), FOAF('name'));
         $('.profile-summary h4#fullName').text(fullName && fullName.value);
 
-        const img = store.any($rdf.sym(person), FOAF('Image'));
-        console.log(img);
+        const me = $rdf.sym(person);
+        const VCARD = new $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
+        let picture = store.any(me, VCARD('hasPhoto'));
+        $('.profile-summary img').attr("src", picture.value);
 
         // Display their friends
         const friends = store.each($rdf.sym(person), FOAF('knows'));
