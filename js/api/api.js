@@ -101,13 +101,16 @@ var api = {
         await fetcher.load(person);
 
         // Display their details
-        const fullName = store.any($rdf.sym(person), FOAF('name'));
-        $('.profile-summary h4#fullName').text(fullName && fullName.value);
-
         const me = $rdf.sym(person);
+        const fullName = store.any(me, FOAF('name'));
+        $('.profile-summary h4#fullName').text(fullName && fullName.value);
         const VCARD = new $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
         let picture = store.any(me, VCARD('hasPhoto'));
         $('.profile-summary img').attr("src", picture.value);
+        let role = store.any(me, VCARD('role'));
+        console.log(role.value);
+        let note = store.any(me, VCARD('note'));
+        console.log(note.value);
 
         // Display their friends
         const friends = store.each($rdf.sym(person), FOAF('knows'));
