@@ -89,24 +89,29 @@ var api = {
     },
     loadSolidProfile: async function () {
         const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+
         // Set up a local data store and associated data fetcher
         const store = $rdf.graph();
         const fetcher = new $rdf.Fetcher(store);
+
+
 
         // Load the person's data into the store
         const person = $('#profile').val();
         await fetcher.load(person);
 
-        /*var to = person.lastIndexOf('/');
+        var to = person.lastIndexOf('/');
         to = to == -1 ? person.length : to + 1;
         url = person.substring(0, to);
 
-        $('.profile-summary img').attr("src", url + "profile.jpg");*/
+        $('.profile-summary img').attr("src", url + "profilepic.jpg");
 
         // Display their details
         const fullName = store.any($rdf.sym(person), FOAF('name'));
-        /*const img = store.any($rdf.sym(person), FOAF('image'));*/
         $('.profile-summary h4#fullName').text(fullName && fullName.value);
+
+        const img = store.any($rdf.sym(person), FOAF('Image'));
+        console.log(img);
 
         // Display their friends
         const friends = store.each($rdf.sym(person), FOAF('knows'));
