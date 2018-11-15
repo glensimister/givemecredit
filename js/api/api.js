@@ -156,10 +156,9 @@ var api = {
             const VCARD = new $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
             let picture = store.any(me, VCARD('hasPhoto'));
             $('.profile-summary img').attr("src", picture.value);
-            let role = store.any(me, VCARD('role'));
-            console.log(role.value);
+            //let role = store.any(me, VCARD('role'));
             let note = store.any(me, VCARD('note'));
-            console.log(note.value);
+            $('.about').html(note.value);
             // Display their friends
             const friends = store.each($rdf.sym(person), FOAF('knows'));
             $('#friends').empty();
@@ -178,7 +177,5 @@ var api = {
                 picture: picture.value,
                 name: fullName.value
             });
-
-            //if (callback) callback(profileData);
         }
 }
