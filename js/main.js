@@ -104,7 +104,7 @@ $(document).ready(function () {
         solid.auth.trackSession(session => {
             const loggedIn = !!session;
             if (loggedIn) {
-                api.updateStatus();
+                api.updateStatus(this, true);
             } else {
                 alert("You need to be logged in to post something");
             }
@@ -116,7 +116,7 @@ $(document).ready(function () {
             solid.auth.trackSession(session => {
                 const loggedIn = !!session;
                 if (loggedIn) {
-                    api.postComment(this);
+                    api.updateStatus(this, false);
                 } else {
                     alert("You need to be logged in to post something");
                 }
