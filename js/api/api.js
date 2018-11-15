@@ -4,10 +4,13 @@ var api = {
     updateStatus: async function ($this, isStatusUpdate) {
             let posts = gun.get('posts');
             let post;
+            let commentBox;
             if (isStatusUpdate) {
                 post = $('.status-update input').val();
+                commentBox = `<input type="text" class="post-comment-input" placeholder="Write a comment..." />`;
             } else {
                 post = $($this).val();
+                commentBox = "";
             }
             posts.put({
                 post: post
@@ -22,10 +25,11 @@ var api = {
             users.once(function (data) {
                 let profilePic = data.picture;
                 let profileName = data.name;
-                let template = `<div class="post">
+                let template = `
+                    <div class="post-body">
                     <img src="${profilePic}" class="user-image-medium" alt="User Image">
                     <span><a href="">${profileName}</a><br />${date}</span>
-                    <div class="post-desc">${post}</div>
+                    <div class="post-desc">${post}</div></div>
                     <div class="grid-toolbar">
                         <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
                         <div>90</div>
@@ -46,14 +50,14 @@ var api = {
                         <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
                     </div>
                      <div class="post-comment">
-                    </div>
-                    <input type="text" class="form-control post-comment-input" placeholder="Write a comment..." />
-                </div>`;
+                    </div>${commentBox}`;
 
                 if (isStatusUpdate) {
+                    template = `<div class="post">${template}</div>`;
                     $('.post-feed').prepend(template);
                 } else {
                     $($this).prev().html(template);
+                    $('.post-comment-input').val("Write a comment...");
                 }
 
                 $(".rateYoToolbar").rateYo({
@@ -62,8 +66,6 @@ var api = {
                     readOnly: true
                 });
             });
-
-            //api.loadSolidProfile(function (data) {});
         },
         getDate: function () {
             var d = new Date();

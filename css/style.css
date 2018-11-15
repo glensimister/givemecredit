@@ -162,6 +162,10 @@ textarea.form-control {
     color: #848484;
 }
 
+.status-update input:focus {
+    outline: 0;
+}
+
 /*
 .status-update .select2-container--default .select2-selection--multiple {
     border-radius: 0px;
@@ -190,6 +194,11 @@ textarea.form-control {
     color: #00acd6;
     cursor: pointer;
 }
+
+.status-update button:focus {
+    outline: 0;
+}
+
 
 /*
 .status-update span {
@@ -291,14 +300,30 @@ textarea.form-control {
 /**** end user image *****/
 
 .post {
-    margin: 20px 0;
-    padding-bottom: 20px;
-    border-bottom: 10px solid #eee;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
-.post > div,
-.post-comment > div {
-    margin: 15px 0;
+.post .post-comment-input {
+    border: none;
+    padding: 20px;
+    width: 100%;
+    color: #848484;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.post .post-comment-input:focus {
+    outline: 0;
+}
+
+.post-desc {
+    margin-top: 10px;
+}
+
+.post-body {
+    padding: 20px;
 }
 
 .post span a:first-child {
