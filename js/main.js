@@ -111,7 +111,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.post-comment-input').on("keypress", function (e) {
+    $(document.body).on("keypress", '.post-comment-input', function (e) {
         if (e.which == 13) {
             solid.auth.trackSession(session => {
                 const loggedIn = !!session;

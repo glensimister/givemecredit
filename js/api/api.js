@@ -55,7 +55,7 @@ var api = {
         postComment: function ($this) {
             let comment = $($this).val();
             let profilePic = "img/profilepic.jpg";
-            let profileName = "Glen Simister";
+            let profileName = "Guest User";
             let poster = `<img src="${profilePic}" class="user-image-medium" alt="User Image"><span><a href="">${profileName}</a><br />20 July, 2018</span>`
             $($this).prev().html(poster + "<div>" + comment + "</div>");
         },
