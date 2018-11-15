@@ -45,12 +45,11 @@ var api = {
                     <input type="text" class="form-control post-comment-input" placeholder="Write a comment..." />
                 </div>`;
                 $('.post-feed').prepend(template);
-            });
-
-            $(".rateYoToolbar").rateYo({
-                rating: 4,
-                starWidth: "15px",
-                readOnly: true
+                $(".rateYoToolbar").rateYo({
+                    rating: 4,
+                    starWidth: "15px",
+                    readOnly: true
+                });
             });
         },
         postComment: function ($this) {
