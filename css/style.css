@@ -292,9 +292,12 @@ textarea.form-control {
 
 .post {
     margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 10px solid #eee;
 }
 
-.post > div {
+.post > div,
+.post-comment > div {
     margin: 15px 0;
 }
 

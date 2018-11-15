@@ -2,7 +2,7 @@ var gun = Gun()
 
 var api = {
     updateStatus: function () {
-        var posts = gun.get('posts')
+        var posts = gun.get('posts');
         var post = $('.status-update input').val();
         posts.put({
             post: post
@@ -12,15 +12,50 @@ var api = {
             var status_update = {
                 post: data.post
             };
-            var template = $('#postTpl').html();
-            var html = Mustache.to_html(template, status_update);
-            $('.post-feed').prepend(html);
+
+            let profileName = "Helloooo!";
+
+            let template = `<div class="post">
+                    <img src="img/user2-160x160.jpg" class="user-image-medium" alt="User Image">
+                    <span><a href="">${profileName}</a><br />20 July, 2018</span>
+                    <div class="post-desc">${post}</div>
+                    <div class="grid-toolbar">
+                        <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                        <div>90</div>
+                        <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                        <div>10</div>
+                        <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                        <div>0</div>
+                        <div class="rateYoToolbar"></div>
+                        <div>
+                            <select>
+                                <option>Bitcoin</option>
+                                <option>Crypto20</option>
+                                <option>Dash</option>
+                                <option>Ether</option>
+                            </select>
+                        </div>
+                        <div><input type="number" placeholder="1"></div>
+                        <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                    </div>
+                     <div class="post-comment">
+                    </div>
+                    <input type="text" class="form-control post-comment-input" placeholder="Write a comment..." />
+                </div>`;
+            $('.post-feed').prepend(template);
             $(".rateYoToolbar").rateYo({
                 rating: 4,
                 starWidth: "15px",
                 readOnly: true
             });
         })
+    },
+    postComment: function ($this) {
+        let comment = $($this).val();
+        let profilePic = "img/profilepic.jpg";
+        let profileName = "Glen Simister";
+        let poster = `<img src="${profilePic}" class="user-image-medium" alt="User Image"><span><a href="">${profileName}</a><br />20 July, 2018</span>`
+        $($this).prev().html(poster + "<div>" + comment + "</div>");
     },
     distributeCredits: function () {
         var credits = gun.get('credits')

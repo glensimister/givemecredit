@@ -111,6 +111,20 @@ $(document).ready(function () {
         });
     });
 
+    $('.post-comment-input').on("keypress", function (e) {
+        if (e.which == 13) {
+            solid.auth.trackSession(session => {
+                const loggedIn = !!session;
+                if (loggedIn) {
+                    api.postComment(this);
+                } else {
+                    alert("You need to be logged in to post something");
+                }
+            });
+            return false; //<---- Add this line
+        }
+    });
+
     $('.flag').click(function () {
         if ($(this).hasClass("blurred")) {
             $(this).parent().parent().find('.post-desc').css("filter", "blur(0px)");
