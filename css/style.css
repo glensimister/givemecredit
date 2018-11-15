@@ -301,8 +301,9 @@ textarea.form-control {
     margin: 15px 0;
 }
 
-.post span a {
+.post span a:first-child {
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .content {
