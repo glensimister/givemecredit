@@ -101,10 +101,11 @@ $(document).ready(function () {
     });
 
     $('.post-update button').click(function () {
+        let update = $('.status-update input').val();
         solid.auth.trackSession(session => {
             const loggedIn = !!session;
             if (loggedIn) {
-                api.updateStatus(this, true);
+                api.updateStatus(update, this, true);
             } else {
                 alert("You need to be logged in to post something");
             }
@@ -112,11 +113,14 @@ $(document).ready(function () {
     });
 
     $(document.body).on("keypress", '.post-comment-input', function (e) {
-        if (e.which == 13) {
+        e.stopImmediatePropagation();
+        let comment = $('.post-comment-input').val();
+        if (e.which == 13 && comment != '') {
             solid.auth.trackSession(session => {
                 const loggedIn = !!session;
                 if (loggedIn) {
-                    api.updateStatus(this, false);
+                    //api.updateStatus(comment, this, false);
+                    api.postComment(comment, $(this));
                 } else {
                     alert("You need to be logged in to post something");
                 }
