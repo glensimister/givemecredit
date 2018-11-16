@@ -1,6 +1,12 @@
 var gun = Gun()
 
 var api = {
+    ratePost: ($this) => {
+        let elem = $this.parent().parent().next();
+        var count = elem.html();
+        count++;
+        elem.html(count);
+    },
     postComment: async (post, $this) => {
             let date = await api.getDate();
             let template = `<div class="comment-box">
