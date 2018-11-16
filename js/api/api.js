@@ -2,10 +2,21 @@ var gun = Gun()
 
 var api = {
     ratePost: ($this) => {
-        let elem = $this.parent().parent().next();
+        let elem = $this.parent().next();
         var count = elem.html();
         count++;
         elem.html(count);
+    },
+    flagPost: ($this) => {
+        let elem = $this.parent().parent().parent().find('.post-desc');
+        if ($this.hasClass("blurred")) {
+            elem.css("filter", "blur(0px)");
+            $this.removeClass('blurred');
+        } else {
+            api.ratePost($this);
+            elem.css("filter", "blur(4px)");
+            $this.addClass('blurred');
+        }
     },
     postComment: async (post, $this) => {
             let date = await api.getDate();

@@ -135,15 +135,9 @@ $(document).ready(function () {
         api.ratePost($(this));
     });
 
-    $('.flag').click(function () {
-        if ($(this).hasClass("blurred")) {
-            $(this).parent().parent().find('.post-desc').css("filter", "blur(0px)");
-            $(this).removeClass('blurred');
-            $(this).find('span').text('Flag'); //need to update this
-        } else {
-            $(this).parent().parent().find('.post-desc').css("filter", "blur(4px)");
-            $(this).addClass('blurred');
-            $(this).find('span').text('Show'); //need to update this
-        }
+    $('.fa-flag').click(function (e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        api.flagPost($(this));
     });
 });
