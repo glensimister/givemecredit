@@ -1,27 +1,6 @@
 $(document).ready(function () {
 
-    // Log the user in and out on click
-    const popupUri = 'popup.html';
-    $('#login  button').click(() => solid.auth.popupLogin({
-        popupUri
-    }));
-    $('#logout button').click(() => solid.auth.logout());
-
-    // Update components to match the user's login status
-    solid.auth.trackSession(session => {
-        const loggedIn = !!session;
-        $('#login').toggle(!loggedIn);
-        $('#logout').toggle(loggedIn);
-        if (loggedIn) {
-            $('#user').text(session.webId);
-            // Use the user's WebID as default profile
-            if (!$('#profile').val())
-                $('#profile').val(session.webId);
-            api.loadSolidProfile();
-        } else {
-            $('.profile-summary h4#fullName').text("Guest User");
-        }
-    });
+    solidAPI.solidLogin();
 
     $(document.body).on('click', '.pay-tax', function () {
         api.distributeCredits();
@@ -129,15 +108,14 @@ $(document).ready(function () {
         }
     });
 
-    $('.fa-thumbs-o-up, .fa-thumbs-o-down').on('click', function (e) {
+    // to do: if someone clicks like followed by dislike (or visa versa), it will need to subtract the like
+    $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', function (e) {
         e.stopImmediatePropagation();
-        e.preventDefault();
         api.ratePost($(this));
     });
 
-    $('.fa-flag').click(function (e) {
+    $(document.body).on("click", '.fa-flag', function (e) {
         e.stopImmediatePropagation();
-        e.preventDefault();
         api.flagPost($(this));
     });
 });

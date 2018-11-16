@@ -27,11 +27,11 @@ var api = {
                             <div class="post-desc">${post}</div>
                         </div>
                         <div class="grid-toolbar">
-                            <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                            <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
                             <div>90</div>
-                            <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                            <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
                             <div>10</div>
-                            <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                            <div class="red"><i class="fa fa-flag"></i></div>
                             <div>0</div>
                             <div class="rateYoToolbar"></div>
                             <div>
@@ -43,7 +43,7 @@ var api = {
                                 </select>
                             </div>
                             <div><input type="number" placeholder="1"></div>
-                            <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                            <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
             $this.prev().append(template);
@@ -67,11 +67,11 @@ var api = {
                     <span><a href="">${profileName}</a><br />${date}</span>
                     <div class="post-desc">${post}</div></div>
                     <div class="grid-toolbar">
-                        <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                        <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
                         <div>90</div>
-                        <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                        <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
                         <div>10</div>
-                        <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                        <div class="red"><i class="fa fa-flag"></i></div>
                         <div>0</div>
                         <div class="rateYoToolbar"></div>
                         <div>
@@ -83,7 +83,7 @@ var api = {
                             </select>
                         </div>
                         <div><input type="number" placeholder="1"></div>
-                        <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                        <div class="red"><i class="fa fa-heart"></i></div>
                     </div>
                      <div class="post-comment">
                     </div>
@@ -170,42 +170,5 @@ var api = {
                 var sc = $('.sc').html();
                 var new_sc = (parseInt(sc) + parseInt(amount));
                 $('.sc').html(new_sc);
-            },
-            loadSolidProfile: async () => {
-                const FOAF = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
-                // Set up a local data store and associated data fetcher
-                const store = $rdf.graph();
-                const fetcher = new $rdf.Fetcher(store);
-                // Load the person's data into the store
-                const person = $('#profile').val();
-                await fetcher.load(person);
-                // Display their details
-                const me = $rdf.sym(person);
-                const fullName = store.any(me, FOAF('name'));
-                $('.profile-summary h4#fullName').text(fullName && fullName.value);
-                const VCARD = new $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
-                let picture = store.any(me, VCARD('hasPhoto'));
-                $('.profile-summary img').attr("src", picture.value);
-                //let role = store.any(me, VCARD('role'));
-                let note = store.any(me, VCARD('note'));
-                $('.about').html(note.value);
-                // Display their friends
-                const friends = store.each($rdf.sym(person), FOAF('knows'));
-                $('#friends').empty();
-                friends.forEach(async (friend) => {
-                    await fetcher.load(friend);
-                    const fullName = store.any(friend, FOAF('name'));
-                    $('#friends').append(
-                        $('<li>').append(
-                            $('<a>').text(fullName && fullName.value || friend.value)
-                            .click(() => $('#profile').val(friend.value))
-                            .click(loadProfile)));
-                });
-
-                let users = gun.get('users');
-                users.put({
-                    picture: picture.value,
-                    name: fullName.value
-                });
             }
 }
