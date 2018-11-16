@@ -1,4 +1,4 @@
-var gun = Gun()
+var gun = Gun() // move this into different file
 
 var api = {
     ratePost: ($this) => {
