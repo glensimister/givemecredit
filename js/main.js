@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
-        api.buyLotteryTicket(this)
+        api.buyLotteryTicket(this);
     });
 
     $('.status-checkbox').on("click", function () {
@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.sidebar ul li .treeview_a').click(function (e) {
+    $('.sidebar ul li .treeview_a').on("click", function (e) {
 
         e.stopImmediatePropagation();
         $(this).toggleClass("open").next().slideToggle('fast');
@@ -55,7 +55,14 @@ $(document).ready(function () {
                 'top': '0'
             }, 500);
         };
+
     });
+
+    /* $('.sidebar ul li').on("click", function (e) {
+         if (($(this).parent().css('display') == 'block') && (!$(this).hasClass('.treeview_a'))) {
+             $(this).parent().slideUp();
+         }
+     }); */
 
     $('.top-nav ul li.has-dropdown > a').click(function (e) {
         e.preventDefault();

@@ -1,5 +1,4 @@
 - finish documentation
-- look into minds api, or maybe use fritter (beaker browser social media app)
 - look into ATM card vendors for KYC/AML verification
 - sort out top menu
 - organize css
@@ -15,3 +14,4 @@
 - change extension toolbar to remove width on select + add 40px on input
 - on smaller screens swap rateyo with one yellow star and score
 - sort out business profile
+- perhaps second nav bar should be fixed to the top as well
