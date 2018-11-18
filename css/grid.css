@@ -4,99 +4,20 @@
     grid-row-gap: 10px;
 }
 
+.grid-search {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-bottom: 20px;
+}
+
 .grid-status-update-reminder {
     display: grid;
     width: 100%;
 }
 
-.grid-top-right {
-    display: grid;
-    grid-gap: 20px;
-}
-
 .grid-home-page {
     display: grid;
     grid-gap: 10px;
-}
-
-/*
-.grid-votes {
-    display: grid;
-    text-align: center;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    padding: 5px 0;
-    grid-template-columns: repeat(2, 1fr 1fr);
-}
-
-.grid-votes > div {
-    padding: 0px 5px;
-    border-right: 1px solid #eee;
-}
-
-.grid-votes > div.red a {
-    color: #dd4b39;
-    display: block;
-}
-
-.grid-votes > div.blue a {
-    color: #00acd6;
-    display: block;
-}
-
-.grid-votes > div:last-child {
-    border-right: none;
-}
-*/
-
-.grid-toolbar {
-    display: grid;
-    /*margin-bottom: 20px;*/
-    text-align: center;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    padding: 5px 0;
-    grid-template-columns: repeat(5, 1fr 1fr);
-}
-
-.grid-toolbar > div {
-    padding: 0px 5px;
-    border-right: 1px solid #eee;
-}
-
-.grid-toolbar > div:last-child {
-    border-right: none;
-}
-
-.grid-toolbar > div.red {
-    color: #dd4b39;
-    display: block;
-    cursor: pointer;
-}
-
-.grid-toolbar > div.blue {
-    color: #00acd6;
-    display: block;
-    cursor: pointer;
-}
-
-/*.grid-toolbar > div.yellow {
-        color: #e08e0b;
-    }*/
-
-.grid-toolbar .rateYoToolbar {
-    padding: 3px 20px;
-}
-
-.grid-toolbar input,
-.grid-toolbar select {
-    border: 1px solid transparent;
-    height: 21px;
-    color: #848484;
-}
-
-.grid-toolbar input {
-    width: 40px;
 }
 
 .grid-2-col {
@@ -108,18 +29,11 @@
 .grid-4-col {
     display: grid;
     grid-gap: 20px;
-    /*margin-bottom: 15px;*/
 }
 
 .grid-3-col > div,
 .grid-4-col > div {
     padding: 20px;
-}
-
-.grid-search {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    margin-bottom: 20px;
 }
 
 
@@ -145,11 +59,6 @@
         grid-template-columns: 2fr 2fr 1fr;
         width: 60%;
         grid-gap: 10px;
-    }
-
-    .grid-top-right {
-        display: grid;
-        grid-gap: 0;
     }
 
     .grid-horizontal {
