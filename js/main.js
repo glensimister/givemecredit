@@ -1,6 +1,15 @@
 $(document).ready(function () {
 
     solidAPI.solidLogin();
+    gunAPI.listCandidates();
+
+    $('.apply-for-position').on("click", function (e) {
+        e.stopImmediatePropagation();
+        var name = $('.candidate-name').val();
+        var position = $('.candidate-position').val();
+        gunAPI.applyAsCandidate(name, position);
+    });
+
 
     $(document.body).on('click', '.pay-tax', function () {
         api.distributeCredits();

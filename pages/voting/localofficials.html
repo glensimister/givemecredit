@@ -1,0 +1,139 @@
+<div id="tabs">
+    <input id="tab1" type="radio" name="tabs" checked>
+
+    <label class="tab-label" for="tab1"><i class="fa fa-circle"></i><span>Elected Officials</span></label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2"><i class="fa fa-circle"></i><span>Candidates</span></label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3"><i class="fa fa-circle"></i><span>Policies</span></label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4"><i class="fa fa-circle"></i><span>Categories</span></label>
+
+    <input id="tab5" type="radio" name="tabs">
+    <label for="tab5"><i class="fa fa-circle"></i><span>Apply</span></label>
+
+    <section id="content1">
+        <div class="form-group">
+            <a href="">Local</a> | <a href="">National</a>
+        </div>
+        <div class="grid-4-col localOfficials">
+        </div>
+    </section>
+
+    <section id="content2">
+        <div class="official-search">
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Prime Minister</option>
+                    <option>Mayor</option>
+                    <option>Healthcare</option>
+                    <option>Police</option>
+                    <option>IT</option>
+                    <option>Education</option>
+                    <option>Transport</option>
+                    <option>Judiciary</option>
+                    <option>Regulation</option>
+                    <option>Prison Service</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option>National</option>
+                    <option>Local</option>
+                </select>
+            </div>
+            <div><button class="btn btn-blue">SEARCH</button></div>
+        </div>
+        <div class="grid-4-col">
+            <div class="profile-summary">
+                <div class="rateYo"></div>
+                <h4>Guest User</h4>
+                <p>Prime Minister</p>
+                <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                <p>Approval rating: <b>44%</b></p>
+                <button class="btn btn-red connect">CONNECT</button>
+            </div>
+            <div class="profile-summary">
+                <div class="rateYo"></div>
+                <h4>Guest User</h4>
+                <p>Mayor</p>
+                <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                <p>Approval rating: <b>51%</b></p>
+                <button class="btn btn-blue connect">CONNECT</button>
+            </div>
+            <div class="profile-summary">
+                <div class="rateYo"></div>
+                <h4>Guest User</h4>
+                <p>Healthcare Official</p>
+                <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                <p>Approval rating: <b>55%</b></p>
+                <button class="btn btn-red connect">CONNECT</button>
+            </div>
+            <div class="profile-summary">
+                <div class="rateYo"></div>
+                <h4>Guest User</h4>
+                <p>Healthcare Official</p>
+                <img src="img/user2-160x160.jpg" class="user-image-large" alt="User Image">
+                <p>Approval rating: <b>51%</b></p>
+                <button class="btn btn-blue connect">CONNECT</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="content3">
+        <p>
+            Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+        </p>
+        <p>
+            Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+        </p>
+    </section>
+
+    <section id="content4">
+
+        <p>NOTE: Only the PM can manage national categories, and only the Mayor can manage local categories.</p>
+
+        <h3>What do you want to do?</h3>
+        <div class="form-group">
+            <select class="form-control">
+                <option>Create</option>
+                <option>Edit</option>
+                <option>Remove</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-control">
+                <option>Local Authority</option>
+                <option>National Authority</option>
+                <option>Policy</option>
+                <option>Poll</option>
+                <option>Petition</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name:</label>
+            <input type="text" class="form-control" placeholder="e.g. Prison Service Official">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea class="form-control" rows="5" placeholder="Enter ..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-blue">Submit</button>
+    </section>
+
+    <section id="content5">
+        <p>NOTE: To apply for a position you need a voting weight of 1.</p>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name:</label>
+            <input type="text" class="form-control candidate-name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Position:</label>
+            <input type="text" class="form-control candidate-position" placeholder="e.g. Prison Service Official">
+        </div>
+        <button type="submit" class="btn btn-blue apply-for-position">SUBMIT</button>
+    </section>
+</div>

@@ -2,7 +2,7 @@ var gun = Gun() // move this into different file
 
 var api = {
     ratePost: ($this) => {
-        let elem = $this.parent().next();
+        var elem = $this.parent().next();
         var count = elem.html();
         count++;
         elem.html(count);
