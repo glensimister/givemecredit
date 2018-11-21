@@ -13,29 +13,39 @@ var gunAPI = {
             });
         });
     },
+    getTotalUsers: function (cb) {
+        var count = 0;
+        gun.get('users').map().on(function (data) {
+            count++;
+        });
+        cb(count);
+    },
     electCandidate: function (candidate) {
-        gun.get('candidates').map().on(function (data) {
-            if (data.name == candidate) {
-                var candidateSummary = `<div>
+        gunAPI.getTotalUsers(function (count) {
+            var rating = count = (count / 1) * 100 + "%";
+            gun.get('candidates').map().on(function (data) {
+                if (data.name == candidate) {
+                    var candidateSummary = `<div>
                 <div class="rateYo"></div>
                 <h4><a href="#/profile">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
-                <p>Approval rating: <b>${data.rating}</b></p>
+                <p>Approval rating: <b>${rating}</b></p>
                 <button class="btn btn-red disconnect">DISCONNECT</button>
             </div>`;
-                $('.localOfficials').append(candidateSummary);
-                $(".rateYo").rateYo({
-                    rating: data.rating,
-                    starWidth: "15px",
-                    readOnly: true
+                    $('.localOfficials').append(candidateSummary);
+                    $(".rateYo").rateYo({
+                        rating: data.rating,
+                        starWidth: "15px",
+                        readOnly: true
+                    });
+                }
+                gun.get('elected').set({
+                    name: data.name,
+                    photo: data.photo,
+                    position: data.position,
+                    rating: rating
                 });
-            }
-            gun.get('elected').set({
-                name: data.name,
-                photo: data.photo,
-                position: data.position,
-                rating: data.rating
             });
         });
     },
