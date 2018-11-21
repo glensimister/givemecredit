@@ -1,13 +1,26 @@
 $(document).ready(function () {
 
-    solidAPI.solidLogin();
+    var gun = Gun();
     gunAPI.listCandidates();
+    gunAPI.listElected();
+
+    var user = gun.user();
+
+    gun.get('users').once(function (data) {
+        if (data == undefined) {
+            window.location.replace("login.html");
+        } else {
+            gun.get('pub/' + data.pubKey).once(function (result) {
+                $('.profile-summary h4#fullName').text(result.name);
+                $('.profile-summary img').attr("src", result.photo);
+            });
+        }
+    });
 
     $('.apply-for-position').on("click", function (e) {
         e.stopImmediatePropagation();
-        var name = $('.candidate-name').val();
         var position = $('.candidate-position').val();
-        gunAPI.applyAsCandidate(name, position);
+        gunAPI.applyAsCandidate(position);
     });
 
 
@@ -35,13 +48,20 @@ $(document).ready(function () {
         }
     });
 
-    $('.connect, .disconnect').click(function () {
+    $('.connect, .disconnect').click(function (e) {
+        e.stopImmediatePropagation();
         if ($(this).hasClass("disconnect")) {
             $(this).text("CONNECT");
             $(this).removeClass('disconnect');
         } else {
             $(this).text("DISCONNECT");
             $(this).addClass('disconnect');
+            var elected = $(this).parent().find('h4 a').html();
+            gunAPI.electCandidate(elected);
+            var parent = $(this).parent().parent();
+            if (parent.hasClass('localCandidates')) {
+                $(this).parent().fadeOut('slow');
+            }
         }
     });
 
@@ -96,31 +116,15 @@ $(document).ready(function () {
     });
 
     $('.post-update button').click(function () {
-        let update = $('.status-update input').val();
-        solid.auth.trackSession(session => {
-            const loggedIn = !!session;
-            if (loggedIn) {
-                api.updateStatus(update, this, true);
-            } else {
-                alert("You need to be logged in to post something");
-            }
-        });
+        var update = $('.status-update input').val();
+        api.updateStatus(update, this, true);
     });
 
     $(document.body).on("keypress", '.post-comment-input', function (e) {
         e.stopImmediatePropagation();
         let comment = $('.post-comment-input').val();
         if (e.which == 13 && comment != '') {
-            solid.auth.trackSession(session => {
-                const loggedIn = !!session;
-                if (loggedIn) {
-                    //api.updateStatus(comment, this, false);
-                    api.postComment(comment, $(this));
-                } else {
-                    alert("You need to be logged in to post something");
-                }
-            });
-            return false; //<---- Add this line
+            api.postComment(comment, $(this));
         }
     });
 

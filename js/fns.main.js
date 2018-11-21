@@ -20,10 +20,12 @@ var api = {
     },
     postComment: async (post, $this) => {
             let date = await api.getDate();
-            let template = `<div class="comment-box">
+            gun.get('users').once(function (data) {
+                gun.get('pub/' + data.pubKey).once(function (result) {
+                    let template = `<div class="comment-box">
                         <div class="post-body">
-                            <img src="img/profilepic.jpg" class="user-image-medium" alt="User Image">
-                            <span><a href="">Guest User</a><br />${date}</span>
+                            <img src="${result.photo}" class="user-image-medium" alt="User Image">
+                            <span><a href="">${result.name}</a><br />${date}</span>
                             <div class="post-desc">${post}</div>
                         </div>
                         <div class="grid-toolbar">
@@ -46,25 +48,25 @@ var api = {
                             <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
-            $this.prev().append(template);
-            $('.post-comment-input').val("");
-            $(".rateYoToolbar").rateYo({
-                rating: 4,
-                starWidth: "15px",
-                readOnly: true
+                    $this.prev().append(template);
+                    $('.post-comment-input').val("");
+                    $(".rateYoToolbar").rateYo({
+                        rating: 4,
+                        starWidth: "15px",
+                        readOnly: true
+                    });
+                });
             });
         },
         updateStatus: async (post, $this, isStatusUpdate) => {
                 let date = await api.getDate();
-                let users = gun.get('users');
-                users.once(function (data) {
-                    let profilePic = data.picture;
-                    let profileName = data.name;
-                    let template = `
+                gun.get('users').once(function (data) {
+                    gun.get('pub/' + data.pubKey).once(function (result) {
+                        let template = `
                 <div class="post">
                     <div class="post-body">
-                    <img src="${profilePic}" class="user-image-medium" alt="User Image">
-                    <span><a href="">${profileName}</a><br />${date}</span>
+                    <img src="${result.photo}" class="user-image-medium" alt="User Image">
+                    <span><a href="">${result.name}</a><br />${date}</span>
                     <div class="post-desc">${post}</div></div>
                     <div class="grid-toolbar">
                         <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
@@ -89,13 +91,21 @@ var api = {
                     </div>
                     <input type="text" class="post-comment-input" placeholder="Write a comment..." />
                 </div>`;
-                    $('.post-feed').prepend(template);
-                    $(".rateYoToolbar").rateYo({
-                        rating: 4,
-                        starWidth: "15px",
-                        readOnly: true
+                        $('.post-feed').prepend(template);
+                        $(".rateYoToolbar").rateYo({
+                            rating: 4,
+                            starWidth: "15px",
+                            readOnly: true
+                        });
                     });
                 });
+
+                /*  let users = gun.get('users');
+                  users.once(function (data) {
+                      let profilePic = data.picture;
+                      let profileName = data.name;
+
+                  }); */
             },
             getDate: () => {
                 var d = new Date();

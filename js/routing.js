@@ -38,7 +38,6 @@
                 $(".content").hide().html(result).fadeIn();
                 $.getScript("js/initializeplugins.js");
                 $.getScript("js/main.js");
-                $.getScript("js/api.gun.js");
             }
         });
         $(window).scrollTop(0);
