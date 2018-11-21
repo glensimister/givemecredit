@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
-    var gun = Gun();
+    var gun = new Gun();
     gunAPI.listCandidates();
     gunAPI.listElected();
 
     var user = gun.user();
 
     gun.get('users').once(function (data) {
-        if (data == undefined) {
+        if (data === undefined) {
             window.location.replace("login.html");
         } else {
             gun.get('pub/' + data.pubKey).once(function (result) {
@@ -83,7 +83,7 @@ $(document).ready(function () {
             $('.sidebar').animate({
                 'top': '0'
             }, 500);
-        };
+        }
 
     });
 
