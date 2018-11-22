@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $(".rateYo").rateYo({
-        rating: 3.6,
+        rating: 3,
+        fullStar: true,
         starWidth: "20px",
         readOnly: true
     });

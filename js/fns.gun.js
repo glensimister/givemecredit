@@ -30,14 +30,61 @@ var gunAPI = {
         });
     },
     vote: function ($this) {
-        //to do - make this work with gun
-        var elem = $this.parent().next();
-        var count = elem.html();
-        count++;
-        elem.html(count);
+        var upVotes = 0;
+        var downVotes = 0;
+        var percentage = 0;
+        var totalVotes = 0;
+        var elem = '';
 
-        var rating = $this.parent().parent().parent().find(".rateYo").rateYo("rating");
-        $this.parent().parent().parent().find(".rateYo").rateYo("rating", count + "%");
+        if ($this.hasClass('fa-thumbs-o-up')) {
+            elem = $this.parent().next();
+            upVotes = elem.html();
+            upVotes++;
+            elem.html(upVotes);
+            gun.get('votes').put({
+                upVotes: upVotes
+            });
+        } else if ($this.hasClass('fa-thumbs-o-down')) {
+            elem = $this.parent().next();
+            downVotes = elem.html();
+            downVotes++;
+            elem.html(downVotes);
+            gun.get('votes').put({
+                downVotes: downVotes
+            });
+        }
+
+        gun.get('votes').on(function (data) {
+            if (data.upVotes === undefined)
+                data.upVotes = 0;
+
+            if (data.downVotes === undefined)
+                data.downVotes = 0;
+
+            totalVotes = data.upVotes + data.downVotes;
+            percentage = (data.upVotes / totalVotes) * 100;
+            var percentageString = percentage + "%";
+            var candidateSummary = $this.parent().parent().parent();
+
+            if (percentage >= 65) {
+                $('.localOfficials').append(candidateSummary);
+                $(".rateYo").rateYo({
+                    rating: percentageString,
+                    starWidth: "20px",
+                    readOnly: true
+                });
+            } else {
+                $('.localCandidates').append(candidateSummary);
+                $(".rateYo").rateYo({
+                    rating: percentageString,
+                    starWidth: "20px",
+                    readOnly: true
+                });
+            }
+
+            $this.parent().parent().parent().find(".rateYo").rateYo("rating", percentageString);
+        });
+        //var rating = $this.parent().parent().parent().find(".rateYo").rateYo("rating");
     },
     electCandidate: function () {
         //to do
@@ -51,7 +98,12 @@ var gunAPI = {
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b>${data.rating}</b></p>
-                <button class="btn btn-red connect">CONNECT</button>
+                <div class="grid-votes">
+                    <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div>0</div>
+                    <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
+                    <div>0</div>
+                </div>
             </div>`;
             $('.localOfficials').append(candidateSummary);
             $(".rateYo").rateYo({

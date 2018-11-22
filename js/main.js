@@ -115,9 +115,6 @@ $(document).ready(function () {
     $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', function (e) {
         e.stopImmediatePropagation();
         gunAPI.vote($(this));
-        $(".rateYo").rateYo({
-            rating: "30%"
-        });
     });
 
     $(document.body).on("click", '.fa-flag', function (e) {
