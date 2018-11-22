@@ -1,21 +1,10 @@
 $(document).ready(function () {
 
     var gun = new Gun();
+    var user = gun.user();
     gunAPI.listCandidates();
     gunAPI.listElected();
-
-    var user = gun.user();
-
-    gun.get('users').once(function (data) {
-        if (data === undefined) {
-            window.location.replace("login.html");
-        } else {
-            gun.get('pub/' + data.pubKey).once(function (result) {
-                $('.profile-summary h4#fullName').text(result.name);
-                $('.profile-summary img').attr("src", result.photo);
-            });
-        }
-    });
+    gunAPI.displayUserData();
 
     $('.apply-for-position').on("click", function (e) {
         e.stopImmediatePropagation();
@@ -56,12 +45,6 @@ $(document).ready(function () {
         } else {
             $(this).text("DISCONNECT");
             $(this).addClass('disconnect');
-            var elected = $(this).parent().find('h4 a').html();
-            gunAPI.electCandidate(elected);
-            var parent = $(this).parent().parent();
-            if (parent.hasClass('localCandidates')) {
-                $(this).parent().fadeOut('slow');
-            }
         }
     });
 
@@ -131,7 +114,10 @@ $(document).ready(function () {
     // to do: if someone clicks like followed by dislike (or visa versa), it will need to subtract the like
     $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', function (e) {
         e.stopImmediatePropagation();
-        api.ratePost($(this));
+        gunAPI.vote($(this));
+        $(".rateYo").rateYo({
+            rating: "30%"
+        });
     });
 
     $(document.body).on("click", '.fa-flag', function (e) {

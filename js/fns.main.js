@@ -29,9 +29,9 @@ var api = {
                             <div class="post-desc">${post}</div>
                         </div>
                         <div class="grid-toolbar">
-                            <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
+                            <div class="red"><i title="${result.id}-up" class="fa fa-thumbs-o-up"></i></div>
                             <div>90</div>
-                            <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
+                            <div class="blue"><i title="${result.id}-down" class="fa fa-thumbs-o-down"></i></div>
                             <div>10</div>
                             <div class="red"><i class="fa fa-flag"></i></div>
                             <div>0</div>

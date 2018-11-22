@@ -1,8 +1,26 @@
 var gunAPI = {
+    displayUserData: function () {
+        gun.get('users').once(function (data) {
+            if (data === undefined) {
+                window.location.replace("login.html");
+            } else {
+                gun.get('pub/' + data.pubKey).once(function (result) {
+                    $('.profile-summary h4#fullName').html(result.name);
+                    $('.profile-summary img').attr("src", result.photo);
+                    $('.profile-summary ul li a.voteWeight').html(result.voteWeight);
+                    $('.profile-summary ul li a.age').html(result.age);
+                    $('.profile-summary ul li a.edScore').html(result.educationScore);
+                    $('.profile-summary ul li a.socialRating').html(result.socialRating);
+                    $('.profile-summary ul li a.connections').html(result.connections);
+                });
+            }
+        });
+    },
     applyAsCandidate: function (position) {
         gun.get('users').once(function (data) {
             gun.get('pub/' + data.pubKey).once(function (result) {
                 gun.get('candidates').set({
+                    id: result.id,
                     name: result.name,
                     photo: result.photo,
                     position: position,
@@ -11,55 +29,19 @@ var gunAPI = {
             });
         });
     },
-    getTotalUsers: function (cb) {
-        var count = 0;
-        gun.get('users').map().on(function (data) {
-            count++;
-        });
-        cb(count);
+    vote: function ($this) {
+        //to do - make this work with gun
+        var elem = $this.parent().next();
+        var count = elem.html();
+        count++;
+        elem.html(count);
+
+        var rating = $this.parent().parent().parent().find(".rateYo").rateYo("rating");
+        $this.parent().parent().parent().find(".rateYo").rateYo("rating", count + "%");
     },
-    electCandidate: function (candidate) {
-        let totalUpVotes = 1; //this will need to be updated i.e. gun.get('candidateScores').put({name/pubkey: score, score: score})... 
-        gunAPI.getTotalUsers(function (count) {
-            var rating = (count / totalUpVotes) * 100 + "%";
-            gun.get('candidates').map().on(function (data) {
-                if (data.name === candidate) { //and approval rating >= 65
-                    gun.get('elected').set({
-                        name: data.name,
-                        photo: data.photo,
-                        position: data.position,
-                        rating: rating
-                    });
-                }
-            });
-
-
-
-            /* gun.get('candidates').map().on(function (data) {
-                 if (data.name === candidate) { //and approval rating >= 65
-                     console.log(candidate);
-                     let candidateSummary = `<div><div class="rateYo"></div>
-                 <h4><a href="#/profile">${data.name}</a></h4>
-                 <p class="position">${data.position}</p>
-                 <img src="${data.photo}" class="user-image-large" alt="User Image">
-                 <p>Approval rating: <b>${rating}</b></p>
-                 <button class="btn btn-red disconnect">DISCONNECT</button>
-             </div>`;
-                     $('.localOfficials').append(candidateSummary);
-                     $(".rateYo").rateYo({
-                         rating: data.rating,
-                         starWidth: "15px",
-                         readOnly: true
-                     });
-                     gun.get('elected').set({
-                         name: data.name,
-                         photo: data.photo,
-                         position: data.position,
-                         rating: rating
-                     });
-                 }
-             });*/
-        });
+    electCandidate: function () {
+        //to do
+        console.log("candidate elected!");
     },
     listElected: function () {
         gun.get('elected').map().on(function (data) {
@@ -74,7 +56,7 @@ var gunAPI = {
             $('.localOfficials').append(candidateSummary);
             $(".rateYo").rateYo({
                 rating: data.rating,
-                starWidth: "15px",
+                starWidth: "20px",
                 readOnly: true
             });
         });
@@ -87,12 +69,17 @@ var gunAPI = {
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b>${data.rating}</b></p>
-                <button class="btn btn-red connect">CONNECT</button>
+                <div class="grid-votes">
+                    <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div>0</div>
+                    <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
+                    <div>0</div>
+                </div>
             </div>`;
             $('.localCandidates').append(candidateSummary);
             $(".rateYo").rateYo({
                 rating: data.rating,
-                starWidth: "15px",
+                starWidth: "20px",
                 readOnly: true
             });
         });
