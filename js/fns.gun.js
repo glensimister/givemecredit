@@ -66,7 +66,10 @@ var gunAPI = {
             var percentageString = percentage + "%";
             var candidateSummary = $this.parent().parent().parent();
 
+            var isElected = false;
+
             if (percentage >= 65) {
+                $(candidateSummary).addClass('elected');
                 $('.localOfficials').append(candidateSummary);
                 $(".rateYo").rateYo({
                     rating: percentageString,
@@ -74,12 +77,15 @@ var gunAPI = {
                     readOnly: true
                 });
             } else {
-                $('.localCandidates').append(candidateSummary);
-                $(".rateYo").rateYo({
-                    rating: percentageString,
-                    starWidth: "20px",
-                    readOnly: true
-                });
+                if ($(candidateSummary).hasClass('elected')) {
+                    $(candidateSummary).removeClass('elected');
+                    $('.localCandidates').append(candidateSummary);
+                    $(".rateYo").rateYo({
+                        rating: percentageString,
+                        starWidth: "20px",
+                        readOnly: true
+                    });
+                }
             }
 
             $this.parent().parent().parent().find(".rateYo").rateYo("rating", percentageString);
