@@ -19,7 +19,7 @@ var gunAPI = {
     applyAsCandidate: function (position) {
         gun.get('users').once(function (data) {
             gun.get('pub/' + data.pubKey).once(function (result) {
-                gun.get('candidates').set({
+                gun.get('candidates').set({ //this will actually be in users when in production
                     id: result.id,
                     name: result.name,
                     photo: result.photo,
@@ -30,31 +30,34 @@ var gunAPI = {
         });
     },
     vote: function (candidateID) {
+        var res = candidateID.split("-");
+        var voteType = res[0]; //up or down
+        var id = res[1];
         var upVotes = 0;
         var downVotes = 0;
         var percentage = 0;
         var totalVotes = 0;
-        var elem = '';
+        var elem = $("#" + candidateID).parent().next();
+        var userID = $("#" + candidateID).attr('title');
+        console.log(candidateID + ": userID: " + userID);
 
-        if ($("#" + candidateID).hasClass('fa-thumbs-o-up')) {
-            elem = $("#" + candidateID).parent().next();
+        if (voteType === 'up') {
             upVotes = elem.html();
             upVotes++;
             elem.html(upVotes);
             gun.get('votes').put({
+                id: userID,
                 upVotes: upVotes
             });
-        } else if ($("#" + candidateID).hasClass('fa-thumbs-o-down')) {
-            elem = $("#" + candidateID).parent().next();
+        } else if (voteType === 'down') {
             downVotes = elem.html();
             downVotes++;
             elem.html(downVotes);
             gun.get('votes').put({
+                id: userID,
                 downVotes: downVotes
             });
         }
-
-        var id = candidateID.split("-").pop();
 
         gun.get('votes').on(function (data) {
             if (data.upVotes === undefined)
@@ -65,37 +68,55 @@ var gunAPI = {
 
             totalVotes = data.upVotes + data.downVotes;
             percentage = (data.upVotes / totalVotes) * 100;
-            var percentageString = percentage + "%";
+            var percentageString = percentage.toFixed(0) + "%";
             var html = $('.candidate-' + id).html();
             var elected = `<div class="candidate-${id} elected">${html}</div>`;
             var unelected = `<div class="candidate-${id}">${html}</div>`;
 
-            if (percentage >= 65) {
-                $('.candidate-' + id).remove();
-                $('.localOfficials').append(elected);
-                $(".rateYo").rateYo({
-                    rating: percentageString,
-                    starWidth: "20px",
-                    readOnly: true
+            $('.approval-rating').html(percentageString);
+
+            if ((percentage >= 65) && (voteType === 'up')) {
+                gun.get('candidates').map().once(function (res) {
+                    if (res.id === userID) {
+                        var test = {
+                            id: res.id,
+                            name: res.name,
+                            photo: res.photo,
+                            position: res.position,
+                            rating: percentageString,
+                            upVotes: data.upVotes,
+                            downVotes: data.downVotes
+                        };
+                        gunAPI.electCandidate(test);
+                    }
+                    $('.localCandidates .candidate-' + id).remove();
                 });
+
+
+                /*  $('.candidate-' + id).remove();
+                  $('.localOfficials').append(elected);
+                  $(".rateYo").rateYo({
+                      rating: percentageString,
+                      starWidth: "20px",
+                      readOnly: true
+                  }); */
             } else {
-                if ($('.candidate-' + id).hasClass('elected')) {
-                    $('.candidate-' + id).remove();
-                    $('.localCandidates').append(unelected);
-                    $(".rateYo").rateYo({
-                        rating: percentageString,
-                        starWidth: "20px",
-                        readOnly: true
-                    });
-                }
+                /* if (($('.candidate-' + id).hasClass('elected')) && (voteType === 'down')) {
+                     $('.candidate-' + id).remove();
+                     $('.localCandidates').append(unelected);
+                     $(".rateYo").rateYo({
+                         rating: percentageString,
+                         starWidth: "20px",
+                         readOnly: true
+                     });
+                 }*/
             }
 
             $('.candidate-' + id).find(".rateYo").rateYo("rating", percentageString);
         });
     },
-    electCandidate: function () {
-        //to do
-        console.log("candidate elected!");
+    electCandidate: function (obj) {
+        gun.get('elected').set(obj);
     },
     listElected: function () {
         var count = 0;
@@ -109,9 +130,9 @@ var gunAPI = {
                 <p>Approval rating: <b>${data.rating}</b></p>
                 <div class="grid-votes">
                     <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
-                    <div>0</div>
+                    <div>${data.upVotes}</div>
                     <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
-                    <div>0</div>
+                    <div>${data.downVotes}</div>
                 </div>
             </div>`;
             $('.localOfficials').append(candidateSummary);
@@ -126,16 +147,16 @@ var gunAPI = {
         var count = 0;
         gun.get('candidates').map().on(function (data) {
             count++;
-            let candidateSummary = `<div class="candidate-${count}">
+            let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
-                <p>Approval rating: <b>${data.rating}</b></p>
+                <p>Approval rating: <b class="approval-rating">${data.rating}</b></p>
                 <div class="grid-votes">
-                    <div class="red"><i id="up-${count}" class="fa fa-thumbs-o-up"></i></div>
+                    <div class="red"><i title="${data.id}" id="up-${count}" class="fa fa-thumbs-o-up"></i></div>
                     <div>0</div>
-                    <div class="blue"><i id=down-${count} class="fa fa-thumbs-o-down"></i></div>
+                    <div class="blue"><i title="${data.id}" id="down-${count}" class="fa fa-thumbs-o-down"></i></div>
                     <div>0</div>
                 </div>
             </div>`;
