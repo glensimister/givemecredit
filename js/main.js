@@ -114,7 +114,8 @@ $(document).ready(function () {
     // to do: if someone clicks like followed by dislike (or visa versa), it will need to subtract the like
     $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', function (e) {
         e.stopImmediatePropagation();
-        gunAPI.vote($(this));
+        var candidateID = $(this).attr("id");
+        gunAPI.vote(candidateID);
     });
 
     $(document.body).on("click", '.fa-flag', function (e) {

@@ -29,23 +29,23 @@ var gunAPI = {
             });
         });
     },
-    vote: function ($this) {
+    vote: function (candidateID) {
         var upVotes = 0;
         var downVotes = 0;
         var percentage = 0;
         var totalVotes = 0;
         var elem = '';
 
-        if ($this.hasClass('fa-thumbs-o-up')) {
-            elem = $this.parent().next();
+        if ($("#" + candidateID).hasClass('fa-thumbs-o-up')) {
+            elem = $("#" + candidateID).parent().next();
             upVotes = elem.html();
             upVotes++;
             elem.html(upVotes);
             gun.get('votes').put({
                 upVotes: upVotes
             });
-        } else if ($this.hasClass('fa-thumbs-o-down')) {
-            elem = $this.parent().next();
+        } else if ($("#" + candidateID).hasClass('fa-thumbs-o-down')) {
+            elem = $("#" + candidateID).parent().next();
             downVotes = elem.html();
             downVotes++;
             elem.html(downVotes);
@@ -53,6 +53,8 @@ var gunAPI = {
                 downVotes: downVotes
             });
         }
+
+        var id = candidateID.split("-").pop();
 
         gun.get('votes').on(function (data) {
             if (data.upVotes === undefined)
@@ -64,22 +66,22 @@ var gunAPI = {
             totalVotes = data.upVotes + data.downVotes;
             percentage = (data.upVotes / totalVotes) * 100;
             var percentageString = percentage + "%";
-            var candidateSummary = $this.parent().parent().parent();
-
-            var isElected = false;
+            var html = $('.candidate-' + id).html();
+            var elected = `<div class="candidate-${id} elected">${html}</div>`;
+            var unelected = `<div class="candidate-${id}">${html}</div>`;
 
             if (percentage >= 65) {
-                $(candidateSummary).addClass('elected');
-                $('.localOfficials').append(candidateSummary);
+                $('.candidate-' + id).remove();
+                $('.localOfficials').append(elected);
                 $(".rateYo").rateYo({
                     rating: percentageString,
                     starWidth: "20px",
                     readOnly: true
                 });
             } else {
-                if ($(candidateSummary).hasClass('elected')) {
-                    $(candidateSummary).removeClass('elected');
-                    $('.localCandidates').append(candidateSummary);
+                if ($('.candidate-' + id).hasClass('elected')) {
+                    $('.candidate-' + id).remove();
+                    $('.localCandidates').append(unelected);
                     $(".rateYo").rateYo({
                         rating: percentageString,
                         starWidth: "20px",
@@ -88,17 +90,18 @@ var gunAPI = {
                 }
             }
 
-            $this.parent().parent().parent().find(".rateYo").rateYo("rating", percentageString);
+            $('.candidate-' + id).find(".rateYo").rateYo("rating", percentageString);
         });
-        //var rating = $this.parent().parent().parent().find(".rateYo").rateYo("rating");
     },
     electCandidate: function () {
         //to do
         console.log("candidate elected!");
     },
     listElected: function () {
+        var count = 0;
         gun.get('elected').map().on(function (data) {
-            let candidateSummary = `<div>
+            count++;
+            let candidateSummary = `<div class="official${count}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
@@ -120,17 +123,19 @@ var gunAPI = {
         });
     },
     listCandidates: function () {
+        var count = 0;
         gun.get('candidates').map().on(function (data) {
-            let candidateSummary = `<div>
+            count++;
+            let candidateSummary = `<div class="candidate-${count}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b>${data.rating}</b></p>
                 <div class="grid-votes">
-                    <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div class="red"><i id="up-${count}" class="fa fa-thumbs-o-up"></i></div>
                     <div>0</div>
-                    <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
+                    <div class="blue"><i id=down-${count} class="fa fa-thumbs-o-down"></i></div>
                     <div>0</div>
                 </div>
             </div>`;
