@@ -7,6 +7,7 @@ var gunAPI = {
                 gun.get('pub/' + data.pubKey).once(function (result) {
                     $('.profile-summary h4#fullName').html(result.name);
                     $('.profile-summary img').attr("src", result.photo);
+                    $('.profile-pic-small').attr("src", result.photo);
                     $('.profile-summary ul li a.voteWeight').html(result.voteWeight);
                     $('.profile-summary ul li a.age').html(result.age);
                     $('.profile-summary ul li a.edScore').html(result.educationScore);
@@ -173,8 +174,10 @@ var gunAPI = {
 
         gun.get('candidates').map().on(function (data) {
             if (data.id === id) {
-                $('.profile-summary h4').html(data.name);
+                $('.profile-summary h4').html(data.position);
                 $('.profile-summary img').attr("src", data.photo);
+                $('.profile-summary ul li a.fullname').html(data.name);
+                $('.profile-summary ul li a.approval-rating').html(data.rating);
             }
         });
 
