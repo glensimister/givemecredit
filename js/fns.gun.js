@@ -39,7 +39,6 @@ var gunAPI = {
         var totalVotes = 0;
         var elem = $("#" + candidateID).parent().next();
         var userID = $("#" + candidateID).attr('title');
-        console.log(candidateID + ": userID: " + userID);
 
         if (voteType === 'up') {
             upVotes = elem.html();
@@ -124,7 +123,7 @@ var gunAPI = {
             count++;
             let candidateSummary = `<div class="official-${count}">
                 <div class="rateYo"></div>
-                <h4><a href="#/profile">${data.name}</a></h4>
+                <h4><a href="#/profile?id=${data.id}">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b>${data.rating}</b></p>
@@ -149,7 +148,7 @@ var gunAPI = {
             count++;
             let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
                 <div class="rateYo"></div>
-                <h4><a href="#/profile">${data.name}</a></h4>
+                <h4><a href="#/profile?id=${data.id}">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b class="approval-rating">${data.rating}</b></p>
@@ -168,5 +167,31 @@ var gunAPI = {
             });
         });
     },
+    getProfile: function () {
+        var id = getUrlVars()["id"];
 
+        gun.get('candidates').map().on(function (data) {
+            if (data.id === id) {
+                $('.profile-summary h4').html(data.name);
+                $('.profile-summary img').attr("src", data.photo);
+            }
+        });
+
+        //var name = getUrlVars()["name"];
+        //var photo = getUrlVars()["photo"];
+        //$('.profile-summary h4').html(name);
+        //$('.profile-summary img').attr("src", photo);
+
+        function getUrlVars() {
+            var vars = [],
+                hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+    }
 }

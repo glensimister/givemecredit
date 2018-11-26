@@ -3,12 +3,36 @@
 
     var app = $.sammy(function () {
 
-        this.get('/', function () {
-            getPage("pages/home.html");
+        this.get('#/', function () {
+            getPage("pages/home.html", function () {
+                $.getScript("js/fns.gun.js", function () {
+                    gunAPI.displayUserData();
+                });
+            });
         });
 
         this.get('/index.html', function () {
-            getPage("pages/home.html");
+            getPage("pages/home.html", function () {
+                $.getScript("js/fns.gun.js", function () {
+                    gunAPI.displayUserData();
+                });
+            });
+        });
+
+        this.get('/', function () {
+            getPage("pages/home.html", function () {
+                $.getScript("js/fns.gun.js", function () {
+                    gunAPI.displayUserData();
+                });
+            });
+        });
+
+        this.get('#/profile', function () {
+            getPage("pages/profile.html", function () {
+                $.getScript("js/fns.gun.js", function () {
+                    gunAPI.getProfile();
+                });
+            });
         });
 
         this.get('#/:page', function () {
@@ -31,7 +55,7 @@
         app.run()
     });
 
-    function getPage(url) {
+    function getPage(url, cb) {
         $.ajax({
             url: url,
             success: function (result) {
@@ -41,5 +65,6 @@
             }
         });
         $(window).scrollTop(0);
+        cb();
     }
 })(jQuery);
