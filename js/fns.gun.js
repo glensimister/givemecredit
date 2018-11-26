@@ -125,7 +125,7 @@ var gunAPI = {
             count++;
             let candidateSummary = `<div class="official-${count}">
                 <div class="rateYo"></div>
-                <h4><a href="#/profile?id=${data.id}">${data.name}</a></h4>
+                <h4><a href="#/profile?id=${data.id}&status=official">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b>${data.rating}</b></p>
@@ -150,7 +150,7 @@ var gunAPI = {
             count++;
             let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
                 <div class="rateYo"></div>
-                <h4><a href="#/profile?id=${data.id}">${data.name}</a></h4>
+                <h4><a href="#/profile?id=${data.id}&status=candidate">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
                 <p>Approval rating: <b class="approval-rating">${data.rating}</b></p>
@@ -171,15 +171,27 @@ var gunAPI = {
     },
     getProfile: function () {
         var id = getUrlVars()["id"];
+        var status = getUrlVars()["status"];
 
-        gun.get('candidates').map().on(function (data) {
-            if (data.id === id) {
-                $('.profile-summary h4').html(data.position);
-                $('.profile-summary img').attr("src", data.photo);
-                $('.profile-summary ul li a.fullname').html(data.name);
-                $('.profile-summary ul li a.approval-rating').html(data.rating);
-            }
-        });
+        if (status === 'candidate') {
+            gun.get('candidates').map().on(function (data) {
+                if (data.id === id) {
+                    $('.profile-summary h4').html(data.position);
+                    $('.profile-summary img').attr("src", data.photo);
+                    $('.profile-summary ul li a.fullname').html(data.name);
+                    $('.profile-summary ul li a.approval-rating').html(data.rating);
+                }
+            });
+        } else if (status === 'official') {
+            gun.get('elected').map().on(function (data) {
+                if (data.id === id) {
+                    $('.profile-summary h4').html(data.position);
+                    $('.profile-summary img').attr("src", data.photo);
+                    $('.profile-summary ul li a.fullname').html(data.name);
+                    $('.profile-summary ul li a.approval-rating').html(data.rating);
+                }
+            });
+        }
 
         function getUrlVars() {
             var vars = [],
