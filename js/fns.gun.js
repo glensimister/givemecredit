@@ -90,6 +90,11 @@ var gunAPI = {
                             downVotes: data.downVotes
                         };
                         gun.get('elected').set(profile);
+                        gun.get('services').set({
+                            id: res.id,
+                            service: res.position,
+                            owner: res.name
+                        });
                         console.log(key);
                         //gun.get('joyhkri6VsuH6W5wiVoJ').put(null);
                     }
@@ -117,6 +122,46 @@ var gunAPI = {
             }
 
             $('.candidate-' + id).find(".rateYo").rateYo("rating", percentageString);
+        });
+    },
+    displayService: function () {
+        gun.get('services').map().val(function (data) {
+            var publicService = `<div id="${data.id}">
+                <i class="fa fa-times delete"></i>
+                <h3><a href="#/profile?id=${data.id}&status=official">${data.service}</a></h3>
+                <ul class="funds-raised">
+                    <li>
+                        Official<b class="pull-right"><a href="#/profile?id=${data.id}&status=official">${data.owner}</a></b>
+                    </li>
+                    <li>
+                        Monthly target<b class="pull-right">200 ACV</b>
+                    </li>
+                    <li>
+                        Raised so far<b class="pull-right">120 ACV</b>
+                    </li>
+                </ul>
+                <div class="progress-bar">
+                    <div style="width: 60%;">
+                    </div>
+                </div>
+                <p><a href="#/fundpublicservices/publicservicedetailview">More information...</a></p>
+                <select class="form-control">
+                    <option>Social Credits</option>
+                    <option>Health Credits</option>
+                    <option>Education Credits</option>
+                    <option>C20 - Crypto20 (Index Fund)</option>
+                    <option>BTC - Bitcoin</option>
+                    <option>ETH - Ethereum</option>
+                    <option>LTC - Litecoin</option>
+                    <option>DASH - Dash</option>
+                </select>
+                <br />
+                <div class="grid-input-button">
+                    <div><input type="text" class="form-control donate-input"></div>
+                    <div><button type="button" class="donate-sc">DONATE</button></div>
+                </div>
+            </div>`;
+            $('.localServices').prepend(publicService);
         });
     },
     listElected: function () {

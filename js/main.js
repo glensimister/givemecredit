@@ -4,6 +4,7 @@ $(document).ready(function () {
     var user = gun.user();
     gunAPI.listCandidates();
     gunAPI.listElected();
+    gunAPI.displayService();
     //gunAPI.getProfile(); // this needs to be on click not onload
 
 
