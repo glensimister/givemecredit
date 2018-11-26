@@ -4,7 +4,7 @@ $(document).ready(function () {
     var user = gun.user();
     gunAPI.listCandidates();
     gunAPI.listElected();
-    gunAPI.getProfile(); // this needs to be on click not onload
+    //gunAPI.getProfile(); // this needs to be on click not onload
 
 
     $('.apply-for-position').on("click", function (e) {

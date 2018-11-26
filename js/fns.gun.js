@@ -24,7 +24,9 @@ var gunAPI = {
                     name: result.name,
                     photo: result.photo,
                     position: position,
-                    rating: "0%"
+                    rating: "0%",
+                    upVotes: 0,
+                    downVotes: 0
                 });
             });
         });
@@ -75,9 +77,9 @@ var gunAPI = {
             $('.approval-rating').html(percentageString);
 
             if ((percentage >= 65) && (voteType === 'up')) {
-                gun.get('candidates').map().once(function (res) {
+                gun.get('candidates').map().once(function (res, key) {
                     if (res.id === userID) {
-                        var test = {
+                        var profile = {
                             id: res.id,
                             name: res.name,
                             photo: res.photo,
@@ -86,7 +88,9 @@ var gunAPI = {
                             upVotes: data.upVotes,
                             downVotes: data.downVotes
                         };
-                        gunAPI.electCandidate(test);
+                        gun.get('elected').set(profile);
+                        console.log(key);
+                        //gun.get('joyhkri6VsuH6W5wiVoJ').put(null);
                     }
                     $('.localCandidates .candidate-' + id).remove();
                 });
@@ -114,12 +118,9 @@ var gunAPI = {
             $('.candidate-' + id).find(".rateYo").rateYo("rating", percentageString);
         });
     },
-    electCandidate: function (obj) {
-        gun.get('elected').set(obj);
-    },
     listElected: function () {
         var count = 0;
-        gun.get('elected').map().on(function (data) {
+        gun.get('elected').map().val(function (data) {
             count++;
             let candidateSummary = `<div class="official-${count}">
                 <div class="rateYo"></div>
@@ -144,7 +145,7 @@ var gunAPI = {
     },
     listCandidates: function () {
         var count = 0;
-        gun.get('candidates').map().on(function (data) {
+        gun.get('candidates').map().val(function (data) {
             count++;
             let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
                 <div class="rateYo"></div>
@@ -176,11 +177,6 @@ var gunAPI = {
                 $('.profile-summary img').attr("src", data.photo);
             }
         });
-
-        //var name = getUrlVars()["name"];
-        //var photo = getUrlVars()["photo"];
-        //$('.profile-summary h4').html(name);
-        //$('.profile-summary img').attr("src", photo);
 
         function getUrlVars() {
             var vars = [],

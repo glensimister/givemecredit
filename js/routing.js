@@ -65,6 +65,6 @@
             }
         });
         $(window).scrollTop(0);
-        cb();
+        if (cb) cb();
     }
 })(jQuery);
