@@ -144,7 +144,6 @@ var gunAPI = {
                     <div style="width: 60%;">
                     </div>
                 </div>
-                <p><a href="#/fundpublicservices/publicservicedetailview">More information...</a></p>
                 <select class="form-control">
                     <option>Social Credits</option>
                     <option>Health Credits</option>
