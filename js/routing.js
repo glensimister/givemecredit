@@ -36,39 +36,28 @@
         });
 
         this.get('#/:page', function () {
-            $('.sidebar ul li a.active').removeClass('active');
             var page = this.params['page'];
-            $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
             getPage('pages/' + this.params['page'] + '.html');
+            $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
         });
 
         this.get('#/:folder/:page', function () {
-            $('.sidebar ul li a.active').removeClass('active');
             var folder = this.params['folder'];
             var page = this.params['page'];
-            $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
             if (page !== 'national') {
                 getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
             } else {
                 getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
             }
-        });
-
-
-        this.get('#/:folder/:page', function () {
-            $('.sidebar ul li a.active').removeClass('active');
-            var folder = this.params['folder'];
-            var page = this.params['page'];
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
-            getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
         });
 
         this.get('#/:country/:region/:postcode', function () {
-            //$('.sidebar ul li a.active').removeClass('active');
-            //var folder = this.params['folder'];
-            //var page = this.params['page'];
-            //$('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
+            var country = this.params['country'];
+            var region = this.params['region'];
+            var postcode = this.params['postcode'];
             getPage(this.params['country'] + '/' + this.params['region'] + '/' + this.params['postcode'] + '.html');
+            $('.sidebar').find('a[href="#/' + country + '/' + region + '/' + postcode + '"]').addClass('active');
         });
     });
 
@@ -77,6 +66,7 @@
     });
 
     function getPage(url, cb) {
+        $('.sidebar ul li a.active').removeClass('active');
         $.ajax({
             url: url,
             success: function (result) {
