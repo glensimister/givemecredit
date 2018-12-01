@@ -47,7 +47,28 @@
             var folder = this.params['folder'];
             var page = this.params['page'];
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
-            getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
+            if (page !== 'national') {
+                getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
+            } else {
+                getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
+            }
+        });
+
+
+        this.get('#/:folder/:page', function () {
+            $('.sidebar ul li a.active').removeClass('active');
+            var folder = this.params['folder'];
+            var page = this.params['page'];
+            $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
+            getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
+        });
+
+        this.get('#/:country/:region/:postcode', function () {
+            //$('.sidebar ul li a.active').removeClass('active');
+            //var folder = this.params['folder'];
+            //var page = this.params['page'];
+            //$('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
+            getPage(this.params['country'] + '/' + this.params['region'] + '/' + this.params['postcode'] + '.html');
         });
     });
 
