@@ -1,29 +1,44 @@
 <h3>Lottery</h3>
-<h4>Buy Ticket</h4>
-<p>1 ticket costs 1 ACV</p>
-
-<div class="grid-lottery">
-    <div class="form-group">
-        <select class="form-control">
-            <option>Select Currency</option>
-            <option>Rebate</option>
-            <option>C20 - Crypto20 (Index Fund)</option>
-            <option>BTC - Bitcoin</option>
-            <option>ETH - Ethereum</option>
-            <option>LTC - Litecoin</option>
-            <option>DASH - Dash</option>
-        </select>
+<div class="grid-2-col">
+    <div>
+        <h4>Buy Ticket</h4>
+        <div class="lottery-ticket-numbers">
+            <ul class="lottery-input">
+                <li><button class="btn btn-red lucky-dip">LUCK DIP</button></li>
+                <li><input type="text" class="number1" /></li>
+                <li><input type="text" class="number2" /></li>
+                <li><input type="text" class="number3" /></li>
+                <li><input type="text" class="number4" /></li>
+                <li><input type="text" class="number5" /></li>
+                <li><input type="text" class="number6" /></li>
+                <li><i class="fa fa-times"></i></li>
+            </ul>
+        </div>
+        <button class="btn-small btn-blue add-new-numbers"><i class="fa fa-plus"></i> ADD NEW</button>
     </div>
-    <div class="form-group">
-        <input type="number" class="form-control" id="num-of-tickets" placeholder="Enter number of tickets">
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-blue buy-ticket">BUY</button>
+    <div>
+        <p>Total: £0.00 (0 ACV)</p>
+        <div class="form-group">
+            <select class="form-control">
+                <option>Select Currency</option>
+                <option>Rebate</option>
+                <option>C20 - Crypto20 (Index Fund)</option>
+                <option>BTC - Bitcoin</option>
+                <option>ETH - Ethereum</option>
+                <option>LTC - Litecoin</option>
+                <option>DASH - Dash</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="num-of-tickets" value="2" placeholder="2">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-blue buy-ticket">BUY</button>
+        </div>
     </div>
 </div>
-
-
-
+<br />
+<hr />
 
 <h3>Results</h3>
 <table class="table lottery-numbers">

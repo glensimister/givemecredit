@@ -674,6 +674,25 @@ small.label-green {
 
 /*** lottery ****/
 
+ul.lottery-input {
+    margin-bottom: 10px;
+}
+
+ul.lottery-input li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+ul.lottery-input li input {
+    border: none;
+    width: 40px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #00acd6;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #222d32;
+}
 
 .lottery-numbers td {
     text-align: center;
