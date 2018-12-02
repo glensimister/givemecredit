@@ -52,12 +52,14 @@
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
         });
 
-        this.get('#/:country/:region/:postcode', function () {
+        this.get('#/:country/:region/:postcode/:page', function () {
             var country = this.params['country'];
             var region = this.params['region'];
             var postcode = this.params['postcode'];
-            getPage(this.params['country'] + '/' + this.params['region'] + '/' + this.params['postcode'] + '.html');
-            $('.sidebar').find('a[href="#/' + country + '/' + region + '/' + postcode + '"]').addClass('active');
+            var page = this.params['page'];
+            getPage(this.params['country'] + '/' + this.params['region'] + '/' + this.params['postcode'] + '/' +
+                this.params['page'] + '.html');
+            $('.sidebar').find('a[href="#/' + country + '/' + region + '/' + postcode + '/' + page + '"]').addClass('active');
         });
     });
 
