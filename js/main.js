@@ -19,6 +19,12 @@ $(document).ready(function () {
         api.distributeCredits();
     });*/
 
+    $(document.body).on('click', '.topup-hc', function (e) {
+        e.stopImmediatePropagation();
+        api.topupHealthCredits(this);
+    });
+
+
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();
         api.donateSocialCredits(this);

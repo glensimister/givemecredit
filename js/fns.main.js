@@ -131,33 +131,9 @@ var api = {
             },
             donateSocialCredits: ($this) => {
                 var input = $($this).parent().parent().find('input').val();
-                var select = $($this).parent().parent().parent().parent().find('select option:selected').val();
-                var parent_class = $($this).parent().parent().parent().parent().attr('class');
-
-                if (parent_class == 'topup-hc') {
-                    if (select == 'Social Credits') {
-                        transferCredits('.sc', '.hc', input);
-                    } else if (select == 'Education Credits') {
-                        transferCredits('.ec', '.hc', input);
-                    }
-                } else if (parent_class == 'topup-ec') {
-                    transferCredits('.sc', '.ec', input);
-                } else if (select == 'Social Credits') {
-                    deductCredits('.sc', input);
-                } else if (select == 'Health Credits') {
-                    deductCredits('.hc', input);
-                } else if (select == 'Education Credits') {
-                    deductCredits('.ec', input);
-                };
-
-                function transferCredits(from, to, amount) {
-                    var type_from = $(from).html();
-                    type_from = (parseInt(type_from) - parseInt(amount));
-                    $(from).html(type_from.toFixed(0));
-                    var type_to = $(to).html();
-                    type_to = (parseInt(type_to) + parseInt(amount));
-                    $(to).html(type_to.toFixed(0));
-                }
+                //var select = $($this).parent().parent().parent().parent().find('select option:selected').val();
+                //var parent_class = $($this).parent().parent().parent().parent().attr('class');
+                deductCredits('.sc', input);
 
                 function deductCredits(type, amount) {
                     var current_value = $(type).html();
@@ -172,6 +148,17 @@ var api = {
                     result = $('.rebate').text();
                     result = rebate + parseInt(result);
                     $('.rebate').html(result.toFixed(0));
+                }
+            },
+            topupHealthCredits: ($this) => {
+                var input = $($this).parent().parent().find('input').val();
+                deductCredits('.sc', input);
+
+                function deductCredits(type, amount) {
+                    var current_value = $(type).html();
+                    var new_value = (parseInt(current_value) - parseInt(amount));
+                    $(type).html(new_value.toFixed(0));
+                    $('.hc').html(amount);
                 }
             },
             buyLotteryTicket: ($this) => {

@@ -563,7 +563,8 @@ small.label-green {
     border-bottom-right-radius: 0px;
 }
 
-.donate-sc {
+.donate-sc,
+.topup-hc {
     display: block;
     width: 100%;
     height: 34px;
