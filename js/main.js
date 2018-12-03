@@ -15,9 +15,9 @@ $(document).ready(function () {
     });
 
 
-    $(document.body).on('click', '.pay-tax', function () {
+    /*$(document.body).on('click', '.pay-tax', function () {
         api.distributeCredits();
-    });
+    });*/
 
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();

@@ -767,7 +767,7 @@ ul li.bonus-ball {
 }
 
 .course .radio {
-    float: left;
+    display: inline-block;
 }
 
 .course .grid-2-col {
@@ -785,6 +785,8 @@ ul li.bonus-ball {
     text-align: center;
 }
 
+/*
+
 .review-questions {
     text-align: right;
 }
@@ -792,7 +794,7 @@ ul li.bonus-ball {
 .feedback-confirmation {
     max-width: 500px;
     margin: auto;
-}
+}*/
 
 /* these styles are for a horizontal checkbox
 .grid-course-review {
