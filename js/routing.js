@@ -4,27 +4,15 @@
     var app = $.sammy(function () {
 
         this.get('#/', function () {
-            getPage("pages/home.html", function () {
-                $.getScript("js/fns.gun.js", function () {
-                    gunAPI.displayUserData();
-                });
-            });
+            getPage("pages/home.html");
         });
 
         this.get('/index.html', function () {
-            getPage("pages/home.html", function () {
-                $.getScript("js/fns.gun.js", function () {
-                    gunAPI.displayUserData();
-                });
-            });
+            getPage("pages/home.html");
         });
 
         this.get('/', function () {
-            getPage("pages/home.html", function () {
-                $.getScript("js/fns.gun.js", function () {
-                    gunAPI.displayUserData();
-                });
-            });
+            getPage("pages/home.html");
         });
 
         this.get('#/profile', function () {
@@ -75,6 +63,7 @@
                 $(".content").hide().html(result).fadeIn();
                 $.getScript("js/initializeplugins.js");
                 $.getScript("js/main.js");
+                gunAPI.displayUserData();
             }
         });
         $(window).scrollTop(0);

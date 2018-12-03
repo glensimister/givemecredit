@@ -8,11 +8,11 @@ var gunAPI = {
                     $('.profile-summary h4#fullName').html(result.name);
                     $('.profile-summary img').attr("src", result.photo);
                     $('.profile-pic-small').attr("src", result.photo);
-                    $('.profile-summary ul li a.voteWeight').html(result.voteWeight);
-                    $('.profile-summary ul li a.age').html(result.age);
-                    $('.profile-summary ul li a.edScore').html(result.educationScore);
-                    $('.profile-summary ul li a.socialRating').html(result.socialRating);
-                    $('.profile-summary ul li a.connections').html(result.connections);
+                    //$('.profile-summary ul li a.voteWeight').html(result.voteWeight);
+                    //$('.profile-summary ul li a.age').html(result.age);
+                    //$('.profile-summary ul li a.edScore').html(result.educationScore);
+                    //$('.profile-summary ul li a.socialRating').html(result.socialRating);
+                    //$('.profile-summary ul li a.connections').html(result.connections);
                 });
             }
         });

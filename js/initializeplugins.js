@@ -6,6 +6,13 @@ $(document).ready(function () {
         readOnly: true
     });
 
+    $(".rateYoLeft").rateYo({
+        rating: 3,
+        fullStar: true,
+        starWidth: "20px",
+        readOnly: true
+    });
+
     $(".rateYoToolbar").rateYo({
         rating: 4,
         starWidth: "15px",

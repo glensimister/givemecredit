@@ -141,6 +141,10 @@ textarea.form-control {
     margin: 0 auto 20px auto;
 }
 
+.rateYoLeft {
+    margin-bottom: 20px;
+}
+
 .profile-summary ul {
     text-align: left;
     margin-bottom: 20px;
