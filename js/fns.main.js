@@ -131,8 +131,6 @@ var api = {
             },
             donateSocialCredits: ($this) => {
                 var input = $($this).parent().parent().find('input').val();
-                //var select = $($this).parent().parent().parent().parent().find('select option:selected').val();
-                //var parent_class = $($this).parent().parent().parent().parent().attr('class');
                 deductCredits('.sc', input);
 
                 function deductCredits(type, amount) {
@@ -163,7 +161,7 @@ var api = {
             },
             buyLotteryTicket: ($this) => {
                 var amount = $($this).parent().prev().find('input').val();
-                amount = amount * 10; //this is the price of a lottery ticket - although it is completely arbitrary
+                amount = amount * 100; //this is the price of a lottery ticket - although it is completely arbitrary
                 var sc = $('.sc').html();
                 var new_sc = (parseInt(sc) + parseInt(amount));
                 $('.sc').html(new_sc);
