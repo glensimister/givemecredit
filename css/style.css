@@ -541,6 +541,7 @@ small.label-green {
 .form-control {
     display: block;
     width: 100%;
+    font-family: 'Open Sans', sans-serif;
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
@@ -789,6 +790,12 @@ ul li.bonus-ball {
 .course-review {
     text-align: center;
 }
+
+.course-review span {
+    color: #dd4b39;
+}
+
+
 
 /*
 

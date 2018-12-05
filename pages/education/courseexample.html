@@ -6,6 +6,9 @@
     <input id="tab2" type="radio" name="tabs">
     <label for="tab2">REVIEW</label>
 
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">DONATE</label>
+
 
     <section id="content1">
         <div class="grid-2-col box">
@@ -47,9 +50,9 @@
     </section>
 
     <section id="content2" class="course-review">
-        <div class="grid-2-col box">
+        <div class="box">
             <div>
-                <h1>Congratulations! You scored 100/100</h1>
+                <h1>Congratulations! You scored <span>100/100</span></h1>
                 <h4>Please take a few minutes to review the course.</h4>
                 <div class="form-group">How important is this course to society?</div>
                 <div class="form-group clearfix">
@@ -80,17 +83,20 @@
                     </div>
                 </div>
 
-                <div class="rateYo"></div>
+                <div class="rateYoCourse" style="margin:0 auto 20px auto"></div>
 
                 <div class="clearfix">
                     <label>Leave Feedback</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                    <br />
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Review title..">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="Review description.."></textarea>
+                    </div>
                     <button type="submit" class="submit-feedback btn btn-blue">SUBMIT</button>
                 </div>
 
-            </div>
-            <div>
+                <!-- <div>
                 <div class="feedback-confirmation">
                     <h3>Thank you for your feedback!</h3>
                     <h4>20 Education Credits have been deducted and added to your rebate.</h4>
@@ -111,6 +117,32 @@
                         <div><input type="text" class="form-control donate-input"></div>
                         <div><button type="button" class="donate-sc">DONATE</button></div>
                     </div>
+                </div> 
+            </div>-->
+            </div>
+        </div>
+    </section>
+    <section id="content3" class="course-review">
+        <div class="box">
+            <div class="feedback-confirmation" style="width:700px; margin:auto;">
+                <h3>Thank you for your feedback!</h3>
+                <h4>You have received <span>20 ACV</span></h4>
+                <p>This course has received 10,400 ACV in donations so far.</p>
+                <p>Please support the author by making a donation</p>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>Social Credits</option>
+                        <option>Education Credits</option>
+                        <option>C20 - Crypto20 (Index Fund)</option>
+                        <option>BTC - Bitcoin</option>
+                        <option>ETH - Ethereum</option>
+                        <option>LTC - Litecoin</option>
+                        <option>DASH - Dash</option>
+                    </select>
+                </div>
+                <div class="grid-input-button">
+                    <div><input type="text" class="form-control donate-input"></div>
+                    <div><button type="button" class="donate-sc">DONATE</button></div>
                 </div>
             </div>
         </div>

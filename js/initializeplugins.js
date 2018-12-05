@@ -6,6 +6,13 @@ $(document).ready(function () {
         readOnly: true
     });
 
+    $(".rateYoCourse").rateYo({
+        rating: 0,
+        fullStar: true,
+        starWidth: "20px",
+        readOnly: false
+    });
+
     $(".rateYoLeft").rateYo({
         rating: 3,
         fullStar: true,
