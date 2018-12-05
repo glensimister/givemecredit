@@ -32,7 +32,7 @@
         this.get('#/:folder/:page', function () {
             var folder = this.params['folder'];
             var page = this.params['page'];
-            if (page !== 'national') {
+            if (folder !== 'UK') { //this needs to change for different countries
                 getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
             } else {
                 getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
