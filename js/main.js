@@ -21,9 +21,20 @@ $(document).ready(function () {
 
     $(document.body).on('click', '.topup-hc', function (e) {
         e.stopImmediatePropagation();
-        api.topupHealthCredits(this);
+        var input = $(this).parent().parent().find('input').val();
+        api.transferCredits('.sc', '.hc', input);
     });
 
+    $(document.body).on('click', '.topup-ec', function (e) {
+        e.stopImmediatePropagation();
+        var input = $(this).parent().parent().find('input').val();
+        api.transferCredits('.sc', '.ec', input);
+    });
+
+    $(document.body).on('click', '.redeem-ec', function (e) {
+        e.stopImmediatePropagation();
+        api.transferCredits('.ec', '.rebate', '20');
+    });
 
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();

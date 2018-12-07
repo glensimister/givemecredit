@@ -148,16 +148,11 @@ var api = {
                     $('.rebate').html(result.toFixed(0));
                 }
             },
-            topupHealthCredits: ($this) => {
-                var input = $($this).parent().parent().find('input').val();
-                deductCredits('.sc', input);
-
-                function deductCredits(type, amount) {
-                    var current_value = $(type).html();
-                    var new_value = (parseInt(current_value) - parseInt(amount));
-                    $(type).html(new_value.toFixed(0));
-                    $('.hc').html(amount);
-                }
+            transferCredits: (from, to, amount) => {
+                var current_value = $(from).html();
+                var new_value = (parseInt(current_value) - parseInt(amount));
+                $(from).html(new_value.toFixed(0));
+                $(to).html(amount);
             },
             buyLotteryTicket: ($this) => {
                 var amount = $($this).parent().prev().find('input').val();

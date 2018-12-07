@@ -565,7 +565,8 @@ small.label-green {
 }
 
 .donate-sc,
-.topup-hc {
+.topup-hc,
+.topup-ec {
     display: block;
     width: 100%;
     height: 34px;
