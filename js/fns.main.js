@@ -149,10 +149,12 @@ var api = {
                 }
             },
             transferCredits: (from, to, amount) => {
-                var current_value = $(from).html();
-                var new_value = (parseInt(current_value) - parseInt(amount));
+                var fromVal = $(from).html();
+                var toVal = $(to).html();
+                var new_value = (parseInt(fromVal) - parseInt(amount));
                 $(from).html(new_value.toFixed(0));
-                $(to).html(amount);
+                new_value = (parseInt(toVal) + parseInt(amount));
+                $(to).html(new_value);
             },
             buyLotteryTicket: ($this) => {
                 var amount = $($this).parent().prev().find('input').val();
