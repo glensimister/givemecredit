@@ -55,7 +55,7 @@
     width: 100%;
 }
 
-.top-nav button {
+.top-nav .grid-search button {
     border: 1px solid transparent;
     border-top-right-radius: 3px;
     border-top-left-radius: 0;
