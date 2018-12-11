@@ -10,14 +10,16 @@ $(document).ready(function () {
 
     $('.apply-for-position').on("click", function (e) {
         e.stopImmediatePropagation();
+        $('#tab2').prop('checked', true);
         var position = $('.candidate-position').val();
         gunAPI.applyAsCandidate(position);
     });
 
-
-    /*$(document.body).on('click', '.pay-tax', function () {
-        api.distributeCredits();
-    });*/
+    $('.submit-feedback').on('click', function (e) {
+        e.stopImmediatePropagation();
+        $('#tab3').prop('checked', true);
+        api.transferCredits('.ec', '.rebate', '20');
+    });
 
     $(document.body).on('click', '.topup-hc', function (e) {
         e.stopImmediatePropagation();
@@ -29,11 +31,6 @@ $(document).ready(function () {
         e.stopImmediatePropagation();
         var input = $(this).parent().parent().find('input').val();
         api.transferCredits('.sc', '.ec', input);
-    });
-
-    $(document.body).on('click', '.redeem-ec', function (e) {
-        e.stopImmediatePropagation();
-        api.transferCredits('.ec', '.rebate', '20');
     });
 
     $(document.body).on('click', '.donate-sc', function (e) {
