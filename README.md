@@ -18,7 +18,7 @@
 <p>Each profile has a social rating, which is determined by how you interact with other members on the platform. Each profile has a voting weight, which is calculated based on your age, education score (from the built-in education system) and social rating. 
 </p>
 
-<p><b>Universal cryptocurrency wallet: </b>This will be a plug-in. The application uses only cryptocurrencies, and everything is priced in ACV (Average Currency Value).</p>
+<p><b>Universal cryptocurrency wallet: </b>This will be a plug-in. The application uses only cryptocurrencies, and everything is priced in IDX (Average Currency Value).</p>
 
 <p><b>Direct democracy:</b> Vote on politicians, IT project managers, service providers, policies and polls. </p>
 <p><b>Land Value Taxation (LVT):</b> Buy, sell and register land, and pay LVT into the application. In order for LVT to be implemented without permission from the state, communities would need to collectively buy the land, divide the land into plots, install the free-standing housing modules (below), and then rent them out to communty members.</p>

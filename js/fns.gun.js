@@ -134,10 +134,10 @@ var gunAPI = {
                         Official<b class="pull-right"><a href="#/profile?id=${data.id}&status=official">${data.owner}</a></b>
                     </li>
                     <li>
-                        Monthly target<b class="pull-right">200 ACV</b>
+                        Monthly target<b class="pull-right">200 IDX</b>
                     </li>
                     <li>
-                        Raised so far<b class="pull-right">120 ACV</b>
+                        Raised so far<b class="pull-right">120 IDX</b>
                     </li>
                 </ul>
                 <div class="progress-bar">
