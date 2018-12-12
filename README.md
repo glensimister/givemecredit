@@ -6,13 +6,8 @@
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EC3KMDEZ4282U)
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G-BcKbaJ0H4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-
-
+<p>You can view a demo here...</p>
+<a href="https://www.youtube.com/watch?v=G-BcKbaJ0H4">https://www.youtube.com/watch?v=G-BcKbaJ0H4</a>
 
 <p><img src="screenshot.PNG" /></p>
 <p><img src="screenshot-voting.PNG" /></p>
