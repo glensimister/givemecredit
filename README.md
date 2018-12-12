@@ -6,8 +6,10 @@
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EC3KMDEZ4282U)
 
-<p>You can view a demo here...</p>
+<h3>You can view a demo here...</h3>
+<p>
 <a href="https://www.youtube.com/watch?v=G-BcKbaJ0H4">https://www.youtube.com/watch?v=G-BcKbaJ0H4</a>
+</p>
 
 <p><img src="screenshot.PNG" /></p>
 <p><img src="screenshot-voting.PNG" /></p>
