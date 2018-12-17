@@ -32,22 +32,8 @@
         this.get('#/:folder/:page', function () {
             var folder = this.params['folder'];
             var page = this.params['page'];
-            if (folder !== 'UK') { //this needs to change for different countries
-                getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
-            } else {
-                getPage(this.params['folder'] + '/' + this.params['page'] + '.html');
-            }
+            getPage('pages/' + this.params['folder'] + '/' + this.params['page'] + '.html');
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
-        });
-
-        this.get('#/:country/:region/:postcode/:page', function () {
-            var country = this.params['country'];
-            var region = this.params['region'];
-            var postcode = this.params['postcode'];
-            var page = this.params['page'];
-            getPage(this.params['country'] + '/' + this.params['region'] + '/' + this.params['postcode'] + '/' +
-                this.params['page'] + '.html');
-            $('.sidebar').find('a[href="#/' + country + '/' + region + '/' + postcode + '/' + page + '"]').addClass('active');
         });
     });
 
