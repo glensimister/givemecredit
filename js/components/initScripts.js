@@ -1,4 +1,4 @@
-export function education() {
+export function initScripts() {
     $(".rateYoLeft").rateYo({
         rating: 3.6,
         starWidth: "20px",

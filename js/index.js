@@ -17,8 +17,7 @@ import {listElected} from './components/listElected.js';
 import {displayUserData} from './components/displayUserData.js';
 import {getProfile} from './components/getProfile.js';
 import {lottery} from './components/lottery.js';
-import {education} from './components/education.js';
-
+import {initScripts} from './components/initScripts.js';
 
 /* load partials */
 
@@ -57,27 +56,46 @@ $('.grid-search').load("partials/searchbar.html");
 
     function getPage(url, cb) {
         $('.sidebar ul li a.active').removeClass('active');
+        var section = url.split("/");
         $.ajax({
             url: url,
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
+                console.log('current page: ' + section[1]);
+                //load home page scripts
+                initScripts();
                 displayUserData();
                 connect();
                 toolbar();
                 comments();
                 status();
-                displayPubService();
-                getProfile();
-                listCandidates();
-                listElected();
-                displayPubService();
-                lottery();
-                vote();
-                applyAsCandidate();
-                distributeCredits();
-                donateSocialCredits();
-                transferCredits();
-                education();
+                
+                //load page specific scripts
+                if (section[1] === 'publicservices') { 
+                    displayPubService();
+                    distributeCredits();
+                    donateSocialCredits();
+                    transferCredits();
+                    console.log(section[1] + ' scripts loaded');
+                }
+                
+                if (section[1] == 'profile.html') {
+                    getProfile(); 
+                    console.log(section[1] + ' scripts loaded');
+                }
+                
+                if (section[1] == 'voting') {
+                    listCandidates();
+                    listElected();
+                    vote();
+                    applyAsCandidate();
+                    console.log(section[1] + ' scripts loaded');
+                }
+                
+                if (section[1] === 'lottery.html') {
+                    lottery();  
+                    console.log(section[1] + ' scripts loaded');
+                }
             }
         });
         $(window).scrollTop(0);

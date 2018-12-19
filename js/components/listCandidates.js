@@ -2,7 +2,6 @@ export function listCandidates() {
     var count = 0;
     gun.get('candidates').map().once(function (data) {
         count++;
-        console.log("candidates: " + data);
         let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile?id=${data.id}&status=candidate">${data.name}</a></h4>
