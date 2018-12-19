@@ -56,12 +56,12 @@ $('.grid-search').load("partials/searchbar.html");
 
     function getPage(url, cb) {
         $('.sidebar ul li a.active').removeClass('active');
-        var section = url.split("/");
+        var thisPage = url.split("/");
         $.ajax({
             url: url,
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
-                console.log('current page: ' + section[1]);
+                console.log('current page: ' + thisPage[1]);
                 //load home page scripts
                 initScripts();
                 displayUserData();
@@ -71,30 +71,30 @@ $('.grid-search').load("partials/searchbar.html");
                 status();
                 
                 //load page specific scripts
-                if (section[1] === 'publicservices') { 
+                if (thisPage[1] === 'publicservices') { 
                     displayPubService();
                     distributeCredits();
                     donateSocialCredits();
                     transferCredits();
-                    console.log(section[1] + ' scripts loaded');
+                    console.log(thisPage[1] + ' scripts loaded');
                 }
                 
-                if (section[1] == 'profile.html') {
+                if (thisPage[1] == 'profile.html') {
                     getProfile(); 
-                    console.log(section[1] + ' scripts loaded');
+                    console.log(thisPage[1] + ' scripts loaded');
                 }
                 
-                if (section[1] == 'voting') {
+                if (thisPage[1] == 'voting') {
                     listCandidates();
                     listElected();
                     vote();
                     applyAsCandidate();
-                    console.log(section[1] + ' scripts loaded');
+                    console.log(thisPage[1] + ' scripts loaded');
                 }
                 
-                if (section[1] === 'lottery.html') {
+                if (thisPage[1] === 'lottery.html') {
                     lottery();  
-                    console.log(section[1] + ' scripts loaded');
+                    console.log(thisPage[1] + ' scripts loaded');
                 }
             }
         });
