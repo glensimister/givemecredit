@@ -50,7 +50,7 @@ import {lottery} from './functions/lottery.js';
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
                 //partials here?
-                $.getScript("js/initializeplugins.js"); //this should be done in the functions
+                //$.getScript("js/initializeplugins.js"); //this should be done in the functions
                 displayUserData();
                 connect();
                 toolbar();

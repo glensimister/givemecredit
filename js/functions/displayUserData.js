@@ -13,6 +13,12 @@ export function displayUserData() {
                 //$('.profile-summary ul li a.socialRating').html(result.socialRating);
                 //$('.profile-summary ul li a.connections').html(result.connections);
             });
+            $(".rateYo").rateYo({
+                rating: 3,
+                fullStar: true,
+                starWidth: "20px",
+                readOnly: true
+            });
         }
     });
 }
