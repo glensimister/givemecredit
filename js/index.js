@@ -1,21 +1,36 @@
 var user = gun.user();
 
-/* Import all of the Javascript files. NOTE: I still need to settup conditional statements to load specific js on specific pages */ 
+/* Import all of the Javascript components. NOTE: I still need to settup conditional statements to load specific js on specific pages */ 
 
-import {comments} from './functions/comments.js';
-import {connect} from './functions/connect.js';
-import {toolbar} from './functions/toolbar.js';
-import {status} from './functions/status.js';
-import {listCandidates} from './functions/listCandidates.js';
-import {distributeCredits,donateSocialCredits,transferCredits} from './functions/credits.js';
-import {applyAsCandidate} from './functions/applyAsCandidate.js';
-import {vote} from './functions/vote.js';
-import {displayPubService} from './functions/displayPubService.js';
-import {listElected} from './functions/listElected.js';
-import {displayUserData} from './functions/displayUserData.js';
-import {getProfile} from './functions/getProfile.js';
-import {lottery} from './functions/lottery.js';
-import {education} from './functions/education.js';
+import {sidebar} from './components/sidebar.js';
+import {navTop} from './components/navTop.js';
+import {comments} from './components/comments.js';
+import {connect} from './components/connect.js';
+import {toolbar} from './components/toolbar.js';
+import {status} from './components/status.js';
+import {listCandidates} from './components/listCandidates.js';
+import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
+import {applyAsCandidate} from './components/applyAsCandidate.js';
+import {vote} from './components/vote.js';
+import {displayPubService} from './components/displayPubService.js';
+import {listElected} from './components/listElected.js';
+import {displayUserData} from './components/displayUserData.js';
+import {getProfile} from './components/getProfile.js';
+import {lottery} from './components/lottery.js';
+import {education} from './components/education.js';
+
+
+/* load partials */
+
+$('.sidebar').load("partials/sidebar.html", function(){
+    sidebar();
+});
+
+$('.dropdown-container').load("partials/navtop.html", function(){
+    navTop();
+});
+
+$('.grid-search').load("partials/searchbar.html");
 
 /* routing */ 
 
@@ -43,6 +58,8 @@ import {education} from './functions/education.js';
     $(function () {
         app.run()
     });
+    
+    /* To Do: insert scripts on correct pages */
 
     function getPage(url, cb) {
         $('.sidebar ul li a.active').removeClass('active');
@@ -50,7 +67,6 @@ import {education} from './functions/education.js';
             url: url,
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
-                //partials here?
                 displayUserData();
                 connect();
                 toolbar();

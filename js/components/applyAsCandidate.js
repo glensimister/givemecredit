@@ -4,8 +4,9 @@ export function applyAsCandidate() {
         $('#tab2').prop('checked', true);
         var position = $('.candidate-position').val();
         gun.get('users').once(function (data) {
-            gun.get('pub/' + data.pubKey).val(function (result) {
-                gun.get('candidates').set({ //this will actually be in users when in production
+            gun.get('pub/' + data.pubKey).once(function (result) {
+                console.log("apply: " + result);
+                var candidate = {
                     id: result.id,
                     name: result.name,
                     photo: result.photo,
@@ -13,7 +14,8 @@ export function applyAsCandidate() {
                     rating: "0%",
                     upVotes: 0,
                     downVotes: 0
-                });
+                }
+                gun.get('candidates').set(candidate);
             });
         });
     });
