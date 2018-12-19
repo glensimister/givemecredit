@@ -22,14 +22,8 @@ import {education} from './components/education.js';
 
 /* load partials */
 
-$('.sidebar').load("partials/sidebar.html", function(){
-    sidebar();
-});
-
-$('.dropdown-container').load("partials/navtop.html", function(){
-    navTop();
-});
-
+$('.sidebar').load("partials/sidebar.html", function(){sidebar();});
+$('.dropdown-container').load("partials/navtop.html", function(){navTop();});
 $('.grid-search').load("partials/searchbar.html");
 
 /* routing */ 
