@@ -1,3 +1,61 @@
+var user = gun.user();
+
+import {
+    comments
+} from './functions/comments.js';
+
+import {
+    connect
+} from './functions/connect.js';
+
+import {
+    toolbar
+} from './functions/toolbar.js';
+
+import {
+    status
+} from './functions/status.js';
+
+import {
+    listCandidates
+} from './functions/listCandidates.js';
+
+import {
+    distributeCredits,
+    donateSocialCredits,
+    transferCredits
+} from './functions/credits.js';
+
+import {
+    applyAsCandidate
+} from './functions/applyAsCandidate.js';
+
+import {
+    vote
+} from './functions/vote.js';
+
+import {
+    displayPubService
+} from './functions/displayPubService.js';
+
+import {
+    listElected
+} from './functions/listElected.js';
+
+import {
+    displayUserData
+} from './functions/displayUserData.js';
+
+import {
+    getProfile
+} from './functions/getProfile.js';
+
+import {
+    lottery
+} from './functions/lottery.js';
+
+
+
 ;
 (function ($) {
 
@@ -15,13 +73,9 @@
             getPage("pages/home.html");
         });
 
-        this.get('#/profile', function () {
-            getPage("pages/profile.html", function () {
-                $.getScript("js/fns.gun.js", function () {
-                    gunAPI.getProfile();
-                });
-            });
-        });
+        /*this.get('#/profile', function () {
+            getPage("pages/profile.html");
+        });*/
 
         this.get('#/:page', function () {
             var page = this.params['page'];
@@ -48,8 +102,22 @@
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
                 $.getScript("js/initializeplugins.js");
-                $.getScript("js/main.js");
-                gunAPI.displayUserData();
+                displayUserData();
+                connect();
+                toolbar();
+                comments();
+                status();
+                displayPubService();
+                getProfile();
+                listCandidates();
+                listElected();
+                displayPubService();
+                lottery();
+                vote();
+                applyAsCandidate();
+                distributeCredits();
+                donateSocialCredits();
+                transferCredits();
             }
         });
         $(window).scrollTop(0);
