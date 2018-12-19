@@ -22,4 +22,10 @@ export function toolbar() {
         count++;
         elem.html(count);
     }
+    
+    $(".rateYoToolbar").rateYo({
+        rating: 4,
+        starWidth: "15px",
+        readOnly: true
+    });
 }

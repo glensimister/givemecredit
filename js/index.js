@@ -15,6 +15,7 @@ import {listElected} from './functions/listElected.js';
 import {displayUserData} from './functions/displayUserData.js';
 import {getProfile} from './functions/getProfile.js';
 import {lottery} from './functions/lottery.js';
+import {education} from './functions/education.js';
 
 /* routing */ 
 
@@ -50,7 +51,6 @@ import {lottery} from './functions/lottery.js';
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
                 //partials here?
-                //$.getScript("js/initializeplugins.js"); //this should be done in the functions
                 displayUserData();
                 connect();
                 toolbar();
@@ -67,6 +67,7 @@ import {lottery} from './functions/lottery.js';
                 distributeCredits();
                 donateSocialCredits();
                 transferCredits();
+                education();
             }
         });
         $(window).scrollTop(0);

@@ -14,7 +14,7 @@ export function displayUserData() {
                 //$('.profile-summary ul li a.connections').html(result.connections);
             });
             $(".rateYo").rateYo({
-                rating: 3,
+                rating: 3.6,
                 fullStar: true,
                 starWidth: "20px",
                 readOnly: true
