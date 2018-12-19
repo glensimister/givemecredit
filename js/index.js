@@ -1,82 +1,30 @@
 var user = gun.user();
 
-import {
-    comments
-} from './functions/comments.js';
+/* Import all of the Javascript files. NOTE: I still need to settup conditional statements to load specific js on specific pages */ 
 
-import {
-    connect
-} from './functions/connect.js';
+import {comments} from './functions/comments.js';
+import {connect} from './functions/connect.js';
+import {toolbar} from './functions/toolbar.js';
+import {status} from './functions/status.js';
+import {listCandidates} from './functions/listCandidates.js';
+import {distributeCredits,donateSocialCredits,transferCredits} from './functions/credits.js';
+import {applyAsCandidate} from './functions/applyAsCandidate.js';
+import {vote} from './functions/vote.js';
+import {displayPubService} from './functions/displayPubService.js';
+import {listElected} from './functions/listElected.js';
+import {displayUserData} from './functions/displayUserData.js';
+import {getProfile} from './functions/getProfile.js';
+import {lottery} from './functions/lottery.js';
 
-import {
-    toolbar
-} from './functions/toolbar.js';
-
-import {
-    status
-} from './functions/status.js';
-
-import {
-    listCandidates
-} from './functions/listCandidates.js';
-
-import {
-    distributeCredits,
-    donateSocialCredits,
-    transferCredits
-} from './functions/credits.js';
-
-import {
-    applyAsCandidate
-} from './functions/applyAsCandidate.js';
-
-import {
-    vote
-} from './functions/vote.js';
-
-import {
-    displayPubService
-} from './functions/displayPubService.js';
-
-import {
-    listElected
-} from './functions/listElected.js';
-
-import {
-    displayUserData
-} from './functions/displayUserData.js';
-
-import {
-    getProfile
-} from './functions/getProfile.js';
-
-import {
-    lottery
-} from './functions/lottery.js';
-
-
+/* routing */ 
 
 ;
 (function ($) {
-
     var app = $.sammy(function () {
-
-        this.get('#/', function () {
-            getPage("pages/home.html");
-        });
-
-        this.get('/index.html', function () {
-            getPage("pages/home.html");
-        });
-
-        this.get('/', function () {
-            getPage("pages/home.html");
-        });
-
-        /*this.get('#/profile', function () {
-            getPage("pages/profile.html");
-        });*/
-
+        this.get('#/', function () {getPage("pages/home.html");});
+        this.get('/index.html', function () {getPage("pages/home.html");});
+        this.get('/', function () {getPage("pages/home.html");});
+        
         this.get('#/:page', function () {
             var page = this.params['page'];
             getPage('pages/' + this.params['page'] + '.html');
@@ -101,7 +49,8 @@ import {
             url: url,
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
-                $.getScript("js/initializeplugins.js");
+                //partials here?
+                $.getScript("js/initializeplugins.js"); //this should be done in the functions
                 displayUserData();
                 connect();
                 toolbar();
