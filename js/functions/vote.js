@@ -47,7 +47,7 @@ export function vote() {
             $('.approval-rating').html(percentageString);
 
             if ((percentage >= 65) && (voteType === 'up')) {
-                gun.get('candidates').map().once(function (res, key) {
+                gun.get('candidates').map().once(function (res) {
                     if (res.id === userID) {
                         var profile = {
                             id: res.id,

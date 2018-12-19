@@ -1,7 +1,8 @@
 export function listElected() {
     var count = 0;
-    gun.get('elected').map().val(function (data) {
+    gun.get('elected').map().on(function (data) {
         count++;
+        console.log(count);
         let candidateSummary = `<div class="official-${count}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile?id=${data.id}&status=official">${data.name}</a></h4>

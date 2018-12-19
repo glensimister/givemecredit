@@ -4,7 +4,7 @@ export function applyAsCandidate() {
         $('#tab2').prop('checked', true);
         var position = $('.candidate-position').val();
         gun.get('users').once(function (data) {
-            gun.get('pub/' + data.pubKey).once(function (result) {
+            gun.get('pub/' + data.pubKey).val(function (result) {
                 gun.get('candidates').set({ //this will actually be in users when in production
                     id: result.id,
                     name: result.name,
