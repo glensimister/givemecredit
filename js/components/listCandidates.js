@@ -1,23 +1,28 @@
 export function listCandidates() {
     var count = 0;
-    gun.get('candidates').map().once(function (data) {
+    gun.get('candidates').map().once(function (data, key) {
+        console.log(data.elected);
         count++;
-        let candidateSummary = `<div id="${data.id}" class="candidate-${count}">
+        var candidate = `<div id="${key}">
                 <div class="rateYo"></div>
                 <h4><a href="#/profile?id=${data.id}&status=candidate">${data.name}</a></h4>
                 <p class="position">${data.position}</p>
                 <img src="${data.photo}" class="user-image-large" alt="User Image">
-                <p>Approval rating: <b class="approval-rating">${data.rating}</b></p>
+                <p>Approval rating: <b class="approval-rating">${data.approvalRating}</b></p>
                 <div class="grid-votes">
-                    <div class="red"><i title="${data.id}" id="up-${count}" class="fa fa-thumbs-o-up"></i></div>
-                    <div>0</div>
-                    <div class="blue"><i title="${data.id}" id="down-${count}" class="fa fa-thumbs-o-down"></i></div>
-                    <div>0</div>
+                    <div class="red"><i title="${key}" class="fa fa-thumbs-o-up"></i></div>
+                    <div>${data.upVotes}</div>
+                    <div class="blue"><i title="${key}" class="fa fa-thumbs-o-down"></i></div>
+                    <div>${data.downVotes}</div>
                 </div>
             </div>`;
-        $('.localCandidates').append(candidateSummary);
+        if (data.elected === false) {
+            $('.localCandidates').append(candidate);
+        } else if (data.elected === true) {
+            $('.localOfficials').append(candidate);
+        }
         $(".rateYo").rateYo({
-            rating: data.rating,
+            rating: data.approvalRating,
             starWidth: "20px",
             readOnly: true
         });

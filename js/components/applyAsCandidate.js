@@ -5,13 +5,12 @@ export function applyAsCandidate() {
         var position = $('.candidate-position').val();
         gun.get('users').once(function (data) {
             gun.get('pub/' + data.pubKey).once(function (result) {
-                console.log("apply: " + result);
                 var candidate = {
-                    id: result.id,
                     name: result.name,
                     photo: result.photo,
                     position: position,
-                    rating: "0%",
+                    elected: false,
+                    approvalRating: "0%",
                     upVotes: 0,
                     downVotes: 0
                 }

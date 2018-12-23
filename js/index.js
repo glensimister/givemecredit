@@ -1,6 +1,6 @@
 var user = gun.user();
 
-/* Import all of the Javascript components. NOTE: I still need to settup conditional statements to load specific js on specific pages */ 
+/* Import all of the Javascript components. */ 
 
 import {sidebar} from './components/sidebar.js';
 import {navTop} from './components/navTop.js';
@@ -11,9 +11,8 @@ import {status} from './components/status.js';
 import {listCandidates} from './components/listCandidates.js';
 import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
 import {applyAsCandidate} from './components/applyAsCandidate.js';
-import {vote} from './components/vote.js';
+import {electCandidate} from './components/electCandidate.js';
 import {displayPubService} from './components/displayPubService.js';
-import {listElected} from './components/listElected.js';
 import {displayUserData} from './components/displayUserData.js';
 import {getProfile} from './components/getProfile.js';
 import {lottery} from './components/lottery.js';
@@ -52,7 +51,7 @@ $('.grid-search').load("partials/searchbar.html");
         app.run()
     });
     
-    /* To Do: insert scripts on correct pages */
+    /* insert scripts on correct pages */
 
     function getPage(url, cb) {
         $('.sidebar ul li a.active').removeClass('active');
@@ -86,8 +85,7 @@ $('.grid-search').load("partials/searchbar.html");
                 
                 if (thisPage[1] == 'voting') {
                     listCandidates();
-                    listElected();
-                    vote();
+                    electCandidate();
                     applyAsCandidate();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
