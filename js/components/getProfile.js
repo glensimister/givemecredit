@@ -1,26 +1,15 @@
 export function getProfile() {
+    
     var id = getUrlVars()["id"];
-    var status = getUrlVars()["status"];
-
-    if (status === 'candidate') {
+    
         gun.get('candidates').map().on(function (data) {
             if (data.id === id) {
                 $('.profile-summary h4').html(data.position);
                 $('.profile-summary img').attr("src", data.photo);
                 $('.profile-summary ul li a.fullname').html(data.name);
-                $('.profile-summary ul li a.approval-rating').html(data.rating);
+                $('.profile-summary ul li a.approval-rating').html(data.approvalRating);
             }
         });
-    } else if (status === 'official') {
-        gun.get('elected').map().on(function (data) {
-            if (data.id === id) {
-                $('.profile-summary h4').html(data.position);
-                $('.profile-summary img').attr("src", data.photo);
-                $('.profile-summary ul li a.fullname').html(data.name);
-                $('.profile-summary ul li a.approval-rating').html(data.rating);
-            }
-        });
-    }
 
     function getUrlVars() {
         var vars = [],

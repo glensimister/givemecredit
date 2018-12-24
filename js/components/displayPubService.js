@@ -3,10 +3,10 @@ export function displayPubService() {
         if (data.isElected === true) {
             var publicService = `<div>
                 <i class="fa fa-times delete"></i>
-                <h3><a href="#/profile?id=${data.id}&status=official">${data.service}</a></h3>
+                <h3><a href="#/profile?id=${data.id}">${data.service}</a></h3>
                 <ul class="funds-raised">
                     <li>
-                        Official<b class="pull-right"><a href="#/profile?id=${data.id}&status=official">${data.owner}</a></b>
+                        Official<b class="pull-right"><a href="#/profile?id=${data.id}">${data.owner}</a></b>
                     </li>
                     <li>
                         Monthly target<b class="pull-right">200 IDX</b>

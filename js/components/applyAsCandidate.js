@@ -5,7 +5,9 @@ export function applyAsCandidate() {
         var position = $('.candidate-position').val();
         gun.get('users').once(function (data) {
             gun.get('pub/' + data.pubKey).once(function (result) {
+                //var usrPubKey = key.split("/");
                 var candidate = {
+                    id: data.pubKey,
                     name: result.name,
                     photo: result.photo,
                     position: position,
@@ -16,7 +18,7 @@ export function applyAsCandidate() {
                 }
                 gun.get('candidates').set(candidate);
                 gun.get('services').set({
-                    id: null,
+                    id: data.pubKey,
                     service: position,
                     owner: result.name,
                     isElected: false
