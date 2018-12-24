@@ -22,17 +22,25 @@ export function donateSocialCredits() {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
+            //maybe move the code below to somewhere else
             var usrPubKey = $('.donate-sc').attr('title'); //this needs to be 'this' but not working
             var percentage;
             gun.get('services').map().once(function (data, key) {
                 if (usrPubKey === data.id) {
                     var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
                     gun.get(key).path('creditsReceived').put(creditsReceived);
-                    var monthlyTarget = $('.monthlyTarget').html();
+                    $('#' + key + ' .creditsReceived').html(creditsReceived);
+                    var monthlyTarget = $('#' + key + ' .monthlyTarget').html();
                     var progress = parseInt(monthlyTarget) + creditsReceived;
                     percentage = (parseInt(creditsReceived) / parseInt(monthlyTarget)) * 100;
                     var percentageString = percentage.toFixed(0) + "%";
-                    $(".progress-bar > div").css("width", percentageString); //this isn't working
+                    gun.get(key).path('percentageOfTarget').put(percentageString);
+                    if (percentage <= 100){
+                       $('#' + key + " .progress-bar > div").css("width", percentageString); 
+                    } else {
+                       $('#' + key + " .progress-bar > div").css("width", "100%"); 
+                    }
+                    
                 }
             });
             payRebate(amount);

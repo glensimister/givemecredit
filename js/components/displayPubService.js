@@ -1,8 +1,14 @@
 export function displayPubService() {
     gun.get('services').map().once(function (data, key) {
         if (data.isElected === true) {
-            var publicService = `<div id=${data.id}>
-                <i class="fa fa-times delete"></i>
+            //will move the lines below into separate file
+            var pOfTarget = data.percentageOfTarget;
+            var percentage = data.percentageOfTarget.split('%');
+            percentage = parseInt(percentage[0]);
+            if (percentage > 100) {
+                pOfTarget = '100%';
+            }
+            var publicService = `<div id=${key}>
                 <h3><a href="#/profile?id=${data.id}">${data.service}</a></h3>
                 <ul class="funds-raised">
                     <li>
@@ -16,7 +22,7 @@ export function displayPubService() {
                     </li>
                 </ul>
                 <div class="progress-bar">
-                    <div style="width: 60%;">
+                    <div style="width: ${pOfTarget};">
                     </div>
                 </div>
                 <select class="form-control">

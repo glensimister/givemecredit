@@ -21,7 +21,8 @@ export function applyAsCandidate() {
                     service: position,
                     owner: result.name,
                     isElected: false,
-                    creditsReceived: 0
+                    creditsReceived: 0,
+                    percentageOfTarget: "0%"
                 });
             });
         });

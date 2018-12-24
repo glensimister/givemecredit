@@ -1,8 +1,6 @@
 export function listCandidates() {
-    var count = 0;
     var isElected = 'notElected';
     gun.get('candidates').map().once(function (data, key) {
-        count++;
         if (data.elected) isElected = 'elected';
         var candidate = `<div id="${key}" class="${isElected}">
                 <div class="rateYo"></div>

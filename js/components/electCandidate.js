@@ -40,12 +40,10 @@ export function electCandidate() {
                 gun.get(id).path('isElected').put(true);
             }
             });
-            $('div#' + key).remove();
             listCandidates();
             $('#tab1').prop('checked', true);
         } else if (percentage < 65 && isElected) {
             elected.put(false);
-            $('div#' + key).remove();
             listCandidates();
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
