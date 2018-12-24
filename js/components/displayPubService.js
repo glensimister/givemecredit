@@ -1,7 +1,7 @@
 export function displayPubService() {
     gun.get('services').map().once(function (data, key) {
         if (data.isElected === true) {
-            var publicService = `<div>
+            var publicService = `<div id=${data.id}>
                 <i class="fa fa-times delete"></i>
                 <h3><a href="#/profile?id=${data.id}">${data.service}</a></h3>
                 <ul class="funds-raised">
@@ -9,10 +9,10 @@ export function displayPubService() {
                         Official<b class="pull-right"><a href="#/profile?id=${data.id}">${data.owner}</a></b>
                     </li>
                     <li>
-                        Monthly target<b class="pull-right">200 IDX</b>
+                        Monthly target<b class="pull-right"><span class="monthlyTarget">200</span> IDX</b>
                     </li>
                     <li>
-                        Raised so far<b class="pull-right">120 IDX</b>
+                        Raised so far<b class="pull-right"><span class="creditsReceived">${data.creditsReceived}</span> IDX</b>
                     </li>
                 </ul>
                 <div class="progress-bar">
@@ -32,7 +32,7 @@ export function displayPubService() {
                 <br />
                 <div class="grid-input-button">
                     <div><input type="text" class="form-control donate-input"></div>
-                    <div><button type="button" class="donate-sc">DONATE</button></div>
+                    <div><button type="button" title="${data.id}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
             $('.localServices').prepend(publicService);

@@ -6,7 +6,6 @@ body {
     line-height: 1.5;
     font-size: 14px;
 }
-
 h1,
 h2,
 h3,
@@ -16,51 +15,40 @@ h6,
 p {
     margin: 0 0 15px 0;
 }
-
 h4 {
     font-size: 16px;
 }
-
 b,
 strong {
     font-weight: 700;
 }
-
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
 }
-
 small {
     font-size: 10px;
 }
-
 .pull-right {
     float: right;
 }
-
 ul.docs-list {
     margin: 0 20px 20px 20px;
 }
-
 ul.docs-list li {
     list-style: circle;
 }
-
 a {
     color: #008d4c;
     text-decoration: none;
 }
-
 textarea.form-control {
     height: auto;
 }
-
 .relative-container > div {
     position: relative;
 }
-
 .relative-container .delete {
     position: absolute;
     top: 10px;
@@ -68,7 +56,6 @@ textarea.form-control {
     color: #bbb;
     cursor: pointer;
 }
-
 .sign-in {
     position: fixed;
     top: 50%;
@@ -83,7 +70,6 @@ textarea.form-control {
     background-color: #fff;
     border-radius: 4px;
 }
-
 .blurred-bg {
     background-color: #eee;
 }
@@ -93,7 +79,6 @@ textarea.form-control {
 .grid > div {
     padding: 10px;
 }
-
 .sidebar,
 .footer,
 .top-nav,
@@ -103,7 +88,6 @@ textarea.form-control {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
 .box > div {
     padding: 20px;
     border: 1px solid #eee;
@@ -112,7 +96,6 @@ textarea.form-control {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
 .profile-summary {
     text-align: center;
     padding: 20px;
@@ -122,7 +105,6 @@ textarea.form-control {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
 .profile-summary h4#fullName {
     text-transform: capitalize;
 }
@@ -140,22 +122,18 @@ textarea.form-control {
 .rateYo {
     margin: 0 auto 20px auto;
 }
-
 .rateYoLeft {
     margin-bottom: 20px;
 }
-
 .profile-summary ul {
     text-align: left;
     margin-bottom: 20px;
 }
-
 .profile-summary ul li {
     border-bottom: 1px solid #eee;
     line-height: 30px;
     display: block;
 }
-
 .status-update input {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -165,7 +143,6 @@ textarea.form-control {
     font-size: 16px;
     color: #848484;
 }
-
 .status-update input:focus {
     outline: 0;
 }
@@ -198,16 +175,15 @@ textarea.form-control {
     color: #00acd6;
     cursor: pointer;
 }
-
 .status-update button:focus {
     outline: 0;
 }
-
 
 /*
 .status-update span {
     line-height: 45px;
 }*/
+
 
 /*.status-update-reminder {
     margin-top: 20px;
@@ -224,7 +200,6 @@ textarea.form-control {
     margin-bottom: 20px;
 }
 
-
 /*.grid-status-update-reminder {
     border-radius: 3px;
     border: 1px solid #eee;
@@ -235,42 +210,34 @@ textarea.form-control {
     padding: 5px;
     text-align: center;
 }
-
 .grid-status-update-reminder > div:nth-child(even) {
     cursor: pointer;
 }
-
 .grid-status-update-reminder > div:nth-child(odd) {
     -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
 .grid-status-update-reminder > div:nth-child(1) {
     color: #e08e0b;
     border-right: 1px solid #eee;
 }
-
 .grid-status-update-reminder > div:nth-child(3) {
     color: #dd4b39;
     border-right: 1px solid #eee;
     border-left: 1px solid #eee;
 }
-
 .grid-status-update-reminder > div:nth-child(5) {
     color: #008d4c;
     border-right: 1px solid #eee;
     border-left: 1px solid #eee;
 }
-
 .grid-status-update-reminder > div:nth-child(7) {
     border-left: 1px solid #eee;
 }
-
 .post-update {
     grid-column: 7 / 9;
 }
-
 
 /**** user image *****/
 
@@ -282,7 +249,6 @@ textarea.form-control {
     border-radius: 50%;
     margin-right: 10px;
 }
-
 .user-image-small {
     float: left;
     width: 25px;
@@ -291,7 +257,6 @@ textarea.form-control {
     border-radius: 50%;
     margin-right: 10px;
 }
-
 .user-image-large {
     width: 100px;
     height: 100px;
@@ -308,7 +273,6 @@ textarea.form-control {
     border-radius: 4px;
     margin-bottom: 20px;
 }
-
 .post .post-comment-input {
     border: none;
     padding: 20px;
@@ -317,24 +281,19 @@ textarea.form-control {
     line-height: 1.5;
     font-size: 14px;
 }
-
 .post .post-comment-input:focus {
     outline: 0;
 }
-
 .post-desc {
     margin-top: 10px;
 }
-
 .post-body {
     padding: 20px;
 }
-
 .post span a:first-child {
     font-weight: bold;
     text-transform: capitalize;
 }
-
 .content {
     background: #fff;
     margin-bottom: 90px;
@@ -345,7 +304,6 @@ textarea.form-control {
 .grid-3-col > div {
     padding: 0;
 }
-
 .grid-3-col > div,
 .grid-4-col > div {
     border: 1px solid #eee;
@@ -365,29 +323,24 @@ textarea.form-control {
     -moz-box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
     box-shadow: 0px -2px 13px -1px rgba(0, 0, 0, 0.11);
 }
-
 .footer,
 .top-nav {
     background: #fff;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
-
 .footer ul {
     text-align: center;
 }
-
 .footer ul li:nth-child(1),
 .footer ul li:nth-child(2) {
     border-right: 1px solid;
 }
-
 .footer ul li {
     display: inline-block;
     margin-right: 5px;
     padding-right: 10px;
 }
-
 small.label-red,
 small.label-green {
     font-size: 12px;
@@ -395,30 +348,24 @@ small.label-green {
     border-radius: 3px;
     color: #fff;
 }
-
 .label-red {
     background-color: #dd4b39;
 }
-
 .label-blue {
     background-color: #00acd6;
 }
-
 .label-yellow {
     background-color: #e08e0b;
 }
-
 .label-green {
     background-color: #008d4c;
 }
 
 /******* end top nav *******/
 
-
 .banner {
     width: 100%;
 }
-
 #tabs {
     /*min-width: 320px;
     max-width: 100%;
@@ -426,7 +373,6 @@ small.label-green {
     width: 100%;
     background: #fff;
 }
-
 #tabs section {
     display: none;
     padding: 20px;
@@ -434,11 +380,9 @@ small.label-green {
     border-bottom-right-radius: 3px;
     border: 1px solid #eee;
 }
-
 #tabs > input {
     display: none;
 }
-
 #tabs > label {
     display: inline-block;
     margin: 0 0 -1px;
@@ -457,6 +401,7 @@ small.label-green {
 /*#tabs > label span {
     margin-left: 10px;
 }*/
+
 
 /*
 #tabs label:before {
@@ -485,7 +430,6 @@ small.label-green {
     color: #888;
     cursor: pointer;
 }
-
 #tabs > input:checked + label {
     color: #555;
     border: 1px solid #eee;
@@ -495,7 +439,6 @@ small.label-green {
     -moz-box-shadow: none;
     box-shadow: none;
 }
-
 #tab0:checked ~ #content0,
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
@@ -507,37 +450,28 @@ small.label-green {
 #tab8:checked ~ #content8 {
     display: block;
 }
-
-
-
-
 @media screen and (min-width: 650px) {
     #tabs label i {
         display: none;
     }
 }
-
 @media screen and (max-width: 650px) {
     #tabs label span {
         font-size: 0;
     }
-
     /* #tabs label:before {
         margin: 0;
         font-size: 18px;
     } */
 }
-
 @media screen and (max-width: 400px) {
     #tabs label {
         padding: 15px;
     }
 }
-
 .form-group {
     margin-bottom: 20px;
 }
-
 .form-control {
     display: block;
     width: 100%;
@@ -557,13 +491,11 @@ small.label-green {
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-
 .donate-input {
     border-right: none;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-
 .donate-sc,
 .topup-hc,
 .topup-ec {
@@ -580,12 +512,10 @@ small.label-green {
     color: #fff;
     cursor: pointer;
 }
-
 .table {
     width: 100%;
     border: 1px solid #eee;
 }
-
 .table > tbody > tr > td,
 .table > tbody > tr > th,
 .table > tfoot > tr > td,
@@ -597,11 +527,9 @@ small.label-green {
     vertical-align: top;
     border-top: 1px solid #eee;
 }
-
 .table tr td {
     border-right: 1px solid #eee;
 }
-
 
 /*** fund public services *****/
 
@@ -611,7 +539,6 @@ small.label-green {
     height: 7px;
     margin: 15px 0 20px 0;
 }
-
 .progress-bar > div {
     height: 7px;
     background-image: linear-gradient(45deg, #ffc15f 25%, #e08e0b 25%, #e08e0b 50%, #ffc15f 50%, #ffc15f 75%, #e08e0b 75%, #e08e0b 100%);
@@ -620,7 +547,9 @@ small.label-green {
 
 /*** end fund public services ****/
 
+
 /******* Voting **********/
+
 
 /*** NOTE: maybe create a genreic style for these ***/
 
@@ -629,34 +558,27 @@ small.label-green {
     display: inline-block;
     margin-right: 10px;
 }
-
 .official-search div button,
 .land-search div a {
     height: 34px;
     padding: 6px 12px;
     line-height: 22px;
 }
-
-
 .land-search-results ul {
     margin-bottom: 20px;
 }
-
 .land-search-results ul li {
     text-align: left;
     border-bottom: 1px solid #eee;
     padding: 5px;
 }
-
 .land-search-results img {
     width: 100%;
     height: auto;
 }
-
 .terms-of-use {
     margin-bottom: 20px;
 }
-
 .terms-of-use li {
     border-bottom: 1px solid #eee;
     padding: 5px;
@@ -667,7 +589,6 @@ small.label-green {
 .housing h3 {
     font-size: 14px;
 }
-
 .housing img {
     border: 2px solid #eee;
     margin-bottom: 10px;
@@ -684,12 +605,10 @@ small.label-green {
 ul.lottery-input {
     margin-bottom: 10px;
 }
-
 ul.lottery-input li {
     display: inline-block;
     margin-right: 10px;
 }
-
 ul.lottery-input li input {
     border: none;
     width: 40px;
@@ -700,12 +619,10 @@ ul.lottery-input li input {
     line-height: 1.42857143;
     color: #222d32;
 }
-
 .lottery-numbers td {
     text-align: center;
     /*vertical-align: middle;*/
 }
-
 .lottery-numbers ul li {
     width: 45px;
     height: 45px;
@@ -718,11 +635,9 @@ ul.lottery-input li input {
     background-color: #00c0ef;
     color: #fff;
 }
-
 ul li.bonus-ball {
     background-color: #dd4b39;
 }
-
 .buy-ticket {
     display: block;
     width: 100%;
@@ -732,10 +647,9 @@ ul li.bonus-ball {
     line-height: 1.5;
 }
 
-
-
-
 /****** education **********/
+
+
 /*
 #tabs.course-builder-tabs > label {
     padding: 5px 15px;
@@ -746,7 +660,6 @@ ul li.bonus-ball {
     font-size: 50px;
     color: #dd4b39;
 }
-
 #tabs.course div label {
     font-weight: 500;
     display: block;
@@ -767,36 +680,27 @@ ul li.bonus-ball {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
-
 .course {
     /*text-align: center;*/
 }
-
 .course .radio {
     display: inline-block;
 }
-
 .course .grid-2-col {
     /*border-top: 1px solid #eee;
     padding: 10px;*/
 }
-
 .course .radio label input {
     position: relative;
     top: 2px;
     margin-left: 15px;
 }
-
 .course-review {
     text-align: center;
 }
-
 .course-review span {
     color: #dd4b39;
 }
-
-
 
 /*
 
@@ -808,6 +712,7 @@ ul li.bonus-ball {
     max-width: 500px;
     margin: auto;
 }*/
+
 
 /* these styles are for a horizontal checkbox
 .grid-course-review {
@@ -842,14 +747,15 @@ ul li.bonus-ball {
     text-align: left;
     border: 1px solid #eee;
 }
-
 .funds-raised li {
     padding: 5px 10px;
     border-bottom: 1px solid #eee;
 }
-
 .funds-raised li:last-child {
     border-bottom: none;
+}
+.funds-raised span {
+    color: #dd4b39;
 }
 
 /***** healthcare ********/
@@ -858,7 +764,6 @@ ul li.bonus-ball {
     font-size: 50px;
     color: #008d4c;
 }
-
 .service-provider-img {
     width: 100%;
     border: 1px solid #eee;
@@ -866,6 +771,7 @@ ul li.bonus-ball {
 }
 
 /*************************/
+
 .plugins img {
     width: 100%;
     overflow: hidden;
@@ -874,7 +780,6 @@ ul li.bonus-ball {
     text-align: center;
     border: 1px solid #eee;
 }
-
 .plugins .plugin-desc {
     height: 150px;
     overflow: hidden;

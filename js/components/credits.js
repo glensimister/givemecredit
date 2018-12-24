@@ -22,6 +22,13 @@ export function donateSocialCredits() {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
+            var usrPubKey = $('.donate-sc').attr('title'); //this needs to be 'this' but not working
+            gun.get('services').map().once(function (data, key) {
+                if (usrPubKey === data.id) {
+                    var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
+                    gun.get(key).path('creditsReceived').put(creditsReceived);
+                }
+            });
             payRebate(amount);
         }
 

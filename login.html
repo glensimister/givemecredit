@@ -17,8 +17,9 @@
     <!--<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="js/vendor/select2.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
+    <script src="/js/vendor/gun.js"></script>
+    <script src="/js/vendor/sea.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>-->
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
     <style>
@@ -30,16 +31,20 @@
     <script>
         document.write("<base href='" + window.location.href + "' />");
         $(document).ready(function() {
+            
+            $('.user-name').val('bob123');
+            $('.password').val('password');
+            $('.name').val('Bob Smith');
+            
             var gun = Gun();
             var user = gun.user();
             $('.create-user').on("click", function(e) {
                 e.stopImmediatePropagation();
-                //var name = $('.user-name').val();
-                //var password = $('.password').val();
-                var name = "bobsmith";
-                var password = "password";
+                var name = $('.user-name').val();
+                var password = $('.password').val();
                 
                 user.create(name, password, function(result) {
+                    console.log(result.pub);
                     var pubKey = result.pub;
                     gun.get('users').put({
                         pubKey: pubKey
@@ -49,19 +54,14 @@
             });
             $('.user-login').on("click", function(e) {
                 e.stopImmediatePropagation();
-                //var username = $('.user-name').val();
-                //var password = $('.password').val();
-                //var name = $('.name').val();
-                //var photo = $('.photo').val();
+                var username = $('.user-name').val();
+                var password = $('.password').val();
+                var name = $('.name').val();
+                var photo = $('.photo').val();
                 
-                var username = "bobsmith";
-                var password = "password";
-                var name = "Bob Smith";
-                var photo = "avatar5.png";
-                
-                //photo = photo.replace(/.*[\/\\]/, '');
+                photo = photo.replace(/.*[\/\\]/, '');
                 user.auth(username, password, function(result) {
-                    var pubKey = result.sea.pub;
+                    var pubKey = result.pub;
                     var id = pubKey.substring(0, 8);
                     gun.get('pub/' + result.sea.pub).put({
                         id: id,
