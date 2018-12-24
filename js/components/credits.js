@@ -23,10 +23,16 @@ export function donateSocialCredits() {
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
             var usrPubKey = $('.donate-sc').attr('title'); //this needs to be 'this' but not working
+            var percentage;
             gun.get('services').map().once(function (data, key) {
                 if (usrPubKey === data.id) {
                     var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
                     gun.get(key).path('creditsReceived').put(creditsReceived);
+                    var monthlyTarget = $('.monthlyTarget').html();
+                    var progress = parseInt(monthlyTarget) + creditsReceived;
+                    percentage = (parseInt(creditsReceived) / parseInt(monthlyTarget)) * 100;
+                    var percentageString = percentage.toFixed(0) + "%";
+                    $(".progress-bar > div").css("width", percentageString); //this isn't working
                 }
             });
             payRebate(amount);
