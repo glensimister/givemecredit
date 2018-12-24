@@ -15,6 +15,12 @@ export function applyAsCandidate() {
                     downVotes: 0
                 }
                 gun.get('candidates').set(candidate);
+                gun.get('services').set({
+                    id: null,
+                    service: position,
+                    owner: result.name,
+                    isElected: false
+                });
             });
         });
     });

@@ -35,11 +35,10 @@ export function electCandidate() {
 
         if (percentage >= 65) {
             elected.put(true);
-            gun.get('services').set({
-                id: key,
-                service: position,
-                owner: name,
-                isElected: true
+            gun.get('services').map().once(function (data, id) {
+            if (data.owner === name) {
+                gun.get(id).path('isElected').put(true);
+            }
             });
             $('div#' + key).remove();
             listCandidates();
