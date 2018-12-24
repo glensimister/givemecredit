@@ -38,7 +38,8 @@ export function electCandidate() {
             gun.get('services').set({
                 id: key,
                 service: position,
-                owner: name
+                owner: name,
+                isElected: true
             });
             $('div#' + key).remove();
             listCandidates();
@@ -49,7 +50,7 @@ export function electCandidate() {
             listCandidates();
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
-                gun.get(id).path('owner').put(null);
+                gun.get(id).path('isElected').put(false);
             }
             });
             $('#tab2').prop('checked', true);

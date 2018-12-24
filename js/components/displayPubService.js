@@ -1,7 +1,6 @@
 export function displayPubService() {
     gun.get('services').map().once(function (data, key) {
-        console.log(data.owner);
-        if (data.owner !== null) {
+        if (data.isElected === true) {
             var publicService = `<div>
                 <i class="fa fa-times delete"></i>
                 <h3><a href="#/profile?id=${data.id}&status=official">${data.service}</a></h3>
