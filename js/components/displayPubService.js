@@ -1,6 +1,8 @@
 export function displayPubService() {
-    gun.get('services').map().val(function (data) {
-        var publicService = `<div id="${data.id}">
+    gun.get('services').map().once(function (data, key) {
+        console.log(data.owner);
+        if (data.owner !== null) {
+            var publicService = `<div>
                 <i class="fa fa-times delete"></i>
                 <h3><a href="#/profile?id=${data.id}&status=official">${data.service}</a></h3>
                 <ul class="funds-raised">
@@ -34,6 +36,7 @@ export function displayPubService() {
                     <div><button type="button" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
-        $('.localServices').prepend(publicService);
+            $('.localServices').prepend(publicService);
+        }
     });
 }

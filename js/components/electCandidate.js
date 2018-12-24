@@ -1,3 +1,5 @@
+import {listCandidates} from './listCandidates.js';
+
 export function electCandidate() {
     var totalVotes = 0;
     var percentage = 0;
@@ -28,19 +30,29 @@ export function electCandidate() {
 
         var position = $('div#' + key + ' .position').text();
         var name = $('div#' + key + ' h4 a').text();
-        console.log(name);
+        var elected = gun.get(key).path('elected'); 
+        var isElected = $('div#' + key).hasClass('elected');
 
         if (percentage >= 65) {
-            gun.get(key).path('elected').put(true);
+            elected.put(true);
             gun.get('services').set({
                 id: key,
                 service: position,
                 owner: name
             });
-            //$('.localCandidates div#' + key).remove();
-        } else if (percentage < 65) {
-            gun.get(key).path('elected').put(false);
-            //$('.localOfficials div#' + key).remove();
+            $('div#' + key).remove();
+            listCandidates();
+            $('#tab1').prop('checked', true);
+        } else if (percentage < 65 && isElected) {
+            elected.put(false);
+            $('div#' + key).remove();
+            listCandidates();
+            gun.get('services').map().once(function (data, id) {
+            if (data.owner === name) {
+                gun.get(id).path('owner').put(null);
+            }
+            });
+            $('#tab2').prop('checked', true);
         }
     });
 }
