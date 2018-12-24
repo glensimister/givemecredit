@@ -25,7 +25,7 @@ export function electCandidate() {
         percentage = (upVotes / totalVotes) * 100;
         var percentageString = percentage.toFixed(0) + "%";
         gun.get(key).path('approvalRating').put(percentageString);
-        $('.approval-rating').html(percentageString);
+        $('div#' + key + ' .approval-rating').html(percentageString); //this needs to be more specific
         $('div#' + key).find(".rateYo").rateYo("rating", percentageString);
 
         var position = $('div#' + key + ' .position').text();
@@ -33,7 +33,7 @@ export function electCandidate() {
         var elected = gun.get(key).path('elected'); 
         var isElected = $('div#' + key).hasClass('elected');
 
-        if (percentage >= 65) {
+        if (percentage >= 65 && !isElected) {
             elected.put(true);
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
@@ -44,12 +44,12 @@ export function electCandidate() {
             $('#tab1').prop('checked', true);
         } else if (percentage < 65 && isElected) {
             elected.put(false);
-            listCandidates();
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
                 gun.get(id).path('isElected').put(false);
             }
             });
+            listCandidates();
             $('#tab2').prop('checked', true);
         }
     });
