@@ -23,26 +23,44 @@
     <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
     <style>
-        .user-login {
-            display:none;
+        #register {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            max-width: 400px;
+            width:100%;
+            transform: translate(-50%, -50%);
+            -webkit-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+            -moz-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+            box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
+            border: 1px solid #eee;
+            padding: 20px;
+            z-index: 2000;
+            background-color: #fff;
+            border-radius: 4px;
         }
+        
+        .login {
+            display: none;
+        }
+
     </style>
 
     <script>
         document.write("<base href='" + window.location.href + "' />");
         $(document).ready(function() {
-            
+
             $('.user-name').val('bob123');
             $('.password').val('password');
             $('.name').val('Bob Smith');
-            
+
             var gun = Gun();
             var user = gun.user();
             $('.create-user').on("click", function(e) {
                 e.stopImmediatePropagation();
                 var name = $('.user-name').val();
                 var password = $('.password').val();
-                
+
                 user.create(name, password, function(result) {
                     console.log(result.pub);
                     var pubKey = result.pub;
@@ -50,7 +68,12 @@
                         pubKey: pubKey
                     });
                 });
-                $('.user-login').show();
+                $('.login').show();
+                var username = $('.user-name').val();
+                var password = $('.password').val();
+                $('.user-name').val(username);
+                $('.password').val(password);
+                $('.register').hide();
             });
             $('.user-login').on("click", function(e) {
                 e.stopImmediatePropagation();
@@ -58,29 +81,29 @@
                 var password = $('.password').val();
                 var name = $('.name').val();
                 var photo = $('.photo').val();
-                
+
                 photo = photo.replace(/.*[\/\\]/, '');
                 user.auth(username, password, function(result) {
                     var pubKey = result.pub;
                     var id = pubKey.substring(0, 8);
                     gun.get('pub/' + result.sea.pub).put({
                         id: id,
-                        name: name, 
+                        name: name,
                         photo: 'img/' + photo,
                         voteWeight: 0,
                         educationScore: 0,
                         socialRating: 0,
-                        age:0,
-                        connections: 0, 
+                        age: 0,
+                        connections: 0,
                         likes: 0,
-                        dislikes: 0, 
+                        dislikes: 0,
                         about: "Hello! My name is " + name + "."
                     });
                     window.location.replace("index.html");
                 })
             });
             $('.clear-storage').on("click", function(e) {
-                  localStorage.clear();
+                localStorage.clear();
             });
         });
 
@@ -88,31 +111,41 @@
 </head>
 
 <body>
-    <div class="sign-in">
+    <div id="register">
         <div class="logo" style="padding:10px; border-radius: 5px;"><a><b><span>D</span>EVOLUTION</b></a></div>
         <br />
-        <p style="text-align: center">NOTE: For the demo, just click register and then login.</p>
-        <h4 style="text-align: center">REGISTER</h4>
-        <p class="reg-confirmation">Thank you. Please finish registration by fill out the information below.</p>
-        <div class="form-group">
-            <label for="">User name:</label>
-            <input type="text" class="form-control user-name">
+        <div class="register">
+            <h4 style="text-align: center">REGISTER</h4>
+            <div class="form-group">
+                <label for="">User name:</label>
+                <input type="text" class="form-control user-name">
+            </div>
+            <div class="form-group">
+                <label for="">Password:</label>
+                <input type="password" class="form-control password">
+            </div>
+            <div class="form-group">
+                <label for="">Name:</label>
+                <input type="text" class="form-control name">
+            </div>
+            <div class="form-group">
+                <label for="">Profile Photo:</label>
+                <input type="file" name="pic" accept="img/*" class="photo">
+            </div>
+            <button type="submit" class="btn btn-blue create-user">REGISTER</button>
+           <!-- <button type="submit" class="btn btn-blue clear-storage">CLEAR STORAGE</button>-->
         </div>
-        <div class="form-group">
-            <label for="">Password:</label>
-            <input type="password" class="form-control password">
+        <div class="login">
+            <div class="form-group">
+                <label for="">User name:</label>
+                <input type="text" class="form-control user-name">
+            </div>
+            <div class="form-group">
+                <label for="">Password:</label>
+                <input type="password" class="form-control password">
+            </div>
+            <button type="submit" class="btn btn-red user-login">LOGIN</button>
         </div>
-        <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" class="form-control name">
-        </div>
-        <div class="form-group">
-            <label for="">Profile Photo:</label>
-            <input type="file" name="pic" accept="img/*" class="photo">
-        </div>
-        <button type="submit" class="btn btn-blue create-user">REGISTER</button>
-        <button type="submit" class="btn btn-blue clear-storage">CLEAR STORAGE</button>
-        <button type="submit" class="btn btn-red user-login">LOGIN</button>
     </div>
 </body>
 
