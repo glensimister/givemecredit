@@ -33,24 +33,24 @@ export function electCandidate() {
         var isElected = $('div#' + key).hasClass('elected');
 
         if ((percentage >= 65) && !isElected) {
-            gun.get(key).path('elected').put(true);
+            gun.get(key).path('elected').put(true, function(){
+                listCandidates();
+            });
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
-                gun.get(id).path('isElected').put(true, function(){
-                    listCandidates();
-                    $('.localCandidates').html("");
-                });
+                gun.get(id).path('isElected').put(true);
             }
             });
             $('#tab1').prop('checked', true);
-        } else if ((percentage < 65) && isElected) {
-            gun.get(key).path('elected').put(false);
+        } 
+        else 
+        if ((percentage < 65) && isElected) {
+            gun.get(key).path('elected').put(false, function(){
+                listCandidates();
+             });
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
-                gun.get(id).path('isElected').put(false, function(){
-                    listCandidates();
-                    $('.localOfficials').html("");
-                });
+                gun.get(id).path('isElected').put(false);
             }
             });
             $('#tab2').prop('checked', true);

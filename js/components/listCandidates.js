@@ -1,6 +1,7 @@
 export function listCandidates() {
+    $('.localCandidates, .localOfficials').html("");
     var isElected;
-    gun.get('candidates').map().once(function (data, key) {
+    gun.get('candidates').map().val(function (data, key) {
         if (data.elected) {
             isElected = 'elected';
         } else {
