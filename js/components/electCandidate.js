@@ -53,7 +53,7 @@ export function electCandidate() {
                 gun.get(id).path('isElected').put(false);
             }
             });
-            $('#tab2').prop('checked', true);
+            //$('#tab2').prop('checked', true);
         }
     });
 }
