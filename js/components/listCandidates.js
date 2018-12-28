@@ -19,9 +19,9 @@ export function listCandidates() {
                     <div>${data.downVotes}</div>
                 </div>
             </div>`;
-        if (data.elected === false) {
+        if (!data.elected) {
             $('.localCandidates').append(candidate);
-        } else if (data.elected === true) {
+        } else if (data.elected) {
             $('.localOfficials').append(candidate);
         }
         $(".rateYo").rateYo({

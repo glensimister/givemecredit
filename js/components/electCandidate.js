@@ -24,32 +24,35 @@ export function electCandidate() {
         totalVotes = upVotes + downVotes;
         percentage = (upVotes / totalVotes) * 100;
         var percentageString = percentage.toFixed(0) + "%";
-        gun.get(key).path('approvalRating').put(percentageString);
-        $('div#' + key + ' .approval-rating').html(percentageString); //this needs to be more specific
+        gun.get(key).get('approvalRating').put(percentageString);
+        $('div#' + key + ' .approval-rating').html(percentageString);
         $('div#' + key).find(".rateYo").rateYo("rating", percentageString);
 
         var position = $('div#' + key + ' .position').text();
         var name = $('div#' + key + ' h4 a').text();
-        var elected = gun.get(key).path('elected'); 
         var isElected = $('div#' + key).hasClass('elected');
 
-        if (percentage >= 65 && !isElected) {
-            elected.put(true);
+        if ((percentage >= 65) && !isElected) {
+            gun.get(key).path('elected').put(true);
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
-                gun.get(id).path('isElected').put(true);
+                gun.get(id).path('isElected').put(true, function(){
+                    listCandidates();
+                    $('.localCandidates').html("");
+                });
             }
             });
-            listCandidates();
             $('#tab1').prop('checked', true);
-        } else if (percentage < 65 && isElected) {
-            elected.put(false);
+        } else if ((percentage < 65) && isElected) {
+            gun.get(key).path('elected').put(false);
             gun.get('services').map().once(function (data, id) {
             if (data.owner === name) {
-                gun.get(id).path('isElected').put(false);
+                gun.get(id).path('isElected').put(false, function(){
+                    listCandidates();
+                    $('.localOfficials').html("");
+                });
             }
             });
-            listCandidates();
             $('#tab2').prop('checked', true);
         }
     });

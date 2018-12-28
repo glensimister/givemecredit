@@ -2,7 +2,7 @@ export function getProfile() {
     
     var id = getUrlVars()["id"];
     
-        gun.get('candidates').map().on(function (data) {
+        gun.get('candidates').map().once(function (data) {
             if (data.id === id) {
                 $('.profile-summary h4').html(data.position);
                 $('.profile-summary img').attr("src", data.photo);

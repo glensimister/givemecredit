@@ -4,11 +4,13 @@ export function initScripts() {
         starWidth: "20px",
         readOnly: true
     });
-    
+
     $(".rateYoCourse").rateYo({
         rating: 0,
         fullStar: true,
         starWidth: "20px",
         readOnly: false
     });
+
+    $('.select2').select2();
 }

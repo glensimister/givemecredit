@@ -28,19 +28,18 @@ export function donateSocialCredits() {
             gun.get('services').map().once(function (data, key) {
                 if (usrPubKey === data.id) {
                     var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
-                    gun.get(key).path('creditsReceived').put(creditsReceived);
+                    gun.get(key).get('creditsReceived').put(creditsReceived);
                     $('#' + key + ' .creditsReceived').html(creditsReceived);
                     var monthlyTarget = $('#' + key + ' .monthlyTarget').html();
                     var progress = parseInt(monthlyTarget) + creditsReceived;
                     percentage = (parseInt(creditsReceived) / parseInt(monthlyTarget)) * 100;
                     var percentageString = percentage.toFixed(0) + "%";
-                    gun.get(key).path('percentageOfTarget').put(percentageString);
+                    gun.get(key).get('percentageOfTarget').put(percentageString);
                     if (percentage <= 100){
                        $('#' + key + " .progress-bar > div").css("width", percentageString); 
                     } else {
                        $('#' + key + " .progress-bar > div").css("width", "100%"); 
                     }
-                    
                 }
             });
             payRebate(amount);

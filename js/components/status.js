@@ -8,7 +8,7 @@ export function status() {
         updateStatus(update, this, true); //no need for 'this' or 'true' anymore [will remove]
     });
 
-    $(document.body).on("click", '.status-checkbox', function () {
+    $('.status-checkbox').on("click", function () {
         if ($(this).hasClass('checked')) {
             $(this).html('');
             $(this).removeClass('checked');
