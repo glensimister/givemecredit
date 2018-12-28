@@ -17,7 +17,7 @@ export function donateSocialCredits() {
         e.stopImmediatePropagation();
         var input = $(this).parent().parent().find('input').val();
         deductCredits('.sc', input);
-        
+
         var usrPubKey = $(this).attr('title');
 
         function deductCredits(type, amount) {
@@ -36,10 +36,10 @@ export function donateSocialCredits() {
                     percentage = (parseInt(creditsReceived) / parseInt(monthlyTarget)) * 100;
                     var percentageString = percentage.toFixed(0) + "%";
                     gun.get(key).get('percentageOfTarget').put(percentageString);
-                    if (percentage <= 100){
-                       $('#' + key + " .progress-bar > div").css("width", percentageString); 
+                    if (percentage <= 100) {
+                        $('#' + key + " .progress-bar > div").css("width", percentageString);
                     } else {
-                       $('#' + key + " .progress-bar > div").css("width", "100%"); 
+                        $('#' + key + " .progress-bar > div").css("width", "100%");
                     }
                 }
             });

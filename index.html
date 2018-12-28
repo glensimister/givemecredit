@@ -25,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/sea.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gun/lib/path.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gun/lib/webrtc.js"></script>
     <script src="js/vendor/sammy-latest.min.js"></script>
     <script src="js/vendor/select2.full.min.js"></script>
     <script src="js/vendor/rateyo.js"></script>
@@ -32,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <script type="text/javascript">
         document.write("<base href='" + window.location.href + "' />");
-        var gun = new Gun();
+        var gun = Gun(['http://localhost:8000', 'https://gunjs.herokuapp.com/gun']);
     </script>
 </head>
 

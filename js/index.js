@@ -24,6 +24,8 @@ $('.sidebar').load("partials/sidebar.html", function(){sidebar();});
 $('.dropdown-container').load("partials/navtop.html", function(){navTop();});
 $('.grid-search').load("partials/searchbar.html");
 
+distributeCredits(); //initalize credits
+
 /* routing */ 
 
 ;
@@ -72,7 +74,6 @@ $('.grid-search').load("partials/searchbar.html");
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
                     displayPubService();
-                    distributeCredits();
                     donateSocialCredits();
                     transferCredits();
                     console.log(thisPage[1] + ' scripts loaded');
