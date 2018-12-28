@@ -26,7 +26,7 @@ export function donateSocialCredits() {
             $(type).html(new_value.toFixed(0));
             //maybe move the code below to somewhere else
             var percentage;
-            gun.get('services').map().once(function (data, key) {
+            gun.get('services').map().on(function (data, key) {
                 if (usrPubKey === data.id) {
                     var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
                     gun.get(key).get('creditsReceived').put(creditsReceived);
