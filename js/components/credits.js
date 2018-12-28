@@ -17,13 +17,14 @@ export function donateSocialCredits() {
         e.stopImmediatePropagation();
         var input = $(this).parent().parent().find('input').val();
         deductCredits('.sc', input);
+        
+        var usrPubKey = $(this).attr('title');
 
         function deductCredits(type, amount) {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
             //maybe move the code below to somewhere else
-            var usrPubKey = $('.donate-sc').attr('title'); //this needs to be 'this' but not working
             var percentage;
             gun.get('services').map().once(function (data, key) {
                 if (usrPubKey === data.id) {

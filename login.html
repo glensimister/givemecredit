@@ -24,25 +24,26 @@
 
     <style>
         #register {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            max-width: 400px;
-            width:100%;
-            transform: translate(-50%, -50%);
+            margin: 30px auto;
+            max-width: 600px;
+            width: 100%;
             -webkit-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
             -moz-box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
             box-shadow: 3px 3px 13px 3px rgba(0, 0, 0, 0.33);
             border: 1px solid #eee;
             padding: 20px;
-            z-index: 2000;
             background-color: #fff;
             border-radius: 4px;
         }
         
-        .login {
-            display: none;
+        .grid-2-col > div {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 4px;
         }
+        /*.login {
+            display: none;
+        }*/
 
     </style>
 
@@ -68,17 +69,17 @@
                         pubKey: pubKey
                     });
                 });
-                $('.login').show();
+                //$('.login').show();
+                 //$('.register').hide();
                 var username = $('.user-name').val();
                 var password = $('.password').val();
-                $('.user-name').val(username);
-                $('.password').val(password);
-                $('.register').hide();
+                $('.user-name-login').val(username);
+                $('.password-login').val(password);
             });
             $('.user-login').on("click", function(e) {
                 e.stopImmediatePropagation();
-                var username = $('.user-name').val();
-                var password = $('.password').val();
+                var username = $('.user-name-login').val();
+                var password = $('.password-login').val();
                 var name = $('.name').val();
                 var photo = $('.photo').val();
 
@@ -114,37 +115,40 @@
     <div id="register">
         <div class="logo" style="padding:10px; border-radius: 5px;"><a><b><span>D</span>EVOLUTION</b></a></div>
         <br />
-        <div class="register">
-            <h4 style="text-align: center">REGISTER</h4>
-            <div class="form-group">
-                <label for="">User name:</label>
-                <input type="text" class="form-control user-name">
+        <div class="grid-2-col">
+            <div class="register">
+                <h4 style="text-align: center">REGISTER</h4>
+                <div class="form-group">
+                    <label for="">User name:</label>
+                    <input type="text" class="form-control user-name">
+                </div>
+                <div class="form-group">
+                    <label for="">Password:</label>
+                    <input type="password" class="form-control password">
+                </div>
+                <div class="form-group">
+                    <label for="">Name:</label>
+                    <input type="text" class="form-control name">
+                </div>
+                <div class="form-group">
+                    <label for="">Profile Photo:</label>
+                    <input type="file" name="pic" accept="img/*" class="photo">
+                </div>
+                <button type="submit" class="btn btn-blue create-user">REGISTER</button>
+                <!-- <button type="submit" class="btn btn-blue clear-storage">CLEAR STORAGE</button>-->
             </div>
-            <div class="form-group">
-                <label for="">Password:</label>
-                <input type="password" class="form-control password">
+            <div class="login">
+                <h4 style="text-align: center">LOGIN</h4>
+                <div class="form-group">
+                    <label for="">User name:</label>
+                    <input type="text" class="form-control user-name-login">
+                </div>
+                <div class="form-group">
+                    <label for="">Password:</label>
+                    <input type="password" class="form-control password-login">
+                </div>
+                <button type="submit" class="btn btn-red user-login">LOGIN</button>
             </div>
-            <div class="form-group">
-                <label for="">Name:</label>
-                <input type="text" class="form-control name">
-            </div>
-            <div class="form-group">
-                <label for="">Profile Photo:</label>
-                <input type="file" name="pic" accept="img/*" class="photo">
-            </div>
-            <button type="submit" class="btn btn-blue create-user">REGISTER</button>
-           <!-- <button type="submit" class="btn btn-blue clear-storage">CLEAR STORAGE</button>-->
-        </div>
-        <div class="login">
-            <div class="form-group">
-                <label for="">User name:</label>
-                <input type="text" class="form-control user-name">
-            </div>
-            <div class="form-group">
-                <label for="">Password:</label>
-                <input type="password" class="form-control password">
-            </div>
-            <button type="submit" class="btn btn-red user-login">LOGIN</button>
         </div>
     </div>
 </body>
