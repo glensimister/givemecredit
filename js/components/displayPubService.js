@@ -8,7 +8,7 @@ export function displayPubService() {
             if (percentage > 100) {
                 pOfTarget = '100%';
             }
-            var publicService = `<div id=${key}>
+            var publicService = `<div id="${key}">
                 <h3><a href="#/profile?id=${data.id}">${data.service}</a></h3>
                 <ul class="funds-raised">
                     <li>
@@ -38,7 +38,7 @@ export function displayPubService() {
                 <br />
                 <div class="grid-input-button">
                     <div><input type="text" class="form-control donate-input"></div>
-                    <div><button type="button" title="${data.id}" class="donate-sc">DONATE</button></div>
+                    <div><button type="button" title="${data.id}" id="${key}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
             $('.localServices').prepend(publicService);

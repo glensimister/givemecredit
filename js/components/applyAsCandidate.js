@@ -2,11 +2,13 @@ export function applyAsCandidate() {
     $(document.body).on("click", '.apply-for-position', function (e) {
         e.stopImmediatePropagation();
         $('#tab2').prop('checked', true);
+        let id;
         var position = $('.candidate-position').val();
         gun.get('users').once(function (data) {
             gun.get('pub/' + data.pubKey).once(function (result) {
+                id = data.pubKey.split(/[.\-_]/);
                 var candidate = {
-                    id: data.pubKey,
+                    id: id[0],
                     name: result.name,
                     photo: result.photo,
                     position: position,
@@ -17,7 +19,7 @@ export function applyAsCandidate() {
                 }
                 gun.get('candidates').set(candidate);
                 gun.get('services').set({
-                    id: data.pubKey,
+                    id: id[0],
                     service: position,
                     owner: result.name,
                     isElected: false,

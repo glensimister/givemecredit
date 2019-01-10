@@ -16,18 +16,18 @@ export function donateSocialCredits() {
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();
         var input = $(this).parent().parent().find('input').val();
-        deductCredits('.sc', input);
+        var usrID = $(this).attr('title');
+        var serviceKey = $(this).attr('id');
+        deductCredits('.sc', input, usrID, serviceKey);
 
-        var usrPubKey = $(this).attr('title');
-
-        function deductCredits(type, amount) {
+        function deductCredits(type, amount, usrID, serviceKey) {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
             $(type).html(new_value.toFixed(0));
             //maybe move the code below to somewhere else
             var percentage;
-            gun.get('services').map().on(function (data, key) {
-                if (usrPubKey === data.id) {
+            gun.get('services').map().val(function (data, key) {
+                if (usrID === data.id && key === serviceKey) {
                     var creditsReceived = parseInt(data.creditsReceived) + parseInt(amount);
                     gun.get(key).get('creditsReceived').put(creditsReceived);
                     $('#' + key + ' .creditsReceived').html(creditsReceived);

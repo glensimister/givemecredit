@@ -1,0 +1,70 @@
+<div id="tabs">
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Local</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">National</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">New Service</label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">Edit Service</label>
+
+
+    <section id="content1">
+        <script>
+            $(function () {
+                            $('#content1').load('/pages/fundpublicservices/fundlocal.html');
+                        });
+            </script>
+    </section>
+
+    <section id="content2">
+        <script>
+            $(function () {
+                            $('#content2').load('/pages/fundpublicservices/fundnational.html');
+                        });
+            </script>
+    </section>
+
+    <section id="content3">
+        <h3>New Service</h3>
+        <p>New services can only be added by your elected local politician.</p>
+        <p>Do you want to hold a lottery?</p>
+        <div class="form-group">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Yes
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked=""> No
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name of Service</label>
+            <input type="text" class="form-control" placeholder="Universal Basic Income">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Start Date</label>
+            <i class="fa fa-calendar"></i>
+            <input type="text" class="form-control" id="datepicker">
+        </div>
+        <button type="submit" class="btn btn-blue">Submit</button>
+    </section>
+
+    <section id="content4">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Monthly Target (ACV)</label>
+            <input type="text" class="form-control" placeholder="1,400">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Service Desciption</label>
+            <textarea class="form-control" rows="10" placeholder="Enter ..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-blue">Submit</button>
+    </section>
+</div>
