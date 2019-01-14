@@ -2,13 +2,13 @@ var user = gun.user();
 
 /* Import all of the Javascript components. */ 
 
-import {authoriseAndConnect} from './components/safenetwork.js';
+import {authoriseAndConnect,createMutableData} from './components/safenetwork.js';
 import {sidebar} from './components/sidebar.js';
 import {navTop} from './components/navTop.js';
 import {comments} from './components/comments.js';
 import {connect} from './components/connect.js';
 import {toolbar} from './components/toolbar.js';
-import {status} from './components/status.js';
+import {status, displayStatus} from './components/status.js';
 import {listCandidates} from './components/listCandidates.js';
 import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
 import {applyAsCandidate} from './components/applyAsCandidate.js';
@@ -25,7 +25,21 @@ $('.sidebar').load("partials/sidebar.html", function(){sidebar();});
 $('.dropdown-container').load("partials/navtop.html", function(){navTop();});
 $('.grid-search').load("partials/searchbar.html");
 
-authoriseAndConnect(); // connect to SAFE network and initialize database
+/* initalize SAFE API and display posts */
+
+(async() => {
+    await authoriseAndConnect();
+    try {
+        await displayUserData();
+    } catch (err) {
+        alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
+    }
+    await createMutableData();
+    displayStatus();
+})().catch(err => {
+    console.error(err);
+});
+
 distributeCredits(); //initalize credits
 
 /* routing */ 
@@ -68,6 +82,7 @@ distributeCredits(); //initalize credits
                 //load home page scripts
                 initScripts();
                 displayUserData();
+                displayStatus();
                 connect();
                 toolbar();
                 comments();

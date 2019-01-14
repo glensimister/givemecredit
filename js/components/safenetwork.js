@@ -4,7 +4,6 @@ import {
 from './status.js';
 
 let safeApp;
-
 export async function authoriseAndConnect() {
     let appInfo = {
         name: 'DEVOLUTION',
@@ -19,20 +18,10 @@ export async function authoriseAndConnect() {
     console.log('SAFE application authorised by user');
     await safeApp.auth.loginFromUri(authUri);
     console.log("Application connected to the network");
-    try {
-        const profileImg = await window.currentWebId["#me"]["image"]["@id"];
-        const profileName = await window.currentWebId["#me"]["name"];
-        $('.profile-summary img.user-image-large ').attr("src", profileImg);
-        $('.profile-pic-small').attr("src", profileImg);
-        $('.profile-summary h4#fullName').html(profileName);
-        createMutableData();
-    } catch (err) {
-        alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
-    }
 }
 
 let md;
-async function createMutableData() {
+export async function createMutableData() {
     console.log("Creating MutableData with initial dataset...");
     const typeTag = 15000;
     md = await safeApp.mutableData.newRandomPublic(typeTag);
@@ -44,7 +33,6 @@ async function createMutableData() {
         })
     };
     await md.quickSetup(initialData);
-    displayStatus();
 }
 
 export async function insertItem(key, value) {
@@ -58,6 +46,18 @@ export async function updateItem(key, value, version) {
     await mutations.update(key, JSON.stringify(value), version + 1);
     await md.applyEntriesMutation(mutations);
 }
+
+export async function deleteItems(key) {
+    let items = [];
+    items = await getItems();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+        if (item.key == key) {
+            await mutations.delete(item.key, item.version + 1);
+        }
+    });
+    await md.applyEntriesMutation(mutations);
+};
 
 export async function getItems() {
     const entries = await md.getEntries();

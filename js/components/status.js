@@ -4,7 +4,7 @@ import {
 from './getDate.js';
 
 import {
-    insertItem, getItems, updateItem
+    insertItem, getItems, updateItem, deleteItems
 }
 from './safenetwork.js';
 
@@ -44,6 +44,16 @@ export async function status() {
         }
     });
 
+    $(document.body).on('click', '.delete-post', function () {
+        (async() => {
+            let id = $(this).next().attr('id');
+            await deleteItems(id);
+            displayStatus();
+        })().catch(err => {
+            console.error(err);
+        });
+    });
+
     $('.status-checkbox').on("click", function () {
         if ($(this).hasClass('checked')) {
             $(this).html('');
@@ -80,6 +90,7 @@ export async function displayStatus() {
         items.forEach(async(item) => {
             let template = `
                 <div class="post">
+                    <i class="fa fa-fw fa-close delete-post"></i>
                     <i id="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
                     <div class="post-body">
                     <img src="${img}" class="user-image-medium" alt="User Image">

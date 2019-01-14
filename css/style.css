@@ -248,6 +248,11 @@ textarea.form-control {
 .edit-post {
     position: absolute;
     top:10px;
+    right:30px;
+}
+.delete-post {
+    position: absolute;
+    top:10px;
     right:10px;
 }
 .post .fa-floppy-o {
