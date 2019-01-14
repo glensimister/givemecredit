@@ -1,6 +1,22 @@
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: URL('../fonts/OpenSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: URL('../fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSans-Italic';
+    src: URL('../fonts/OpenSans-Italic.ttf') format('truetype');
+}
+
+
 body {
     /*font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'OpenSans-Regular', sans-serif;
     font-weight: 400;
     color: #848484;
     line-height: 1.5;
@@ -14,13 +30,16 @@ h5,
 h6,
 p {
     margin: 0 0 15px 0;
+    font-weight: 400;
 }
 h4 {
     font-size: 16px;
+    font-family: 'OpenSans-Bold', sans-serif; 
 }
 b,
 strong {
     font-weight: 700;
+    font-family: 'OpenSans-Bold', sans-serif; 
 }
 .clearfix::after {
     content: "";
@@ -56,7 +75,6 @@ textarea.form-control {
     color: #bbb;
     cursor: pointer;
 }
-
 .blurred-bg {
     background-color: #eee;
 }
@@ -161,6 +179,7 @@ textarea.form-control {
     text-align: center;
     color: #00acd6;
     cursor: pointer;
+    font-family: 'OpenSans-Bold', sans-serif; 
 }
 .status-update button:focus {
     outline: 0;
@@ -185,6 +204,7 @@ textarea.form-control {
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
     margin-bottom: 20px;
+    font-family: 'OpenSans-Bold', sans-serif; 
 }
 
 /*.grid-status-update-reminder {
@@ -375,6 +395,7 @@ small.label-green {
     margin: 0 0 -1px;
     padding: 10px 20px;
     font-weight: 600;
+    font-family: 'OpenSans-Bold', sans-serif; 
     text-align: center;
     color: #bbb;
     border-top-left-radius: 3px;

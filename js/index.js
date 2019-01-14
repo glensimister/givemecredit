@@ -1,5 +1,31 @@
 var user = gun.user();
 
+let safeApp;
+
+async function authoriseAndConnect() {
+  let appInfo = {
+      name: 'DEVOLUTION',
+      id: 'net.devolution.test.web-app',
+      version: '1.0.0',
+      vendor: 'Glen Simister.'
+  };
+  safeApp = await window.safe.initialiseApp(appInfo);
+  console.log('Authorising SAFE application...');
+  const authReqUri = await safeApp.auth.genAuthUri();
+  const authUri = await window.safe.authorise(authReqUri);
+  console.log('SAFE application authorised by user');
+  await safeApp.auth.loginFromUri(authUri);
+  console.log("Application connected to the network");
+  const profileImg = await window.currentWebId["#me"]["image"]["@id"];
+  const profileName = await window.currentWebId["#me"]["name"];
+  $('.profile-summary img.user-image-large ').attr("src", profileImg);
+  $('.profile-pic-small').attr("src", profileImg);
+  $('.profile-summary h4#fullName').html(profileName);
+};
+
+authoriseAndConnect();
+
+
 /* Import all of the Javascript components. */ 
 
 import {sidebar} from './components/sidebar.js';

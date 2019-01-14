@@ -4,9 +4,9 @@ export function displayUserData() {
             window.location.replace("login.html");
         } else {
             gun.get('pub/' + data.pubKey).once(function (result) {
-                $('.profile-summary h4#fullName').html(result.name);
-                $('.profile-summary img.user-image-large ').attr("src", result.photo);
-                $('.profile-pic-small').attr("src", result.photo);
+                //$('.profile-summary h4#fullName').html(result.name);
+                //$('.profile-summary img.user-image-large ').attr("src", result.photo);
+                //$('.profile-pic-small').attr("src", result.photo);
                 //$('.profile-summary ul li a.voteWeight').html(result.voteWeight);
                 //$('.profile-summary ul li a.age').html(result.age);
                 //$('.profile-summary ul li a.edScore').html(result.educationScore);

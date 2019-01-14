@@ -159,17 +159,17 @@
 }
 
 .grid-credits > div:nth-child(odd) {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     /*border: 1px solid #eee;*/
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     color: #fff;
 }
 
 .grid-credits > div:nth-child(even) {
     margin-right: 10px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     font-weight: bold;
 }
 
@@ -215,6 +215,7 @@
     background-color: #fff;
     color: #008d4c;
     padding: 5px;
+    margin-right: 0;
 }
 
 /******* end credits grid *******/
