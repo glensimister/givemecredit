@@ -1,33 +1,8 @@
 var user = gun.user();
 
-let safeApp;
-
-async function authoriseAndConnect() {
-  let appInfo = {
-      name: 'DEVOLUTION',
-      id: 'net.devolution.test.web-app',
-      version: '1.0.0',
-      vendor: 'Glen Simister.'
-  };
-  safeApp = await window.safe.initialiseApp(appInfo);
-  console.log('Authorising SAFE application...');
-  const authReqUri = await safeApp.auth.genAuthUri();
-  const authUri = await window.safe.authorise(authReqUri);
-  console.log('SAFE application authorised by user');
-  await safeApp.auth.loginFromUri(authUri);
-  console.log("Application connected to the network");
-  const profileImg = await window.currentWebId["#me"]["image"]["@id"];
-  const profileName = await window.currentWebId["#me"]["name"];
-  $('.profile-summary img.user-image-large ').attr("src", profileImg);
-  $('.profile-pic-small').attr("src", profileImg);
-  $('.profile-summary h4#fullName').html(profileName);
-};
-
-authoriseAndConnect();
-
-
 /* Import all of the Javascript components. */ 
 
+import {authoriseAndConnect} from './components/safenetwork.js';
 import {sidebar} from './components/sidebar.js';
 import {navTop} from './components/navTop.js';
 import {comments} from './components/comments.js';
@@ -50,6 +25,7 @@ $('.sidebar').load("partials/sidebar.html", function(){sidebar();});
 $('.dropdown-container').load("partials/navtop.html", function(){navTop();});
 $('.grid-search').load("partials/searchbar.html");
 
+authoriseAndConnect(); // connect to SAFE network and initialize database
 distributeCredits(); //initalize credits
 
 /* routing */ 

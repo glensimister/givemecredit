@@ -1,11 +1,47 @@
 import {
     getDate
-} from './getDate.js';
+}
+from './getDate.js';
 
-export function status() {
+import {
+    insertItem, getItems, updateItem
+}
+from './safenetwork.js';
+
+export async function status() {
     $(document.body).on('click', '.post-update button', function () {
         var update = $('.status-update input').val();
-        updateStatus(update, this, true); //no need for 'this' or 'true' anymore [will remove]
+        updateStatus(update);
+        $('.status-update input').val("");
+    });
+
+    $(document.body).on('click', '.edit-post', function () {
+        let editable = $(this).next().find('.post-desc');
+        if ($(this).hasClass('fa-pencil')) {
+            $(this).removeClass('fa-pencil').addClass('fa-floppy-o');
+            editable.attr('contenteditable', 'true');
+            editable.css({
+                border: "1px solid #dd4b39",
+                padding: "20px"
+            });
+        } else {
+            (async() => {
+                $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
+                let webID = $(this).next().find('webID');
+                let date = await getDate();
+                let post = editable.html();
+                let edit = {
+                    webID: webID,
+                    date: date,
+                    post: post
+                }
+                let id = $(this).attr('id');
+                await updateItem(id, edit, 0);
+                displayStatus();
+            })().catch(err => {
+                console.error(err);
+            });
+        }
     });
 
     $('.status-checkbox').on("click", function () {
@@ -18,16 +54,37 @@ export function status() {
         }
     });
 
-    async function updateStatus(post, $this, isStatusUpdate) {
+    async function updateStatus(post) {
         let date = await getDate();
-        gun.get('users').once(function (data) {
-            gun.get('pub/' + data.pubKey).once(function (result) {
-                let template = `
+        const webID = await window.currentWebId["#me"]["@id"];
+        let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        await insertItem(guid, {
+            webID: webID,
+            date: date,
+            post: post
+        });
+        displayStatus();
+    };
+}
+
+export async function displayStatus() {
+    $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
+    const id = await window.currentWebId["#me"]["@id"];
+    const img = await window.currentWebId["#me"]["image"]["@id"];
+    const name = await window.currentWebId["#me"]["name"];
+    let items = [];
+    items = await getItems();
+    if (items.length == 0) {
+        $('.post-feed').html("There are no posts to show");
+    } else {
+        items.forEach(async(item) => {
+            let template = `
                 <div class="post">
+                    <i id="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
                     <div class="post-body">
-                    <img src="${result.photo}" class="user-image-medium" alt="User Image">
-                    <span><a href="">${result.name}</a><br />${date}</span>
-                    <div class="post-desc">${post}</div></div>
+                    <img src="${img}" class="user-image-medium" alt="User Image">
+                    <span><a class="webID" href="${id}">${name}</a><br /><span class="date">${item.value.date}</span></span>
+                    <div class="post-desc">${item.value.post}</div></div>
                     <div class="grid-toolbar">
                         <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
                         <div>90</div>
@@ -51,12 +108,11 @@ export function status() {
                     </div>
                     <input type="text" class="post-comment-input" placeholder="Write a comment..." />
                 </div>`;
-                $('.post-feed').prepend(template);
-                $(".rateYoToolbar").rateYo({
-                    rating: 4,
-                    starWidth: "15px",
-                    readOnly: true
-                });
+            $('.post-feed').prepend(template);
+            $(".rateYoToolbar").rateYo({
+                rating: 4,
+                starWidth: "15px",
+                readOnly: true
             });
         });
     }
