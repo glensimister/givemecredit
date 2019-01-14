@@ -8,10 +8,10 @@ import {
 }
 from './safenetwork.js';
 
-export async function status() {
+export async function posts() {
     $(document.body).on('click', '.post-update button', function () {
         var update = $('.status-update input').val();
-        updateStatus(update);
+        updatePost(update);
         $('.status-update input').val("");
     });
 
@@ -37,7 +37,7 @@ export async function status() {
                 }
                 let id = $(this).attr('id');
                 await updateItem(id, edit, 0);
-                displayStatus();
+                displayPosts();
             })().catch(err => {
                 console.error(err);
             });
@@ -48,7 +48,7 @@ export async function status() {
         (async() => {
             let id = $(this).next().attr('id');
             await deleteItems(id);
-            displayStatus();
+            displayPosts();
         })().catch(err => {
             console.error(err);
         });
@@ -64,7 +64,7 @@ export async function status() {
         }
     });
 
-    async function updateStatus(post) {
+    async function updatePost(post) {
         let date = await getDate();
         const webID = await window.currentWebId["#me"]["@id"];
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -73,11 +73,11 @@ export async function status() {
             date: date,
             post: post
         });
-        displayStatus();
+        displayPosts();
     };
 }
 
-export async function displayStatus() {
+export async function displayPosts() {
     $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
     const id = await window.currentWebId["#me"]["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];

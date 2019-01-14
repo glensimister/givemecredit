@@ -1,8 +1,3 @@
-import {
-    displayStatus
-}
-from './status.js';
-
 let safeApp;
 export async function authoriseAndConnect() {
     let appInfo = {

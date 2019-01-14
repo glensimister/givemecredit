@@ -8,7 +8,7 @@ import {navTop} from './components/navTop.js';
 import {comments} from './components/comments.js';
 import {connect} from './components/connect.js';
 import {toolbar} from './components/toolbar.js';
-import {status, displayStatus} from './components/status.js';
+import {posts, displayPosts} from './components/posts.js';
 import {listCandidates} from './components/listCandidates.js';
 import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
 import {applyAsCandidate} from './components/applyAsCandidate.js';
@@ -35,7 +35,7 @@ $('.grid-search').load("partials/searchbar.html");
         alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
     }
     await createMutableData();
-    displayStatus();
+    displayPosts();
 })().catch(err => {
     console.error(err);
 });
@@ -82,11 +82,11 @@ distributeCredits(); //initalize credits
                 //load home page scripts
                 initScripts();
                 displayUserData();
-                displayStatus();
+                displayPosts();
                 connect();
                 toolbar();
                 comments();
-                status();
+                posts();
                 
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
