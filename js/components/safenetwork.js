@@ -89,6 +89,29 @@ export async function insertOfficial(key, value) {
     await officials.applyEntriesMutation(mutations);
 }
 
+export async function getOfficalObj(key) {
+    let items = [];
+    items = await listOfficials();
+    items.forEach(async(item) => {
+        if (item.key == key) {
+            var update = {
+                webID: item.value.webID,
+                name: item.value.name,
+                photo: item.value.photo,
+                position: item.value.position,
+                elected: item.value.elected,
+                approvalRating: item.value.approvalRating,
+                upVotes: item.value.upVotes,
+                downVotes: item.value.downVotes,
+                creditsReceived: item.value.creditsReceived,
+                percentageOfTarget: item.value.percentageOfTarget
+            }
+            console.log(update);
+            return update;
+        }
+    });
+}
+
 export async function updateOffical(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);

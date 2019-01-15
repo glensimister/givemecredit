@@ -3,7 +3,7 @@ import {
 }
 from './listCandidates.js';
 import {
-    updateOffical, listOfficials
+    updateOffical, listOfficials, getOfficalObj
 }
 from './safenetwork.js';
 
@@ -21,33 +21,23 @@ export function electCandidate() {
         elem.html(votes);
 
         if ($(this).hasClass('fa-thumbs-o-up')) {
-            //gun.get(key).path('upVotes').put(votes);
             upVotes++;
         } else if ($(this).hasClass('fa-thumbs-o-down')) {
-            //gun.get(key).path('downVotes').put(votes);
             downVotes++;
         }
         totalVotes = upVotes + downVotes;
         percentage = (upVotes / totalVotes) * 100;
         var percentageString = percentage.toFixed(0) + "%";
-        //gun.get(key).get('approvalRating').put(percentageString);
         if (percentage < 65) {
             (async() => {
                 let items = [];
                 items = await listOfficials();
                 items.forEach(async(item) => {
                     if (item.key == key) {
-                        var update = {
-                            webID: item.value.webID,
-                            name: item.value.name,
-                            photo: item.value.photo,
-                            position: item.value.position,
-                            elected: item.value.elected,
-                            approvalRating: percentageString,
-                            upVotes: upVotes,
-                            downVotes: downVotes
-                        }
-                        await updateOffical(key, update, 0);
+                        item.value.approvalRating = percentageString;
+                        item.value.upVotes = upVotes;
+                        item.value.downVotes = downVotes;
+                        await updateOffical(key, item.value, 0);
                         listCandidates();
                     }
                 });
@@ -69,34 +59,19 @@ export function electCandidate() {
                 items = await listOfficials();
                 items.forEach(async(item) => {
                     if (item.key == key) {
-                        var update = {
-                            webID: item.value.webID,
-                            name: item.value.name,
-                            photo: item.value.photo,
-                            position: item.value.position,
-                            elected: true,
-                            approvalRating: percentageString,
-                            upVotes: upVotes,
-                            downVotes: downVotes,
-                            creditsReceived: 0,
-                            percentageOfTarget: "20%"
-                        }
-                        await updateOffical(key, update, 0);
+                        item.value.elected = true;
+                        item.value.approvalRating = percentageString;
+                        item.value.upVotes = upVotes;
+                        item.value.downVotes = downVotes;
+                        console.log(item.value);
+                        await updateOffical(key, item.value, 0);
+                        listCandidates();
+                        $('#tab1').prop('checked', true);
                     }
-                    $('#tab1').prop('checked', true);
-                    listCandidates();
                 });
             })().catch(err => {
                 console.error(err);
             });
-            /* gun.get(key).path('elected').put(true, function () {
-                 listCandidates();
-             });
-             gun.get('services').map().once(function (data, id) {
-                 if (data.owner === name) {
-                     gun.get(id).path('isElected').put(true);
-                 }
-             });*/
         } else
         if ((percentage < 65) && isElected) {
             gun.get(key).path('elected').put(false, function () {
