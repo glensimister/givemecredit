@@ -106,8 +106,9 @@ distributeCredits(); //initalize credits
                 }
                 
                 if (thisPage[1] == 'voting') {
-                    listCandidates();
                     applyAsCandidate();
+                    electCandidate();
+                    listCandidates();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
                 

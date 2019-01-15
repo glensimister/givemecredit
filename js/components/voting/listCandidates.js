@@ -3,16 +3,6 @@ import {
 }
 from '../safenetwork.js';
 
-import {
-    applyAsCandidate
-}
-from './applyAsCandidate.js';
-
-import {
-    electCandidate
-}
-from './electCandidate.js';
-
 export async function listCandidates() {
     var isElected;
     let items = [];
@@ -20,6 +10,7 @@ export async function listCandidates() {
     if (items.length == 0) {
         $('.localOfficials').html("There are no officials to show");
     } else {
+        $('.localOfficials').html("");
         items.forEach(async(item) => {
             if (item.value.elected) {
                 isElected = 'elected';
@@ -49,7 +40,6 @@ export async function listCandidates() {
                 starWidth: "20px",
                 readOnly: true
             });
-            electCandidate();
         });
     }
 }

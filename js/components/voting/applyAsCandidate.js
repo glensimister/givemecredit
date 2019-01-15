@@ -1,7 +1,4 @@
-import {
-    listCandidates
-}
-from './listCandidates.js';
+import {listCandidates} from './listCandidates.js';
 
 import {
     getDate
@@ -18,7 +15,6 @@ export async function applyAsCandidate() {
         e.stopImmediatePropagation();
         $('#tab2').prop('checked', true);
         var position = $('.candidate-position').val();
-
         (async() => {
             let date = await getDate();
             const webID = await window.currentWebId["#me"]["@id"];
