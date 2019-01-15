@@ -9,13 +9,13 @@ import {comments} from './components/comments.js';
 import {connect} from './components/connect.js';
 import {toolbar} from './components/toolbar.js';
 import {posts, displayPosts} from './components/posts.js';
-import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
+import {distributeCredits,transferCredits} from './components/credits.js';
 import {listCandidates} from './components/voting/listCandidates.js';
 import {applyAsCandidate} from './components/voting/applyAsCandidate.js';
 import {electCandidate} from './components/voting/electCandidate.js';
+import {displayOfficialProfile} from './components/voting/displayOfficialProfile.js';
 import {displayPubService} from './components/publicServices/displayPubService.js';
 import {displayUserData} from './components/displayUserData.js';
-import {getProfile} from './components/getProfile.js';
 import {lottery} from './components/lottery.js';
 import {initScripts} from './components/initScripts.js';
 
@@ -87,28 +87,23 @@ distributeCredits(); //initalize credits
                 connect();
                 toolbar();
                 comments();
-                //posts();
+                posts();
                 
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
                     displayPubService();
-                    //donateSocialCredits();
                     transferCredits();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
                 
                 if (thisPage[1] == 'profile.html') {
-                    getProfile(); 
+                    displayOfficialProfile();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
                 
                 if (thisPage[1] == 'voting') {
                     listCandidates();
                     applyAsCandidate();
-                    //electCandidate();
-                    //updateOffical();
-                    //listOfficials();
-                    //applyAsCandidate();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
                 
