@@ -3,7 +3,7 @@ import {
 }
 from './listCandidates.js';
 import {
-    updateOffical, listOfficials, getOfficalObj
+    updateOffical, listOfficials
 }
 from './safenetwork.js';
 
@@ -74,15 +74,24 @@ export function electCandidate() {
             });
         } else
         if ((percentage < 65) && isElected) {
-            gun.get(key).path('elected').put(false, function () {
-                listCandidates();
+            (async() => {
+                let items = [];
+                items = await listOfficials();
+                items.forEach(async(item) => {
+                    if (item.key == key) {
+                        item.value.elected = false;
+                        item.value.approvalRating = percentageString;
+                        item.value.upVotes = upVotes;
+                        item.value.downVotes = downVotes;
+                        console.log(item.value);
+                        await updateOffical(key, item.value, 0);
+                        listCandidates();
+                        $('#tab2').prop('checked', true);
+                    }
+                });
+            })().catch(err => {
+                console.error(err);
             });
-            gun.get('services').map().once(function (data, id) {
-                if (data.owner === name) {
-                    gun.get(id).path('isElected').put(false);
-                }
-            });
-            //$('#tab2').prop('checked', true);
         }
     });
 }
