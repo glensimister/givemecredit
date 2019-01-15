@@ -1,4 +1,4 @@
-export let safeApp;
+let safeApp;
 export async function authoriseAndConnect() {
     let appInfo = {
         name: 'DEVOLUTION',

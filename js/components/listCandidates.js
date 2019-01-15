@@ -3,6 +3,11 @@ import {
 }
 from './safenetwork.js';
 
+import {
+    electCandidate
+}
+from './electCandidate.js';
+
 export async function listCandidates() {
     $('.localCandidates, .localOfficials').html("");
     var isElected;
@@ -17,7 +22,6 @@ export async function listCandidates() {
             } else {
                 isElected = 'notElected';
             }
-            console.log("ELECTED: " + item.value);
             var candidate = `<div id="${item.key}" class="${isElected}">
                   <div class="rateYo"></div>
                   <h4><a href="#/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
@@ -41,6 +45,7 @@ export async function listCandidates() {
                 starWidth: "20px",
                 readOnly: true
             });
+            electCandidate();
         });
     }
 }

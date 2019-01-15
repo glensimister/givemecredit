@@ -31,28 +31,30 @@ export function electCandidate() {
         percentage = (upVotes / totalVotes) * 100;
         var percentageString = percentage.toFixed(0) + "%";
         //gun.get(key).get('approvalRating').put(percentageString);
-        (async() => {
-            let items = [];
-            items = await listOfficials();
-            items.forEach(async(item) => {
-                if (item.key == key) {
-                    var update = {
-                        webID: item.value.webID,
-                        name: item.value.name,
-                        photo: item.value.photo,
-                        position: item.value.position,
-                        elected: item.value.elected,
-                        approvalRating: percentageString,
-                        upVotes: upVotes,
-                        downVotes: downVotes
+        if (percentage < 65) {
+            (async() => {
+                let items = [];
+                items = await listOfficials();
+                items.forEach(async(item) => {
+                    if (item.key == key) {
+                        var update = {
+                            webID: item.value.webID,
+                            name: item.value.name,
+                            photo: item.value.photo,
+                            position: item.value.position,
+                            elected: item.value.elected,
+                            approvalRating: percentageString,
+                            upVotes: upVotes,
+                            downVotes: downVotes
+                        }
+                        await updateOffical(key, update, 0);
+                        listCandidates();
                     }
-                    await updateOffical(key, update, 0);
-                    listCandidates();
-                }
+                });
+            })().catch(err => {
+                console.error(err);
             });
-        })().catch(err => {
-            console.error(err);
-        });
+        }
 
         $('div#' + key + ' .approval-rating').html(percentageString);
         $('div#' + key).find(".rateYo").rateYo("rating", percentageString);
@@ -73,11 +75,11 @@ export function electCandidate() {
                             photo: item.value.photo,
                             position: item.value.position,
                             elected: true,
-                            approvalRating: item.value.approvalRating,
-                            upVotes: item.value.upVotes,
-                            downVotes: item.value.downVotes
+                            approvalRating: percentageString,
+                            upVotes: upVotes,
+                            downVotes: downVotes
                         }
-                        await updateOffical(key, update, 1);
+                        await updateOffical(key, update, 0);
                     }
                     $('#tab1').prop('checked', true);
                     listCandidates();

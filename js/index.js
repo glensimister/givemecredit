@@ -2,7 +2,7 @@ var user = gun.user();
 
 /* Import all of the Javascript components. */ 
 
-import {authoriseAndConnect,createMutableData} from './components/safenetwork.js';
+import {authoriseAndConnect,createMutableData,createOfficials} from './components/safenetwork.js';
 import {sidebar} from './components/sidebar.js';
 import {navTop} from './components/navTop.js';
 import {comments} from './components/comments.js';
@@ -35,6 +35,7 @@ $('.grid-search').load("partials/searchbar.html");
         alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
     }
     await createMutableData();
+    await createOfficials();
     displayPosts();
 })().catch(err => {
     console.error(err);
@@ -82,11 +83,11 @@ distributeCredits(); //initalize credits
                 //load home page scripts
                 initScripts();
                 displayUserData();
-                displayPosts();
+                //displayPosts();
                 connect();
                 toolbar();
                 comments();
-                posts();
+                //posts();
                 
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
@@ -102,8 +103,8 @@ distributeCredits(); //initalize credits
                 }
                 
                 if (thisPage[1] == 'voting') {
-                    listCandidates();
-                    electCandidate();
+                    //listCandidates();
+                    //electCandidate();
                     applyAsCandidate();
                     console.log(thisPage[1] + ' scripts loaded');
                 }

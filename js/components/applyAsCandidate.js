@@ -9,7 +9,7 @@ import {
 from './getDate.js';
 
 import {
-    insertOfficial, createOfficials
+    insertOfficial
 }
 from './safenetwork.js';
 
@@ -25,7 +25,6 @@ export async function applyAsCandidate() {
             const img = await window.currentWebId["#me"]["image"]["@id"];
             const name = await window.currentWebId["#me"]["name"];
             let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            await createOfficials();
             await insertOfficial(guid, {
                 webID: webID,
                 name: name,
