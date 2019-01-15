@@ -77,7 +77,9 @@ export function electCandidate() {
                             elected: true,
                             approvalRating: percentageString,
                             upVotes: upVotes,
-                            downVotes: downVotes
+                            downVotes: downVotes,
+                            creditsReceived: 0,
+                            percentageOfTarget: "20%"
                         }
                         await updateOffical(key, update, 0);
                     }

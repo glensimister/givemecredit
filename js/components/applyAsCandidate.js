@@ -33,7 +33,9 @@ export async function applyAsCandidate() {
                 elected: false,
                 approvalRating: "0%",
                 upVotes: 0,
-                downVotes: 0
+                downVotes: 0,
+                creditsReceived: 0,
+                percentageOfTarget: "0%"
             });
             listCandidates();
         })().catch(err => {
