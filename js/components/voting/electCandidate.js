@@ -64,8 +64,10 @@ export function electCandidate() {
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
                         await updateOffical(key, item.value, item.version);
-                        listCandidates();
                         $('#tab1').prop('checked', true);
+                        $('div#' + key).remove();
+                        $('.localOfficials').html("");
+                        listCandidates();
                     }
                 });
             })().catch(err => {

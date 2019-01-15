@@ -14,7 +14,6 @@ import {
 from './electCandidate.js';
 
 export async function listCandidates() {
-    $('.localCandidates, .localOfficials').html("");
     var isElected;
     let items = [];
     items = await listOfficials();
@@ -41,9 +40,9 @@ export async function listCandidates() {
                   </div>
               </div>`;
             if (!item.value.elected) {
-                $('.localCandidates').append(candidate);
+                $('.localCandidates').hide().append(candidate).fadeIn('slow');
             } else if (item.value.elected) {
-                $('.localOfficials').append(candidate);
+                $('.localOfficials').hide().append(candidate).fadeIn('slow');
             }
             $(".rateYo").rateYo({
                 rating: item.value.approvalRating,
