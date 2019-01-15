@@ -1,7 +1,14 @@
 import {
     listOfficials
 }
-from './safenetwork.js';
+from '../safenetwork.js';
+
+import {
+    donateToService
+}
+from './donateToService.js';
+
+donateToService();
 
 export async function displayPubService() {
     let items = [];
@@ -10,6 +17,7 @@ export async function displayPubService() {
         console.log("There are no services");
     } else {
         items.forEach(async(item) => {
+            console.log(item);
             if (item.value.elected) {
                 var pOfTarget = item.value.percentageOfTarget;
                 var percentage = item.value.percentageOfTarget.split('%');

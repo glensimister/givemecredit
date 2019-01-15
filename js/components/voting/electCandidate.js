@@ -5,7 +5,7 @@ from './listCandidates.js';
 import {
     updateOffical, listOfficials
 }
-from './safenetwork.js';
+from '../safenetwork.js';
 
 export function electCandidate() {
     var totalVotes = 0;
@@ -63,8 +63,7 @@ export function electCandidate() {
                         item.value.approvalRating = percentageString;
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
-                        console.log(item.value);
-                        await updateOffical(key, item.value, 0);
+                        await updateOffical(key, item.value, item.version);
                         listCandidates();
                         $('#tab1').prop('checked', true);
                     }
@@ -83,8 +82,7 @@ export function electCandidate() {
                         item.value.approvalRating = percentageString;
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
-                        console.log(item.value);
-                        await updateOffical(key, item.value, 0);
+                        await updateOffical(key, item.value, item.version);
                         listCandidates();
                         $('#tab2').prop('checked', true);
                     }

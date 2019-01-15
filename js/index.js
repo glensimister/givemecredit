@@ -9,11 +9,11 @@ import {comments} from './components/comments.js';
 import {connect} from './components/connect.js';
 import {toolbar} from './components/toolbar.js';
 import {posts, displayPosts} from './components/posts.js';
-import {listCandidates} from './components/listCandidates.js';
 import {distributeCredits,donateSocialCredits,transferCredits} from './components/credits.js';
-import {applyAsCandidate} from './components/applyAsCandidate.js';
-import {electCandidate} from './components/electCandidate.js';
-import {displayPubService} from './components/displayPubService.js';
+import {listCandidates} from './components/voting/listCandidates.js';
+import {applyAsCandidate} from './components/voting/applyAsCandidate.js';
+import {electCandidate} from './components/voting/electCandidate.js';
+import {displayPubService} from './components/publicServices/displayPubService.js';
 import {displayUserData} from './components/displayUserData.js';
 import {getProfile} from './components/getProfile.js';
 import {lottery} from './components/lottery.js';
@@ -92,7 +92,7 @@ distributeCredits(); //initalize credits
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
                     displayPubService();
-                    donateSocialCredits();
+                    //donateSocialCredits();
                     transferCredits();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
@@ -103,9 +103,12 @@ distributeCredits(); //initalize credits
                 }
                 
                 if (thisPage[1] == 'voting') {
-                    //listCandidates();
-                    //electCandidate();
+                    listCandidates();
                     applyAsCandidate();
+                    //electCandidate();
+                    //updateOffical();
+                    //listOfficials();
+                    //applyAsCandidate();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
                 

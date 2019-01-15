@@ -1,7 +1,12 @@
 import {
     listOfficials
 }
-from './safenetwork.js';
+from '../safenetwork.js';
+
+import {
+    applyAsCandidate
+}
+from './applyAsCandidate.js';
 
 import {
     electCandidate
@@ -14,7 +19,7 @@ export async function listCandidates() {
     let items = [];
     items = await listOfficials();
     if (items.length == 0) {
-        $('.localOfficials').html("There are no candidates to show");
+        $('.localOfficials').html("There are no officials to show");
     } else {
         items.forEach(async(item) => {
             if (item.value.elected) {
