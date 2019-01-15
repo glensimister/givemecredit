@@ -36,6 +36,7 @@ $('.grid-search').load("partials/searchbar.html");
     }
     await createMutableData();
     await createOfficials();
+    posts();
     displayPosts();
 })().catch(err => {
     console.error(err);
@@ -80,14 +81,17 @@ distributeCredits(); //initalize credits
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
                 console.log('current page: ' + thisPage[1]);
-                //load home page scripts
+                //load home page scripts - move these to the top??? 
                 initScripts();
                 displayUserData();
-                //displayPosts();
                 connect();
                 toolbar();
                 comments();
-                posts();
+                
+               if (thisPage[1] == 'home.html') {
+                    displayPosts();
+                    console.log(thisPage[1] + ' scripts loaded');
+                }
                 
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 

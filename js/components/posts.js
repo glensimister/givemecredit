@@ -9,6 +9,7 @@ import {
 from './safenetwork.js';
 
 export async function posts() {
+    
     $(document.body).on('click', '.post-update button', function () {
         var update = $('.status-update input').val();
         updatePost(update);
@@ -27,17 +28,20 @@ export async function posts() {
         } else {
             (async() => {
                 $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
-                let webID = $(this).next().find('webID');
-                let date = await getDate();
-                let post = editable.html();
-                let edit = {
-                    webID: webID,
-                    date: date,
-                    post: post
-                }
                 let id = $(this).attr('id');
-                await updateItem(id, edit, 0);
-                displayPosts();
+                let post = editable.html();
+                let items = [];
+                items = await getItems();
+                items.forEach(async(item) => {
+                    if (item.key == id) {
+                        item.value.post = post;
+                    }
+                    await updateItem(id, item.value, item.version);
+                    editable.css({
+                        border: "none",
+                        padding: "0"
+                    });
+                });
             })().catch(err => {
                 console.error(err);
             });
