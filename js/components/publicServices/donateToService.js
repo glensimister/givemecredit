@@ -3,7 +3,7 @@ import {
 }
 from '../safenetwork.js';
 
-export async function donateToService() {
+export default (async function () {
     $(document.body).on('click', '.donate-sc', function (e) {
         e.stopImmediatePropagation();
         let input = $(this).parent().parent().find('input').val();
@@ -57,4 +57,4 @@ export async function donateToService() {
             });
         }
     });
-}
+}());

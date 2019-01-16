@@ -37,5 +37,5 @@ export async function displayHealthCreditsBox() {
         </div>
     </div>`;
  
-    $('.localServices').hide().append(healthCreditsBox).fadeIn('slow');
+    $('.localServices').hide().append(healthCreditsBox).fadeIn('fast');
 }

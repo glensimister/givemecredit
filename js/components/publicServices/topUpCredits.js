@@ -1,4 +1,4 @@
-export function topUpCredits() {
+export default (function () {
     $(document.body).on('click', '.topup-hc, .topup-ec', function (e) {
         e.stopImmediatePropagation();
         let classToUpdate;
@@ -38,4 +38,4 @@ export function topUpCredits() {
         new_value = (parseInt(toVal) + parseInt(amount));
         $(to).html(new_value);
     }
-}
+}());

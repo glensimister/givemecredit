@@ -3,15 +3,9 @@ import {
 }
 from '../safenetwork.js';
 
-import {
-    topUpCredits
-}
-from './topUpCredits.js';
+import './topUpCredits.js';
 
-import {
-    donateToService
-}
-from './donateToService.js';
+import './donateToService.js';
 
 import {
     displayHealthCreditsBox
@@ -24,8 +18,6 @@ import {
 from './displayEdCreditsBox.js';
 
 export async function displayPubService() {
-    donateToService();
-    topUpCredits();
     displayHealthCreditsBox();
     displayEdCreditsBox();
 
@@ -75,7 +67,7 @@ export async function displayPubService() {
                     <div><button type="button" title="${item.key}" id="${item.key}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
-                $('.localServices').hide().prepend(publicService).fadeIn('slow');
+                $('.localServices').hide().prepend(publicService).fadeIn('fast');
             }
         });
     }

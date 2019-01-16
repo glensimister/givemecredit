@@ -37,5 +37,5 @@ export async function displayEdCreditsBox() {
         </div>
     </div>`;
  
-    $('.localServices').hide().append(edCreditsBox).fadeIn('slow');
+    $('.localServices').hide().append(edCreditsBox).fadeIn('fast');
 }
