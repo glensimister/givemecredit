@@ -1,20 +1,21 @@
-import './posts.js';
 import {
     getItems
 }
 from '../safenetwork.js';
+import './posts.js';
+
 
 export async function displayPosts() {
     $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
     const id = await window.currentWebId["#me"]["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
-    let items = [];
-    items = await getItems();
-    if (items.length == 0) {
+    let posts = [];
+    posts = await getItems();
+    if (posts.length == 0) {
         $('.post-feed').html("There are no posts to show");
     } else {
-        items.forEach(async(item) => {
+        posts.forEach(async(item) => {
             let template = `
                 <div class="post">
                     <i class="fa fa-fw fa-close delete-post"></i>

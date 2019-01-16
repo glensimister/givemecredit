@@ -1,4 +1,4 @@
-export function sidebar(){
+export default (function () {
    $(document.body).on('click', 'a.toggle-menu', function (e) {
         $('.sidebar ul:first-child').slideToggle('fast');
         e.stopImmediatePropagation();
@@ -23,4 +23,4 @@ export function sidebar(){
             }, 500);
         }
     }); 
-} 
+}());

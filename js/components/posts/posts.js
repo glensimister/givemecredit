@@ -4,14 +4,14 @@ import {
 from '../getDate.js';
 
 import {
-    displayPosts
-}
-from './displayPosts.js';
-
-import {
     insertItem, getItems, updateItem, deleteItems
 }
 from '../safenetwork.js';
+
+import {
+    displayPosts
+}
+from './displayPosts.js';
 
 export default (function () {
 
@@ -21,7 +21,7 @@ export default (function () {
         $('.status-update input').val("");
     });
 
-    async function updatePost(post) {
+    async function updatePost(post) { //change name of this to postUpdate()
         let date = await getDate();
         const webID = await window.currentWebId["#me"]["@id"];
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -52,8 +52,8 @@ export default (function () {
                 items.forEach(async(item) => {
                     if (item.key == id) {
                         item.value.post = post;
+                        await updateItem(id, item.value, item.version);
                     }
-                    await updateItem(id, item.value, item.version);
                     editable.css({
                         border: "none",
                         padding: "0"

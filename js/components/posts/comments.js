@@ -1,30 +1,31 @@
 import {
     getDate
-} from './getDate.js';
+}
+from '../getDate.js';
 
-export async function comments() {
+//currently the code below only works on the first comment. Also, it doesn't write to the db yet. 
+
+export default (function () {
     $(document.body).on("keypress", '.post-comment-input', function (e) {
         e.stopImmediatePropagation();
-        let comment = $('.post-comment-input').val();
-        if (e.which == 13 && comment != '') {
-            postComment(comment, $(this));
-        }
-    });
-
-    async function postComment(post, $this) {
-        let date = await getDate();
-        gun.get('users').once(function (data) {
-            gun.get('pub/' + data.pubKey).once(function (result) {
+        (async() => {
+            //const usrId = await window.currentWebId["@id"];
+            const img = await window.currentWebId["#me"]["image"]["@id"];
+            const name = await window.currentWebId["#me"]["name"];
+            let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            let comment = $('.post-comment-input').val();
+            let date = await getDate();
+            if (e.which == 13 && comment != '') {
                 let template = `<div class="comment-box">
                         <div class="post-body">
-                            <img src="${result.photo}" class="user-image-medium" alt="User Image">
-                            <span><a href="">${result.name}</a><br />${date}</span>
-                            <div class="post-desc">${post}</div>
+                            <img src="${img}" class="user-image-medium" alt="User Image">
+                            <span><a href="">${name}</a><br />${date}</span>
+                            <div class="comment">${comment}</div>
                         </div>
                         <div class="grid-toolbar">
-                            <div class="red"><i title="${result.id}-up" class="fa fa-thumbs-o-up"></i></div>
+                            <div class="red"><i title="${guid}" class="fa fa-thumbs-o-up"></i></div>
                             <div>90</div>
-                            <div class="blue"><i title="${result.id}-down" class="fa fa-thumbs-o-down"></i></div>
+                            <div class="blue"><i title="${guid}" class="fa fa-thumbs-o-down"></i></div>
                             <div>10</div>
                             <div class="red"><i class="fa fa-flag"></i></div>
                             <div>0</div>
@@ -41,14 +42,17 @@ export async function comments() {
                             <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
-                $this.prev().append(template);
+                $(this).prev().append(template);
                 $('.post-comment-input').val("");
                 $(".rateYoToolbar").rateYo({
                     rating: 4,
                     starWidth: "15px",
                     readOnly: true
                 });
-            });
+                //postComment(comment, $(this));
+            }
+        })().catch(err => {
+            console.error(err);
         });
-    }
-}
+    });
+}());

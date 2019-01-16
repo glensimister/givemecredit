@@ -1,4 +1,4 @@
-export function toolbar() {
+export default (function () {
     $(document.body).on("click", '.fa-flag', function (e) {
         e.stopImmediatePropagation();
         flagPost($(this)); //this can be removed
@@ -22,10 +22,10 @@ export function toolbar() {
         count++;
         elem.html(count);
     }
-    
+
     $(".rateYoToolbar").rateYo({
         rating: 4,
         starWidth: "15px",
         readOnly: true
     });
-}
+}());

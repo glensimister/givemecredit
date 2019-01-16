@@ -1,5 +1,5 @@
-export function navTop() {
-   $('.top-nav ul li.has-dropdown > a').click('click', function (e) {
+export default (function () {
+    $(document.body).on('click', '.top-nav ul li.has-dropdown > a', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
         $(this).parent().siblings().find('.dropdown-content').hide();
@@ -14,5 +14,5 @@ export function navTop() {
                 $('.dropdown-content').fadeOut('slow');
             }
         });
-    } 
-} 
+    }
+}());

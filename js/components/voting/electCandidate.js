@@ -39,7 +39,6 @@ export default (function () {
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
                         await updateOffical(key, item.value, 0);
-                        //listCandidates();
                     }
                 });
             })().catch(err => {

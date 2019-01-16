@@ -52,8 +52,8 @@ export default (async function () {
                     item.value.percentageOfTarget = prog;
                     item.value.socialCredits = socCred;
                     item.value.creditsReceived = raised;
+                    await updateOffical(key, item.value, item.version);
                 }
-                await updateOffical(key, item.value, item.version);
             });
         }
     });
