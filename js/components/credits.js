@@ -13,11 +13,11 @@ export function distributeCredits() {
 }
 
 export function transferCredits() {
-    $(document.body).on('click', '.topup-hc', function (e) {
+   /* $(document.body).on('click', '.topup-hc', function (e) {
         e.stopImmediatePropagation();
         var input = $(this).parent().parent().find('input').val();
         transfer('.sc', '.hc', input);
-    });
+    }); */
 
     $(document.body).on('click', '.topup-ec', function (e) {
         e.stopImmediatePropagation();

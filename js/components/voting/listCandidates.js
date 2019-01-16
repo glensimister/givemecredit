@@ -10,7 +10,6 @@ export async function listCandidates() {
     if (items.length == 0) {
         $('.localOfficials').html("There are no officials to show");
     } else {
-        $('.localOfficials').html("");
         items.forEach(async(item) => {
             if (item.value.elected) {
                 isElected = 'elected';

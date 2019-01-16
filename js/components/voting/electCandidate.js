@@ -1,4 +1,7 @@
-import {listCandidates} from './listCandidates.js';
+import {
+    listCandidates
+}
+from './listCandidates.js';
 
 import {
     updateOffical, listOfficials
@@ -36,7 +39,7 @@ export function electCandidate() {
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
                         await updateOffical(key, item.value, 0);
-                        listCandidates();
+                        //listCandidates();
                     }
                 });
             })().catch(err => {
@@ -64,6 +67,7 @@ export function electCandidate() {
                         await updateOffical(key, item.value, item.version);
                         $('#tab1').prop('checked', true);
                         $('div#' + key).remove();
+                        $('.localOfficials').html("");
                         listCandidates();
                     }
                 });
@@ -84,6 +88,7 @@ export function electCandidate() {
                         await updateOffical(key, item.value, item.version);
                         $('#tab2').prop('checked', true);
                         $('div#' + key).remove();
+                        $('.localCandidates').html("");
                         listCandidates();
                     }
                 });

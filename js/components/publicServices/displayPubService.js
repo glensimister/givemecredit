@@ -4,20 +4,37 @@ import {
 from '../safenetwork.js';
 
 import {
+    topUpCredits
+}
+from './topUpCredits.js';
+
+import {
     donateToService
 }
 from './donateToService.js';
 
-donateToService();
+import {
+    displayHealthCreditsBox
+}
+from './displayHealthCreditsBox.js';
+
+import {
+    displayEdCreditsBox
+}
+from './displayEdCreditsBox.js';
 
 export async function displayPubService() {
+    donateToService();
+    topUpCredits();
+    displayHealthCreditsBox();
+    displayEdCreditsBox();
+
     let items = [];
     items = await listOfficials();
     if (items.length == 0) {
         console.log("There are no services");
     } else {
         items.forEach(async(item) => {
-            console.log(item);
             if (item.value.elected) {
                 var pOfTarget = item.value.percentageOfTarget;
                 var percentage = item.value.percentageOfTarget.split('%');
@@ -58,7 +75,7 @@ export async function displayPubService() {
                     <div><button type="button" title="${item.key}" id="${item.key}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
-                $('.localServices').prepend(publicService);
+                $('.localServices').hide().prepend(publicService).fadeIn('slow');
             }
         });
     }
