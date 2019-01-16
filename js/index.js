@@ -8,7 +8,7 @@ import {navTop} from './components/navTop.js';
 import {comments} from './components/comments.js';
 import {connect} from './components/connect.js';
 import {toolbar} from './components/toolbar.js';
-import {posts, displayPosts} from './components/posts.js';
+import {displayPosts} from './components/posts/displayPosts.js';
 import {distributeCredits,transferCredits} from './components/credits.js';
 import {listCandidates} from './components/voting/listCandidates.js';
 import {displayOfficialProfile} from './components/voting/displayOfficialProfile.js';
@@ -23,29 +23,29 @@ $('.sidebar').load("partials/sidebar.html", function(){sidebar();});
 $('.dropdown-container').load("partials/navtop.html", function(){navTop();});
 $('.grid-search').load("partials/searchbar.html");
 
-/* initalize SAFE API and display posts */
-
-(async() => {
-    await authoriseAndConnect();
-    try {
-        await displayUserData();
-    } catch (err) {
-        alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
-    }
-    await createMutableData();
-    await createOfficials();
-    posts();
-    displayPosts();
-})().catch(err => {
-    console.error(err);
-});
 
 distributeCredits(); //initalize credits
 
-/* routing */ 
-
 ;
 (function ($) {
+    
+    /* initalize SAFE API and display posts */
+    (async() => {
+        await authoriseAndConnect();
+        try {
+            await displayUserData();
+        } catch (err) {
+            alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
+        }
+        await createMutableData();
+        await createOfficials();
+        getPage("pages/home.html");
+    })().catch(err => {
+        console.error(err);
+    });
+    
+    /* page routing */ 
+    
     var app = $.sammy(function () {
         this.get('#/', function () {getPage("pages/home.html");});
         this.get('/index.html', function () {getPage("pages/home.html");});
@@ -87,9 +87,9 @@ distributeCredits(); //initalize credits
                 comments();
                 
                if (thisPage[1] == 'home.html') {
-                    displayPosts();
-                    console.log(thisPage[1] + ' scripts loaded');
-                }
+                   displayPosts();
+                   console.log(thisPage[1] + ' scripts loaded');
+               }
                 
                 //load page specific scripts
                 if (thisPage[1] === 'publicservices') { 
