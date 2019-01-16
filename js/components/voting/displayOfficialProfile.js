@@ -13,6 +13,11 @@ export async function displayOfficialProfile() {
             $('.profile-summary img').attr("src", item.value.photo);
             $('.profile-summary ul li a.fullname').html(item.value.name);
             $('.profile-summary ul li a.approval-rating').html(item.value.approvalRating);
+            $(".rateYo").rateYo({
+                rating: item.value.approvalRating,
+                starWidth: "20px",
+                readOnly: true
+            });
         }
     });
 
