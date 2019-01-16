@@ -3,6 +3,9 @@ import {
 }
 from '../safenetwork.js';
 
+import './applyAsCandidate.js';
+import './electCandidate.js';
+
 export async function listCandidates() {
     var isElected;
     let items = [];

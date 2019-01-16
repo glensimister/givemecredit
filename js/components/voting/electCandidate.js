@@ -8,7 +8,7 @@ import {
 }
 from '../safenetwork.js';
 
-export function electCandidate() {
+export default (function () {
     var totalVotes = 0;
     var percentage = 0;
     var upVotes = 0;
@@ -97,4 +97,4 @@ export function electCandidate() {
             });
         }
     });
-}
+}());

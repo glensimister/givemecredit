@@ -10,7 +10,7 @@ import {
 }
 from '../safenetwork.js';
 
-export async function applyAsCandidate() {
+export default (async function () {
     $(document.body).on("click", '.apply-for-position', function (e) {
         e.stopImmediatePropagation();
         $('#tab2').prop('checked', true);
@@ -45,4 +45,4 @@ export async function applyAsCandidate() {
             console.error(err);
         });
     });
-}
+}());

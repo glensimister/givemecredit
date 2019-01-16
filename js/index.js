@@ -11,8 +11,6 @@ import {toolbar} from './components/toolbar.js';
 import {posts, displayPosts} from './components/posts.js';
 import {distributeCredits,transferCredits} from './components/credits.js';
 import {listCandidates} from './components/voting/listCandidates.js';
-import {applyAsCandidate} from './components/voting/applyAsCandidate.js';
-import {electCandidate} from './components/voting/electCandidate.js';
 import {displayOfficialProfile} from './components/voting/displayOfficialProfile.js';
 import {displayPubService} from './components/publicServices/displayPubService.js';
 import {displayUserData} from './components/displayUserData.js';
@@ -106,8 +104,6 @@ distributeCredits(); //initalize credits
                 }
                 
                 if (thisPage[1] == 'voting') {
-                    applyAsCandidate();
-                    electCandidate();
                     listCandidates();
                     console.log(thisPage[1] + ' scripts loaded');
                 }
