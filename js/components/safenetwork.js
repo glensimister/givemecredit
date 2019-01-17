@@ -20,23 +20,23 @@ export async function authoriseAndConnect() {
 let md;
 export async function createMutableData() {
     console.log("Creating MutableData with initial dataset...");
+    //md = await safeApp.mutableData.newRandomPublic(typeTag);
+    const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
+    md = await safeApp.mutableData.newPublic(hash, 15000);
+
     try {
-        //md = await safeApp.mutableData.newRandomPublic(typeTag);
-        const name = await safeApp.crypto.sha3Hash('POSTS');
-        md = await safeApp.mutableData.newPublic(name, 15000);
         const initialData = {
             "random_key_1": JSON.stringify({
                 webID: "safe://glen.devolution#me",
                 date: "14 Jan, 2019",
+                img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
+                name: "Glen Simister",
                 post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
             })
         };
         await md.quickSetup(initialData);
     } catch (err) {
         console.log(err);
-    } finally {
-        const name = await safeApp.crypto.sha3Hash('POSTS');
-        md = await safeApp.mutableData.newPublic(name, 15000);
     }
 }
 
@@ -86,23 +86,29 @@ export async function getItems() {
 let users;
 export async function createUsers() {
     console.log("Creating users table...");
-    const typeTag = 15000;
-    users = await safeApp.mutableData.newRandomPublic(typeTag);
-    const id = await window.currentWebId["#me"]["@id"];
-    const img = await window.currentWebId["#me"]["image"]["@id"];
-    const name = await window.currentWebId["#me"]["name"];
-    const initialData = {
-        "random_key_1": JSON.stringify({
-            webID: id,
-            photo: img,
-            name: name,
-            socialCredits: 240,
-            healthCredits: 50,
-            educationCredits: 40,
-            rebate: 20
-        })
-    };
-    await users.quickSetup(initialData);
+    //users = await safeApp.mutableData.newRandomPublic(15000);
+    const hash = await safeApp.crypto.sha3Hash('USERS');
+    users = await safeApp.mutableData.newPublic(hash, 15000);
+
+    try {
+        const id = await window.currentWebId["#me"]["@id"];
+        const img = await window.currentWebId["#me"]["image"]["@id"];
+        const name = await window.currentWebId["#me"]["name"];
+        const initialData = {
+            "random_key_1": JSON.stringify({
+                webID: id,
+                photo: img,
+                name: name,
+                socialCredits: 240,
+                healthCredits: 50,
+                educationCredits: 40,
+                rebate: 20
+            })
+        };
+        await users.quickSetup(initialData);
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 export async function insertUser(key, value) {
@@ -141,8 +147,8 @@ let officials;
 export async function createOfficials() {
     console.log("Creating officials table...");
     //officials = await safeApp.mutableData.newRandomPublic(15000);
-    const name = await safeApp.crypto.sha3Hash('OFFICIALS');
-    officials = await safeApp.mutableData.newPublic(name, 15000);
+    const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
+    officials = await safeApp.mutableData.newPublic(hash, 15000);
     try {
         await officials.quickSetup();
     } catch (err) {
