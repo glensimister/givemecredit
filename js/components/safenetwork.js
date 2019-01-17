@@ -73,6 +73,60 @@ export async function getItems() {
     return items;
 }
 
+/***************** users table *****************/
+
+let users;
+export async function createUsers() {
+    console.log("Creating users table...");
+    const typeTag = 15000;
+    users = await safeApp.mutableData.newRandomPublic(typeTag);
+    const id = await window.currentWebId["#me"]["@id"];
+    const img = await window.currentWebId["#me"]["image"]["@id"];
+    const name = await window.currentWebId["#me"]["name"];
+    const initialData = {
+        "random_key_1": JSON.stringify({
+            webID: id,
+            photo: img,
+            name: name,
+            socialCredits: 240,
+            healthCredits: 50,
+            educationCredits: 40,
+            rebate: 20
+        })
+    };
+    await users.quickSetup(initialData);
+}
+
+export async function insertUser(key, value) {
+    const mutations = await safeApp.mutableData.newMutation();
+    await mutations.insert(key, JSON.stringify(value));
+    await users.applyEntriesMutation(mutations);
+}
+
+export async function updateUser(key, value, version) {
+    const mutations = await safeApp.mutableData.newMutation();
+    await mutations.update(key, JSON.stringify(value), version + 1);
+    await users.applyEntriesMutation(mutations);
+}
+
+export async function listUsers() {
+    const entries = await users.getEntries();
+    const entriesList = await entries.listEntries();
+    const items = [];
+    entriesList.forEach((entry) => {
+        const value = entry.value;
+        if (value.buf.length == 0) return;
+        const parsedValue = JSON.parse(value.buf);
+        items.push({
+            key: entry.key,
+            value: parsedValue,
+            version: value.version
+        });
+    });
+    return items;
+}
+
+
 /***************** Officials table *****************/
 
 let officials;

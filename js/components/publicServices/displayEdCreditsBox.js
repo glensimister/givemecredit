@@ -1,6 +1,20 @@
+import {
+    listUsers
+}
+from '../safenetwork.js';
+
+/*** This doesn't work. Need to setup new table users which it can retrieve data from ***/
+
 export async function displayEdCreditsBox() {
-    let id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    let edCreditsBox = `<div id="${id}">
+    const id = await window.currentWebId["#me"]["@id"];
+    let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    let items = [];
+    items = await listUsers();
+    items.forEach(async(item) => {
+        console.log(item);
+        if (item.value.webID == id) {
+            let percentage = (item.value.educationCredits / 1000) * 100;
+            let edCreditsBox = `<div id="${rand}">
         <h3>Education Credits</h3>
         <ul class="funds-raised">
             <li>
@@ -10,11 +24,11 @@ export async function displayEdCreditsBox() {
                 Max Threshold<b class="pull-right"><span class="monthlyTarget">1000</span> IDX</b>
             </li>
             <li>
-                Current Balance<b class="pull-right"><span class="creditsReceived">100</span> IDX</b>
+                Current Balance<b class="pull-right"><span class="creditsReceived">${item.value.educationCredits}</span> IDX</b>
             </li>
         </ul>
         <div class="progress-bar">
-            <div style="width: 0%;">
+            <div style="width: ${percentage}%;">
             </div>
         </div>
         <select class="form-control">
@@ -32,10 +46,11 @@ export async function displayEdCreditsBox() {
                 <input type="text" class="form-control donate-input">
             </div>
             <div>
-                <button type="button" title="${id}" class="topup-ec">DONATE</button>
+                <button type="button" title="${rand}" class="topup-ec">DONATE</button>
             </div>
         </div>
     </div>`;
- 
-    $('.localServices').hide().append(edCreditsBox).fadeIn('fast');
+            $('.localServices').hide().append(edCreditsBox).fadeIn('fast');
+        }
+    });
 }

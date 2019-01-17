@@ -6,7 +6,8 @@ $('.grid-search').load("partials/searchbar.html");
 
 /* Import all of the Javascript components. */ 
 
-import {authoriseAndConnect,createMutableData,createOfficials} from './components/safenetwork.js';
+import {authoriseAndConnect,createMutableData,createOfficials,createUsers} from './components/safenetwork.js';
+import {displayUserData} from './components/displayUserData.js';
 import './components/sidebar.js';
 import './components/navTop.js';
 import './components/posts/comments.js';
@@ -17,7 +18,6 @@ import {course} from './components/education/course.js';
 import {listCandidates} from './components/voting/listCandidates.js';
 import {displayOfficialProfile} from './components/voting/displayOfficialProfile.js';
 import {displayPubService} from './components/publicServices/displayPubService.js';
-import {displayUserData} from './components/displayUserData.js';
 import {lottery} from './components/lottery.js';
 import {initScripts} from './components/initScripts.js';
 
@@ -29,8 +29,9 @@ import {initScripts} from './components/initScripts.js';
         } catch (err) {
             alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
         }
-        await createMutableData();
+        await createMutableData(); //this will need to be changed to createPosts()
         await createOfficials();
+        await createUsers();
         displayPosts();
         initScripts();
     })().catch(err => {
@@ -40,7 +41,7 @@ import {initScripts} from './components/initScripts.js';
 /* initalize credits bar. This will be removed soon */
 
 $('.sc').html("240");
-$('.hc').html("40");
+$('.hc').html("50");
 $('.ec').html("65");
 
 /* page routing */

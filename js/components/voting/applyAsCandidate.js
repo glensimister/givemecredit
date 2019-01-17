@@ -35,10 +35,7 @@ export default (async function () {
                 monthlyTarget: 200,
                 creditsReceived: 0,
                 percentageOfTarget: "0%", //maybe change this to number
-                socialCredits: 0,
-                healthCredits: 0,
-                educationCredits: 0,
-                rebate: 0
+                socialCredits: 0 //this will need to go in users table
             });
             listCandidates();
         })().catch(err => {
