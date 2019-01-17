@@ -23,11 +23,15 @@ export default (function () {
 
     async function updatePost(post) { //change name of this to postUpdate()
         let date = await getDate();
-        const webID = await window.currentWebId["#me"]["@id"];
+        const id = await window.currentWebId["#me"]["@id"];
+        const img = await window.currentWebId["#me"]["image"]["@id"];
+        const name = await window.currentWebId["#me"]["name"];
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         await insertItem(guid, {
-            webID: webID,
+            webID: id,
             date: date,
+            img: img,
+            name: name,
             post: post
         });
         displayPosts();
