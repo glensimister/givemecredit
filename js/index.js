@@ -87,32 +87,28 @@ $('.ec').html("65");
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
                 console.log("The current page is: " + thisPage[1]);
-                //make this a case statement    
-
-                if (thisPage[1] === 'home.html') {
-                    displayUserData();
-                    displayPosts();
-                }
-
-                if (thisPage[1] === 'publicservices') {
-                    displayPubService();
-                }
-
-                if (thisPage[1] === 'profile.html') {
-                    displayOfficialProfile();
-                }
-
-                if (thisPage[1] === 'voting') {
-                    listCandidates();
-                }
-
-                if (thisPage[1] === 'education') {
-                    course();
-                    initScripts();
-                }
-
-                if (thisPage[1] === 'lottery.html') {
-                    lottery();
+                
+                switch (thisPage[1]) {
+                    case 'home.html':
+                        displayUserData();
+                        displayPosts();
+                        break;
+                    case 'publicservices':
+                        displayPubService();
+                        break;
+                    case 'profile.html':
+                        displayOfficialProfile();
+                        break;
+                    case 'voting':
+                        listCandidates();
+                        break;
+                    case 'education':
+                        course();
+                        initScripts();
+                        break;
+                    case 'lottery.html':
+                        lottery();
+                        break;
                 }
             }
         });
