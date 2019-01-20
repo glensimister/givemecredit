@@ -34,7 +34,7 @@ export async function displayPubService() {
                 if (percentage > 100) {
                     pOfTarget = '100%';
                 }
-                var publicService = `<div id="${item.key}">
+                var publicService = `<div id="${item.key}" class="animated slideInUp">
                 <h3><a href="#/profile?id=${item.key}">${item.value.position}</a></h3>
                 <ul class="funds-raised">
                     <li>
@@ -67,7 +67,7 @@ export async function displayPubService() {
                     <div><button type="button" title="${item.key}" id="${item.key}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
-                $('.localServices').hide().prepend(publicService).fadeIn('fast');
+                $('.localServices').prepend(publicService);
             }
         });
     }

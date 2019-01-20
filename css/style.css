@@ -48,6 +48,9 @@ small {
 .pull-right {
     float: right;
 }
+#container {
+    display: none;
+}
 ul.docs-list {
     margin: 0 20px 20px 20px;
 }

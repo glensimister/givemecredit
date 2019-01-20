@@ -1,10 +1,14 @@
-/* load partials */
-
-$('.sidebar').load("partials/sidebar.html");
-$('.dropdown-container').load("partials/navtop.html");
-$('.grid-search').load("partials/searchbar.html");
-
 /* Import all of the Javascript components. */ 
+
+$('.enter').on('click', function(){
+    $('.stars').addClass('animated zoomIn');
+    $('.twinkling').addClass('animated zoomIn');
+    $('#intro').addClass('animated zoomOut');
+    $('#introContainer').fadeOut(2000);
+    $('#container').show();
+    $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
+    $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
+});
 
 import {authoriseAndConnect,createMutableData,createOfficials,createUsers} from './components/safenetwork.js';
 import {displayUserData} from './components/displayUserData.js';
@@ -24,14 +28,14 @@ import {initScripts} from './components/initScripts.js';
     /* initalize SAFE API and display posts */
     (async() => {
         await authoriseAndConnect();
+        await createUsers();
+        await createMutableData(); //this will need to be changed to createPosts()
+        await createOfficials();
         try {
             await displayUserData();
         } catch (err) {
             alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
         }
-        await createMutableData(); //this will need to be changed to createPosts()
-        await createOfficials();
-        await createUsers();
         displayPosts();
         initScripts();
     })().catch(err => {
@@ -40,14 +44,19 @@ import {initScripts} from './components/initScripts.js';
 
 /* initalize credits bar. This will be removed soon */
 
-$('.sc').html("240");
-$('.hc').html("50");
-$('.ec').html("65");
+//$('.sc').html("240");
+//$('.hc').html("50");
+//$('.ec').html("65");
 
 /* page routing */
 ;
 (function ($) {
-
+    
+    /* load partials */
+    $('.sidebar').load("partials/sidebar.html");
+    $('.dropdown-container').load("partials/navtop.html");
+    $('.grid-search').load("partials/searchbar.html");
+    
     var app = $.sammy(function () {
         this.get('#/', function () {
             getPage("pages/home.html");
@@ -106,7 +115,7 @@ $('.ec').html("65");
                         course();
                         initScripts();
                         break;
-                    case 'lottery.html':
+                    case 'casino':
                         lottery();
                         break;
                 }

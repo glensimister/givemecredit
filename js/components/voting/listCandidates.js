@@ -19,11 +19,11 @@ export async function listCandidates() {
             } else {
                 isElected = 'notElected';
             }
-            var candidate = `<div id="${item.key}" class="${isElected}">
+            var candidate = `<div id="${item.key}" class="${isElected} animated slideInUp">
                   <div class="rateYo"></div>
                   <h4><a href="#/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
                   <p class="position">${item.value.position}</p>
-                  <img src="${item.value.photo}" class="user-image-large" alt="User Image">
+                  <img src="${item.value.photo}" class="user-image-large animated rotateIn" alt="User Image">
                   <p>Approval rating: <b class="approval-rating">${item.value.approvalRating}</b></p>
                   <div class="grid-votes">
                       <div class="red"><i title="${item.key}" class="fa fa-thumbs-o-up"></i></div>
@@ -33,9 +33,11 @@ export async function listCandidates() {
                   </div>
               </div>`;
             if (!item.value.elected) {
-                $('.localCandidates').hide().append(candidate).fadeIn('slow');
+                //$('.localCandidates').hide().append(candidate).fadeIn('slow');
+                $('.localCandidates').append(candidate);
             } else if (item.value.elected) {
-                $('.localOfficials').hide().append(candidate).fadeIn('slow');
+                //$('.localOfficials').hide().append(candidate).fadeIn('slow');
+                $('.localOfficials').append(candidate);
             }
             $(".rateYo").rateYo({
                 rating: item.value.approvalRating,

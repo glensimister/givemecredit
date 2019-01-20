@@ -87,11 +87,11 @@ let users;
 export async function createUsers() {
     console.log("Creating users table...");
     //users = await safeApp.mutableData.newRandomPublic(15000);
-    const hash = await safeApp.crypto.sha3Hash('USERS');
+    const hash = await safeApp.crypto.sha3Hash('USERS_TABLE');
     users = await safeApp.mutableData.newPublic(hash, 15000);
 
     try {
-        const id = await window.currentWebId["#me"]["@id"];
+        const id = await window.currentWebId["@id"];
         const img = await window.currentWebId["#me"]["image"]["@id"];
         const name = await window.currentWebId["#me"]["name"];
         const initialData = {
@@ -99,10 +99,10 @@ export async function createUsers() {
                 webID: id,
                 photo: img,
                 name: name,
-                socialCredits: 240,
-                healthCredits: 50,
-                educationCredits: 40,
-                rebate: 20
+                socialCredits: 0,
+                healthCredits: 0,
+                educationCredits: 0,
+                rebate: 0
             })
         };
         await users.quickSetup(initialData);
