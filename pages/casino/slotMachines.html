@@ -48,36 +48,34 @@
         border-radius: 15px;
         background-color: #FAFAFA;
         width: 548px;
+        height: 180px;
         margin: auto;
     }
     
-    section#Gira {
-        margin-top: 25px;
+    button#Gira {
         padding: 10px;
-        /*padding-top: 25px;
-        padding-bottom: 25px;*/
         border-radius: 5px;
         text-align: center;
-        background-color: #008d4c;
+        background-color: transparent;
+        border:1px solid #fff;
         color: #FFFFFF;
-        font-size: 25px;
-        width: 300px;
-        margin: 30px auto;
     }
     
-    section#Gira:hover {
-        background-color: #BA68C8;
+    button#Gira:hover {
+        background-color: #00acd6;
+    }
+    
+    .align-right{
+        text-align: right;
     }
     
     section#options {
         margin-top: 20px;
-        padding-top: 5px;
         background-color: #C62828;
         color: #FFFFFF;
     }
     
     .option {
-        padding-left: 5px;
         display: block;
     }
     
@@ -98,22 +96,41 @@
     .grid-slot {
         display: grid;
         line-height: 46px;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        font-size: 18px;
+        font-family: 'OpenSans-Bold', sans-serif;
+    }
+    
+    .grid-slot input[type="number"] {
+        padding: 5px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    
+    .grid-slot > div {
+        padding: 10px;
+    }
+    
+    .grid-slot > div span {
+        font-family: 'OpenSans-Regular', sans-serif;
     }
     
     button#Gira {
         padding: 10px 30px;
         border-radius: 5px;
         font-weight: bold;
+        width: 100%;
     }
     
     #slot1,
     #slot2,
     #slot3 {
         display: inline-block;
-        margin-top: 5px;
+        margin: 15px;
+        /*margin-top: 5px;
         margin-left: 15px;
-        margin-right: 15px;
+        margin-right: 15px;*/
         background-size: 150px;
         width: 150px;
         height: 150px;
@@ -160,10 +177,13 @@
         <section id="options">
             <div class="grid-slot">
                 <div><img src="res/icons/audioOn.png" id="audio" class="option" onclick="toggleAudio()" /></div>
-                <div></div>
-                <div><span>SAFECOIN: 50</span></div>
+                <div class="align-right">PRICE PER SPIN</div>
                 <div>
-                    <button onclick="doSlot()" id="Gira">TAKE A SPIN!</button>
+                    <input type="number" step="0.01">
+                </div>
+                <div class="align-right">SAFE<span>COIN:</span></div>
+                <div>50</div>
+                <div><button id="Gira" onclick="doSlot()">TAKE A SPIN!</button>
                 </div>
             </div>
         </section>
