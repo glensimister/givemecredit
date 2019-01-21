@@ -11,8 +11,7 @@ export async function distributeSocCredits(credits) {
     let new_val = (parseFloat(share) + parseFloat(current_val));
     $('.sc').html(new_val.toFixed(2));
     users.forEach(async(user) => {
-        let social_credits = parseFloat(user.value.socialCredits) + share;
-        user.value.socialCredits = social_credits.toFixed(2);
+        user.value.socialCredits = parseFloat(user.value.socialCredits) + parseFloat(share);
         await updateUser(user.key, user.value, user.version);
     });
 }
@@ -23,7 +22,7 @@ export async function slotMachine() {
         var current_val = $('.sc').html();
         safe_coin = $('.safe_coin').html();
         $('.safe_coin').html((parseFloat(safe_coin) - parseFloat(cost_per_spin)).toFixed(2));
-        let social_credits = (parseFloat(current_val) + parseFloat(cost_per_spin)).toFixed(2);
+        let social_credits = parseFloat(current_val) + parseFloat(cost_per_spin);
         distributeSocCredits(social_credits);
     });
 }

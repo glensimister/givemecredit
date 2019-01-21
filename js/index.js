@@ -1,7 +1,7 @@
 /* Import all of the Javascript components. */ 
 
 import {
-    authoriseAndConnect, createMutableData, createOfficials, createUsers, createNewUser, deleteAllUsers
+    authoriseAndConnect, createMutableData, createOfficials, createUsers, createNewUser, deleteAllUsers, resetUserCredits
 }
 from './components/safenetwork.js';
 import {displayUserData} from './components/displayUserData.js';
@@ -25,6 +25,7 @@ $( document ).ready(async function() {
 
 await authoriseAndConnect();
 await createUsers(); // should be renamed to getUsers or something
+//await resetUserCredits();
 //await deleteAllUsers();
 
 /* intro page */

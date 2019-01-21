@@ -155,6 +155,20 @@ export async function insertUser(key, value) {
     await users.applyEntriesMutation(mutations);
 }
 
+
+/*** this is for testing purposes ***/
+export async function resetUserCredits() {
+    let users = [];
+    users = await listUsers();
+    users.forEach(async(user) => {
+        user.value.socialCredits = 0;
+        user.value.healthCredits = 0;
+        user.value.educationCredits = 0;
+        updateUser(user.key, user.value, user.version);
+    });
+}
+
+
 export async function updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);

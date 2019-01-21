@@ -11,7 +11,6 @@ export async function displayHealthCreditsBox() {
     let items = [];
     items = await listUsers();
     items.forEach(async(item) => {
-        //deleteUser()
         if (item.value.webID == id) {
             console.log(item.value.webID + " " + id);
             console.log(item);

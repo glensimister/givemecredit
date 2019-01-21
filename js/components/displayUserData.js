@@ -23,7 +23,7 @@ export async function displayUserData() {
     users.forEach(async(user) => {
         console.log(user);
         if (user.value.webID == id) {
-            $('.sc').html(user.value.socialCredits);
+            $('.sc').html(user.value.socialCredits.toFixed(2));
             $('.hc').html(user.value.healthCredits);
             $('.ec').html(user.value.educationCredits);
         }
