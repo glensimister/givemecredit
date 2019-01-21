@@ -105,6 +105,7 @@ initScripts();
                     case 'home.html':
                         displayUserData();
                         displayPosts();
+                        $('.select2').select2();
                         break;
                     case 'publicservices':
                         displayPubService();
