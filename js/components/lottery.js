@@ -3,13 +3,14 @@ import {
 }
 from './distributeSocCredits.js';
 
-export function lottery($this) {
+export function lottery() {
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
-        var amount = $(this).parent().prev().find('input').val();
-        amount = amount * 100; //this is the price of a lottery ticket - although it is completely arbitrary
-        var sc = $('.sc').html();
-        var new_sc = (parseInt(sc) + parseInt(amount));
+        //var amount = $(this).parent().prev().find('input').val();
+        //amount = amount * 100; //this is the price of a lottery ticket - although it is completely arbitrary
+        let ticketPrice = 100;
+        let sc = $('.sc').html();
+        let new_sc = (parseFloat(sc) + ticketPrice);
         distributeSocCredits(new_sc);
     });
 
