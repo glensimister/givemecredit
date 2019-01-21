@@ -7,13 +7,16 @@ from '../safenetwork.js';
 
 export async function displayHealthCreditsBox() {
     const id = await window.currentWebId["@id"];
-    let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    //let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let items = [];
     items = await listUsers();
     items.forEach(async(item) => {
+        //deleteUser()
         if (item.value.webID == id) {
+            console.log(item.value.webID + " " + id);
+            console.log(item);
             let percentage = (item.value.healthCredits / 1000) * 100;
-            let healthCreditsBox = `<div id="${rand}" class="animated slideInUp">
+            let healthCreditsBox = `<div id="${item.key}-hc" class="animated slideInUp">
         <h3>Health Credits</h3>
         <ul class="funds-raised">
             <li>
@@ -45,7 +48,7 @@ export async function displayHealthCreditsBox() {
                 <input type="text" class="form-control donate-input">
             </div>
             <div>
-                <button type="button" title="${rand}" class="topup-hc">DONATE</button>
+                <button type="button" title="${item.key}-hc" class="topup-hc">DONATE</button>
             </div>
         </div>
     </div>`;

@@ -7,13 +7,13 @@ from '../safenetwork.js';
 
 export async function displayEdCreditsBox() {
     const id = await window.currentWebId["@id"];
-    let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    //let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let items = [];
     items = await listUsers();
     items.forEach(async(item) => {
         if (item.value.webID == id) {
             let percentage = (item.value.educationCredits / 1000) * 100;
-            let edCreditsBox = `<div id="${rand}" class="animated slideInUp">
+            let edCreditsBox = `<div id="${item.key}-ec" class="animated slideInUp">
         <h3>Education Credits</h3>
         <ul class="funds-raised">
             <li>
@@ -45,7 +45,7 @@ export async function displayEdCreditsBox() {
                 <input type="text" class="form-control donate-input">
             </div>
             <div>
-                <button type="button" title="${rand}" class="topup-ec">DONATE</button>
+                <button type="button" title="${item.key}-ec" class="topup-ec">DONATE</button>
             </div>
         </div>
     </div>`;

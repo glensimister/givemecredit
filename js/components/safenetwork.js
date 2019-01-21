@@ -90,14 +90,14 @@ export async function createUsers() {
     try {
         const hash = await safeApp.crypto.sha3Hash('USERS_TABLE');
         users = await safeApp.mutableData.newPublic(hash, 15000);
-        /*const id = await window.currentWebId["@id"];
-        const img = await window.currentWebId["#me"]["image"]["@id"];
-        const name = await window.currentWebId["#me"]["name"];
-        const initialData = {
+        //const id = await window.currentWebId["@id"];
+        //const img = await window.currentWebId["#me"]["image"]["@id"];
+        //const name = await window.currentWebId["#me"]["name"];
+        /*const initialData = {
             "random_key_1": JSON.stringify({
-                webID: id,
-                photo: img,
-                name: name,
+                webID: "",
+                photo: "",
+                name: "",
                 socialCredits: 0,
                 healthCredits: 0,
                 educationCredits: 0,
@@ -115,24 +115,38 @@ export async function createNewUser() {
     const id = await window.currentWebId["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
+    let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let users = [];
     users = await listUsers();
-    users.forEach(async(user) => {
-        if (user.value.webID == id) {
-            return; //user already exists
-        } else {
-            let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            await insertUser(guid, {
-                webID: id,
-                photo: img,
-                name: name,
-                socialCredits: 0,
-                healthCredits: 0,
-                educationCredits: 0,
-                rebate: 0
-            });
-        }
-    });
+    if (users === undefined || users.length == 0) {
+        await insertUser(guid, {
+            webID: id,
+            photo: img,
+            name: name,
+            socialCredits: 0,
+            healthCredits: 0,
+            educationCredits: 0,
+            rebate: 0
+        });
+        console.log('user created');
+    } else {
+        users.forEach(async(user) => {
+            if (user.value.webID == id) {
+                return; //user already exists
+            } else {
+                await insertUser(guid, {
+                    webID: id,
+                    photo: img,
+                    name: name,
+                    socialCredits: 0,
+                    healthCredits: 0,
+                    educationCredits: 0,
+                    rebate: 0
+                });
+                console.log('user created');
+            }
+        });
+    }
 }
 
 export async function insertUser(key, value) {
@@ -144,6 +158,16 @@ export async function insertUser(key, value) {
 export async function updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
+    await users.applyEntriesMutation(mutations);
+}
+
+export async function deleteAllUsers() {
+    let items = [];
+    items = await listUsers();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+        await mutations.delete(item.key, item.version + 1);
+    });
     await users.applyEntriesMutation(mutations);
 }
 

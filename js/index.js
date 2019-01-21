@@ -1,6 +1,9 @@
 /* Import all of the Javascript components. */ 
 
-import {authoriseAndConnect,createMutableData,createOfficials,createUsers,createNewUser} from './components/safenetwork.js';
+import {
+    authoriseAndConnect, createMutableData, createOfficials, createUsers, createNewUser, deleteAllUsers
+}
+from './components/safenetwork.js';
 import {displayUserData} from './components/displayUserData.js';
 import './components/sidebar.js';
 import './components/navTop.js';
@@ -20,11 +23,13 @@ $( document ).ready(async function() {
 /* initalize SAFE API */
 
 await authoriseAndConnect();
-await createUsers();
+await createUsers(); // should be renamed to getUsers or something
+//await deleteAllUsers();
 
 /* intro page */
 
-$('.enter, .register').on('click', async function () {
+$('.enter, .register').on('click', async function (e) {
+    e.stopImmediatePropagation();
     if ($(this).hasClass('register')) { await createNewUser(); }
     $('.stars').addClass('animated zoomIn');
     $('.twinkling').addClass('animated zoomIn');
