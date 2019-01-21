@@ -192,6 +192,18 @@ export async function updateOffical(key, value, version) {
     await officials.applyEntriesMutation(mutations);
 }
 
+export async function deleteOfficial(key) {
+    let items = [];
+    items = await listOfficials();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+        if (item.key == key) {
+            await mutations.delete(item.key, item.version + 1);
+        }
+    });
+    await officials.applyEntriesMutation(mutations);
+}
+
 export async function listOfficials() {
     const entries = await officials.getEntries();
     const entriesList = await entries.listEntries();

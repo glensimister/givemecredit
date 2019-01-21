@@ -20,6 +20,7 @@ export async function listCandidates() {
                 isElected = 'notElected';
             }
             var candidate = `<div id="${item.key}" class="${isElected} animated slideInUp">
+                  <i class="fa fa-fw fa-close delete-official"></i>
                   <div class="rateYo"></div>
                   <h4><a href="#/voting/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
                   <p class="position">${item.value.position}</p>

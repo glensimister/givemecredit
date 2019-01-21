@@ -4,11 +4,18 @@ import {
 from './listCandidates.js';
 
 import {
-    updateOffical, listOfficials
+    updateOffical, listOfficials, deleteOfficial
 }
 from '../safenetwork.js';
 
 export default (function () {
+    
+    $(document.body).on("click", '.delete-official', async function () {
+        let id = $(this).parent().attr('id');
+        await deleteOfficial(id);
+        listCandidates();
+    });
+    
     var totalVotes = 0;
     var percentage = 0;
     var upVotes = 0;
@@ -54,7 +61,7 @@ export default (function () {
         var isElected = $('div#' + key).hasClass('elected');
 
         if ((percentage >= 65) && !isElected) {
-            (async() => {
+            (async() => { //remove this and put it in the click event
                 let items = [];
                 items = await listOfficials();
                 items.forEach(async(item) => {

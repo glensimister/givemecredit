@@ -51,7 +51,6 @@ small {
 #container {
     display: none;
 }
-
 ul.docs-list {
     margin: 0 20px 20px 20px;
 }
@@ -260,6 +259,15 @@ textarea.form-control {
 }
 .post-update {
     grid-column: 7 / 9;
+}
+
+.localCandidates, localOfficials {
+    position: relative;
+}
+.delete-official {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 /**** user image *****/
