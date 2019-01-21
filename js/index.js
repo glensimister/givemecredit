@@ -15,38 +15,38 @@ import {displayPubService} from './components/publicServices/displayPubService.j
 import {lottery} from './components/lottery.js';
 import {initScripts} from './components/initScripts.js';
 
-    /* initalize SAFE API and display posts */
-    (async() => {
-        await authoriseAndConnect();
-        await createUsers();
-        
-        /* intro page */
+$( document ).ready(async function() {
 
-        $('.enter, .register').on('click', async function () {
-            if ($(this).hasClass('register')) {
-                await createNewUser();
-            }
-            $('.stars').addClass('animated zoomIn');
-            $('.twinkling').addClass('animated zoomIn');
-            $('#intro').addClass('animated zoomOut');
-            $('#introContainer').fadeOut(2000);
-            $('#container').show();
-            $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
-            $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
-        });
-        
-        await createMutableData(); //this will need to be changed to createPosts()
-        await createOfficials();
-        try {
-            await displayUserData();
-        } catch (err) {
-            alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
-        }
-        displayPosts();
-        initScripts();
-    })().catch(err => {
-        console.error(err);
-    });
+/* initalize SAFE API and display posts */
+
+await authoriseAndConnect();
+await createUsers();
+
+/* intro page */
+
+$('.enter, .register').on('click', async function () {
+    if ($(this).hasClass('register')) { await createNewUser(); }
+    $('.stars').addClass('animated zoomIn');
+    $('.twinkling').addClass('animated zoomIn');
+    $('#intro').addClass('animated zoomOut');
+    $('#introContainer').fadeOut(2000);
+    $('#container').show();
+    $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
+    $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
+});
+
+await createMutableData(); //this will need to be changed to createPosts()
+await createOfficials();
+    
+try {
+    await displayUserData();
+} catch (err) {
+    alert(err.message + ". Please make sure you have enabled experimental API and selected your webID.");
+}
+    
+displayPosts();
+initScripts();
+
 
 /* initalize credits bar. This will be removed soon */
 
@@ -55,10 +55,8 @@ import {initScripts} from './components/initScripts.js';
 //$('.ec').html("65");
 
 /* page routing */
-;
-(function ($) {
-    
-    /* load partials */
+
+        /* load partials */
     $('.sidebar').load("partials/sidebar.html");
     $('.dropdown-container').load("partials/navtop.html");
     $('.grid-search').load("partials/searchbar.html");
@@ -130,4 +128,4 @@ import {initScripts} from './components/initScripts.js';
         $(window).scrollTop(0);
         if (cb) cb();
     }
-})(jQuery);
+});
