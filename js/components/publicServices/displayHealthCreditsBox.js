@@ -6,15 +6,14 @@ from '../safenetwork.js';
 /*** This doesn't work. Need to setup new table users which it can retrieve data from ***/
 
 export async function displayHealthCreditsBox() {
-    const id = await window.currentWebId["#me"]["@id"];
+    const id = await window.currentWebId["@id"];
     let rand = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let items = [];
     items = await listUsers();
     items.forEach(async(item) => {
-        console.log(item);
         if (item.value.webID == id) {
             let percentage = (item.value.healthCredits / 1000) * 100;
-            let healthCreditsBox = `<div id="${rand}">
+            let healthCreditsBox = `<div id="${rand}" class="animated slideInUp">
         <h3>Health Credits</h3>
         <ul class="funds-raised">
             <li>
@@ -50,7 +49,7 @@ export async function displayHealthCreditsBox() {
             </div>
         </div>
     </div>`;
-            $('.localServices').hide().append(healthCreditsBox).fadeIn('fast');
+            $('.localServices').append(healthCreditsBox);
         }
     });
 }

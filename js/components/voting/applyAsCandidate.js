@@ -17,15 +17,15 @@ export default (async function () {
         var position = $('.candidate-position').val();
         (async() => {
             let date = await getDate();
-            const webID = await window.currentWebId["#me"]["@id"];
-            const img = await window.currentWebId["#me"]["image"]["@id"];
-            const name = await window.currentWebId["#me"]["name"];
+            const webId = await window.currentWebId["#me"]["@id"];
+            const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
+            const webIdName = await window.currentWebId["#me"]["name"];
             let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
             // this should be moved to a users table
             await insertOfficial(guid, {
-                webID: webID,
-                name: name,
-                photo: img,
+                webID: webId,
+                name: webIdName,
+                photo: webIdImg,
                 position: position,
                 safeCoinAddr: "1BvBMSEYstWetqTFn5Au4m4GFg7xYstWetqTFn",
                 elected: false,

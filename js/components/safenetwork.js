@@ -19,13 +19,12 @@ export async function authoriseAndConnect() {
 
 let md;
 export async function createMutableData() {
-    console.log("Creating MutableData with initial dataset...");
     //md = await safeApp.mutableData.newRandomPublic(typeTag);
-    const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
-    md = await safeApp.mutableData.newPublic(hash, 15000);
-
     try {
-        const initialData = {
+        console.log("Creating MutableData with initial dataset...");
+        const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
+        md = await safeApp.mutableData.newPublic(hash, 15000);
+        /*const initialData = {
             "random_key_1": JSON.stringify({
                 webID: "safe://glen.devolution#me",
                 date: "14 Jan, 2019",
@@ -34,7 +33,7 @@ export async function createMutableData() {
                 post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
             })
         };
-        await md.quickSetup(initialData);
+        await md.quickSetup(initialData);*/
     } catch (err) {
         console.log(err);
     }
@@ -87,11 +86,11 @@ let users;
 export async function createUsers() {
     console.log("Creating users table...");
     //users = await safeApp.mutableData.newRandomPublic(15000);
-    const hash = await safeApp.crypto.sha3Hash('USERS_TABLE');
-    users = await safeApp.mutableData.newPublic(hash, 15000);
 
     try {
-        const id = await window.currentWebId["@id"];
+        const hash = await safeApp.crypto.sha3Hash('USERS_TABLE');
+        users = await safeApp.mutableData.newPublic(hash, 15000);
+        /*const id = await window.currentWebId["@id"];
         const img = await window.currentWebId["#me"]["image"]["@id"];
         const name = await window.currentWebId["#me"]["name"];
         const initialData = {
@@ -103,12 +102,37 @@ export async function createUsers() {
                 healthCredits: 0,
                 educationCredits: 0,
                 rebate: 0
+                // need to add other fields such as reg date and post code, etc
             })
         };
-        await users.quickSetup(initialData);
+        await users.quickSetup(initialData);*/
     } catch (err) {
         console.log(err);
     }
+}
+
+export async function createNewUser() {
+    const id = await window.currentWebId["@id"];
+    const img = await window.currentWebId["#me"]["image"]["@id"];
+    const name = await window.currentWebId["#me"]["name"];
+    let users = [];
+    users = await listUsers();
+    users.forEach(async(user) => {
+        if (user.value.webID == id) {
+            return; //user already exists
+        } else {
+            let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            await insertUser(guid, {
+                webID: id,
+                photo: img,
+                name: name,
+                socialCredits: 0,
+                healthCredits: 0,
+                educationCredits: 0,
+                rebate: 0
+            });
+        }
+    });
 }
 
 export async function insertUser(key, value) {
@@ -147,10 +171,10 @@ let officials;
 export async function createOfficials() {
     console.log("Creating officials table...");
     //officials = await safeApp.mutableData.newRandomPublic(15000);
-    const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
-    officials = await safeApp.mutableData.newPublic(hash, 15000);
     try {
-        await officials.quickSetup();
+        const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
+        officials = await safeApp.mutableData.newPublic(hash, 15000);
+        //await officials.quickSetup();
     } catch (err) {
         console.log(err);
     }

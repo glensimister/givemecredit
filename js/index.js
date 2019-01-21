@@ -1,16 +1,6 @@
 /* Import all of the Javascript components. */ 
 
-$('.enter').on('click', function(){
-    $('.stars').addClass('animated zoomIn');
-    $('.twinkling').addClass('animated zoomIn');
-    $('#intro').addClass('animated zoomOut');
-    $('#introContainer').fadeOut(2000);
-    $('#container').show();
-    $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
-    $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
-});
-
-import {authoriseAndConnect,createMutableData,createOfficials,createUsers} from './components/safenetwork.js';
+import {authoriseAndConnect,createMutableData,createOfficials,createUsers,createNewUser} from './components/safenetwork.js';
 import {displayUserData} from './components/displayUserData.js';
 import './components/sidebar.js';
 import './components/navTop.js';
@@ -29,6 +19,22 @@ import {initScripts} from './components/initScripts.js';
     (async() => {
         await authoriseAndConnect();
         await createUsers();
+        
+        /* intro page */
+
+        $('.enter, .register').on('click', async function () {
+            if ($(this).hasClass('register')) {
+                await createNewUser();
+            }
+            $('.stars').addClass('animated zoomIn');
+            $('.twinkling').addClass('animated zoomIn');
+            $('#intro').addClass('animated zoomOut');
+            $('#introContainer').fadeOut(2000);
+            $('#container').show();
+            $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
+            $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
+        });
+        
         await createMutableData(); //this will need to be changed to createPosts()
         await createOfficials();
         try {

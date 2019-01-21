@@ -16,6 +16,7 @@ https://mkrtchyan.ga
     font-family: 'OpenSans-Regular';
     src: URL('../fonts/OpenSans-Regular.ttf') format('truetype');
 }
+
 #introContainer {
     background-color: #000;
     position: absolute;
