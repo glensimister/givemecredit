@@ -35,10 +35,10 @@ export async function displayPubService() {
                     pOfTarget = '100%';
                 }
                 var publicService = `<div id="${item.key}" class="animated slideInUp">
-                <h3><a href="#/profile?id=${item.key}">${item.value.position}</a></h3>
+                <h3><a href="#/voting/profile?id=${item.key}">${item.value.position}</a></h3>
                 <ul class="funds-raised">
                     <li>
-                        Official<b class="pull-right"><a href="#/profile?id=${item.key}">${item.value.name}</a></b>
+                        Official<b class="pull-right"><a href="#/voting/profile?id=${item.key}">${item.value.name}</a></b>
                     </li>
                     <li>
                         Monthly target<b class="pull-right"><span class="monthlyTarget">200</span> IDX</b>

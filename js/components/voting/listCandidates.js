@@ -21,7 +21,7 @@ export async function listCandidates() {
             }
             var candidate = `<div id="${item.key}" class="${isElected} animated slideInUp">
                   <div class="rateYo"></div>
-                  <h4><a href="#/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
+                  <h4><a href="#/voting/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
                   <p class="position">${item.value.position}</p>
                   <img src="${item.value.photo}" class="user-image-large animated rotateIn" alt="User Image">
                   <p>Approval rating: <b class="approval-rating">${item.value.approvalRating}</b></p>

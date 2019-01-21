@@ -17,7 +17,7 @@ import {initScripts} from './components/initScripts.js';
 
 $( document ).ready(async function() {
 
-/* initalize SAFE API and display posts */
+/* initalize SAFE API */
 
 await authoriseAndConnect();
 await createUsers();
@@ -109,11 +109,10 @@ initScripts();
                     case 'publicservices':
                         displayPubService();
                         break;
-                    case 'profile.html':
-                        displayOfficialProfile();
-                        break;
                     case 'voting':
                         listCandidates();
+                        displayOfficialProfile();
+                        initScripts();
                         break;
                     case 'education':
                         course();
