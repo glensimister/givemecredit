@@ -23,7 +23,7 @@ export default (function () {
     });
 
     async function updateCredits(type, amount) {
-        const id = await window.currentWebId['#me']["@id"];
+        const id = await window.currentWebId["@id"];
         let items = [];
         items = await listUsers();
         items.forEach(async(item) => {
