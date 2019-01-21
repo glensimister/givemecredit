@@ -1,3 +1,8 @@
+import {
+    distributeSocCredits
+}
+from './distributeSocCredits.js';
+
 export function lottery($this) {
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
@@ -5,7 +10,7 @@ export function lottery($this) {
         amount = amount * 100; //this is the price of a lottery ticket - although it is completely arbitrary
         var sc = $('.sc').html();
         var new_sc = (parseInt(sc) + parseInt(amount));
-        $('.sc').html(new_sc);
+        distributeSocCredits(new_sc);
     });
 
     $(document.body).on('click', '.lucky-dip', function (e) {

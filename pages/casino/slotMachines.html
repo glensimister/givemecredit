@@ -196,8 +196,9 @@
 	<h3>Licenza</h3>
 	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</p>
 </section> -->
-
+    
     <script>
+        
         var doing = false;
         var spin = [new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3"), new Audio("res/sounds/spin.mp3")];
         var coin = [new Audio("res/sounds/coin.mp3"), new Audio("res/sounds/coin.mp3"), new Audio("res/sounds/coin.mp3")]
@@ -209,13 +210,7 @@
         var safe_coin;
 
         function doSlot() {
-            
-            var cost_per_spin = $('.cost_per_spin').val();
-            var current_val = $('.sc').html();
-            safe_coin = $('.safe_coin').html();
-            $('.safe_coin').html((parseFloat(safe_coin) - parseFloat(cost_per_spin)).toFixed(2));
-            $('.sc').html((parseFloat(current_val) + parseFloat(cost_per_spin)).toFixed(2));
-            
+                        
             if (doing) {
                 return null;
             }

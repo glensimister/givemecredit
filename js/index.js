@@ -17,6 +17,7 @@ import {displayOfficialProfile} from './components/voting/displayOfficialProfile
 import {displayPubService} from './components/publicServices/displayPubService.js';
 import {lottery} from './components/lottery.js';
 import {initScripts} from './components/initScripts.js';
+import {distributeSocCredits, slotMachine} from './components/distributeSocCredits.js';
 
 $( document ).ready(async function() {
 
@@ -126,6 +127,7 @@ initScripts();
                         break;
                     case 'casino':
                         lottery();
+                        slotMachine();
                         break;
                 }
             }
