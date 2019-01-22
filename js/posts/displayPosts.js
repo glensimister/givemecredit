@@ -1,7 +1,7 @@
 import {
     getItems
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 import './posts.js';
 
 

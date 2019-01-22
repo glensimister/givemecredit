@@ -1,30 +1,31 @@
 /* Import all of the Javascript components. */ 
 
 import {
-    authoriseAndConnect, createMutableData, createOfficials, createUsers, createNewUser, deleteAllUsers, resetUserCredits
+    authoriseAndConnect, createPosts, createOfficials, createUsers, createNewUser, deleteAllUsers, resetUserCredits
 }
-from './components/safenetwork.js';
-import {displayUserData} from './components/displayUserData.js';
-import './components/sidebar.js';
-import './components/navTop.js';
-import './components/posts/comments.js';
-import './components/connect.js';
-import './components/toolbar.js';
-import {displayPosts} from './components/posts/displayPosts.js';
-import {course} from './components/education/course.js';
-import {listCandidates} from './components/voting/listCandidates.js';
-import {displayOfficialProfile} from './components/voting/displayOfficialProfile.js';
-import {displayPubService} from './components/publicServices/displayPubService.js';
-import {lottery} from './components/lottery.js';
-import {initScripts} from './components/initScripts.js';
-import {distributeSocCredits, slotMachine} from './components/distributeSocCredits.js';
+from './general/safenetwork.js';
+import {displayUserData} from './general/displayUserData.js';
+import './general/sidebar.js';
+import './general/navTop.js';
+import './general/connect.js';
+import './general/toolbar.js';
+import {distributeSocCredits, slotMachine} from './general/distributeSocCredits.js';
+import {initScripts} from './general/initScripts.js';
+import {lottery} from './general/lottery.js';
+
+import {displayPosts} from './posts/displayPosts.js';
+import './posts/comments.js';
+import {course} from './education/course.js';
+import {listCandidates} from './voting/listCandidates.js';
+import {displayOfficialProfile} from './voting/displayOfficialProfile.js';
+import {displayPubService} from './publicServices/displayPubService.js';
 
 $( document ).ready(async function() {
 
 /* initalize SAFE API */
 
 await authoriseAndConnect();
-await createUsers(); // should be renamed to getUsers or something
+await createUsers();
 //await resetUserCredits();
 //await deleteAllUsers();
 
@@ -42,7 +43,7 @@ $('.enter, .register').on('click', async function (e) {
     $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
 });
 
-await createMutableData(); //this will need to be changed to createPosts()
+await createPosts();
 await createOfficials();
     
 try {
@@ -54,19 +55,7 @@ try {
 displayPosts();
 initScripts();
 
-
-/* initalize credits bar. This will be removed soon */
-
-//$('.sc').html("240");
-//$('.hc').html("50");
-//$('.ec').html("65");
-
 /* page routing */
-
-        /* load partials */
-    $('.sidebar').load("partials/sidebar.html");
-    $('.dropdown-container').load("partials/navtop.html");
-    $('.grid-search').load("partials/searchbar.html");
     
     var app = $.sammy(function () {
         this.get('#/', function () {

@@ -3,12 +3,12 @@ import {listCandidates} from './listCandidates.js';
 import {
     getDate
 }
-from '../getDate.js';
+from '../general/getDate.js';
 
 import {
     insertOfficial
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 export default (async function () {
     $(document.body).on("click", '.apply-for-position', function (e) {

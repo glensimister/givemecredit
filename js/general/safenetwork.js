@@ -18,10 +18,10 @@ export async function authoriseAndConnect() {
 /***************** Posts table (need to change the names) *****************/
 
 let md;
-export async function createMutableData() {
+export async function createPosts() {
     //md = await safeApp.mutableData.newRandomPublic(typeTag);
     try {
-        console.log("Creating MutableData with initial dataset...");
+        console.log("Initializing posts dataset...");
         const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
         md = await safeApp.mutableData.newPublic(hash, 15000);
         /*const initialData = {

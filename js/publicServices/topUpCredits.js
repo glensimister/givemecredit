@@ -1,7 +1,7 @@
 import {
     listUsers, updateUser
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 export default (function () {
     $(document.body).on('click', '.topup-hc, .topup-ec', function (e) {

@@ -1,7 +1,7 @@
 import {
     listOfficials
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 import './applyAsCandidate.js';
 import './electCandidate.js';

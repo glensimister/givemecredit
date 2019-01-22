@@ -1,7 +1,7 @@
 import {
     getDate
 }
-from '../getDate.js';
+from '../general/getDate.js';
 
 //currently the code below only works on the first comment. Also, it doesn't write to the db yet. 
 

@@ -1,7 +1,7 @@
 import {
     listUsers
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 /*** This doesn't work. Need to setup new table users which it can retrieve data from ***/
 

@@ -6,7 +6,7 @@ from './listCandidates.js';
 import {
     updateOffical, listOfficials, deleteOfficial
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 export default (function () {
     

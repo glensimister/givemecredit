@@ -1,7 +1,7 @@
 import {
     listOfficials, updateOffical
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 export default (async function () {
     $(document.body).on('click', '.donate-sc', function (e) {

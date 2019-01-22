@@ -1,12 +1,12 @@
 import {
     getDate
 }
-from '../getDate.js';
+from '../general/getDate.js';
 
 import {
     insertItem, getItems, updateItem, deleteItems
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 import {
     displayPosts

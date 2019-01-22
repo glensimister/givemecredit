@@ -1,7 +1,7 @@
 import {
     listOfficials
 }
-from '../safenetwork.js';
+from '../general/safenetwork.js';
 
 export async function displayOfficialProfile() {
     var id = getUrlVars()["id"];
