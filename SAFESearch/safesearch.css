@@ -22,6 +22,26 @@ body {
     font-size: 14px;
 }
 
+#safe-search {
+    text-align: center;
+    width:600px;
+    margin:20px auto;
+    font-family: 'OpenSans-Regular';
+}
+
+#safe-search h1{
+    font-family: 'OpenSans-Regular';
+    margin-bottom:20px;
+}
+
+#safe-search input {
+    padding:20px;
+    margin:30px 0;
+    border-radius: 10px;
+    border:1px solid #eee;
+    width: 100%;
+}
+
 h2{
     margin: 0 0 15px 0;
     color: #848484;
@@ -79,7 +99,7 @@ h2{
     width: 100%;
     text-align: center;
 }
-#commentsBox {}
+#commentsBox {display: none;}
 #comments a {
     color: #008d4c;
     text-decoration: none;
