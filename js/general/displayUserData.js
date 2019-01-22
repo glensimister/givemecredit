@@ -21,7 +21,6 @@ export async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
-        console.log(user);
         if (user.value.webID == id) {
             $('.sc').html(user.value.socialCredits.toFixed(2));
             $('.hc').html(user.value.healthCredits);

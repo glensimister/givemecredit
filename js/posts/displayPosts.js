@@ -3,7 +3,7 @@ import {
 }
 from '../general/safenetwork.js';
 import './posts.js';
-
+import './comments.js';
 
 export async function displayPosts() {
     $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts

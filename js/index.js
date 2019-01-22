@@ -21,6 +21,8 @@ import {displayOfficialProfile} from './voting/displayOfficialProfile.js';
 import {displayPubService} from './publicServices/displayPubService.js';
 
 $( document ).ready(async function() {
+   
+/* popup window for settings */    
     
 $('.fa-gears').on('click', function () {
     $('.settings').load('pages/settings.html', function () {
@@ -32,7 +34,6 @@ $('.fa-gears').on('click', function () {
         });
     });
 });
-
 
 /* initalize SAFE API */
 
