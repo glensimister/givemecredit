@@ -21,6 +21,18 @@ import {displayOfficialProfile} from './voting/displayOfficialProfile.js';
 import {displayPubService} from './publicServices/displayPubService.js';
 
 $( document ).ready(async function() {
+    
+$('.fa-gears').on('click', function () {
+    $('.settings').load('pages/settings.html', function () {
+        $('.settings').dialog({
+            title: "General Settings",
+            width: "auto",
+            draggable: false,
+            height: 400
+        });
+    });
+});
+
 
 /* initalize SAFE API */
 

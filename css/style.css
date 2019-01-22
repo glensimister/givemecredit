@@ -821,3 +821,9 @@ ul li.bonus-ball {
     height: 150px;
     overflow: hidden;
 }
+
+/**************************/
+
+.settings {
+    display:none;
+}
