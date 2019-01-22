@@ -21,28 +21,27 @@ body {
     line-height: 1.5;
     font-size: 14px;
 }
-
 #safe-search {
     text-align: center;
-    width:600px;
-    margin:20px auto;
+    width: 600px;
+    margin: 20px auto;
     font-family: 'OpenSans-Regular';
 }
-
-#safe-search h1{
+#safe-search > div {
     font-family: 'OpenSans-Regular';
-    margin-bottom:20px;
+    margin-bottom: 20px;
+    font-size: 40px;
 }
-
 #safe-search input {
-    padding:20px;
-    margin:30px 0;
+    padding: 20px;
+    margin: 0 0 20px 0;
     border-radius: 10px;
-    border:1px solid #eee;
+    border: 1px solid #eee;
     width: 100%;
+    color: #848484;
+    font-size: 30px;
 }
-
-h2{
+h2 {
     margin: 0 0 15px 0;
     color: #848484;
 }
@@ -99,7 +98,9 @@ h2{
     width: 100%;
     text-align: center;
 }
-#commentsBox {display: none;}
+#commentsBox {
+    display: none;
+}
 #comments a {
     color: #008d4c;
     text-decoration: none;
@@ -126,6 +127,7 @@ h2{
     height: 400px;
     overflow: auto;
     padding: 10px;
+    color: #848484;
 }
 #comments .comments-box {
     width: 100%;
