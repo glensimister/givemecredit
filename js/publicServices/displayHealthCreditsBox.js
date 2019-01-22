@@ -3,7 +3,7 @@ import {
 }
 from '../general/safenetwork.js';
 
-/*** This doesn't work. Need to setup new table users which it can retrieve data from ***/
+/*** TO DO: Concatenate health/education into one js file ***/
 
 export async function displayHealthCreditsBox() {
     const id = await window.currentWebId["@id"];
@@ -12,8 +12,6 @@ export async function displayHealthCreditsBox() {
     items = await listUsers();
     items.forEach(async(item) => {
         if (item.value.webID == id) {
-            console.log(item.value.webID + " " + id);
-            console.log(item);
             let percentage = (item.value.healthCredits / 1000) * 100;
             let healthCreditsBox = `<div id="${item.key}-hc" class="animated slideInUp">
         <h3>Health Credits</h3>
