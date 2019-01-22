@@ -188,7 +188,7 @@ h2 {
     display: block;
     border: 1px solid #848484;
     border-radius: 50%;
-    margin:auto;
+    margin: auto;
 }
 .user-image-large {
     width: 100px;
@@ -198,7 +198,6 @@ h2 {
     border: 2px solid #848484;
     border-radius: 50%;
 }
-
 .profile-summary {
     text-align: center;
     color: #848484;
@@ -210,27 +209,16 @@ h2 {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-
-.profile-summary h4{
+.profile-summary h4 {
     color: #848484;
 }
-
-.profile-summary ul {
-    text-align: left;
-    margin-bottom: 20px;
+.profile-summary p {
+    margin-bottom: 15px;
 }
-
-.profile-summary ul li {
-    border-bottom: 1px solid #eee;
-    line-height: 30px;
-    display: block;
-}
-
 .btn-red {
     background-color: #dd4b39;
     color: #fff;
 }
-
 .btn {
     display: inline-block;
     padding: 6px 12px;
@@ -252,7 +240,6 @@ h2 {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-
 .rateYo {
     margin: 0 auto 20px auto;
 }
