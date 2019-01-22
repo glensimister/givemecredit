@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SAFE Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="safesearch.css">
+    <link rel="stylesheet" href="../css/rateyo.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="../js/vendor/jquery-3.3.1.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="../js/vendor/rateyo.js"></script>
+    <script src="safesearch.js"></script>
+</head>
+
+<body>
+    <iframe src="safesearch.html" style="height:700px;width:100%;border:none;"></iframe>
+    <div id="commentsBox">
+        <div id="comments">
+            <h2>Comments</h2>
+            <input class="comments-box" type="text" placeholder="What's on your mind, Glen?">
+
+            <div class="post">
+                <img src="images/avatar5.png" class="user-image-medium" alt="User Image">
+                <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
+                <div class="post-desc">Hey! Did you know that there is a GiveMeCredit browser extension? The extension displays a toolbar, similar to one below, on every page you visit. The toolbar allows you to like/dislike/flag content as well as comment on anything, anywhere.</div>
+                <div class="grid-toolbar">
+                    <div class="red"><a href=""><i class="fa fa-thumbs-o-up margin-r-5"></i></a></div>
+                    <div>90</div>
+                    <div class="blue"><a href=""><i class="fa fa-thumbs-o-down margin-r-5"></i></a></div>
+                    <div>10</div>
+                    <div class="red"><a href=""><i class="fa fa-flag"></i></a></div>
+                    <div>0</div>
+
+                    <div class="rateYoComments">
+                        <script>
+                            $(".rateYoComments").rateYo({
+                                rating: 4,
+                                fullStar: true,
+                                starWidth: "15px",
+                                readOnly: true
+                            });
+                        </script>
+                    </div>
+                    <div>
+                        <span class="safe">SAFE</span>COIN
+                    </div>
+                    <div>
+                        <input type="number" placeholder="1">
+                    </div>
+                    <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-browser-toolbar">
+        <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
+        <div>90</div>
+        <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
+        <div>10</div>
+        <div class="red"><i class="fa fa-flag"></i></div>
+        <div>0</div>
+        <div class="yellow"><i class="fa fa-commenting"></i></div>
+        <div>0</div>
+        <div class="rateYoToolbar"></div>
+        <div>
+            <span class="safe">SAFE</span>COIN
+        </div>
+        <div>
+            100
+        </div>
+        <div>
+            <input type="number" placeholder="0.01">
+        </div>
+        <div class="red"><i class="fa fa-heart"></i></div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".rateYoToolbar").rateYo({
+                rating: 4,
+                fullStar: true,
+                starWidth: "20px",
+                readOnly: true
+            });
+        });
+
+    </script>
+</body>
+
+</html>
