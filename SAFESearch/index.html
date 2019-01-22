@@ -26,9 +26,7 @@
     </div>
     <div id="commentsBox">
         <div id="comments">
-            <h2>Comments</h2>
             <input class="comments-box" type="text" placeholder="What's on your mind, Glen?">
-
             <div class="post">
                 <img src="images/avatar5.png" class="user-image-medium" alt="User Image">
                 <span><a href="">Alexander Pierce</a><br />20 July, 2018</span>
@@ -61,8 +59,8 @@
                     <div class="red"><a href=""><i class="fa fa-heart"></i></a></div>
                 </div>
             </div>
-            
-                        <div class="post">
+
+            <div class="post">
                 <img src="images/avatar2.png" class="user-image-medium" alt="User Image">
                 <span><a href="">Guest User</a><br />20 July, 2018</span>
                 <div class="post-desc">And here is another test comment!</div>
@@ -98,6 +96,7 @@
     </div>
 
     <div class="grid-browser-toolbar">
+        <div><img src="safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy" class="user-image-small" alt="User Image"></div>
         <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
         <div>90</div>
         <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
@@ -118,6 +117,36 @@
         </div>
         <div class="red"><i class="fa fa-heart"></i></div>
     </div>
+
+
+    <div class="profile-summary">
+        <div class="rateYo"></div>
+        <h4 id="fullName">Bob Smith</h4>
+        <div class="profile-pic">
+            <!-- the image needs to be cropped and centered -->
+            <img src="safe://hygjurftycox416pmiab3yrowypcxgxbx6op6bxynhz99mqhcbywyeac71pxy" class="user-image-large animated rotateIn" alt="User Image">
+        </div>
+        <ul>
+            <li>
+                Voting Weight<a class="pull-right voteWeight">1</a>
+            </li>
+            <li>
+                Age<a class="pull-right age">38</a>
+            </li>
+            <li>
+                Education Score<a class="pull-right edScore">25</a>
+            </li>
+            <li>
+                Social Rating <a class="pull-right socialRating">3.6</a>
+            </li>
+            <li>
+                Connections <a class="pull-right connections">1,322</a>
+            </li>
+        </ul>
+        <button class="btn btn-red connect">CONNECT</button>
+    </div>
+
+
     <script>
         $(document).ready(function() {
             $(".rateYoToolbar").rateYo({
