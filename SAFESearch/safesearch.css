@@ -88,15 +88,13 @@ h2 {
     font-family: 'OpenSans-Bold';
     color: #00acd6;
 }
-.grid-browser-toolbar input,
-.grid-browser-toolbar select {
-    border: 1px solid transparent;
-    /*height: 28px;*/
-    color: #848484;
-}
+
 .grid-browser-toolbar input {
     width: 100%;
     text-align: center;
+    font-size: 16px;
+    border: 1px solid transparent;
+    color: #848484;
 }
 #commentsBox {
     display: none;
