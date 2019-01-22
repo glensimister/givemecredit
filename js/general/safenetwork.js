@@ -24,16 +24,16 @@ export async function createPosts() {
         console.log("Initializing posts dataset...");
         const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
         md = await safeApp.mutableData.newPublic(hash, 15000);
-        /*const initialData = {
+        const initialData = {
             "random_key_1": JSON.stringify({
-                webID: "safe://glen.devolution#me",
+                webID: "safe://glen.devolution",
                 date: "14 Jan, 2019",
                 img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
                 name: "Glen Simister",
                 post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
             })
         };
-        await md.quickSetup(initialData);*/
+        await md.quickSetup(initialData); 
     } catch (err) {
         console.log(err);
     }
@@ -90,10 +90,11 @@ export async function createUsers() {
     try {
         const hash = await safeApp.crypto.sha3Hash('USERS_TABLE');
         users = await safeApp.mutableData.newPublic(hash, 15000);
-        //const id = await window.currentWebId["@id"];
-        //const img = await window.currentWebId["#me"]["image"]["@id"];
-        //const name = await window.currentWebId["#me"]["name"];
-        /*const initialData = {
+  
+        const id = await window.currentWebId["@id"];
+        const img = await window.currentWebId["#me"]["image"]["@id"];
+        const name = await window.currentWebId["#me"]["name"];
+        const initialData = {
             "random_key_1": JSON.stringify({
                 webID: "",
                 photo: "",
@@ -105,7 +106,7 @@ export async function createUsers() {
                 // need to add other fields such as reg date and post code, etc
             })
         };
-        await users.quickSetup(initialData);*/
+        await users.quickSetup(initialData); 
     } catch (err) {
         console.log(err);
     }
@@ -212,7 +213,7 @@ export async function createOfficials() {
     try {
         const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
         officials = await safeApp.mutableData.newPublic(hash, 15000);
-        //await officials.quickSetup();
+        await officials.quickSetup();
     } catch (err) {
         console.log(err);
     }
