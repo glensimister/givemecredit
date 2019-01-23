@@ -1,0 +1,24 @@
+div.roulette_container {
+    border: 1px solid #eee;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    margin: auto;
+    box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+}
+div.roulette_container > div {
+    background: #fff;
+    border: 1px solid #eee;
+}
+.btn_container {
+    width: 100%;
+    border: 1px solid #eee;
+    padding:10px;
+}
+div.roulette_container img {
+    margin: auto;
+}
+.win-color{
+    color:#dd4b39;
+}

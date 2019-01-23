@@ -9,10 +9,10 @@ import './general/sidebar.js';
 import './general/navTop.js';
 import './general/connect.js';
 import './general/toolbar.js';
-import {distributeSocCredits, slotMachine} from './general/distributeSocCredits.js';
+import {distributeSocCredits} from './general/distributeSocCredits.js';
 import {initScripts} from './general/initScripts.js';
 import {lottery} from './general/lottery.js';
-
+import {slotMachine} from './casino/slotMachine.js';
 import {displayPosts} from './posts/displayPosts.js';
 import './posts/comments.js';
 import {course} from './education/course.js';
