@@ -15,6 +15,7 @@ export async function authoriseAndConnect() {
     console.log("Application connected to the network");
 }
 
+
 /***************** Posts table (need to change the names) *****************/
 
 let md;
@@ -80,6 +81,67 @@ export async function getItems() {
     return items;
 }
 
+/***************** SAFE Coin (pretend) *****************/
+
+let safeCoin;
+
+export async function createSafeCoin() {
+    console.log("Creating SAFE wallet...");
+        try {
+        const hash = await safeApp.crypto.sha3Hash('SAFECOIN');
+        safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
+            const initialData = {
+            "random_key_1": JSON.stringify({
+                pubKey: "XSDEFH12234DFGHHFHFH4545",
+                balance: 0
+            })
+        };
+        await safeCoin.quickSetup(initialData); 
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export async function addFunds(key, value) {
+    const mutations = await safeApp.mutableData.newMutation();
+    await mutations.insert(key, JSON.stringify(value));
+    await safeCoin.applyEntriesMutation(mutations);
+}
+
+export async function getBalance(pubKey) {
+    let balance = 0;
+    let items = [];
+    items = await getAllBalances();
+        items.forEach(async(item) => {
+        let str = pubKey.localeCompare(item.value.pubKey);
+        if (str == 0) {
+            balance = item.value.balance;
+        }     
+    });
+    return balance;
+}
+
+export async function getAllBalances() {
+    const entries = await safeCoin.getEntries();
+    const entriesList = await entries.listEntries();
+    const items = [];
+    entriesList.forEach((entry) => {
+        const value = entry.value;
+        if (value.buf.length == 0) return;
+        const parsedValue = JSON.parse(value.buf);
+        items.push({
+            key: entry.key,
+            value: parsedValue,
+            version: value.version
+        });
+    });
+    return items;
+}
+
+
+
+
+
 /***************** users table *****************/
 
 let users;
@@ -126,7 +188,7 @@ export async function isUserVerified(id) {
     return usrIsVerified;
 }
 
-export async function createNewUser(id, img, name) {
+export async function createNewUser(id, img, name, safeCoinPubKey) {
     let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     await insertUser(guid, {
         webID: id,
@@ -137,7 +199,7 @@ export async function createNewUser(id, img, name) {
         socialCredits: 0,
         healthCredits: 0,
         educationCredits: 0,
-        rebate: 0
+        pubKey: safeCoinPubKey
     });
     console.log('user created');
 }
@@ -166,6 +228,7 @@ export async function updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await users.applyEntriesMutation(mutations);
+    console.log('user updated');
 }
 
 export async function deleteAllUsers() {
@@ -195,6 +258,34 @@ export async function listUsers() {
     return items;
 }
 
+/***** get users public key from webId *****/
+
+export async function getUserPubKeyFromWebId(webId) {
+    let pubKey = "";
+    let users = [];
+    users = await listUsers();
+    users.forEach(async(user) => {
+        let str = webId.localeCompare(user.value.webID);
+        if (str == 0) {
+            pubKey = user.value.pubKey;
+        }
+    });
+    return pubKey;
+}
+
+
+/******* generate GUID from WEBID ********/
+
+export async function getUserIdFromWebId(webId) {
+    let str = await safeApp.crypto.sha3Hash(webId).toString(16);
+    var arr1 = [];
+    for (var n = 0, l = str.length; n < l; n++) {
+        var hex = Number(str.charCodeAt(n)).toString(16);
+        arr1.push(hex);
+    }
+    return arr1.join('');
+}
+
 
 /***************** Officials table *****************/
 
@@ -205,7 +296,7 @@ export async function createOfficials() {
     try {
         const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
         officials = await safeApp.mutableData.newPublic(hash, 15000);
-        //await officials.quickSetup();
+        await officials.quickSetup();
     } catch (err) {
         console.log(err);
     }
@@ -223,6 +314,18 @@ export async function updateOffical(key, value, version) {
     await officials.applyEntriesMutation(mutations);
 }
 
+/**** This is for testing purposes ****/
+export async function deleteAllOfficials() {
+    let items = [];
+    items = await listOfficials();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+            await mutations.delete(item.key, item.version + 1);
+    });
+    await officials.applyEntriesMutation(mutations);
+    console.log("All officials have been removed");
+}
+
 export async function deleteOfficial(key) {
     let items = [];
     items = await listOfficials();
@@ -233,6 +336,19 @@ export async function deleteOfficial(key) {
         }
     });
     await officials.applyEntriesMutation(mutations);
+}
+
+export async function getOfficialUserId(id){
+    let userId;
+    let items = [];
+    items = await listOfficials();
+    items.forEach(async(item) => {
+        let str = id.localeCompare(item.value.userId);
+        if (str == 0) {
+            userId = item.value.userId;
+        }     
+    });
+    return userId;
 }
 
 export async function listOfficials() {

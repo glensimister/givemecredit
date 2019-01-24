@@ -6,9 +6,12 @@ import {
     createOfficials, 
     createUsers, 
     createNewUser, 
-    deleteAllUsers, 
-    resetUserCredits, 
-    isUserVerified
+    deleteAllUsers,
+    isUserVerified,
+    deleteAllOfficials,
+    createSafeCoin,
+    addFunds,
+    getBalance
 }
 from './general/safenetwork.js';
 import {displayUserData} from './general/displayUserData.js';
@@ -47,8 +50,8 @@ $('.fa-gears').on('click', function () {
 
 await authoriseAndConnect();
 await createUsers();
-//await resetUserCredits();
-//await deleteAllUsers();
+await createSafeCoin();
+
 
 /* intro page */
     
@@ -56,7 +59,14 @@ const webId = await window.currentWebId["@id"];
 const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
 const webIdName = await window.currentWebId["#me"]["name"];
 
-$('.enter, .register').on('click', async function (e) {
+$('.enter, .reset').on('click', async function (e) {
+    
+    /*** reset DB (for testing purposes) ***/
+    if($(this).hasClass('reset')) {
+        await deleteAllUsers();
+        await deleteAllOfficials();
+    }
+    
     e.stopImmediatePropagation();
     let verified = await isUserVerified(webId);
     if (!verified) {
@@ -74,8 +84,17 @@ $('.enter, .register').on('click', async function (e) {
     }
 });
     
+
 $(document.body).on('click', '.verifyPostCode', async function () {
-    await createNewUser(webId, webIdImg, webIdName);
+    let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    await createNewUser(webId, webIdImg, webIdName, pubKey);
+    await addFunds(guid, {
+        pubKey: pubKey, 
+        balance: 100
+    });
+    let balance = await getBalance(pubKey);
+    $('.rebate div').html(balance);
     $('#register').hide();
     $('#container').show();
 });

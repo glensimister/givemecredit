@@ -66,7 +66,6 @@ export function slotMachine() {
             if (isWin) {
                 // should i deduct credits if they win?
                 element.html(parseFloat(current_bal) + amount);
-                element.removeClass();
                 element.addClass('animated win-color heartBeat');
             } else {
                 element.html(parseFloat(current_bal) - amount);

@@ -1,10 +1,9 @@
 import {
-    listUsers
+    listUsers, getBalance
 }
 from './safenetwork.js';
 
 export async function displayUserData() {
-    //if (data === undefined) window.location.replace("login.html"); from old version
     const id = await window.currentWebId["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
@@ -21,8 +20,8 @@ export async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
-        console.log(user);
         if (user.value.webID == id) {
+            console.log(user.value);
             $('.sc div').html(user.value.socialCredits.toFixed(2));
             $('.hc div').html(user.value.healthCredits);
             $('.ec div').html(user.value.educationCredits);

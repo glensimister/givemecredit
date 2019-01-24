@@ -1,18 +1,33 @@
 import {
-    listOfficials, updateOffical
+    listOfficials, updateOffical, listUsers, updateUser, getOfficialUserId
 }
 from '../general/safenetwork.js';
 
 export default (async function () {
-    $(document.body).on('click', '.donate-sc', function (e) {
+    $(document.body).on('click', '.donate-sc', async function (e) {
         e.stopImmediatePropagation();
         let input = $(this).parent().parent().find('input').val();
+        input = parseFloat(input);
         let id = $(this).attr("title");
         let raisedSoFar = $('#' + id + ' .creditsReceived').html();
-        let received = parseInt(raisedSoFar) + parseInt(input);
+        let received = parseInt(raisedSoFar) + input;
         let progress = updateProgressBar(id, input, raisedSoFar);
         let newSocialCreditVal = updateCreditsBar('.sc div', input);
         updateService(id, newSocialCreditVal, progress, received);
+        
+        /*
+        const userId = await getOfficialUserId(id);
+        console.log(userId);
+        let users = [];
+        users = await listUsers();
+        users.forEach(async(user) => {
+            let str = userId.localeCompare(user.value.userId);
+            if (str == 0) {
+                console.log(input);
+                user.value.rebate = input;
+                await updateUser(user.key, user.value, user.version);
+            }
+        });*/
 
         function updateProgressBar(key, value, raised) {
             $('#' + key + ' .creditsReceived').html(parseInt(raised) + parseInt(value));
