@@ -28,12 +28,12 @@ p {
     margin: 0 0 15px 0;
     font-weight: 400;
 }
-
 h4 {
     font-size: 16px;
 }
-
-h3, h4, b,
+h3,
+h4,
+b,
 strong {
     font-weight: 700;
     font-family: 'OpenSans-Bold', sans-serif;
@@ -51,6 +51,11 @@ small {
 }
 #container {
     display: none;
+}
+#register {
+    display: none;
+    width: 400px;
+    margin: 40px auto;
 }
 ul.docs-list {
     margin: 0 20px 20px 20px;
@@ -151,7 +156,6 @@ textarea.form-control {
 .status-update input:focus {
     outline: 0;
 }
-
 .status-update .select2-container--default .select2-selection--multiple {
     border-radius: 0px;
     border-left: 1px solid #eee;
@@ -164,11 +168,9 @@ textarea.form-control {
     font-size: 14px;
     color: #848484;
 }
-
 .status-update .select2-container--default .select2-selection--multiple .select2-selection__choice {
     border-radius: 0;
 }
-
 .status-update button {
     display: block;
     line-height: 21px;
@@ -260,8 +262,8 @@ textarea.form-control {
 .post-update {
     grid-column: 7 / 9;
 }
-
-.localCandidates, localOfficials {
+.localCandidates,
+localOfficials {
     position: relative;
 }
 .delete-official {
@@ -826,5 +828,5 @@ ul li.bonus-ball {
 /**************************/
 
 .settings {
-    display:none;
+    display: none;
 }

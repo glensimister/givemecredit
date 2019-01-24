@@ -1,7 +1,14 @@
 /* Import all of the Javascript components. */ 
 
 import {
-    authoriseAndConnect, createPosts, createOfficials, createUsers, createNewUser, deleteAllUsers, resetUserCredits
+    authoriseAndConnect, 
+    createPosts, 
+    createOfficials, 
+    createUsers, 
+    createNewUser, 
+    deleteAllUsers, 
+    resetUserCredits, 
+    isUserVerified
 }
 from './general/safenetwork.js';
 import {displayUserData} from './general/displayUserData.js';
@@ -34,6 +41,7 @@ $('.fa-gears').on('click', function () {
         });
     });
 });
+    
 
 /* initalize SAFE API */
 
@@ -43,14 +51,32 @@ await createUsers();
 //await deleteAllUsers();
 
 /* intro page */
+    
+const webId = await window.currentWebId["@id"];
+const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
+const webIdName = await window.currentWebId["#me"]["name"];
 
 $('.enter, .register').on('click', async function (e) {
     e.stopImmediatePropagation();
-    if ($(this).hasClass('register')) { await createNewUser(); } // this will be changed to when they enter their postcode
-    $('#introContainer').fadeOut(2000);
-    $('.stars').addClass('animated zoomIn');
-    $('.twinkling').addClass('animated zoomIn');
-    $('#intro').addClass('animated zoomOut');
+    let verified = await isUserVerified(webId);
+    if (!verified) {
+        $('#introContainer').fadeOut(2000);
+        $('.stars').addClass('animated zoomIn');
+        $('.twinkling').addClass('animated zoomIn');
+        $('#intro').addClass('animated zoomOut');
+        $('#register').show();
+    } else {
+        $('#introContainer').fadeOut(2000);
+        $('.stars').addClass('animated zoomIn');
+        $('.twinkling').addClass('animated zoomIn');
+        $('#intro').addClass('animated zoomOut');
+        $('#container').show();
+    }
+});
+    
+$(document.body).on('click', '.verifyPostCode', async function () {
+    await createNewUser(webId, webIdImg, webIdName);
+    $('#register').hide();
     $('#container').show();
 });
 
