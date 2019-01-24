@@ -33,8 +33,8 @@ export async function createPosts() {
                 name: "Glen Simister",
                 post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
             })
-        };*/
-        //await md.quickSetup(initialData); 
+        };
+        await md.quickSetup(initialData); */
     } catch (err) {
         console.log(err);
     }
@@ -156,9 +156,6 @@ export async function getAllBalances() {
     });
     return items;
 }
-
-
-
 
 
 /***************** users table *****************/
