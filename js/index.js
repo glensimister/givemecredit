@@ -64,7 +64,6 @@ try {
 }
     
 displayPosts();
-initScripts();
 
 /* page routing */
     
@@ -106,13 +105,13 @@ initScripts();
             url: url,
             success: function (result) {
                 $(".content").hide().html(result).fadeIn();
+                initScripts();
                 console.log("The current page is: " + thisPage[1]);
                 
                 switch (thisPage[1]) {
                     case 'home.html':
                         displayUserData();
                         displayPosts();
-                        $('.select2').select2();
                         break;
                     case 'publicservices':
                         displayPubService();
@@ -120,11 +119,9 @@ initScripts();
                     case 'voting':
                         listCandidates();
                         displayOfficialProfile();
-                        initScripts();
                         break;
                     case 'education':
                         course();
-                        initScripts();
                         break;
                     case 'casino':
                         lottery();

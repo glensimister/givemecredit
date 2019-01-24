@@ -12,5 +12,12 @@ export function initScripts() {
         readOnly: false
     });
 
+    $(".rateYoToolbar").rateYo({
+        rating: 4,
+        fullStar: true,
+        starWidth: "15px",
+        readOnly: true
+    });
+
     $('.select2').select2();
 }
