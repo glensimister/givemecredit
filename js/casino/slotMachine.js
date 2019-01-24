@@ -25,32 +25,25 @@ export function slotMachine() {
             stopImageNumber: Math.floor((Math.random() * 6) + 1),
             startCallback: function () {
                 spin.play();
-                
+
             },
-            slowDownCallback: function () {
-            },
-            stopCallback: function ($stopElm) {
-            }
+            slowDownCallback: function () {},
+            stopCallback: function ($stopElm) {}
         }
         var option2 = {
             speed: 10,
             duration: 1,
             stopImageNumber: Math.floor((Math.random() * 6) + 1),
-            startCallback: function () {
-            },
-            slowDownCallback: function () {
-            },
-            stopCallback: function ($stopElm) {
-            }
+            startCallback: function () {},
+            slowDownCallback: function () {},
+            stopCallback: function ($stopElm) {}
         }
         var option3 = {
             speed: 10,
             duration: 1,
             stopImageNumber: Math.floor((Math.random() * 6) + 1),
-            startCallback: function () {
-            },
-            slowDownCallback: function () {
-            },
+            startCallback: function () {},
+            slowDownCallback: function () {},
             stopCallback: function ($stopElm) {
                 count++;
                 if (count = 3) {
@@ -99,19 +92,29 @@ export function slotMachine() {
         });
 
         $('.start').click(function () {
-            option1['duration'] = 1;
-            imgNum1 = Math.floor((Math.random() * 6) + 1);
+            if ($(this).hasClass('btn-green')) { // this is for testing only and will be removed
+                imgNum1 = 1;
+                imgNum2 = 1;
+                imgNum3 = 1;
+            } else {
+                option1['duration'] = 1;
+                imgNum1 = Math.floor((Math.random() * 6) + 1);
+                option2['duration'] = 2;
+                imgNum2 = Math.floor((Math.random() * 6) + 1);
+                option3['duration'] = 3;
+                imgNum3 = Math.floor((Math.random() * 6) + 1);
+
+            }
+
             option1['stopImageNumber'] = imgNum1;
-            rouletter1.roulette('option', option1);
-            option2['duration'] = 2;
-            imgNum2 = Math.floor((Math.random() * 6) + 1);
             option2['stopImageNumber'] = imgNum2;
-            rouletter2.roulette('option', option2);
-            option3['duration'] = 3;
-            imgNum3 = Math.floor((Math.random() * 6) + 1);
             option3['stopImageNumber'] = imgNum3;
+
+            rouletter1.roulette('option', option1);
+            rouletter2.roulette('option', option2);
             rouletter3.roulette('option', option3);
 
+            $('.sc div').removeClass('animated heartBeat');
             $('.result').html("SPINNING...");
 
             if ((imgNum1 == imgNum2) && (imgNum1 == imgNum3)) {

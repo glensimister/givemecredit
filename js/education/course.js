@@ -13,6 +13,6 @@ export function course() {
         var new_value = (parseInt(fromVal) - parseInt(amount));
         $(from).html(new_value.toFixed(0));
         new_value = (parseInt(toVal) + parseInt(amount));
-        $(to).html(new_value);
+        $(to).html(new_value).addClass('animated heartBeat');
     }
 }

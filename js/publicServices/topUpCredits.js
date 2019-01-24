@@ -30,13 +30,10 @@ export default (function () {
             if (item.value.webID == id) {
                 if (type == '.hc div') {
                     item.value.healthCredits = parseFloat(item.value.healthCredits) + parseFloat(amount);
-                    //item.value.healthCredits = 0; //reset
                 } else if (type == '.ec div') {
                     item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(amount);
-                    //item.value.educationCredits = 0; //reset
                 }
                 item.value.socialCredits = parseFloat(item.value.socialCredits) - parseFloat(amount);
-                //item.value.socialCredits = 0; //reset
                 await updateUser(item.key, item.value, item.version);
             }
         });
@@ -64,6 +61,6 @@ export default (function () {
         var new_value = (parseInt(fromVal) - parseInt(amount));
         $(from).html(new_value.toFixed(0));
         new_value = (parseInt(toVal) + parseInt(amount));
-        $(to).html(new_value);
+        $(to).html(new_value).addClass('animated heartBeat');;
     }
 }());

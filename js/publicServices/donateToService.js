@@ -31,17 +31,18 @@ export default (async function () {
         function updateCreditsBar(type, amount) {
             var current_value = $(type).html();
             var new_value = (parseInt(current_value) - parseInt(amount));
-            $(type).html(new_value.toFixed(0));
-            payRebate(amount);
+            $(type).html(new_value.toFixed(0)).addClass('animated heartBeat');
+            //payRebate(amount);
             return new_value.toFixed(0);
         }
 
+        /****** i'll probably remove this as i don't think it is a good idea to pay a rebate for donating to a service *******/
         function payRebate(amount) {
             var rebate = 10 / 100 * amount;
             var result = 0;
             result = $('.rebate div').text();
             result = rebate + parseInt(result);
-            $('.rebate div').html(result.toFixed(0));
+            $('.rebate div').html(result.toFixed(0)).addClass('animated heartBeat');;
         }
 
         async function updateService(key, socCred, prog, raised) {

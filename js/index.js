@@ -46,14 +46,12 @@ await createUsers();
 
 $('.enter, .register').on('click', async function (e) {
     e.stopImmediatePropagation();
-    if ($(this).hasClass('register')) { await createNewUser(); }
+    if ($(this).hasClass('register')) { await createNewUser(); } // this will be changed to when they enter their postcode
+    $('#introContainer').fadeOut(2000);
     $('.stars').addClass('animated zoomIn');
     $('.twinkling').addClass('animated zoomIn');
     $('#intro').addClass('animated zoomOut');
-    $('#introContainer').fadeOut(2000);
     $('#container').show();
-    $('.sidebar ul li:nth-child(odd) a').addClass('animated slideInLeftSmall');
-    $('.sidebar ul li:nth-child(even) a').addClass('animated slideInRightSmall');
 });
 
 await createPosts();

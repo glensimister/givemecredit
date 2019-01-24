@@ -9,7 +9,7 @@ export async function distributeSocCredits(credits) {
     users = await listUsers();
     let share = (credits / users.length);
     let new_val = (parseFloat(share) + parseFloat(current_val));
-    $('.sc div').html(new_val.toFixed(2));
+    $('.sc div').html(new_val.toFixed(2)).addClass('animated heartBeat');
     users.forEach(async(user) => {
         user.value.socialCredits = parseFloat(user.value.socialCredits) + parseFloat(share);
         await updateUser(user.key, user.value, user.version);

@@ -19,6 +19,11 @@ div.roulette_container > div {
 div.roulette_container img {
     margin: auto;
 }
+h3.result{
+    color:#dd4b39;
+    text-align: center;
+    font-size: 22px;
+}
 .win-color{
     color:#dd4b39;
 }
