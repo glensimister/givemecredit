@@ -65,11 +65,12 @@ export function slotMachine() {
             current_bal = element.html();
             if (isWin) {
                 // should i deduct credits if they win?
-                element.html(parseFloat(current_bal) + amount)
-                element.addClass('win-color heartBeat');
+                element.html(parseFloat(current_bal) + amount);
+                element.removeClass();
+                element.addClass('animated win-color heartBeat');
             } else {
                 element.html(parseFloat(current_bal) - amount);
-                element.removeClass('win-color heartBeat'); //if has class win
+                element.removeClass();
             }
         }
 
@@ -114,7 +115,7 @@ export function slotMachine() {
             rouletter2.roulette('option', option2);
             rouletter3.roulette('option', option3);
 
-            $('.sc div').removeClass('animated heartBeat');
+            $('.sc div').removeClass();
             $('.result').html("SPINNING...");
 
             if ((imgNum1 == imgNum2) && (imgNum1 == imgNum3)) {

@@ -142,40 +142,6 @@ export async function createNewUser(id, img, name) {
     console.log('user created');
 }
 
-/*
-let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-let users = [];
-users = await listUsers();
-if (users === undefined || users.length == 0) {
-    await insertUser(guid, {
-        webID: id,
-        photo: img,
-        name: name,
-        socialCredits: 0,
-        healthCredits: 0,
-        educationCredits: 0,
-        rebate: 0
-    });
-    console.log('user created');
-} else {
-    users.forEach(async(user) => {
-        if (user.value.webID == id) {
-            return; //user already exists
-        } else {
-            await insertUser(guid, {
-                webID: id,
-                photo: img,
-                name: name,
-                socialCredits: 0,
-                healthCredits: 0,
-                educationCredits: 0,
-                rebate: 0
-            });
-            console.log('user created');
-        }
-    });
-}*/
-
 export async function insertUser(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
