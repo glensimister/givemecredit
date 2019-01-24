@@ -64,7 +64,7 @@ export async function displayPubService() {
                 <br />
                 <div class="grid-input-button">
                     <div><input type="text" class="form-control donate-input"></div>
-                    <div><button type="button" title="${item.key}" id="${item.key}" class="donate-sc">DONATE</button></div>
+                    <div><button type="button" title="${item.value.pubKey}" id="${item.key}" class="donate-sc">DONATE</button></div>
                 </div>
             </div>`;
                 $('.localServices').prepend(publicService);

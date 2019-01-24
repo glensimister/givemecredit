@@ -1,5 +1,5 @@
 import {
-    listUsers, getBalance
+    listUsers, getBalance, sendTo
 }
 from './safenetwork.js';
 
@@ -25,6 +25,8 @@ export async function displayUserData() {
             $('.sc div').html(user.value.socialCredits.toFixed(2));
             $('.hc div').html(user.value.healthCredits);
             $('.ec div').html(user.value.educationCredits);
+            let balance = await getBalance(user.value.pubKey);
+            $('.rebate div').html(balance.toFixed(2));
         }
     });
 }

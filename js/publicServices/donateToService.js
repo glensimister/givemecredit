@@ -1,5 +1,5 @@
 import {
-    listOfficials, updateOffical, listUsers, updateUser, getOfficialUserId
+    listOfficials, updateOffical, listUsers, updateUser, getOfficialUserId, getBalance, sendTo
 }
 from '../general/safenetwork.js';
 
@@ -8,12 +8,20 @@ export default (async function () {
         e.stopImmediatePropagation();
         let input = $(this).parent().parent().find('input').val();
         input = parseFloat(input);
-        let id = $(this).attr("title");
+        let id = $(this).attr("id");
         let raisedSoFar = $('#' + id + ' .creditsReceived').html();
         let received = parseInt(raisedSoFar) + input;
         let progress = updateProgressBar(id, input, raisedSoFar);
         let newSocialCreditVal = updateCreditsBar('.sc div', input);
         updateService(id, newSocialCreditVal, progress, received);
+        
+        let pubKey = $(this).attr("title");
+        let balance = await getBalance(pubKey);
+        balance = balance + input;
+        await sendTo(pubKey, balance);
+        balance = await getBalance(pubKey);
+        //$('.rebate div').html(balance.toFixed(0)).addClass('animated heartBeat');
+        
         
         /*
         const userId = await getOfficialUserId(id);
@@ -57,7 +65,7 @@ export default (async function () {
             var result = 0;
             result = $('.rebate div').text();
             result = rebate + parseInt(result);
-            $('.rebate div').html(result.toFixed(0)).addClass('animated heartBeat');;
+            $('.rebate div').html(result.toFixed(0)).addClass('animated heartBeat');
         }
 
         async function updateService(key, socCred, prog, raised) {

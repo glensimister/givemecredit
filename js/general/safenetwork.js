@@ -108,6 +108,25 @@ export async function addFunds(key, value) {
     await safeCoin.applyEntriesMutation(mutations);
 }
 
+export async function sendTo(pubKey, amount) {
+    let items = [];
+    items = await getAllBalances();
+    items.forEach(async(item) => {
+        let str = pubKey.localeCompare(item.value.pubKey);
+        if (str == 0) {
+            item.value.balance = amount;
+            await updateBalance(item.key, item.value, item.version);
+            console.log("balance of " + pubKey + " has been updated to " + amount + "SafeCoin");
+        }
+    });
+}
+
+export async function updateBalance(key, value, version) {
+    const mutations = await safeApp.mutableData.newMutation();
+    await mutations.update(key, JSON.stringify(value), version + 1);
+    await safeCoin.applyEntriesMutation(mutations);
+}
+
 export async function getBalance(pubKey) {
     let balance = 0;
     let items = [];
