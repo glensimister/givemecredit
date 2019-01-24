@@ -1,3 +1,8 @@
+import {
+    distributeSocCredits
+}
+from '../general/distributeSocCredits.js';
+
 // uses roulette.js (in vendor folder)
 export function slotMachine() {
     $(function () {
@@ -19,15 +24,12 @@ export function slotMachine() {
             duration: 1,
             stopImageNumber: Math.floor((Math.random() * 6) + 1),
             startCallback: function () {
-                //spin.loop = true
                 spin.play();
                 
             },
             slowDownCallback: function () {
-                //spin.play();
             },
             stopCallback: function ($stopElm) {
-                //spin.play();
             }
         }
         var option2 = {
@@ -37,10 +39,8 @@ export function slotMachine() {
             startCallback: function () {
             },
             slowDownCallback: function () {
-                //spin.play();
             },
             stopCallback: function ($stopElm) {
-                //coin.play();
             }
         }
         var option3 = {
@@ -50,19 +50,15 @@ export function slotMachine() {
             startCallback: function () {
             },
             slowDownCallback: function () {
-                //spin.play();
             },
             stopCallback: function ($stopElm) {
-                //spin.pause();
-                //coin.play();
                 count++;
                 if (count = 3) {
-                    //coin.pause();
                     if (isWinner) {
                         win.play();
                     } else {
                         lose.play();
-
+                        distributeSocCredits(10); //10 is current cost of a play. However, this will be based on user input.
                     }
                     updateCredits(isWinner, payout);
                     $('.result').html(result);
@@ -82,8 +78,6 @@ export function slotMachine() {
                 element.html(parseFloat(current_bal) - amount);
                 element.removeClass('win-color heartBeat'); //if has class win
             }
-
-            //distributeSocCredits(social_credits);
         }
 
         var rouletter1 = $('div.roulette1');

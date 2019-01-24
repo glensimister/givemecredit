@@ -8,17 +8,17 @@ export default (function () {
         e.stopImmediatePropagation();
         let classToUpdate;
         if ($(this).hasClass('topup-hc')) {
-            classToUpdate = '.hc';
+            classToUpdate = '.hc div';
         } else
         if ($(this).hasClass('topup-ec')) {
-            classToUpdate = '.ec';
+            classToUpdate = '.ec div';
         }
         let id = $(this).attr("title");
         var input = $(this).parent().parent().find('input').val();
         let raisedSoFar = $('#' + id + ' .creditsReceived').html();
         let received = parseInt(raisedSoFar) + parseInt(input);
         let progress = updateProgressBar(id, input, received);
-        transfer('.sc', classToUpdate, input);
+        transfer('.sc div', classToUpdate, input);
         updateCredits(classToUpdate, input);
     });
 
@@ -28,10 +28,10 @@ export default (function () {
         items = await listUsers();
         items.forEach(async(item) => {
             if (item.value.webID == id) {
-                if (type == '.hc') {
+                if (type == '.hc div') {
                     item.value.healthCredits = parseFloat(item.value.healthCredits) + parseFloat(amount);
                     //item.value.healthCredits = 0; //reset
-                } else if (type == '.ec') {
+                } else if (type == '.ec div') {
                     item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(amount);
                     //item.value.educationCredits = 0; //reset
                 }

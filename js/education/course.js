@@ -4,7 +4,7 @@ export function course() {
     $('.submit-feedback').on('click', function (e) {
         e.stopImmediatePropagation();
         $('#tab3').prop('checked', true);
-        transfer('.ec', '.rebate', '20');
+        transfer('.ec div', '.rebate div', '20');
     });
 
     function transfer(from, to, amount) {

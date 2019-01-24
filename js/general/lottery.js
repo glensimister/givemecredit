@@ -9,7 +9,7 @@ export function lottery() {
         //var amount = $(this).parent().prev().find('input').val();
         //amount = amount * 100; //this is the price of a lottery ticket - although it is completely arbitrary
         let ticketPrice = 100;
-        let sc = $('.sc').html();
+        let sc = $('.sc div').html();
         let new_sc = (parseFloat(sc) + ticketPrice);
         distributeSocCredits(new_sc);
     });

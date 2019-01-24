@@ -21,10 +21,11 @@ export async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
+        console.log(user);
         if (user.value.webID == id) {
-            $('.sc').html(user.value.socialCredits.toFixed(2));
-            $('.hc').html(user.value.healthCredits);
-            $('.ec').html(user.value.educationCredits);
+            $('.sc div').html(user.value.socialCredits.toFixed(2));
+            $('.hc div').html(user.value.healthCredits);
+            $('.ec div').html(user.value.educationCredits);
         }
     });
 }

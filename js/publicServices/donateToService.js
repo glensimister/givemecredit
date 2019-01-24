@@ -11,7 +11,7 @@ export default (async function () {
         let raisedSoFar = $('#' + id + ' .creditsReceived').html();
         let received = parseInt(raisedSoFar) + parseInt(input);
         let progress = updateProgressBar(id, input, raisedSoFar);
-        let newSocialCreditVal = updateCreditsBar('.sc', input);
+        let newSocialCreditVal = updateCreditsBar('.sc div', input);
         updateService(id, newSocialCreditVal, progress, received);
 
         function updateProgressBar(key, value, raised) {
@@ -39,9 +39,9 @@ export default (async function () {
         function payRebate(amount) {
             var rebate = 10 / 100 * amount;
             var result = 0;
-            result = $('.rebate').text();
+            result = $('.rebate div').text();
             result = rebate + parseInt(result);
-            $('.rebate').html(result.toFixed(0));
+            $('.rebate div').html(result.toFixed(0));
         }
 
         async function updateService(key, socCred, prog, raised) {
