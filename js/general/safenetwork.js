@@ -23,9 +23,9 @@ export async function createPosts() {
     //md = await safeApp.mutableData.newRandomPublic(typeTag);
     try {
         console.log("Initializing posts dataset...");
-        const hash = await safeApp.crypto.sha3Hash('POSTS_TABLE');
+        const hash = await safeApp.crypto.sha3Hash('POSTS');
         md = await safeApp.mutableData.newPublic(hash, 15000);
-        /*const initialData = {
+        const initialData = {
             "random_key_1": JSON.stringify({
                 webID: "safe://glen.devolution",
                 date: "14 Jan, 2019",
@@ -34,7 +34,7 @@ export async function createPosts() {
                 post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
             })
         };
-        await md.quickSetup(initialData); */
+        await md.quickSetup(initialData);
     } catch (err) {
         console.log(err);
     }
@@ -90,13 +90,13 @@ export async function createSafeCoin() {
         try {
         const hash = await safeApp.crypto.sha3Hash('SAFECOIN');
         safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
-            const initialData = {
+        /*    const initialData = {
             "random_key_1": JSON.stringify({
                 pubKey: "XSDEFH12234DFGHHFHFH4545",
                 balance: 0
             })
         };
-        await safeCoin.quickSetup(initialData); 
+        await safeCoin.quickSetup(initialData); */
     } catch (err) {
         console.log(err);
     }

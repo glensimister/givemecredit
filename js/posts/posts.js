@@ -37,7 +37,7 @@ export default (function () {
         displayPosts();
     };
 
-    $(document.body).on('click', '.edit-post', function () {
+    $(document.body).on('click', '.edit-post', async function () {
         let editable = $(this).next().find('.post-desc');
         if ($(this).hasClass('fa-pencil')) {
             $(this).removeClass('fa-pencil').addClass('fa-floppy-o');
@@ -47,24 +47,20 @@ export default (function () {
                 padding: "20px"
             });
         } else {
-            (async() => {
-                $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
-                let id = $(this).attr('id');
-                let post = editable.html();
-                let items = [];
-                items = await getItems();
-                items.forEach(async(item) => {
-                    if (item.key == id) {
-                        item.value.post = post;
-                        await updateItem(id, item.value, item.version);
-                    }
-                    editable.css({
-                        border: "none",
-                        padding: "0"
-                    });
+            $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
+            let id = $(this).attr('id');
+            let post = editable.html();
+            let items = [];
+            items = await getItems();
+            items.forEach(async(item) => {
+                if (item.key == id) {
+                    item.value.post = post;
+                    await updateItem(item.key, item.value, item.version);
+                }
+                editable.css({
+                    border: "none",
+                    padding: "0"
                 });
-            })().catch(err => {
-                console.error(err);
             });
         }
     });
