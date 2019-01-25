@@ -227,6 +227,19 @@ export async function insertUser(key, value) {
 }
 
 
+export async function deductSocialCredits(webId, newSocialCreditVal) {
+    let users = [];
+    users = await listUsers();
+    users.forEach(async(user) => {
+        let str = webId.localeCompare(user.value.webID);
+        if (str == 0) {
+            user.value.socialCredits = newSocialCreditVal;
+            updateUser(user.key, user.value, user.version);
+            console.log('Social Credits Updated for ' + user.value.name);
+        }
+    });
+}
+
 /*** this is for testing purposes ***/
 export async function resetUserCredits() {
     let users = [];

@@ -64,9 +64,11 @@ export function slotMachine() {
             let current_bal;
             current_bal = element.html();
             if (isWin) {
-                // should i deduct credits if they win?
                 element.html(parseFloat(current_bal) + amount);
                 element.addClass('animated win-color heartBeat');
+                setTimeout(function(){ 
+                    element.removeClass();
+                }, 2000);
             } else {
                 element.html(parseFloat(current_bal) - amount);
                 element.removeClass();
@@ -128,6 +130,7 @@ export function slotMachine() {
             } else {
                 result = "YOU LOSE!";
                 isWinner = false;
+                payout = 20;
             }
 
             rouletter1.roulette('start');

@@ -1,5 +1,5 @@
 import {
-    listUsers, getBalance, sendTo
+    listUsers, getBalance
 }
 from './safenetwork.js';
 
@@ -20,13 +20,15 @@ export async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
-        if (user.value.webID == id) {
+        let str = id.localeCompare(user.value.webID);
+        if (str == 0) {
             console.log(user.value);
-            $('.sc div').html(user.value.socialCredits.toFixed(2));
+            let socialCredits = user.value.socialCredits;
+            $('.sc div').html(socialCredits.toFixed(2));
             $('.hc div').html(user.value.healthCredits);
             $('.ec div').html(user.value.educationCredits);
             let balance = await getBalance(user.value.pubKey);
-            $('.rebate div').html(balance.toFixed(2));
+            $('.rebate div').html(balance);
         }
     });
 }
