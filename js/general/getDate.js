@@ -1,4 +1,4 @@
- export function getDate() {
+function getDate() {
      var d = new Date();
      var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
      let day = d.getDate();
