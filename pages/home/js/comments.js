@@ -1,16 +1,9 @@
 //currently the code below only works on the first comment. Also, it doesn't write to the db yet. 
 
-(function ($) {
-    $(document.body).on("keypress", '.post-comment-input', async function (e) {
-        e.stopImmediatePropagation();
-        //const usrId = await window.currentWebId["@id"];
-        const img = await window.currentWebId["#me"]["image"]["@id"];
-        const name = await window.currentWebId["#me"]["name"];
-        let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        let comment = $('.post-comment-input').val();
-        let date = await getDate();
-        if (e.which == 13 && comment != '') {
-            let template = `<div class="comment-box">
+function displayComment(img, name, comment, date, guid, element) {
+    let template = `<div id="${guid}" class="comment-box">
+                    <i class="fa fa-fw fa-close delete-post"></i>
+                    <i id="${guid}" class="fa fa-fw fa-pencil edit-post"></i>
                         <div class="post-body">
                             <img src="${img}" class="user-image-medium" alt="User Image">
                             <span><a href="">${name}</a><br />${date}</span>
@@ -36,13 +29,11 @@
                             <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
-            $(this).prev().append(template);
-            $('.post-comment-input').val("");
-            $(".rateYoToolbar").rateYo({
-                rating: 4,
-                starWidth: "15px",
-                readOnly: true
-            });
-        }
+    $(element).prev().append(template);
+    $('.post-comment-input').val("");
+    $(".rateYoToolbar").rateYo({
+        rating: 4,
+        starWidth: "15px",
+        readOnly: true
     });
-})(jQuery);
+}

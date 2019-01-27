@@ -2,18 +2,14 @@
 
 let safeCoin;
 
-async function createSafeCoin() {
+async function createSafeCoin(reset) {
     console.log("Creating SAFE wallet...");
         try {
         const hash = await safeApp.crypto.sha3Hash('SAFECOIN');
         safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
-        /*    const initialData = {
-            "random_key_1": JSON.stringify({
-                pubKey: "XSDEFH12234DFGHHFHFH4545",
-                balance: 0
-            })
-        };
-        await safeCoin.quickSetup(initialData); */
+        if (reset){
+           await safeCoin.quickSetup(); 
+        }  
     } catch (err) {
         console.log(err);
     }
@@ -23,6 +19,7 @@ async function addFunds(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await safeCoin.applyEntriesMutation(mutations);
+    console.log("funds added to account");
 }
 
 async function sendTo(pubKey, amount) {
@@ -55,6 +52,19 @@ async function getBalance(pubKey) {
         }     
     });
     return balance;
+}
+
+    //deleteAllAccounts();
+async function deleteAllAccounts() {
+    console.log("trying to delete accounts...");
+    let items = [];
+    items = await getAllBalances();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+        await mutations.delete(item.key, item.version + 1);
+    });
+    await safeCoin.applyEntriesMutation(mutations);
+    console.log('all accounts have been deleted');
 }
 
 async function getAllBalances() {

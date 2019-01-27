@@ -1,13 +1,14 @@
 /***************** Officials table *****************/
 
 let officials;
-async function createOfficials() {
+async function createOfficials(reset) {
     console.log("Creating officials table...");
-    //officials = await safeApp.mutableData.newRandomPublic(15000);
     try {
-        const hash = await safeApp.crypto.sha3Hash('OFFICIALS');
+        const hash = await safeApp.crypto.sha3Hash('OFFICIALS2');
         officials = await safeApp.mutableData.newPublic(hash, 15000);
-        //await officials.quickSetup();
+        if (reset){
+            await officials.quickSetup();
+        }
     } catch (err) {
         console.log(err);
     }

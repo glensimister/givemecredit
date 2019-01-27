@@ -1,5 +1,9 @@
 /* Import all of the Javascript components. */ 
 
+if (!safeExperimentsEnabled) {
+    alert("You need to toggle experiments (top right) and/or select a webId (top left)");
+}
+
 import './general/sidebar.js';
 import './general/navTop.js';
 import './general/connect.js';
@@ -7,7 +11,7 @@ import './general/toolbar.js';
 import {initScripts} from './general/initScripts.js';
 
 $( document ).ready(async function() {
-   
+    
 /* popup window for settings. This could be put in home folder */    
     
 $('.fa-gears').on('click', function () {
@@ -23,56 +27,74 @@ $('.fa-gears').on('click', function () {
 
 /**** initialize SAFE app and data sets ****/
 
+let reset = false; /* this is for testing purposes */
+    
 await authoriseAndConnect();
-await createUsers();
-await createSafeCoin();
-await createPosts();
-await createOfficials();
+await createUsers(reset);
+await createSafeCoin(reset);
+await createPosts(reset);
+await createOfficials(reset);
 
 /* intro page */
     
-/*** these variables need to be accessed by the whole app ****/    
+$('.enter, .reset').on('click', async function (e) {
+    e.stopImmediatePropagation();
+    
+/*** these variables need to be accessed by the whole app ****/
 const webId = await window.currentWebId["@id"];
 const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
 const webIdName = await window.currentWebId["#me"]["name"];
 
-$('.enter, .reset').on('click', async function (e) {
-    e.stopImmediatePropagation();
-    
     /*** reset DB (for testing purposes) ***/
-    if($(this).hasClass('reset')) {
+    if ($(this).hasClass('reset')) {
         await deleteAllUsers();
         await deleteAllOfficials();
-    }
-    
-    let verified = await isUserVerified(webId);
-    if (!verified) {
-        $('#introContainer').fadeOut(2000);
-        $('.stars').addClass('animated zoomIn');
-        $('.twinkling').addClass('animated zoomIn');
-        $('#intro').addClass('animated zoomOut');
-        $('#register').show(); //if user is not verified show them the registration form
+        await deleteAllPosts();
+        await deleteAllAccounts();
     } else {
-        $('#introContainer').fadeOut(2000);
-        $('.stars').addClass('animated zoomIn');
-        $('.twinkling').addClass('animated zoomIn');
-        $('#intro').addClass('animated zoomOut');
-        $('#container').show();
+        let verified = await isUserVerified(webId); // check if user exists
+        if (!verified) {
+            $('#introContainer').fadeOut(2000);
+            $('.stars').addClass('animated zoomIn');
+            $('.twinkling').addClass('animated zoomIn');
+            $('#intro').addClass('animated zoomOut');
+            $('#register').show(); //if user is not verified show them the registration form
+        } else {
+            $('#introContainer').fadeOut(2000);
+            $('.stars').addClass('animated zoomIn');
+            $('.twinkling').addClass('animated zoomIn');
+            $('#intro').addClass('animated zoomOut');
+            $('#container').show();
+        }
     }
 });
+  
+/*** the unverified user will be presented with a form. When they click submit a new user is created and account credited ***/
     
 $(document.body).on('click', '.verifyPostCode', async function () {
+    const webId = await window.currentWebId["@id"];
+    const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
+    const webIdName = await window.currentWebId["#me"]["name"];
     let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    await createNewUser(webId, webIdImg, webIdName, pubKey);
-    await addFunds(guid, {
-        pubKey: pubKey, 
-        balance: 100
-    });
-    let balance = await getBalance(pubKey);
-    $('.rebate div').html(balance);
-    $('#register').hide();
-    $('#container').show();
+    try {
+        await createNewUser(webId, webIdImg, webIdName, pubKey);
+    } catch (err) {
+        console.log(err);
+    }
+    
+    try {
+        await addFunds(guid, {
+            pubKey: pubKey,
+            balance: 100
+        });
+        let balance = await getBalance(pubKey);
+        $('.rebate div').html(balance);
+        $('#register').hide();
+        $('#container').show();
+    } catch (err) {
+        console.log(err + "There was a problem adding funds");
+    }
 });
 
 /***** page routing with sammy.js *****/   

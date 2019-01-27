@@ -1,27 +1,67 @@
-(function ($) {
+(async function ($) {
+
+    let date = await getDate();
+    const id = await window.currentWebId["@id"];
+    const img = await window.currentWebId["#me"]["image"]["@id"];
+    const name = await window.currentWebId["#me"]["name"];
 
     $(document.body).on('click', '.post-update button', function () {
         var update = $('.status-update input').val();
         updatePost(update);
         $('.status-update input').val("");
     });
+    
+        $(document.body).on("keypress", '.post-comment-input', async function (e) {
+            e.stopImmediatePropagation();
+            let element = $(this);
+            let elemId = element.parent().attr('id');
+            let comment = $('.post-comment-input').val();
+            if (e.which == 13 && comment != '') {
+                let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                const commentObj = 
+                    {
+                        commentId: guid,
+                        webID: id,
+                        date: date,
+                        img: img,
+                        name: name,
+                        comment: comment
+                    };
+                
+                let items = [];
+                items = await getItems();
+                items.forEach(async(item) => {
+                    let str = elemId.localeCompare(item.key);
+                    if (str == 0) {
+                        item.value.comments = commentObj;
+                        await insertItem(item.key, item.value);
+                    }
+                });
+                displayComment(img, name, comment, date, guid, element);
+            }
+        });
 
     async function updatePost(post) { //change name of this to postUpdate()
-        let date = await getDate();
-        const id = await window.currentWebId["@id"];
-        const img = await window.currentWebId["#me"]["image"]["@id"];
-        const name = await window.currentWebId["#me"]["name"];
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        const commentObj = {
+            commentId: guid, 
+            webID: "",
+            date: "",
+            img: "",
+            name: "",
+            comment: "There are no comments yet"
+        };
         await insertItem(guid, {
             webID: id,
             date: date,
             img: img,
             name: name,
-            post: post
+            post: post,
+            comments: commentObj
         });
         displayPosts();
     };
-
+    
     $(document.body).on('click', '.edit-post', async function () {
         let editable = $(this).next().find('.post-desc');
         if ($(this).hasClass('fa-pencil')) {
@@ -33,12 +73,12 @@
             });
         } else {
             $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
-            let id = $(this).attr('id');
+            let elemId = $(this).attr('id');
             let post = editable.html();
             let items = [];
             items = await getItems();
             items.forEach(async(item) => {
-                if (item.key == id) {
+                if (item.key == elemId) {
                     item.value.post = post;
                     await updateItem(item.key, item.value, item.version);
                 }
@@ -52,8 +92,8 @@
 
     $(document.body).on('click', '.delete-post', function () {
         (async() => {
-            let id = $(this).next().attr('id');
-            await deleteItems(id);
+            let elemId = $(this).next().attr('id');
+            await deleteItems(elemId);
             displayPosts();
         })().catch(err => {
             console.error(err);

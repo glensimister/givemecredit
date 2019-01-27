@@ -15,9 +15,9 @@ async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
+        console.log(user);
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
-            console.log(user.value);
             let socialCredits = (user.value.socialCredits).toFixed(2);
             $('.sc div').html(socialCredits);
             $('.hc div').html(user.value.healthCredits);
@@ -26,4 +26,10 @@ async function displayUserData() {
             $('.rebate div').html(balance);
         }
     });
+    
+   let items = [];
+   items = await getAllBalances();
+   items.forEach(async(item) => {
+       console.log(item);
+   });
 }

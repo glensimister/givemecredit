@@ -22,7 +22,7 @@ async function displayPubService() {
                         Official<b class="pull-right"><a href="#/voting/html/profile?id=${item.key}">${item.value.name}</a></b>
                     </li>
                     <li>
-                        Monthly target<b class="pull-right"><span class="monthlyTarget">200</span> IDX</b>
+                        Monthly target<b class="pull-right"><span class="monthlyTarget">2000</span> IDX</b>
                     </li>
                     <li>
                         Raised so far<b class="pull-right"><span class="creditsReceived">${item.value.creditsReceived}</span> IDX</b>

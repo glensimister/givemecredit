@@ -1,22 +1,33 @@
 /***************** Posts table (need to change the names) *****************/
 
 let md;
-async function createPosts() {
-    //md = await safeApp.mutableData.newRandomPublic(typeTag);
+async function createPosts(reset) {
     try {
         console.log("Initializing posts dataset...");
-        const hash = await safeApp.crypto.sha3Hash('POSTS');
+        const hash = await safeApp.crypto.sha3Hash('POSTS2');
         md = await safeApp.mutableData.newPublic(hash, 15000);
-        /*const initialData = {
-            "random_key_1": JSON.stringify({
+        if (reset) {
+            let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            const commentObj = {
+                commentId: guid,
                 webID: "safe://glen.devolution",
                 date: "14 Jan, 2019",
                 img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
                 name: "Glen Simister",
-                post: "Welcome to DEVOLUTION - The evolution of decentralized governance."
-            })
-        };
-        await md.quickSetup(initialData);*/
+                comment: "There are no comments yet"
+            };
+            const initialData = {
+                "random_key_1": JSON.stringify({
+                    webID: "safe://glen.devolution",
+                    date: "14 Jan, 2019",
+                    img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
+                    name: "Glen Simister",
+                    post: "Welcome to DEVOLUTION - The evolution of decentralized governance.",
+                    comments: commentObj
+                })
+            };
+            await md.quickSetup(initialData);
+        }
     } catch (err) {
         console.log(err);
     }
@@ -44,6 +55,17 @@ async function deleteItems(key) {
         }
     });
     await md.applyEntriesMutation(mutations);
+}
+
+async function deleteAllPosts() {
+    let items = [];
+    items = await listUsers();
+    const mutations = await safeApp.mutableData.newMutation();
+    items.forEach(async(item) => {
+        await mutations.delete(item.key, item.version + 1);
+    });
+    await md.applyEntriesMutation(mutations);
+    console.log('posts have been deleted');
 }
 
 async function getItems() {
