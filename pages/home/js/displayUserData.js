@@ -15,21 +15,13 @@ async function displayUserData() {
     let users = [];
     users = await listUsers();
     users.forEach(async(user) => {
-        console.log(user);
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
-            let socialCredits = (user.value.socialCredits).toFixed(2);
-            $('.sc div').html(socialCredits);
+            $('.sc div').html(parseFloat(user.value.socialCredits).toFixed(2));
             $('.hc div').html(user.value.healthCredits);
             $('.ec div').html(user.value.educationCredits);
             let balance = await getBalance(user.value.pubKey);
             $('.rebate div').html(balance);
         }
     });
-    
-   let items = [];
-   items = await getAllBalances();
-   items.forEach(async(item) => {
-       console.log(item);
-   });
 }

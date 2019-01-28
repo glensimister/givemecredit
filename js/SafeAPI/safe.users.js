@@ -2,7 +2,7 @@ let users;
 async function createUsers(reset) {
     console.log("Creating users table...");
     try {
-        const hash = await safeApp.crypto.sha3Hash('testing123');
+        const hash = await safeApp.crypto.sha3Hash('USERS_DATASET');
         users = await safeApp.mutableData.newPublic(hash, 15000); 
         if (reset){
            await users.quickSetup();  

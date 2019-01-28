@@ -5,7 +5,7 @@ let safeCoin;
 async function createSafeCoin(reset) {
     console.log("Creating SAFE wallet...");
         try {
-        const hash = await safeApp.crypto.sha3Hash('SAFECOIN');
+        const hash = await safeApp.crypto.sha3Hash('SAFECOIN_DATASET');
         safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
         if (reset){
            await safeCoin.quickSetup(); 
@@ -54,18 +54,19 @@ async function getBalance(pubKey) {
     return balance;
 }
 
-    //deleteAllAccounts();
 async function deleteAllAccounts() {
     console.log("trying to delete accounts...");
     let items = [];
     items = await getAllBalances();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
+        console.log(item);
         await mutations.delete(item.key, item.version + 1);
     });
     await safeCoin.applyEntriesMutation(mutations);
     console.log('all accounts have been deleted');
 }
+
 
 async function getAllBalances() {
     const entries = await safeCoin.getEntries();

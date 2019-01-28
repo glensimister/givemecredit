@@ -4,7 +4,7 @@ let md;
 async function createPosts(reset) {
     try {
         console.log("Initializing posts dataset...");
-        const hash = await safeApp.crypto.sha3Hash('POSTS2');
+        const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
         md = await safeApp.mutableData.newPublic(hash, 15000);
         if (reset) {
             let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);

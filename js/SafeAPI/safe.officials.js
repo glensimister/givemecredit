@@ -4,7 +4,7 @@ let officials;
 async function createOfficials(reset) {
     console.log("Creating officials table...");
     try {
-        const hash = await safeApp.crypto.sha3Hash('OFFICIALS2');
+        const hash = await safeApp.crypto.sha3Hash('OFFICIALS_DATASET');
         officials = await safeApp.mutableData.newPublic(hash, 15000);
         if (reset){
             await officials.quickSetup();

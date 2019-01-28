@@ -6,7 +6,6 @@ async function displayPosts() {
         $('.post-feed').html("There are no posts to show");
     } else {
         posts.forEach(async(item) => {
-            console.log(item);
             
             let comment = `<div id="${item.value.comments.commentId}" class="comment-box">
                     <i class="fa fa-fw fa-close delete-post"></i>

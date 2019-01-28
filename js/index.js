@@ -27,16 +27,25 @@ $('.fa-gears').on('click', function () {
 
 /**** initialize SAFE app and data sets ****/
 
-let reset = false; /* this is for testing purposes */
-    
+let reset = true; /* this is for testing purposes */
 await authoriseAndConnect();
-await createUsers(reset);
-await createSafeCoin(reset);
-await createPosts(reset);
-await createOfficials(reset);
+    
+try {
+    await createUsers(reset);
+    await createSafeCoin(reset);
+    await createPosts(reset);
+    await createOfficials(reset);
+} catch (err) {
+    console.log(err + " Error creating datasets. Trying again...");
+    reset = false;
+    await createUsers(reset);
+    await createSafeCoin(reset);
+    await createPosts(reset);
+    await createOfficials(reset);
+}
 
 /* intro page */
-    
+
 $('.enter, .reset').on('click', async function (e) {
     e.stopImmediatePropagation();
     
@@ -47,10 +56,15 @@ const webIdName = await window.currentWebId["#me"]["name"];
 
     /*** reset DB (for testing purposes) ***/
     if ($(this).hasClass('reset')) {
-        await deleteAllUsers();
-        await deleteAllOfficials();
-        await deleteAllPosts();
-        await deleteAllAccounts();
+try {
+    await deleteAllUsers();
+    await deleteAllOfficials();
+    await deleteAllPosts();
+    await deleteAllAccounts();
+} catch (err) {
+    console.log(err + " Deleting datasets failed");
+}
+
     } else {
         let verified = await isUserVerified(webId); // check if user exists
         if (!verified) {
@@ -71,7 +85,8 @@ const webIdName = await window.currentWebId["#me"]["name"];
   
 /*** the unverified user will be presented with a form. When they click submit a new user is created and account credited ***/
     
-$(document.body).on('click', '.verifyPostCode', async function () {
+$(document.body).on('click', '.verifyPostCode', async function (e) {
+    e.stopImmediatePropagation();
     const webId = await window.currentWebId["@id"];
     const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     const webIdName = await window.currentWebId["#me"]["name"];
@@ -83,18 +98,20 @@ $(document.body).on('click', '.verifyPostCode', async function () {
         console.log(err);
     }
     
+    let balance = 100;
     try {
         await addFunds(guid, {
             pubKey: pubKey,
-            balance: 100
+            balance: balance
         });
-        let balance = await getBalance(pubKey);
-        $('.rebate div').html(balance);
-        $('#register').hide();
-        $('#container').show();
+        let bal = await getBalance(pubKey);
+        console.log(bal);
     } catch (err) {
-        console.log(err + "There was a problem adding funds");
+        console.log(err + " There was a problem adding funds");
     }
+    $('.rebate div').html(balance);
+    $('#register').hide();
+    $('#container').show();
 });
 
 /***** page routing with sammy.js *****/   
