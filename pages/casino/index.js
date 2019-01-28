@@ -12,5 +12,4 @@ getScripts([
     "pages/casino/js/slotMachine.js",
     "pages/casino/js/distributeSocCredits.js"], function () {
     lottery();
-    slotMachine();
 });

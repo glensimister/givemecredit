@@ -98,18 +98,17 @@ $(document.body).on('click', '.verifyPostCode', async function (e) {
         console.log(err);
     }
     
-    let balance = 100;
+    //let balance = 100;
     try {
         await addFunds(guid, {
             pubKey: pubKey,
             balance: balance
         });
         let bal = await getBalance(pubKey);
-        console.log(bal);
+        $('.rebate div').html(bal);
     } catch (err) {
         console.log(err + " There was a problem adding funds");
     }
-    $('.rebate div').html(balance);
     $('#register').hide();
     $('#container').show();
 });

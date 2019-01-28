@@ -263,8 +263,8 @@ textarea.form-control {
 .post-update {
     grid-column: 7 / 9;
 }
-.localCandidates,
-localOfficials {
+.localCandidates div,
+.localOfficials div {
     position: relative;
 }
 .delete-official {

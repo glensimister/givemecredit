@@ -54,6 +54,7 @@ async function getBalance(pubKey) {
     return balance;
 }
 
+
 async function deleteAllAccounts() {
     console.log("trying to delete accounts...");
     let items = [];
