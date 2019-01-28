@@ -5,7 +5,8 @@
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
 
-    $(document.body).on('click', '.post-update button', function () {
+    $(document.body).on('click', '.post-update button', function (e) {
+        e.stopImmediatePropagation();
         var update = $('.status-update input').val();
         updatePost(update);
         $('.status-update input').val("");
@@ -15,7 +16,7 @@
             e.stopImmediatePropagation();
             let element = $(this);
             let elemId = element.parent().attr('id');
-            let comment = $('.post-comment-input').val();
+            let comment = $('#' + elemId + ' .post-comment-input').val();
             if (e.which == 13 && comment != '') {
                 let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
                 const commentObj = 
@@ -32,9 +33,11 @@
                 items = await getItems();
                 items.forEach(async(item) => {
                     let str = elemId.localeCompare(item.key);
+                    console.log(elemId + " " + item.key);
                     if (str == 0) {
+                                    
                         item.value.comments = commentObj;
-                        await insertItem(item.key, item.value);
+                        await updateItem(item.key, item.value, item.version);
                     }
                 });
                 displayComment(img, name, comment, date, guid, element);
@@ -43,21 +46,21 @@
 
     async function updatePost(post) { //change name of this to postUpdate()
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        const commentObj = {
+        /*const commentObj = {
             commentId: guid, 
             webID: "",
             date: "",
             img: "",
             name: "",
             comment: "There are no comments yet"
-        };
+        };*/
         await insertItem(guid, {
             webID: id,
             date: date,
             img: img,
             name: name,
             post: post,
-            comments: commentObj
+            comments: null
         });
         displayPosts();
     };

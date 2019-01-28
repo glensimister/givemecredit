@@ -1,13 +1,14 @@
 async function displayPosts() {
     $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
+    let comment;
     let posts = [];
     posts = await getItems();
     if (posts.length == 0) {
         $('.post-feed').html("There are no posts to show");
     } else {
         posts.forEach(async(item) => {
-            
-            let comment = `<div id="${item.value.comments.commentId}" class="comment-box">
+            if (item.value.comments !== null) {
+                    comment = `<div id="${item.value.comments.commentId}" class="comment-box">
                     <i class="fa fa-fw fa-close delete-post"></i>
                     <i id="${item.value.comments.commentId}" class="fa fa-fw fa-pencil edit-post"></i>
                         <div class="post-body">
@@ -35,6 +36,10 @@ async function displayPosts() {
                             <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
+            } else {
+                comment = "";
+            }
+
             
             let template = `
                 <div id="${item.key}" class="post">
