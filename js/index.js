@@ -101,7 +101,7 @@ $(document.body).on('click', '.verifyPostCode', async function (e) {
     try {
         await addFunds(guid, {
             pubKey: pubKey,
-            balance: balance
+            balance: 100
         });
         let bal = await getBalance(pubKey);
         $('.rebate div').html(bal);
