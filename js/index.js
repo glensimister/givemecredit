@@ -56,15 +56,14 @@ const webIdName = await window.currentWebId["#me"]["name"];
 
     /*** reset DB (for testing purposes) ***/
     if ($(this).hasClass('reset')) {
-try {
-    await deleteAllUsers();
-    await deleteAllOfficials();
-    await deleteAllPosts();
-    await deleteAllAccounts();
-} catch (err) {
-    console.log(err + " Deleting datasets failed");
-}
-
+        try {
+            await deleteAllUsers();
+            await deleteAllOfficials();
+            await deleteAllPosts();
+            await deleteAllAccounts();
+        } catch (err) {
+            console.log(err + " Deleting datasets failed");
+        }
     } else {
         let verified = await isUserVerified(webId); // check if user exists
         if (!verified) {
