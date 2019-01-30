@@ -20,7 +20,7 @@
     async function updateCredits(type, amount) {
         const id = await window.currentWebId["@id"];
         let items = [];
-        items = await listUsers();
+        items = await safeGetUsers();
         items.forEach(async(item) => {
             if (item.value.webID == id) {
                 if (type == '.hc div') {

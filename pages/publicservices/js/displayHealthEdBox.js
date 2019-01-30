@@ -3,7 +3,7 @@
 $(async function () {
     const id = await window.currentWebId["@id"];
     let items = [];
-    items = await listUsers();
+    items = await safeGetUsers();
     items.forEach(async(item) => {
         let str = id.localeCompare(item.value.webID);
         if (str == 0) {

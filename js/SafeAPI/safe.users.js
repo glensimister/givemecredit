@@ -15,7 +15,7 @@ async function createUsers(reset) {
 async function isUserVerified(id) {
     let usrIsVerified = false;
     let users = [];
-    users = await listUsers();
+    users = await safeGetUsers();
     users.forEach(async(user) => {
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
@@ -50,7 +50,7 @@ async function insertUser(key, value) {
 
 async function deductSocialCredits(webId, newSocialCreditVal) {
     let users = [];
-    users = await listUsers();
+    users = await safeGetUsers();
     users.forEach(async(user) => {
         let str = webId.localeCompare(user.value.webID);
         if (str == 0) {
@@ -64,7 +64,7 @@ async function deductSocialCredits(webId, newSocialCreditVal) {
 /*** this is for testing purposes ***/
 async function resetUserCredits() {
     let users = [];
-    users = await listUsers();
+    users = await safeGetUsers();
     users.forEach(async(user) => {
         user.value.socialCredits = 0;
         user.value.healthCredits = 0;
@@ -83,7 +83,7 @@ async function updateUser(key, value, version) {
 
 async function deleteAllUsers() {
     let items = [];
-    items = await listUsers();
+    items = await safeGetUsers();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         await mutations.delete(item.key, item.version + 1);
@@ -91,7 +91,7 @@ async function deleteAllUsers() {
     await users.applyEntriesMutation(mutations);
 }
 
-async function listUsers() {
+async function safeGetUsers() {
     const entries = await users.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];
@@ -113,7 +113,7 @@ async function listUsers() {
 async function getUserPubKeyFromWebId(webId) {
     let pubKey = "";
     let users = [];
-    users = await listUsers();
+    users = await safeGetUsers();
     users.forEach(async(user) => {
         let str = webId.localeCompare(user.value.webID);
         if (str == 0) {

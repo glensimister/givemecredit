@@ -12,4 +12,6 @@ getScripts([
     "pages/publicservices/js/displayPubService.js",
     "pages/publicservices/js/donateToService.js",
     "pages/publicservices/js/topUpCredits.js",
-]);
+], function(){
+    console.log("public service scripts loaded");
+});

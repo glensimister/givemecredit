@@ -13,7 +13,7 @@ $(async function () {
     });
 
     let users = [];
-    users = await listUsers();
+    users = await safeGetUsers();
     users.forEach(async(user) => {
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
