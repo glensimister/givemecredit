@@ -7,6 +7,6 @@ async function distributeSocCredits(credits) {
     $('.sc div').html(new_val.toFixed(2)).addClass('animated heartBeat');
     users.forEach(async(user) => {
         user.value.socialCredits = parseFloat(user.value.socialCredits) + parseFloat(share);
-        await updateUser(user.key, user.value, user.version);
+        await safeUpdateUser(user.key, user.value, user.version);
     });
 }

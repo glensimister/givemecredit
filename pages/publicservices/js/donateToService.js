@@ -18,7 +18,7 @@
         
         /**** deduct social credits from donor ****/
         const webId = await window.currentWebId["@id"];
-        await deductSocialCredits(webId, newSocialCreditVal);
+        await safeDeductSocialCredits(webId, newSocialCreditVal);
 
         function updateProgressBar(key, value, raised) {
             $('#' + key + ' .creditsReceived').html(parseInt(raised) + parseInt(value));

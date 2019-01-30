@@ -48,14 +48,14 @@ async function insertUser(key, value) {
 }
 
 
-async function deductSocialCredits(webId, newSocialCreditVal) {
+async function safeDeductSocialCredits(webId, newSocialCreditVal) {
     let users = [];
     users = await safeGetUsers();
     users.forEach(async(user) => {
         let str = webId.localeCompare(user.value.webID);
         if (str == 0) {
             user.value.socialCredits = newSocialCreditVal;
-            updateUser(user.key, user.value, user.version);
+            safeUpdateUser(user.key, user.value, user.version);
             console.log('Social Credits Updated for ' + user.value.name);
         }
     });
@@ -69,12 +69,12 @@ async function resetUserCredits() {
         user.value.socialCredits = 0;
         user.value.healthCredits = 0;
         user.value.educationCredits = 0;
-        updateUser(user.key, user.value, user.version);
+        safeUpdateUser(user.key, user.value, user.version);
     });
 }
 
 
-async function updateUser(key, value, version) {
+async function safeUpdateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await users.applyEntriesMutation(mutations);

@@ -29,7 +29,7 @@
                     item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(amount);
                 }
                 item.value.socialCredits = parseFloat(item.value.socialCredits) - parseFloat(amount);
-                await updateUser(item.key, item.value, item.version);
+                await safeUpdateUser(item.key, item.value, item.version);
             }
         });
     }
