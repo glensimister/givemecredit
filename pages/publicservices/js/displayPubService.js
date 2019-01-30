@@ -1,6 +1,4 @@
-async function displayPubService() {
-    displayHealthCreditsBox();
-    displayEdCreditsBox();
+$(async function () {
 
     let items = [];
     items = await listOfficials();
@@ -56,4 +54,4 @@ async function displayPubService() {
             }
         });
     }
-}
+});

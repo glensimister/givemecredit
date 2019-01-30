@@ -13,6 +13,5 @@ getScripts([
     "pages/home/js/displayPosts.js",
     "pages/home/js/displayUserData.js"
 ], function () {
-    displayUserData();
     displayPosts();
 });

@@ -11,5 +11,5 @@ getScripts([
     "pages/casino/js/lottery.js",
     "pages/casino/js/slotMachine.js",
     "pages/casino/js/distributeSocCredits.js"], function () {
-    lottery();
+    console.log('casino scripts loaded');
 });

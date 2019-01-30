@@ -48,7 +48,7 @@ $(async function () {
                 } else {
                     lose.play();
                     //100 is current cost of a play. However, this will be based on user input.
-                    distributeSocCredits(100);
+                    distributeSocCredits(1000);
                 }
                 updateCredits(isWinner, payout);
                 $('.result').html(result);

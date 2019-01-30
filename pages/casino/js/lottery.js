@@ -1,4 +1,4 @@
-function lottery() {
+$(async function () {
     $(document.body).on('click', '.buy-ticket', function (e) {
         e.stopImmediatePropagation();
         //var amount = $(this).parent().prev().find('input').val();
@@ -32,4 +32,5 @@ function lottery() {
         </ul>`;
         $('.lottery-ticket-numbers').append(lotteryNumbers);
     });
-}
+});
+
