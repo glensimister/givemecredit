@@ -2,7 +2,7 @@ async function displayPosts() {
     $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
     let comment;
     let posts = [];
-    posts = await getItems();
+    posts = await safeGetPosts();
     if (posts.length == 0) {
         $('.post-feed').html("There are no posts to show");
     } else {

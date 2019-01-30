@@ -33,21 +33,21 @@ async function createPosts(reset) {
     }
 }
 
-async function insertItem(key, value) {
+async function safeInsertPost(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await md.applyEntriesMutation(mutations);
 }
 
-async function updateItem(key, value, version) {
+async function safeUpdatePost(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await md.applyEntriesMutation(mutations);
 }
 
-async function deleteItems(key) {
+async function safeDeletePost(key) {
     let items = [];
-    items = await getItems();
+    items = await safeGetPosts();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         if (item.key == key) {
@@ -68,7 +68,7 @@ async function deleteAllPosts() {
     console.log('posts have been deleted');
 }
 
-async function getItems() {
+async function safeGetPosts() {
     const entries = await md.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];
