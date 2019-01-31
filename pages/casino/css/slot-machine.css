@@ -1,11 +1,12 @@
 div.roulette_container {
-    border: 1px solid #eee;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     padding: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     margin: auto;
-    box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
+    background-color: #00acd6;
 }
 div.roulette_container > div {
     background: #fff;
@@ -13,8 +14,10 @@ div.roulette_container > div {
 }
 .btn_container {
     width: 100%;
-    border: 1px solid #eee;
-    padding:10px;
+    border: 5px solid #00acd6;
+    padding:20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 div.roulette_container img {
     margin: auto;
