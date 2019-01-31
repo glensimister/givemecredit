@@ -51,7 +51,7 @@ $(async function () {
                     distributeSocCredits(1000);
                 }
                 updateCredits(isWinner, payout);
-                $('.result').html(result);
+                $('.result span').addClass('animated heartBeat').html(result);
                 updateSafeCoinBal();
             }
         }
@@ -142,14 +142,14 @@ $(async function () {
         rouletter3.roulette('option', option3);
 
         $('.sc div').removeClass();
-        $('.result').html("SPINNING...");
+        $('.result span').removeClass().html("SPINNING...");
 
         if ((imgNum1 == imgNum2) && (imgNum1 == imgNum3)) {
-            result = "JACKPOT! YOU WIN 100 SAFECOIN!";
+            result = "JACKPOT!";
             isWinner = true;
             payout = 100;
         } else if (imgNum1 == imgNum2) {
-            result = "YOU WIN 20 SAFECOIN!";
+            result = "YOU WIN!";
             isWinner = true;
             payout = 20;
         } else {

@@ -12,7 +12,7 @@ div.roulette_container > div {
 .btn_container {
     width: 100%;
     border: 5px solid #00acd6;
-    padding:20px;
+    padding: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     text-align: center;
@@ -20,25 +20,134 @@ div.roulette_container > div {
 div.roulette_container img {
     margin: auto;
 }
-h3.result{
-    color:#dd4b39;
+div.roulette_top {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding: 20px;
+    margin: auto;
+    background: #222d32;
+    color: #dd4b39;
     text-align: center;
-    font-size: 22px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 5px solid #00acd6;
     margin: 0;
-    padding: 10px;
+    font-weight: 700;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222d32+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,222d32+100 */
+    background: rgb(34, 45, 50);
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#222d32', endColorstr='#222d32', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    /* IE6-9 */
 }
-.win-color{
-    color:#dd4b39;
+.result {
+    color: transparent;
+    font-size: 40px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    grid-column: 4 / 6;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dd4b39;
+    /* -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    animation: neon2 1.5s ease-in-out infinite alternate;*/
 }
-
+.win-color {
+    color: #dd4b39;
+}
 .btn_container span {
-    padding:0 10px;
-    font-weight:700;
+    padding: 0 10px;
+    font-weight: 700;
+}
+@-webkit-keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+    }
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
 }
 .btn_container .form-control {
     display: inline-block;
     width: auto;
+    height: 31px;
+    /* this should be changed on all form elements to match buttons */
+}
+.led-yellow {
+    margin: 13px auto;
+    width: 24px;
+    height: 24px;
+    background-color: #FF0;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+    -webkit-animation: blinkYellow 1s infinite;
+    -moz-animation: blinkYellow 1s infinite;
+    -ms-animation: blinkYellow 1s infinite;
+    -o-animation: blinkYellow 1s infinite;
+    animation: blinkYellow 1s infinite;
+}
+@-webkit-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-moz-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-ms-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-o-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
 }
