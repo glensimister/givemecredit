@@ -121,7 +121,7 @@ $(async function () {
     });
 
     $('.start').click(function () {
-        if ($(this).hasClass('btn-green')) { // this is for testing only and will be removed
+        if ($(this).hasClass('cheat')) { // this is for testing only and will be removed
             imgNum1 = 1;
             imgNum2 = 1;
             imgNum3 = 1;
