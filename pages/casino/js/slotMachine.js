@@ -51,7 +51,8 @@ $(async function () {
                     distributeSocCredits(1000);
                 }
                 updateCredits(isWinner, payout);
-                $('.result span').addClass('animated heartBeat').html(result);
+                $('.result div').addClass('animated heartBeat').html(result);
+                $('.fa-star-o').addClass('animated rotateIn');
                 updateSafeCoinBal();
             }
         }
@@ -144,7 +145,8 @@ $(async function () {
         rouletter3.roulette('option', option3);
 
         $('.sc div').removeClass();
-        $('.result span').removeClass().html("SPINNING...");
+        $('.result div').removeClass().html("SPINNING...");
+        $('.fa-star-o').removeClass('animated rotateIn');
 
         if ((imgNum1 == imgNum2) && (imgNum1 == imgNum3)) {
             result = "JACKPOT!";

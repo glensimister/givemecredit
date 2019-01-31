@@ -1,19 +1,25 @@
 div.roulette_container {
+    background-color: #00acd6;
+}
+div.led-grid-small {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    margin: 0 20px;
+}
+
+div.roulette_grid {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    margin: auto;
-    background-color: #00acd6;
+    margin: 0 20px;
 }
-div.roulette_container > div {
+div.roulette_grid > div {
     background: #fff;
     -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
-
-div.roulette_container img {
+div.roulette_grid img {
     margin: auto;
 }
 div.roulette_top {
@@ -26,7 +32,9 @@ div.roulette_top {
     text-align: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    border: 5px solid #00acd6;
+    border-left: 5px solid #00acd6;
+    border-right: 5px solid #00acd6;
+    border-top: 5px solid #00acd6;
     margin: 0;
     font-weight: 700;
     -webkit-box-shadow: inset 1px -10px 11px 1px rgba(0, 0, 0, 0.75);
@@ -45,6 +53,14 @@ div.roulette_top {
     /* IE6-9 fallback on horizontal gradient */
     /* IE6-9 */
 }
+
+div.roulette_top  > div i {
+    color: #dd4b39;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+
 .result {
     color: transparent;
     font-size: 40px;
@@ -59,10 +75,11 @@ div.roulette_top {
 .win-color {
     color: #dd4b39;
 }
-
 .btn_container {
     width: 100%;
-    border: 5px solid #00acd6;
+    border-left: 5px solid #00acd6;
+    border-right: 5px solid #00acd6;
+    border-bottom: 5px solid #00acd6;
     padding: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -73,8 +90,7 @@ div.roulette_top {
     box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
     background: #222d32;
     color: #fff;
-    
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222d32+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,222d32+100 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222d32+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,222d32+100 */
     background: rgb(34, 45, 50);
     /* Old browsers */
     background: -moz-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
@@ -87,14 +103,17 @@ div.roulette_top {
     /* IE6-9 fallback on horizontal gradient */
     /* IE6-9 */
 }
+.btn_container .btn{
+    font-size: 30px;
+    font-weight: 700;
+}
+
 
 .btn_container span {
     padding: 0 10px;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
 }
-
-
 @-webkit-keyframes neon2 {
     from {
         text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
@@ -106,7 +125,23 @@ div.roulette_top {
 .btn_container .form-control {
     display: inline-block;
     width: auto;
-    height: 31px;     /* this should be changed on all form elements to match buttons */
+    height: 31px;
+        font-weight: 700;
+    font-size: 30px;
+    /* this should be changed on all form elements to match buttons */
+}
+.led-yellow-small {
+    margin: 13px auto;
+    width: 10px;
+    height: 10px;
+    background-color: #FF0;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+    -webkit-animation: blinkYellow 1s infinite;
+    -moz-animation: blinkYellow 1s infinite;
+    -ms-animation: blinkYellow 1s infinite;
+    -o-animation: blinkYellow 1s infinite;
+    animation: blinkYellow 1s infinite;
 }
 .led-yellow {
     margin: 13px auto;
