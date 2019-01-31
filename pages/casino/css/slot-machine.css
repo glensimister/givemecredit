@@ -8,6 +8,9 @@ div.roulette_container {
 }
 div.roulette_container > div {
     background: #fff;
+    -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .btn_container {
     width: 100%;
