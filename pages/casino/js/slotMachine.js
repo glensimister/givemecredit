@@ -107,6 +107,8 @@ $(async function () {
     rouletter1.roulette(option1);
     rouletter2.roulette(option2);
     rouletter3.roulette(option3);
+    
+    /**** don't need stop anymore. can remove *****/
 
     $('.stop').click(function () {
         var stopImageNumber = $('.stopImageNumber').val();
