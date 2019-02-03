@@ -6,11 +6,13 @@ async function posts(date, id, img, name) {
         updateStatus(update);
         $('.status-update input').val("");
     });
-    
+
 
     async function updateStatus(post) {
-        let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        await safeInsertPost(guid, {
+        const graphId = `${id}/posts`;
+        let postId = `${graphId}/${Math.round( Math.random() * 100000 )}`;
+        //let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        await safeInsertPost(postId, {
             date: date,
             img: img,
             name: name,
@@ -18,17 +20,17 @@ async function posts(date, id, img, name) {
         });
         displayPosts();
     };
-    
-   $(document.body).on('click', '.delete-post', async function () {
-            let elemId = $(this).attr("data-type");
-            await safeDeletePost(elemId);
-            displayPosts();
+
+    $(document.body).on('click', '.delete-post', async function () {
+        let elemId = $(this).attr("data-type");
+        await safeDeletePost(elemId);
+        displayPosts();
     });
-    
+
     $(document.body).on('click', '.delete-comment', async function () {
-            let elemId = $(this).attr("data-type");
-            await safeDeleteComment(elemId);
-            displayPosts();
+        let elemId = $(this).attr("data-type");
+        await safeDeleteComment(elemId);
+        displayPosts();
     });
 
     $(document.body).on("click", '.status-checkbox', function () {

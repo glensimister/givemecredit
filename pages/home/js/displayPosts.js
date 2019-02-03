@@ -7,14 +7,15 @@ async function displayPosts() {
         $('.post-feed').html("There are no posts to show");
     } else {
         posts.forEach(async(item) => { 
-            comments = await getComments(item.key);
+            let key = item.key.toString().split("/");
+            comments = await getComments(key[4]);
             let template = `
-                <div id="${item.key}" class="post">
+                <div id="${key[4]}" class="post">
                     <i data-type="${item.key}" class="fa fa-fw fa-close delete-post"></i>
                     <i data-type="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
                     <div class="post-body">
                     <img src="${item.value.img}" class="user-image-medium" alt="User Image">
-                    <span><a class="webID" href="${item.value.id}">${item.value.name}</a><br /><span class="date">${item.value.date}</span></span>
+                    <span><a class="webID" href="${item.key}">${item.value.name}</a><br /><span class="date">${item.value.date}</span></span>
                     <div class="post-desc">${item.value.post}</div></div>
                     <div class="grid-toolbar">
                         <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
