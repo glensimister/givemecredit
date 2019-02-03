@@ -1,4 +1,4 @@
-async function AddComment(date, id, img, name) {
+async function addComment(date, id, img, name) {
     $(document.body).on("keypress", '.post-comment-input', async function (e) {
         e.stopImmediatePropagation();
         let element = $(this);
@@ -16,16 +16,6 @@ async function AddComment(date, id, img, name) {
                 date: date
             });
             displayPosts();
-
-           /* let comments = [];
-            comments = await safeGetComments();
-            try {
-                comments.forEach(async(comment) => {
-                    console.log(comment);
-                });
-            } catch (err) {
-                console.log(err + ". There are no comments to show");
-            } */
         }
     });
 }

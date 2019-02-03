@@ -9,19 +9,42 @@ function getScripts(scripts, callback) {
 
 
 getScripts([
-    "pages/home/js/posts.js",
-    "pages/home/js/AddComment.js",
+    "pages/home/js/addPost.js",
+    "pages/home/js/addComment.js",
     "pages/home/js/editComment.js",
+    "pages/home/js/editPost.js",
     "pages/home/js/getComments.js",
     "pages/home/js/displayPosts.js",
-    "pages/home/js/displayUserData.js",
-    "pages/home/js/editPost.js"
+    "pages/home/js/displayUserData.js"
 ], async function () {
     let date = await getDate();
     const id = await window.currentWebId["#me"]["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
-    posts(date, id, img, name);
-    AddComment(date, id, img, name);
+    addPost(date, id, img, name);
+    addComment(date, id, img, name);
     displayPosts();
+
+    $(document.body).on('click', '.delete-post', async function () {
+        let elemId = $(this).attr("data-type");
+        await safeDeletePost(elemId);
+        displayPosts();
+    });
+
+    $(document.body).on('click', '.delete-comment', async function () {
+        let elemId = $(this).attr("data-type");
+        await safeDeleteComment(elemId);
+        displayPosts();
+    });
+
+    $(document.body).on("click", '.status-checkbox', function () {
+        if ($(this).hasClass('checked')) {
+            $(this).html('');
+            $(this).removeClass('checked');
+        } else {
+            $(this).html('&#10004;');
+            $(this).addClass('checked');
+        }
+    });
+
 });

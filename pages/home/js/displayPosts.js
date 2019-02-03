@@ -1,5 +1,5 @@
 async function displayPosts() {
-    $('.post-feed').html(""); // should receive live updates but now it just refreshes and reloads all posts
+    $('.post-feed').html("");
     let comments = [];
     let posts = [];
     posts = await safeGetPosts();
