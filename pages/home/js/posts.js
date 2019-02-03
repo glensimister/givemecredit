@@ -11,12 +11,10 @@ async function posts(date, id, img, name) {
     async function updateStatus(post) {
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         await safeInsertPost(guid, {
-            webID: id,
             date: date,
             img: img,
             name: name,
-            post: post,
-            comments: null
+            post: post
         });
         displayPosts();
     };

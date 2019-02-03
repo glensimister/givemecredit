@@ -17,3 +17,4 @@ async function authoriseAndConnect() {
     const mutableDataInterface = await safeApp.auth.getOwnContainer();
     console.log("container has been created");
 }
+

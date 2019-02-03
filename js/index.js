@@ -35,6 +35,7 @@ try {
     await createSafeCoin(reset);
     await createPosts(reset);
     await createOfficials(reset);
+    await createComments();
 } catch (err) {
     console.log(err + " Error creating datasets. Trying again...");
     reset = false;
@@ -42,6 +43,7 @@ try {
     await createSafeCoin(reset);
     await createPosts(reset);
     await createOfficials(reset);
+    await createComments();
 }
 
 /* intro page */

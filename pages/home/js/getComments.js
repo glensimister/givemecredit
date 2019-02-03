@@ -1,18 +1,22 @@
-//currently the code below only works on the first comment. Also, it doesn't write to the db yet. 
-
-function displayComment(img, name, comment, date, guid, element) {
-    let template = `<div id="${guid}" class="comment-box">
+async function getComments(postId) {
+    let array = [];
+    let comments = [];
+    comments = await safeGetComments();
+    comments.forEach(async(comment) => {
+        let str = postId.toString().localeCompare(comment.value.postId);
+        if (str == 0) {
+            let template = `<div id="${comment.value.postId}" class="comment-box">
                     <i class="fa fa-fw fa-close delete-post"></i>
-                    <i id="${guid}" class="fa fa-fw fa-pencil edit-post"></i>
+                    <i id="${comment.value.postId}" class="fa fa-fw fa-pencil edit-post"></i>
                         <div class="post-body">
-                            <img src="${img}" class="user-image-medium" alt="User Image">
-                            <span><a href="">${name}</a><br />${date}</span>
-                            <div class="comment">${comment}</div>
+                            <img src="${comment.value.img}" class="user-image-medium" alt="User Image">
+                            <span><a href="">${comment.value.name}</a><br />${comment.value.date}</span>
+                            <div class="comment">${comment.value.post}</div>
                         </div>
                         <div class="grid-toolbar">
-                            <div class="red"><i title="${guid}" class="fa fa-thumbs-o-up"></i></div>
+                            <div class="red"><i title="${comment.value.postId}" class="fa fa-thumbs-o-up"></i></div>
                             <div>90</div>
-                            <div class="blue"><i title="${guid}" class="fa fa-thumbs-o-down"></i></div>
+                            <div class="blue"><i title="${comment.value.postId}" class="fa fa-thumbs-o-down"></i></div>
                             <div>10</div>
                             <div class="red"><i class="fa fa-flag"></i></div>
                             <div>0</div>
@@ -29,11 +33,8 @@ function displayComment(img, name, comment, date, guid, element) {
                             <div class="red"><i class="fa fa-heart"></i></div>
                         </div>
                     </div>`;
-    $(element).prev().append(template);
-    $('.post-comment-input').val("");
-    $(".rateYoToolbar").rateYo({
-        rating: 4,
-        starWidth: "15px",
-        readOnly: true
+            array.push(template);
+        }
     });
+    return array;
 }
