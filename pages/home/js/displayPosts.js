@@ -10,8 +10,8 @@ async function displayPosts() {
             comments = await getComments(item.key);
             let template = `
                 <div id="${item.key}" class="post">
-                    <i class="fa fa-fw fa-close delete-post"></i>
-                    <i id="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
+                    <i data-type="${item.key}" class="fa fa-fw fa-close delete-post"></i>
+                    <i data-type="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
                     <div class="post-body">
                     <img src="${item.value.img}" class="user-image-medium" alt="User Image">
                     <span><a class="webID" href="${item.value.id}">${item.value.name}</a><br /><span class="date">${item.value.date}</span></span>

@@ -7,23 +7,21 @@ function getScripts(scripts, callback) {
     });
 }
 
-    //"pages/home/js/comment.js",
-    //"pages/home/js/displayComment.js",
 
 getScripts([
     "pages/home/js/posts.js",
     "pages/home/js/AddComment.js",
+    "pages/home/js/editComment.js",
     "pages/home/js/getComments.js",
     "pages/home/js/displayPosts.js",
     "pages/home/js/displayUserData.js",
     "pages/home/js/editPost.js"
 ], async function () {
     let date = await getDate();
-    const id = await window.currentWebId["@id"];
+    const id = await window.currentWebId["#me"]["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];
     posts(date, id, img, name);
-    //comment(date, id, img, name);
     AddComment(date, id, img, name);
     displayPosts();
 });

@@ -19,9 +19,15 @@ async function posts(date, id, img, name) {
         displayPosts();
     };
     
-    $(document.body).on('click', '.delete-post', async function () {
-            let elemId = $(this).next().attr('id');
+   $(document.body).on('click', '.delete-post', async function () {
+            let elemId = $(this).attr("data-type");
             await safeDeletePost(elemId);
+            displayPosts();
+    });
+    
+    $(document.body).on('click', '.delete-comment', async function () {
+            let elemId = $(this).attr("data-type");
+            await safeDeleteComment(elemId);
             displayPosts();
     });
 

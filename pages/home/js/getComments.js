@@ -5,18 +5,19 @@ async function getComments(postId) {
     comments.forEach(async(comment) => {
         let str = postId.toString().localeCompare(comment.value.postId);
         if (str == 0) {
-            let template = `<div id="${comment.value.postId}" class="comment-box">
-                    <i class="fa fa-fw fa-close delete-post"></i>
-                    <i id="${comment.value.postId}" class="fa fa-fw fa-pencil edit-post"></i>
+            let key = comment.key.toString().split("/");
+            let template = `<div id="${key[4]}" class="comment-box">
+                    <i data-type="${comment.key}" class="fa fa-fw fa-close delete-comment"></i>
+                    <i data-type="${comment.key}" class="fa fa-fw fa-pencil edit-comment"></i>
                         <div class="post-body">
                             <img src="${comment.value.img}" class="user-image-medium" alt="User Image">
                             <span><a href="">${comment.value.name}</a><br />${comment.value.date}</span>
                             <div class="comment">${comment.value.post}</div>
                         </div>
                         <div class="grid-toolbar">
-                            <div class="red"><i title="${comment.value.postId}" class="fa fa-thumbs-o-up"></i></div>
+                            <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
                             <div>90</div>
-                            <div class="blue"><i title="${comment.value.postId}" class="fa fa-thumbs-o-down"></i></div>
+                            <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
                             <div>10</div>
                             <div class="red"><i class="fa fa-flag"></i></div>
                             <div>0</div>

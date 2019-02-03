@@ -17,7 +17,7 @@ async function AddComment(date, id, img, name) {
             });
             displayPosts();
 
-            let comments = [];
+           /* let comments = [];
             comments = await safeGetComments();
             try {
                 comments.forEach(async(comment) => {
@@ -25,7 +25,7 @@ async function AddComment(date, id, img, name) {
                 });
             } catch (err) {
                 console.log(err + ". There are no comments to show");
-            }
+            } */
         }
     });
 }
