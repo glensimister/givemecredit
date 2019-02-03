@@ -1,5 +1,6 @@
 $(async function () {
-    $(document.body).on('click', '.edit-post', async function () {
+    $(document.body).on('click', '.edit-post', async function (e) {
+        e.stopImmediatePropagation();
         let editable = $(this).next().find('.post-desc');
         if ($(this).hasClass('fa-pencil')) {
             $(this).removeClass('fa-pencil').addClass('fa-floppy-o');

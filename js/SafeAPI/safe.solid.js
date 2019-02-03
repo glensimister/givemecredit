@@ -1,3 +1,5 @@
+/***** this is not uses in the application. it is just for testing the solid stuff *****/
+
 let solid;
 
 
