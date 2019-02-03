@@ -36,7 +36,7 @@ async function displayPosts() {
                         <div class="red"><i class="fa fa-heart"></i></div>
                     </div>
                      <div class="post-comment">
-                        ${comments||''}
+                        ${comments.join("")||''}
                     </div>
                     <input type="text" class="post-comment-input" placeholder="Write a comment..." />
                 </div>`;

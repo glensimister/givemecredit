@@ -7,26 +7,7 @@ async function createPosts(reset) {
         const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
         md = await safeApp.mutableData.newPublic(hash, 15000);
         if (reset) {
-            let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            const commentObj = {
-                commentId: guid,
-                webID: "safe://glen.devolution",
-                date: "14 Jan, 2019",
-                img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
-                name: "Glen Simister",
-                comment: "There are no comments yet"
-            };
-            const initialData = {
-                "random_key_1": JSON.stringify({
-                    webID: "safe://glen.devolution",
-                    date: "14 Jan, 2019",
-                    img: "safe://hygjurfty4kddbj6q7rgn9kq63djis73i17kbezddbd7afiynqhpqggjxixpy",
-                    name: "Glen Simister",
-                    post: "Welcome to DEVOLUTION - The evolution of decentralized governance.",
-                    comments: commentObj
-                })
-            };
-            await md.quickSetup(initialData);
+            await md.quickSetup();
         }
     } catch (err) {
         console.log(err);
