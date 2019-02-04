@@ -1,4 +1,4 @@
-export default (function () {
+$(function () {
     $(document.body).on("click", '.fa-flag', function (e) {
         e.stopImmediatePropagation();
         flagPost($(this)); //this can be removed
@@ -28,4 +28,4 @@ export default (function () {
         starWidth: "15px",
         readOnly: true
     });
-}());
+});

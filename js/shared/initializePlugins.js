@@ -1,4 +1,4 @@
-export function initScripts() {
+function initializePlugins() {
     $(".rateYoLeft").rateYo({
         rating: 3.6,
         starWidth: "20px",

@@ -1,0 +1,134 @@
+<div id="tabs">
+    <input id="tab2" type="radio" name="tabs" checked>
+    <label for="tab2">Register Plot</label>
+
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">New Plot</label>
+
+    <section id="content2">
+        <div class="land-search">
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Land Value</option>
+                    <option>1 - 5000 IDX</option>
+                    <option>5000 - 10,000 IDX</option>
+                    <option>10,000 - 15,000 IDX</option>
+                    <option>15,000 - 20,000 IDX</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Number of acres required</option>
+                    <option>0 - 1</option>
+                    <option>1 - 2</option>
+                    <option>2 - 3</option>
+                    <option>4 - 5</option>
+                </select>
+            </div>
+            <div>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Desired Post Code">
+            </div>
+            <div><a href="#" class="btn btn-blue"><b>SEARCH</b></a></div>
+        </div>
+
+        <div class="grid-3-col land-search-results">
+            <div>
+                <img src="img/plot.png">
+                <br />
+                <ul>
+                    <li>
+                        Post Code <a class="pull-right">TQ10XYZ</a>
+                    </li>
+                    <li>
+                        Acres <a class="pull-right">0.7</a>
+                    </li>
+                    <li>
+                        Monthly Rent <a class="pull-right">1200 IDX</a>
+                    </li>
+                </ul>
+                <a href="#/land/landdetailview" class="btn btn-blue">READ MORE</a>
+            </div>
+            <div>
+                <img src="img/plot.png">
+                <br />
+                <ul>
+                    <li>
+                        Post Code <a class="pull-right">TQ10XYZ</a>
+                    </li>
+                    <li>
+                        Acres <a class="pull-right">0.7</a>
+                    </li>
+                    <li>
+                        Monthly Rent <a class="pull-right">1200 IDX</a>
+                    </li>
+                </ul>
+                <a href="#/land/landdetailview" class="btn btn-blue">READ MORE</a>
+            </div>
+            <div>
+                <img src="img/plot.png">
+                <br />
+                <ul>
+                    <li>
+                        Post Code <a class="pull-right">TQ10XYZ</a>
+                    </li>
+                    <li>
+                        Acres <a class="pull-right">0.7</a>
+                    </li>
+                    <li>
+                        Monthly Rent <a class="pull-right">1200 IDX</a>
+                    </li>
+                </ul>
+                <a href="#/land/landdetailview" class="btn btn-blue">READ MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="content3">
+        <div class="grid-2-col addPlot">
+            <div>
+                <div class="form-group">
+                    <label>Post code</label>
+                    <input type="text" class="form-control land-post-code" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Acres</label>
+                    <input type="text" class="form-control land-size" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control land-price" placeholder="">
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="property-attached"> Property Attached
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="mains-water"> Mains Water
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" class="mains-electricity"> Mains electricity
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control land-desciption" rows="7" placeholder=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Upload Photos</label>
+                    <input type="file" class="land-photo">
+                </div>
+                <button type="submit" class="btn btn-blue submit-plot">SUBMIT</button>
+            </div>
+        </div>
+    </section>
+</div>

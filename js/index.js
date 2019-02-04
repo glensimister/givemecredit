@@ -1,16 +1,14 @@
-/* Import all of the Javascript components. */ 
+/***** TO DO *******
+- create breadcrumbs
+- implement voting registration form
+- organisze settings page into tabs (settings doesn't really need to be popup)
+*******************/
 
+$( document ).ready(async function() {
+    
 if (!safeExperimentsEnabled) {
     alert("You need to toggle experiments (top right) and/or select a webId (top left)");
 }
-
-import './general/sidebar.js';
-import './general/navTop.js';
-import './general/connect.js';
-import './general/toolbar.js';
-import {initScripts} from './general/initScripts.js';
-
-$( document ).ready(async function() {
     
 /* popup window for settings. This could be put in home folder */    
     
@@ -120,7 +118,7 @@ function loadHomePage() {
     $('.sidebar ul li a.active').removeClass('active');
     $(".content").load("pages/home/index.html", function () {
         $.getScript("pages/home/index.js");
-        initScripts();
+        initializePlugins();
     });
 }
         
@@ -140,7 +138,7 @@ var app = $.sammy(function () {
         let pageUrl = 'pages/' + page + '.html';
         $(".content").load(pageUrl, function () {
             $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
-            initScripts();
+            initializePlugins();
         });
     });
     this.get('#/:folder/:page', function () {
@@ -152,7 +150,7 @@ var app = $.sammy(function () {
         $(".content").load(pageUrl, function () {
             $.getScript(scriptUrl);
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
-            initScripts();
+            initializePlugins();
         });
     });
     this.get('#/:folder/:subfolder/:page', function () {
@@ -165,7 +163,7 @@ var app = $.sammy(function () {
         $(".content").load(pageUrl, function () {
             $.getScript(scriptUrl);
             $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
-            initScripts();
+            initializePlugins();
         });
     });
 });

@@ -1,4 +1,4 @@
-export default (function () {
+$(function () {
     $(document.body).on('click', '.top-nav ul li.has-dropdown > a', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -15,4 +15,4 @@ export default (function () {
             }
         });
     }
-}());
+});

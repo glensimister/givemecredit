@@ -1,4 +1,4 @@
-export default (function () {
+$(function () {
     $(document.body).on('click', '.connect, .disconnect', function (e) {
         e.stopImmediatePropagation();
         if ($(this).hasClass("disconnect")) {
@@ -9,4 +9,4 @@ export default (function () {
             $(this).addClass('disconnect');
         }
     });
-}());
+});
