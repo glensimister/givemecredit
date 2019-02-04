@@ -1,5 +1,5 @@
 let comments;
-async function createComments(reset) {
+async function safe_createComments() {
     try {
         console.log("Initializing Comments dataset...");
         //const hash = await safeApp.crypto.sha3Hash('COMMENTS_DATASET');
@@ -11,21 +11,21 @@ async function createComments(reset) {
     }
 }
 
-async function safeInsertComment(key, value) {
+async function safe_insertComment(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await comments.applyEntriesMutation(mutations);
 }
 
-async function safeUpdateComment(key, value, version) {
+async function safe_updateComment(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await comments.applyEntriesMutation(mutations);
 }
 
-async function safeDeleteComment(key) {
+async function safe_deleteComment(key) {
     let items = [];
-    items = await safeGetComments();
+    items = await safe_getComments();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         let str = key.localeCompare(item.key);
@@ -37,7 +37,7 @@ async function safeDeleteComment(key) {
 }
 
 
-async function safeGetComments() {
+async function safe_getComments() {
     const entries = await comments.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];

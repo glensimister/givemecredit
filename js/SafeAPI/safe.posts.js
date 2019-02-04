@@ -1,7 +1,7 @@
 /***************** Posts table (need to change the names) *****************/
 
 let md;
-async function createPosts(reset) {
+async function safe_createPosts(reset) {
     try {
         console.log("Initializing posts dataset...");
         const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
@@ -14,21 +14,21 @@ async function createPosts(reset) {
     }
 }
 
-async function safeInsertPost(key, value) {
+async function safe_insertPost(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await md.applyEntriesMutation(mutations);
 }
 
-async function safeUpdatePost(key, value, version) {
+async function safe_updatePost(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await md.applyEntriesMutation(mutations);
 }
 
-async function safeDeletePost(key) {
+async function safe_deletePost(key) {
     let items = [];
-    items = await safeGetPosts();
+    items = await safe_getPosts();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         if (item.key == key) {
@@ -38,18 +38,7 @@ async function safeDeletePost(key) {
     await md.applyEntriesMutation(mutations);
 }
 
-async function deleteAllPosts() {
-    let items = [];
-    items = await listUsers();
-    const mutations = await safeApp.mutableData.newMutation();
-    items.forEach(async(item) => {
-        await mutations.delete(item.key, item.version + 1);
-    });
-    await md.applyEntriesMutation(mutations);
-    console.log('posts have been deleted');
-}
-
-async function safeGetPosts() {
+async function safe_getPosts() {
     const entries = await md.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];

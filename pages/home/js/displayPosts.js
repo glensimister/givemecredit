@@ -2,7 +2,7 @@ async function displayPosts() {
     $('.post-feed').html("");
     let comments = [];
     let posts = [];
-    posts = await safeGetPosts();
+    posts = await safe_getPosts();
     if (posts.length == 0) {
         $('.post-feed').html("There are no posts to show");
     } else {

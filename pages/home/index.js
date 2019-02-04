@@ -29,13 +29,13 @@ getScripts([
 
     $(document.body).on('click', '.delete-post', async function () {
         let elemId = $(this).attr("data-type");
-        await safeDeletePost(elemId);
+        await safe_deletePost(elemId);
         displayPosts();
     });
 
     $(document.body).on('click', '.delete-comment', async function () {
         let elemId = $(this).attr("data-type");
-        await safeDeleteComment(elemId);
+        await safe_deleteComment(elemId);
         displayPosts();
     });
 });

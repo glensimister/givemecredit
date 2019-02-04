@@ -14,11 +14,11 @@ $(async function () {
             let elemId = $(this).attr("data-type");
             let post = editable.html();
             let items = [];
-            items = await safeGetPosts();
+            items = await safe_getPosts();
             items.forEach(async(item) => {
                 if (item.key == elemId) {
                     item.value.post = post;
-                    await safeUpdatePost(item.key, item.value, item.version);
+                    await safe_updatePost(item.key, item.value, item.version);
                 }
                 editable.css({
                     border: "none",

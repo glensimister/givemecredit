@@ -8,7 +8,7 @@ async function addComment(date, id, img, name) {
         let postId = `${graphId}/${Math.round( Math.random() * 100000 )}`;
 
         if (e.which == 13 && comment != '') {
-            await safeInsertComment(postId, {
+            await safe_insertComment(postId, {
                 postId: elemId,
                 img: img,
                 name: name,

@@ -15,12 +15,12 @@ $(async function () {
             let elemId = $(this).attr("data-type");
             let post = editable.html();
             let items = [];
-            items = await safeGetComments();
+            items = await safe_getComments();
             items.forEach(async(item) => {
                 let str = elemId.localeCompare(item.key);
                 if (str == 0) {
                     item.value.post = post;
-                    await safeUpdateComment(item.key, item.value, item.version);
+                    await safe_updateComment(item.key, item.value, item.version);
                 }
                 editable.css({
                     border: "5px solid #eee",

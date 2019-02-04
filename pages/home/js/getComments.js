@@ -1,7 +1,7 @@
 async function getComments(postId) {
     let array = [];
     let comments = [];
-    comments = await safeGetComments();
+    comments = await safe_getComments();
     comments.forEach(async(comment) => {
         let str = postId.toString().localeCompare(comment.value.postId);
         if (str == 0) {

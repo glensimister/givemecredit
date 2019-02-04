@@ -1,4 +1,5 @@
 /***** TO DO *******
+- prefix all SAFE API calls with safe_
 - create breadcrumbs
 - implement voting registration form
 - organisze settings page into tabs (settings doesn't really need to be popup)
@@ -31,17 +32,17 @@ $(document).ready(async function () {
     try {
         await createUsers(reset);
         await createSafeCoin(reset);
-        await createPosts(reset);
+        await safe_createPosts(reset);
         await createOfficials(reset);
-        await createComments();
+        await safe_createComments();
     } catch (err) {
         console.log(err + " Error creating datasets. Trying again...");
         reset = false;
         await createUsers(reset);
         await createSafeCoin(reset);
-        await createPosts(reset);
+        await safe_createPosts(reset);
         await createOfficials(reset);
-        await createComments();
+        await safe_createComments();
     }
 
     /* intro page */
@@ -59,7 +60,6 @@ $(document).ready(async function () {
             try {
                 await deleteAllUsers();
                 await deleteAllOfficials();
-                await deleteAllPosts();
                 await deleteAllAccounts();
             } catch (err) {
                 console.log(err + " Deleting datasets failed");

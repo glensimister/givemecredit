@@ -4,7 +4,7 @@ async function addPost(date, id, img, name) {
         let post = $('.status-update input').val();
         const graphId = `${id}/posts`;
         let postId = `${graphId}/${Math.round( Math.random() * 100000 )}`;
-        await safeInsertPost(postId, {
+        await safe_insertPost(postId, {
             date: date,
             img: img,
             name: name,
