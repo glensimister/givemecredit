@@ -1,6 +1,6 @@
 let safeApp;
 
-async function authoriseAndConnect() {
+async function safe_authoriseAndConnect() {
     let appInfo = {
         name: 'DEVOLUTION',
         id: 'net.devolution.web-app',

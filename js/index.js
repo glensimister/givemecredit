@@ -29,7 +29,7 @@ $(document).ready(async function () {
     /**** initialize SAFE app and data sets ****/
 
     let reset = true; /* this is for testing purposes */
-    await authoriseAndConnect();
+    await safe_authoriseAndConnect();
 
     try {
         await safe_createUsers(reset);
