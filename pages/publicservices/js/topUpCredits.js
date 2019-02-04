@@ -20,7 +20,7 @@
     async function updateCredits(type, amount) {
         const id = await window.currentWebId["@id"];
         let items = [];
-        items = await safeGetUsers();
+        items = await safe_getUsers();
         items.forEach(async(item) => {
             if (item.value.webID == id) {
                 if (type == '.hc div') {
@@ -29,7 +29,7 @@
                     item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(amount);
                 }
                 item.value.socialCredits = parseFloat(item.value.socialCredits) - parseFloat(amount);
-                await safeUpdateUser(item.key, item.value, item.version);
+                await safe_updateUser(item.key, item.value, item.version);
             }
         });
     }

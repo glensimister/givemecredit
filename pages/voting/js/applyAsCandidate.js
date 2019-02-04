@@ -8,12 +8,12 @@
         const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
         const webIdName = await window.currentWebId["#me"]["name"];
         
-        let pubKey = await getUserPubKeyFromWebId(webId);
+        let pubKey = await safe_getUserPubKeyFromWebId(webId);
 
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         //change webID to webId to be consistent
         try {
-            await insertOfficial(guid, {
+            await safe_insertOfficial(guid, {
                 pubKey: pubKey,
                 webID: webId,
                 name: webIdName,

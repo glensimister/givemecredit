@@ -1,6 +1,7 @@
 /***** TO DO *******
 - prefix all SAFE API calls with safe_
 - move page-specific css styles into their respective folders
+- replace all item.key == key with localcompare
 - create breadcrumbs
 - implement voting registration form
 - organisze settings page into tabs (settings doesn't really need to be popup)
@@ -31,18 +32,18 @@ $(document).ready(async function () {
     await authoriseAndConnect();
 
     try {
-        await createUsers(reset);
-        await createSafeCoin(reset);
+        await safe_createUsers(reset);
+        await safe_createSafeCoin(reset);
         await safe_createPosts(reset);
-        await createOfficials(reset);
+        await safe_createOfficials(reset);
         await safe_createComments();
     } catch (err) {
         console.log(err + " Error creating datasets. Trying again...");
         reset = false;
-        await createUsers(reset);
-        await createSafeCoin(reset);
+        await safe_createUsers(reset);
+        await safe_createSafeCoin(reset);
         await safe_createPosts(reset);
-        await createOfficials(reset);
+        await safe_createOfficials(reset);
         await safe_createComments();
     }
 
@@ -59,14 +60,14 @@ $(document).ready(async function () {
         /*** reset DB (for testing purposes) ***/
         if ($(this).hasClass('reset')) {
             try {
-                await deleteAllUsers();
-                await deleteAllOfficials();
-                await deleteAllAccounts();
+                await safe_deleteAllUsers();
+                await safe_deleteAllOfficials();
+                await safe_deleteAllAccounts();
             } catch (err) {
                 console.log(err + " Deleting datasets failed");
             }
         } else {
-            let verified = await isUserVerified(webId); // check if user exists
+            let verified = await safe_isUserVerified(webId); // check if user exists
             if (!verified) {
                 $('#introContainer').fadeOut(2000);
                 $('.stars').addClass('animated zoomIn');
@@ -93,18 +94,18 @@ $(document).ready(async function () {
         let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         try {
-            await createNewUser(webId, webIdImg, webIdName, pubKey);
+            await safe_createNewUser(webId, webIdImg, webIdName, pubKey);
         } catch (err) {
             console.log(err);
         }
 
         //let balance = 100;
         try {
-            await addFunds(guid, {
+            await safe_addFunds(guid, {
                 pubKey: pubKey,
                 balance: 100
             });
-            let bal = await getBalance(pubKey);
+            let bal = await safe_getBalance(pubKey);
             $('.rebate div').html(bal);
         } catch (err) {
             console.log(err + " There was a problem adding funds");

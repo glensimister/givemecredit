@@ -60,9 +60,9 @@ $(async function () {
     }
 
     async function initializeSafeCoinBal() {
-        let pubKey = await getUserPubKeyFromWebId(webId);
+        let pubKey = await safe_getUserPubKeyFromWebId(webId);
         let accounts = [];
-        accounts = await getAllBalances();
+        accounts = await safe_getAllBalances();
         accounts.forEach(async(account) => {
         let str = pubKey.localeCompare(account.value.pubKey);
             if (str == 0) {
@@ -73,14 +73,14 @@ $(async function () {
 
     async function updateSafeCoinBal() {
         // update safecoin balance with newSafeCoinBal
-        let pubKey = await getUserPubKeyFromWebId(webId);
+        let pubKey = await safe_getUserPubKeyFromWebId(webId);
         let accounts = [];
-        accounts = await getAllBalances();
+        accounts = await safe_getAllBalances();
         accounts.forEach(async(account) => {
             let str = pubKey.localeCompare(account.value.pubKey);
             if (str == 0) {
                 account.value.balance = newSafeCoinBal;
-                updateBalance(account.key, account.value, account.version);
+                safe_updateBalance(account.key, account.value, account.version);
             }
         });
     }

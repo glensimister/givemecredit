@@ -1,5 +1,5 @@
 let users;
-async function createUsers(reset) {
+async function safe_createUsers(reset) {
     console.log("Creating users table...");
     try {
         const hash = await safeApp.crypto.sha3Hash('USERS_DATASET');
@@ -12,10 +12,10 @@ async function createUsers(reset) {
     }
 }
 
-async function isUserVerified(id) {
+async function safe_isUserVerified(id) {
     let usrIsVerified = false;
     let users = [];
-    users = await safeGetUsers();
+    users = await safe_getUsers();
     users.forEach(async(user) => {
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
@@ -25,7 +25,7 @@ async function isUserVerified(id) {
     return usrIsVerified;
 }
 
-async function createNewUser(id, img, name, safeCoinPubKey) {
+async function safe_createNewUser(id, img, name, safeCoinPubKey) {
     let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     await insertUser(guid, {
         webID: id,
@@ -41,49 +41,49 @@ async function createNewUser(id, img, name, safeCoinPubKey) {
     console.log('user created');
 }
 
-async function insertUser(key, value) {
+async function safe_insertUser(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await users.applyEntriesMutation(mutations);
 }
 
 
-async function safeDeductSocialCredits(webId, newSocialCreditVal) {
+async function safe_deductSocialCredits(webId, newSocialCreditVal) {
     let users = [];
-    users = await safeGetUsers();
+    users = await safe_getUsers();
     users.forEach(async(user) => {
         let str = webId.localeCompare(user.value.webID);
         if (str == 0) {
             user.value.socialCredits = newSocialCreditVal;
-            safeUpdateUser(user.key, user.value, user.version);
+            safe_updateUser(user.key, user.value, user.version);
             console.log('Social Credits Updated for ' + user.value.name);
         }
     });
 }
 
 /*** this is for testing purposes ***/
-async function resetUserCredits() {
+async function safe_resetUserCredits() {
     let users = [];
-    users = await safeGetUsers();
+    users = await safe_getUsers();
     users.forEach(async(user) => {
         user.value.socialCredits = 0;
         user.value.healthCredits = 0;
         user.value.educationCredits = 0;
-        safeUpdateUser(user.key, user.value, user.version);
+        safe_updateUser(user.key, user.value, user.version);
     });
 }
 
 
-async function safeUpdateUser(key, value, version) {
+async function safe_updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await users.applyEntriesMutation(mutations);
     console.log('user updated');
 }
 
-async function deleteAllUsers() {
+async function safe_deleteAllUsers() {
     let items = [];
-    items = await safeGetUsers();
+    items = await safe_getUsers();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         await mutations.delete(item.key, item.version + 1);
@@ -91,7 +91,7 @@ async function deleteAllUsers() {
     await users.applyEntriesMutation(mutations);
 }
 
-async function safeGetUsers() {
+async function safe_getUsers() {
     const entries = await users.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];
@@ -110,10 +110,10 @@ async function safeGetUsers() {
 
 /***** get users public key from webId *****/
 
-async function getUserPubKeyFromWebId(webId) {
+async function safe_getUserPubKeyFromWebId(webId) {
     let pubKey = "";
     let users = [];
-    users = await safeGetUsers();
+    users = await safe_getUsers();
     users.forEach(async(user) => {
         let str = webId.localeCompare(user.value.webID);
         if (str == 0) {
@@ -124,9 +124,9 @@ async function getUserPubKeyFromWebId(webId) {
 }
 
 
-/******* generate GUID from WEBID ********/
+/******* generate GUID from WEBID - probably don't need this anymore ********/
 
-async function getUserIdFromWebId(webId) {
+async function safe_getUserIdFromWebId(webId) {
     let str = await safeApp.crypto.sha3Hash(webId).toString(16);
     var arr1 = [];
     for (var n = 0, l = str.length; n < l; n++) {

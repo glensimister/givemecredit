@@ -1,7 +1,7 @@
 /***************** Officials table *****************/
 
 let officials;
-async function createOfficials(reset) {
+async function safe_createOfficials(reset) {
     console.log("Creating officials table...");
     try {
         const hash = await safeApp.crypto.sha3Hash('OFFICIALS_DATASET');
@@ -14,22 +14,22 @@ async function createOfficials(reset) {
     }
 }
 
-async function insertOfficial(key, value) {
+async function safe_insertOfficial(key, value) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await officials.applyEntriesMutation(mutations);
 }
 
-async function updateOffical(key, value, version) {
+async function safe_updateOffical(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
     await officials.applyEntriesMutation(mutations);
 }
 
 /**** This is for testing purposes ****/
-async function deleteAllOfficials() {
+async function safe_deleteAllOfficials() {
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
             await mutations.delete(item.key, item.version + 1);
@@ -38,9 +38,9 @@ async function deleteAllOfficials() {
     console.log("All officials have been removed");
 }
 
-async function deleteOfficial(key) {
+async function safe_deleteOfficial(key) {
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     const mutations = await safeApp.mutableData.newMutation();
     items.forEach(async(item) => {
         if (item.key == key) {
@@ -50,10 +50,10 @@ async function deleteOfficial(key) {
     await officials.applyEntriesMutation(mutations);
 }
 
-async function getOfficialUserId(id){
+async function safe_getOfficialUserId(id){
     let userId;
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     items.forEach(async(item) => {
         let str = id.localeCompare(item.value.userId);
         if (str == 0) {
@@ -63,7 +63,7 @@ async function getOfficialUserId(id){
     return userId;
 }
 
-async function listOfficials() {
+async function safe_listOfficials() {
     const entries = await officials.getEntries();
     const entriesList = await entries.listEntries();
     const items = [];

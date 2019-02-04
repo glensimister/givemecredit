@@ -12,13 +12,13 @@
         
         /**** send the social credits to SafeCoin ****/
         let pubKey = $(this).attr("title");
-        let balance = await getBalance(pubKey);
+        let balance = await safe_getBalance(pubKey);
         balance = balance + input;
-        await sendTo(pubKey, balance);
+        await safe_sendTo(pubKey, balance);
         
         /**** deduct social credits from donor ****/
         const webId = await window.currentWebId["@id"];
-        await safeDeductSocialCredits(webId, newSocialCreditVal);
+        await safe_deductSocialCredits(webId, newSocialCreditVal);
 
         function updateProgressBar(key, value, raised) {
             $('#' + key + ' .creditsReceived').html(parseInt(raised) + parseInt(value));
@@ -43,13 +43,13 @@
 
         async function updateService(key, socCred, prog, raised) {
             let items = [];
-            items = await listOfficials();
+            items = await safe_listOfficials();
             items.forEach(async(item) => {
                 if (item.key == key) {
                     item.value.percentageOfTarget = prog;
                     item.value.socialCredits = socCred;
                     item.value.creditsReceived = raised;
-                    await updateOffical(key, item.value, item.version);
+                    await safe_updateOffical(key, item.value, item.version);
                 }
             });
         }

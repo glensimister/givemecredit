@@ -1,7 +1,7 @@
 async function listCandidates() {
     var isElected;
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     if (items.length == 0) {
         $('.localOfficials').html("There are no officials to show");
     } else {

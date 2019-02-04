@@ -14,14 +14,14 @@ $(async function () {
     });
 
     let users = [];
-    users = await safeGetUsers();
+    users = await safe_getUsers();
     users.forEach(async(user) => {
         let str = id.localeCompare(user.value.webID);
         if (str == 0) {
             $('.sc div').html(parseFloat(user.value.socialCredits).toFixed(2));
             $('.hc div').html(user.value.healthCredits);
             $('.ec div').html(user.value.educationCredits);
-            let balance = await getBalance(user.value.pubKey);
+            let balance = await safe_getBalance(user.value.pubKey);
             $('.rebate div').html(balance);
         }
     });

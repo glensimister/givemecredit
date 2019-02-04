@@ -2,7 +2,7 @@
     
     $(document.body).on("click", '.delete-official', async function () {
         let id = $(this).parent().attr('id');
-        await deleteOfficial(id);
+        await safe_deleteOfficial(id);
         listCandidates();
     });
     
@@ -29,13 +29,13 @@
         if (percentage < 65) {
             (async() => {
                 let items = [];
-                items = await listOfficials();
+                items = await safe_listOfficials();
                 items.forEach(async(item) => {
                     if (item.key == key) {
                         item.value.approvalRating = percentageString;
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
-                        await updateOffical(key, item.value, 0);
+                        await safe_updateOffical(key, item.value, 0);
                     }
                 });
             })().catch(err => {
@@ -53,14 +53,14 @@
         if ((percentage >= 65) && !isElected) {
             (async() => { //remove this and put it in the click event
                 let items = [];
-                items = await listOfficials();
+                items = await safe_listOfficials();
                 items.forEach(async(item) => {
                     if (item.key == key) {
                         item.value.elected = true;
                         item.value.approvalRating = percentageString;
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
-                        await updateOffical(key, item.value, item.version);
+                        await safe_updateOffical(key, item.value, item.version);
                         $('#tab1').prop('checked', true);
                         $('div#' + key).remove();
                         $('.localOfficials').html("");
@@ -74,14 +74,14 @@
         if ((percentage < 65) && isElected) {
             (async() => {
                 let items = [];
-                items = await listOfficials();
+                items = await safe_listOfficials();
                 items.forEach(async(item) => {
                     if (item.key == key) {
                         item.value.elected = false;
                         item.value.approvalRating = percentageString;
                         item.value.upVotes = upVotes;
                         item.value.downVotes = downVotes;
-                        await updateOffical(key, item.value, item.version);
+                        await safe_updateOffical(key, item.value, item.version);
                         $('#tab2').prop('checked', true);
                         $('div#' + key).remove();
                         $('.localCandidates').html("");

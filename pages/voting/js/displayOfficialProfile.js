@@ -1,7 +1,7 @@
 async function displayOfficialProfile() {
     var id = getUrlVars()["id"];
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     items.forEach(async(item) => {
         if (item.key == id) {
             $('.profile-summary h4').html(item.value.position);

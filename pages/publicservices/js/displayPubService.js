@@ -1,7 +1,7 @@
 $(async function () {
 
     let items = [];
-    items = await listOfficials();
+    items = await safe_listOfficials();
     if (items.length == 0) {
         console.log("There are no services");
     } else {
