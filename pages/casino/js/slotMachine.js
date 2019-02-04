@@ -1,6 +1,8 @@
-// uses roulette.js (in vendor folder)  
+// uses roulette.js 
 $(async function () {
     const webId = await window.currentWebId["@id"];
+    initializeSafeCoinBal();
+    
     let imgNum1 = 0;
     let imgNum2 = 0;
     let imgNum3 = 0;
@@ -47,8 +49,7 @@ $(async function () {
                     win.play();
                 } else {
                     lose.play();
-                    //100 is current cost of a play. However, this will be based on user input.
-                    distributeSocCredits(1000);
+                    distributeSocCredits(payout);
                 }
                 updateCredits(isWinner, payout);
                 $('.result div').addClass('animated heartBeat').html(result);
@@ -57,47 +58,52 @@ $(async function () {
             }
         }
     }
-    
-    async function showSafeCoinBalances() {
+
+    async function initializeSafeCoinBal() {
+        let pubKey = await getUserPubKeyFromWebId(webId);
         let accounts = [];
         accounts = await getAllBalances();
         accounts.forEach(async(account) => {
-            console.log(account);
+        let str = pubKey.localeCompare(account.value.pubKey);
+            if (str == 0) {
+                $('.safeCoinBal div').html(account.value.balance);
+            }
         });
     }
-    
 
     async function updateSafeCoinBal() {
         // update safecoin balance with newSafeCoinBal
         let pubKey = await getUserPubKeyFromWebId(webId);
-        console.log(pubKey + " " + newSafeCoinBal);
         let accounts = [];
         accounts = await getAllBalances();
-        accounts.forEach(async(account) => {            
+        accounts.forEach(async(account) => {
             let str = pubKey.localeCompare(account.value.pubKey);
             if (str == 0) {
                 account.value.balance = newSafeCoinBal;
                 updateBalance(account.key, account.value, account.version);
             }
         });
-        showSafeCoinBalances();
     }
 
     function updateCredits(isWin, amount) {
         let element = $('.rebate div');
+        let safeCoinBal = $('.safeCoinBal div');
         let current_bal;
         current_bal = element.html();
         if (isWin) {
             newSafeCoinBal = parseFloat(current_bal) + amount;
             element.html(newSafeCoinBal);
+            safeCoinBal.html(newSafeCoinBal);
             element.addClass('animated win-color heartBeat');
+            safeCoinBal.addClass('animated win-color heartBeat');
             setTimeout(function () {
                 element.removeClass();
+                safeCoinBal.removeClass();
             }, 2000);
         } else {
             newSafeCoinBal = parseFloat(current_bal) - amount;
             element.html(newSafeCoinBal);
-            element.removeClass();
+            safeCoinBal.html(newSafeCoinBal);
         }
     }
 
@@ -108,18 +114,6 @@ $(async function () {
     rouletter1.roulette(option1);
     rouletter2.roulette(option2);
     rouletter3.roulette(option3);
-    
-    /**** don't need stop anymore. can remove *****/
-
-    $('.stop').click(function () {
-        var stopImageNumber = $('.stopImageNumber').val();
-        if (stopImageNumber == "") {
-            stopImageNumber = null;
-        }
-        rouletter1.roulette('stop');
-        rouletter2.roulette('stop');
-        rouletter3.roulette('stop');
-    });
 
     $('.start').click(function () {
         if ($(this).hasClass('cheat')) { // this is for testing only and will be removed
@@ -147,19 +141,20 @@ $(async function () {
         $('.sc div').removeClass();
         $('.result div').removeClass().html("SPINNING...");
         $('.fa-star-o').removeClass('animated rotateIn');
+        let pricePerSpin = $('.roulette_bottom_grid > div:nth-child(2) input').val();
 
         if ((imgNum1 == imgNum2) && (imgNum1 == imgNum3)) {
             result = "JACKPOT!";
             isWinner = true;
-            payout = 100;
+            payout = pricePerSpin * 100;
         } else if (imgNum1 == imgNum2) {
             result = "YOU WIN!";
             isWinner = true;
-            payout = 20;
+            payout = pricePerSpin * 20;
         } else {
             result = "YOU LOSE!";
             isWinner = false;
-            payout = 20;
+            payout = pricePerSpin * 20;
         }
 
         rouletter1.roulette('start');

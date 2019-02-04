@@ -1,4 +1,5 @@
 $(async function () {
+    /***** don't really need to get the webid info again as this can come from index.js *****/
     const id = await window.currentWebId["@id"];
     const img = await window.currentWebId["#me"]["image"]["@id"];
     const name = await window.currentWebId["#me"]["name"];

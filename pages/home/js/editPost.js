@@ -11,7 +11,6 @@ $(async function () {
             });
         } else {
             $(this).removeClass('fa-floppy-o').addClass('fa-pencil');
-            //let elemId = $(this).attr('id');
             let elemId = $(this).attr("data-type");
             let post = editable.html();
             let items = [];

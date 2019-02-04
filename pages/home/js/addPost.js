@@ -11,7 +11,6 @@ async function addPost(date, id, img, name) {
             post: post
         });
         displayPosts();
-
         $('.status-update input').val("");
     });
 }

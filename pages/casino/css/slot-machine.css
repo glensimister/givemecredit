@@ -147,12 +147,19 @@ div.roulette_top > div i {
     border-bottom-left-radius: 5px;
     background: #e08e0b;
 }
-.roulette_bottom_grid > div:nth-child(2) {
+.roulette_bottom_grid > div:nth-child(2) input {
     background: #fff;
     -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     color: #555;
+    font-weight: 700;
+    height:100%;
+    width:100%;
+    font-size: 18px;
+    display: block;
+    border:none;
+    text-align: center;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -167,6 +174,7 @@ div.roulette_top > div i {
     -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
     color: #555;
+    font-weight: 700;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
