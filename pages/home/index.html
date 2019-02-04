@@ -20,9 +20,9 @@
         <section id="content1">
             <div class="status-update clearfix">
                 <input type="text" class="input-box" placeholder="What's on your mind, Glen?" />
-                <!-- The code below allows users to select multiple categories that relate to their update. It could be useful for searching/categorising updates. The css is around line 130 in style.css-->
                 <div class="grid-status">
-                <div><select class="select2" name="categories[]" multiple="multiple" data-placeholder="Select a category" style="width:100%;">
+                <div><select>
+                    <option>Please select a category</option>
                     <option>Public anouncement</option>
                     <option>Idea</option>
                     <option>Devolution support</option>
@@ -30,21 +30,12 @@
                     <option>Politics</option>
                     <option>News</option>
                     <option>Other</option>
-                </select></div>
+                    </select></div>
                     <div>
                         <button class="attachment">ATTACHMENT <i class="fa fa-fw fa-paperclip"></i></button>
                     </div>
-                </div>
-
-                <div class="status-update-reminder">
-                    <div class="grid-status-update-reminder">
-                        <div>Is it useful?</div>
-                        <div class="status-checkbox"></div>
-                        <div>Is it kind?</div>
-                        <div class="status-checkbox"></div>
-                        <div>Is it true?</div>
-                        <div class="status-checkbox"></div>
-                        <div class="post-update"><button>POST <i class="fa fa-fw fa-chevron-circle-right"></i></button></div>
+                    <div>
+                        <button class="post-update">POST <i class="fa fa-fw fa-chevron-circle-right"></i></button>
                     </div>
                 </div>
             </div>

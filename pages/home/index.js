@@ -10,7 +10,6 @@ function getScripts(scripts, callback) {
     });
 }
 
-
 getScripts([
     "pages/home/js/addPost.js",
     "pages/home/js/addComment.js",
@@ -39,15 +38,4 @@ getScripts([
         await safeDeleteComment(elemId);
         displayPosts();
     });
-
-    $(document.body).on("click", '.status-checkbox', function () {
-        if ($(this).hasClass('checked')) {
-            $(this).html('');
-            $(this).removeClass('checked');
-        } else {
-            $(this).html('&#10004;');
-            $(this).addClass('checked');
-        }
-    });
-
 });
