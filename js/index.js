@@ -1,5 +1,6 @@
 /***** TO DO *******
 - prefix all SAFE API calls with safe_
+- move page-specific css styles into their respective folders
 - create breadcrumbs
 - implement voting registration form
 - organisze settings page into tabs (settings doesn't really need to be popup)
