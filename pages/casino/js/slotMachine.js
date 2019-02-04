@@ -154,7 +154,7 @@ $(async function () {
         } else {
             result = "YOU LOSE!";
             isWinner = false;
-            payout = pricePerSpin * 20;
+            payout = pricePerSpin;
         }
 
         rouletter1.roulette('start');
