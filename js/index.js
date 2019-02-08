@@ -28,7 +28,7 @@ $(document).ready(async function () {
 
     /**** initialize SAFE app and data sets ****/
 
-    let reset = true; /* this is for testing purposes */
+    let reset = false; /* this is for testing purposes */
     await safe_authoriseAndConnect();
 
     try {

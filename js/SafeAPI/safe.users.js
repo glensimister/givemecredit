@@ -27,7 +27,7 @@ async function safe_isUserVerified(id) {
 
 async function safe_createNewUser(id, img, name, safeCoinPubKey) {
     let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    await insertUser(guid, {
+    await safe_insertUser(guid, {
         webID: id,
         photo: img,
         name: name,

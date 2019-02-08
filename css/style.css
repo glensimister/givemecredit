@@ -106,9 +106,10 @@ textarea.form-control {
     -moz-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
     box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
 }
-.profile-summary {
+.profile-summary > div {
     text-align: center;
     padding: 20px;
+    margin-bottom:20px;
     border-radius: 3px;
     border: 1px solid #eee;
     -webkit-box-shadow: inset 0px 0px 33px -1px rgba(238, 238, 238, 0.47);
@@ -119,12 +120,6 @@ textarea.form-control {
     text-transform: capitalize;
 }
 
-.rateYo {
-    margin: 0 auto 20px auto;
-}
-.rateYoLeft {
-    margin-bottom: 20px;
-}
 .profile-summary ul {
     text-align: left;
     margin-bottom: 20px;
@@ -133,6 +128,13 @@ textarea.form-control {
     border-bottom: 1px solid #eee;
     line-height: 30px;
     display: block;
+}
+
+.rateYo {
+    margin: 0 auto 20px auto;
+}
+.rateYoLeft {
+    margin-bottom: 20px;
 }
 
 .localCandidates div,
