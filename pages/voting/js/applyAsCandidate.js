@@ -1,6 +1,7 @@
 (function ($) {
     $(document.body).on("click", '.apply-for-position', async function (e) {
         e.stopImmediatePropagation();
+        distributeSocCredits(10); //10 is an arbitrary number. This will need to be based on the cost of a PUT request
         $('#tab2').prop('checked', true);
         var position = $('.candidate-position').val();
         let date = await getDate();

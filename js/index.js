@@ -103,7 +103,7 @@ $(document).ready(async function () {
         try {
             await safe_addFunds(guid, {
                 pubKey: pubKey,
-                balance: 100
+                balance: 5000
             });
             let bal = await safe_getBalance(pubKey);
             $('.rebate div').html(bal);

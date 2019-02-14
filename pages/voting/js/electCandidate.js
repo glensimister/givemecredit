@@ -12,6 +12,8 @@
     var downVotes = 0;
     $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', function (e) {
         e.stopImmediatePropagation();
+        //10 is an arbitrary number. This will need to be based on the cost of a PUT request. What about downvotes/updates? 
+        distributeSocCredits(10); 
         var key = $(this).attr("title");
         var elem = $(this).parent().next('div');
         var votes = elem.html();

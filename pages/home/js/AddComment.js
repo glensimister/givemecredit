@@ -4,10 +4,10 @@ async function addComment(date, id, img, name) {
         let element = $(this);
         let elemId = element.parent().attr('id');
         let comment = $('#' + elemId + ' .post-comment-input').val();
-        const graphId = `${id}/posts`;
-        let postId = `${graphId}/${Math.round( Math.random() * 100000 )}`;
-
         if (e.which == 13 && comment != '') {
+            const graphId = `${id}/posts`;
+            let postId = `${graphId}/${Math.round( Math.random() * 100000 )}`;
+            distributeSocCredits(10); //10 is an arbitrary number. This will need to be based on the cost of a PUT request
             await safe_insertComment(postId, {
                 postId: elemId,
                 img: img,

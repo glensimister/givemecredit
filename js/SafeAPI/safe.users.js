@@ -61,6 +61,22 @@ async function safe_deductSocialCredits(webId, newSocialCreditVal) {
     });
 }
 
+// this function will be used by most events that perform POST requests
+// e.g. voting, posting updates, and anything else we want to charge users for.
+
+async function distributeSocCredits(credits) {
+    let current_val = $('.sc div').html();
+    let users = [];
+    users = await safe_getUsers();
+    let share = (credits / users.length);
+    let new_val = (parseFloat(share) + parseFloat(current_val));
+    $('.sc div').html(new_val.toFixed(2)).addClass('animated heartBeat');
+    users.forEach(async(user) => {
+        user.value.socialCredits = parseFloat(user.value.socialCredits) + parseFloat(share);
+        await safe_updateUser(user.key, user.value, user.version);
+    });
+}
+
 /*** this is for testing purposes ***/
 async function safe_resetUserCredits() {
     let users = [];
