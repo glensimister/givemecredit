@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>INITIALIZE DATA</title>
+    <script>
+        authoriseAndConnect();
+
+        let safeApp;
+
+        async function authoriseAndConnect() {
+            let appInfo = {
+                name: 'DEVOLUTION',
+                id: 'net.devolution.web-app',
+                version: '1.0.0',
+                vendor: 'Glen Simister.'
+            };
+            safeApp = await window.safe.initialiseApp(appInfo);
+            console.log('Authorising SAFE application...');
+            const authReqUri = await safeApp.auth.genAuthUri({}, {
+                own_container: true
+            });
+            const authUri = await window.safe.authorise(authReqUri);
+            console.log('SAFE application authorised by user');
+            await safeApp.auth.loginFromUri(authUri);
+            console.log("Application connected to the network");
+            const mutableDataInterface = await safeApp.auth.getOwnContainer();
+            console.log("container has been created");
+            initialzeData();
+        }
+
+        let posts;
+        let users;
+        let safeCoin;
+
+        async function initialzeData() {
+            console.log("Initializing Datasets...");
+
+            try {
+                const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
+                posts = await safeApp.mutableData.newPublic(hash, 15000);
+                const initialPostsData = {
+                    "random_key_1": JSON.stringify({
+                        date: "18 Feburary 2019",
+                        img: "safe://hygjurftycox416pmiab3yrowypcxgxbx6op6bxynhz99mqhcbywyeac71pxy",
+                        name: "Bob Smith",
+                        post: "Welcome to Devolution - the evolution of decentralized governance!"
+                    })
+                };
+                await posts.quickSetup(initialPostsData);
+            } catch (err) {
+                console.log(err);
+            }
+
+            try {
+                const hash = await safeApp.crypto.sha3Hash('USERS_DATASET');
+                users = await safeApp.mutableData.newPublic(hash, 15000);
+                let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                const initialUsersData = {
+                    "random_key_1": JSON.stringify({
+                        webID: "safe://bob.smith#me",
+                        photo: "safe://hygjurftycox416pmiab3yrowypcxgxbx6op6bxynhz99mqhcbywyeac71pxy",
+                        name: "Bob Smith",
+                        country: 'UK',
+                        postCode: 'TQ10XYZ',
+                        socialCredits: 0,
+                        healthCredits: 0,
+                        educationCredits: 0,
+                        pubKey: pubKey
+                    })
+                };
+                await users.quickSetup(initialUsersData);
+            } catch (err) {
+                console.log(err);
+            }
+
+            try {
+                const hash = await safeApp.crypto.sha3Hash('SAFECOIN_DATASET');
+                safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
+                await safeCoin.quickSetup();
+            } catch (err) {
+                console.log(err);
+            }
+
+            try {
+                const hash = await safeApp.crypto.sha3Hash('OFFICIALS_DATASET');
+                officials = await safeApp.mutableData.newPublic(hash, 15000);
+                await officials.quickSetup();
+            } catch (err) {
+                console.log(err);
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    Initializing Datasets...
+</body>
+
+</html>

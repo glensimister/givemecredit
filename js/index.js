@@ -80,6 +80,7 @@ $(document).ready(async function () {
                 $('.twinkling').addClass('animated zoomIn');
                 $('#intro').addClass('animated zoomOut');
                 $('#container').show();
+                initializePageRouting();
             }
         }
     });
@@ -112,5 +113,6 @@ $(document).ready(async function () {
         }
         $('#register').hide();
         $('#container').show();
+        initializePageRouting();
     });
 });

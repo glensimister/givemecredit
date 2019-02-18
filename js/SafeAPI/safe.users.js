@@ -3,9 +3,9 @@ async function safe_createUsers(reset) {
     console.log("Creating users table...");
     try {
         const hash = await safeApp.crypto.sha3Hash('USERS_DATASET');
-        users = await safeApp.mutableData.newPublic(hash, 15000); 
-        if (reset){
-           await users.quickSetup();  
+        users = await safeApp.mutableData.newPublic(hash, 15000);
+        if (reset) {
+            await users.quickSetup();
         }
     } catch (err) {
         console.log(err);
@@ -13,16 +13,20 @@ async function safe_createUsers(reset) {
 }
 
 async function safe_isUserVerified(id) {
-    let usrIsVerified = false;
-    let users = [];
-    users = await safe_getUsers();
-    users.forEach(async(user) => {
-        let str = id.localeCompare(user.value.webID);
-        if (str == 0) {
-            usrIsVerified = true;
-        }     
-    });
-    return usrIsVerified;
+    try {
+        let usrIsVerified = false;
+        let users = [];
+        users = await safe_getUsers();
+        users.forEach(async(user) => {
+            let str = id.localeCompare(user.value.webID);
+            if (str == 0) {
+                usrIsVerified = true;
+            }
+        });
+        return usrIsVerified;
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function safe_createNewUser(id, img, name, safeCoinPubKey) {
@@ -108,20 +112,24 @@ async function safe_deleteAllUsers() {
 }
 
 async function safe_getUsers() {
-    const entries = await users.getEntries();
-    const entriesList = await entries.listEntries();
-    const items = [];
-    entriesList.forEach((entry) => {
-        const value = entry.value;
-        if (value.buf.length == 0) return;
-        const parsedValue = JSON.parse(value.buf);
-        items.push({
-            key: entry.key,
-            value: parsedValue,
-            version: value.version
+    try {
+        const entries = await users.getEntries();
+        const entriesList = await entries.listEntries();
+        const items = [];
+        entriesList.forEach((entry) => {
+            const value = entry.value;
+            if (value.buf.length == 0) return;
+            const parsedValue = JSON.parse(value.buf);
+            items.push({
+                key: entry.key,
+                value: parsedValue,
+                version: value.version
+            });
         });
-    });
-    return items;
+        return items;
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 /***** get users public key from webId *****/

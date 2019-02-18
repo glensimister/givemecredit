@@ -39,18 +39,22 @@ async function safe_deletePost(key) {
 }
 
 async function safe_getPosts() {
-    const entries = await md.getEntries();
-    const entriesList = await entries.listEntries();
-    const items = [];
-    entriesList.forEach((entry) => {
-        const value = entry.value;
-        if (value.buf.length == 0) return;
-        const parsedValue = JSON.parse(value.buf);
-        items.push({
-            key: entry.key,
-            value: parsedValue,
-            version: value.version
+    try {
+        const entries = await md.getEntries();
+        const entriesList = await entries.listEntries();
+        const items = [];
+        entriesList.forEach((entry) => {
+            const value = entry.value;
+            if (value.buf.length == 0) return;
+            const parsedValue = JSON.parse(value.buf);
+            items.push({
+                key: entry.key,
+                value: parsedValue,
+                version: value.version
+            });
         });
-    });
-    return items;
+        return items;
+    } catch (err) {
+        console.log(err);
+    }
 }
