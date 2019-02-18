@@ -1,14 +1,11 @@
 /***************** Posts table (need to change the names) *****************/
 
 let md;
-async function safe_createPosts(reset) {
+async function safe_createPosts() {
     try {
         console.log("Initializing posts dataset...");
         const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
         md = await safeApp.mutableData.newPublic(hash, 15000);
-        if (reset) {
-            await md.quickSetup();
-        }
     } catch (err) {
         console.log(err);
     }

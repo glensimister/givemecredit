@@ -27,25 +27,12 @@ $(document).ready(async function () {
     });
 
     /**** initialize SAFE app and data sets ****/
-
-    let reset = false; /* this is for testing purposes */
-    await safe_authoriseAndConnect();
-
-    try {
-        await safe_createUsers(reset);
-        await safe_createSafeCoin(reset);
-        await safe_createPosts(reset);
-        await safe_createOfficials(reset);
+        await safe_authoriseAndConnect();
+        await safe_createUsers();
+        await safe_createSafeCoin();
+        await safe_createPosts();
+        await safe_createOfficials();
         await safe_createComments();
-    } catch (err) {
-        console.log(err + " Error creating datasets. Trying again...");
-        reset = false;
-        await safe_createUsers(reset);
-        await safe_createSafeCoin(reset);
-        await safe_createPosts(reset);
-        await safe_createOfficials(reset);
-        await safe_createComments();
-    }
 
     /* intro page */
 

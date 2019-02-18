@@ -2,14 +2,11 @@
 
 let safeCoin;
 
-async function safe_createSafeCoin(reset) {
+async function safe_createSafeCoin() {
     console.log("Creating SAFE wallet...");
         try {
         const hash = await safeApp.crypto.sha3Hash('SAFECOIN_DATASET');
         safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
-        if (reset){
-           await safeCoin.quickSetup(); 
-        }  
     } catch (err) {
         console.log(err);
     }
