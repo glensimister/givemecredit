@@ -24,10 +24,7 @@ async function getComments(postId) {
                             <div class="rateYoToolbar"></div>
                             <div>
                                 <select>
-                                    <option>Bitcoin</option>
-                                    <option>Crypto20</option>
-                                    <option>Dash</option>
-                                    <option>Ether</option>
+                                    <option>SFC</option>
                                 </select>
                             </div>
                             <div><input type="number" placeholder="1"></div>

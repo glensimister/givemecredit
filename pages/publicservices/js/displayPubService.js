@@ -43,8 +43,7 @@ $(async function () {
                 $('.localServices').prepend(publicService);
                 $('#' + item.key + ' .progress-bar div').animate({'width':pOfTarget},400, function(){
                     $('#' + item.key + ' .creditsReceived').addClass('animated fadeIn');
-                });
-                
+                });  
             }
         });
     }
