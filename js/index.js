@@ -4,7 +4,7 @@
 - replace all item.key == key with localcompare
 - create breadcrumbs
 - implement voting registration form
-- organisze settings page into tabs (settings doesn't really need to be popup)
+- organize settings page into tabs (settings doesn't really need to be popup)
 *******************/
 
 $(document).ready(async function () {
@@ -27,22 +27,21 @@ $(document).ready(async function () {
     });
 
     /**** initialize SAFE app and data sets ****/
-        await safe_authoriseAndConnect();
-        await safe_createUsers();
-        await safe_createSafeCoin();
-        await safe_createPosts();
-        await safe_createOfficials();
-        await safe_createComments();
+    await safe_authoriseAndConnect();
+    await safe_createUsers();
+    await safe_createSafeCoin();
+    await safe_createPosts();
+    await safe_createOfficials();
+    await safe_createComments();
+
+    const webId = await window.currentWebId["@id"];
+    const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
+    const webIdName = await window.currentWebId["#me"]["name"];
 
     /* intro page */
 
     $('.enter, .reset').on('click', async function (e) {
         e.stopImmediatePropagation();
-
-        /*** these variables need to be accessed by the whole app ****/
-        const webId = await window.currentWebId["@id"];
-        const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
-        const webIdName = await window.currentWebId["#me"]["name"];
 
         /*** reset DB (for testing purposes) ***/
         if ($(this).hasClass('reset')) {
@@ -76,9 +75,6 @@ $(document).ready(async function () {
 
     $(document.body).on('click', '.verifyPostCode', async function (e) {
         e.stopImmediatePropagation();
-        const webId = await window.currentWebId["@id"];
-        const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
-        const webIdName = await window.currentWebId["#me"]["name"];
         let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         try {
@@ -87,7 +83,6 @@ $(document).ready(async function () {
             console.log(err);
         }
 
-        //let balance = 100;
         try {
             await safe_addFunds(guid, {
                 pubKey: pubKey,
