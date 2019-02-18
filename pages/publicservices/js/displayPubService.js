@@ -20,10 +20,10 @@ $(async function () {
                         Official<b class="pull-right"><a href="#/voting/html/profile?id=${item.key}">${item.value.name}</a></b>
                     </li>
                     <li>
-                        Monthly target<b class="pull-right"><span class="monthlyTarget">2000</span> IDX</b>
+                        Monthly target<b class="pull-right"><span class="monthlyTarget">2000</span> SFC</b>
                     </li>
                     <li>
-                        Raised so far<b class="pull-right"><span class="creditsReceived">${item.value.creditsReceived}</span> IDX</b>
+                        Raised so far<b class="pull-right"><span class="creditsReceived">${item.value.creditsReceived}</span> SFC</b>
                     </li>
                 </ul>
                 <div class="progress-bar">
@@ -32,13 +32,7 @@ $(async function () {
                 </div>
                 <select class="form-control">
                     <option>Social Credits</option>
-                    <option>Health Credits</option>
-                    <option>Education Credits</option>
-                    <option>C20 - Crypto20 (Index Fund)</option>
-                    <option>BTC - Bitcoin</option>
-                    <option>ETH - Ethereum</option>
-                    <option>LTC - Litecoin</option>
-                    <option>DASH - Dash</option>
+                    <option>SafeCoin</option>
                 </select>
                 <br />
                 <div class="grid-input-button">
@@ -48,7 +42,7 @@ $(async function () {
             </div>`;
                 $('.localServices').prepend(publicService);
                 $('#' + item.key + ' .progress-bar div').animate({'width':pOfTarget},400, function(){
-                    $('#' + item.key + ' .creditsReceived').addClass('animated flash');
+                    $('#' + item.key + ' .creditsReceived').addClass('animated fadeIn');
                 });
                 
             }

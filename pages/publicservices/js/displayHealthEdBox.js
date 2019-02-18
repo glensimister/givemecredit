@@ -17,10 +17,10 @@ $(async function () {
                 Official<b class="pull-right">N/A</b>
             </li>
             <li>
-                Max Threshold<b class="pull-right"><span class="monthlyTarget">1000</span> IDX</b>
+                Max Threshold<b class="pull-right"><span class="monthlyTarget">1000</span> SFC</b>
             </li>
             <li>
-                Current Balance<b class="pull-right"><span class="creditsReceived">${item.value.healthCredits}</span> IDX</b>
+                Current Balance<b class="pull-right"><span class="creditsReceived">${item.value.healthCredits}</span> SFC</b>
             </li>
         </ul>
         <div class="progress-bar">
@@ -29,12 +29,7 @@ $(async function () {
         </div>
         <select class="form-control">
             <option>Social Credits</option>
-            <option>Education Credits</option>
-            <option>C20 - Crypto20 (Index Fund)</option>
-            <option>BTC - Bitcoin</option>
-            <option>ETH - Ethereum</option>
-            <option>LTC - Litecoin</option>
-            <option>DASH - Dash</option>
+            <option>SafeCoin</option>
         </select>
         <br />
         <div class="grid-input-button">

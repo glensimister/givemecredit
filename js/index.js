@@ -1,11 +1,15 @@
 /***** TO DO *******
 - move page-specific css styles into their respective folders
+- include page specific css in routing
+- change css media queries from mobile first to mobile last
 - replace all item.key == key with localcompare
 - create breadcrumbs
-- implement voting registration form
+- sort out voting registration form
 - organize settings page into tabs (settings doesn't really need to be popup)
 - move reset button into initializeData.html
 - remove webId info on other pages so that they only declared once
+- go through code and replace all var with let to be consistent
+- put all css in SAFE Search and replace image url
 *******************/
 
 $(document).ready(async function () {
@@ -14,7 +18,7 @@ $(document).ready(async function () {
         alert("You need to toggle experiments (top right) and/or select a webId (top left)");
     }
 
-    /* popup window for settings. This could be put in home folder */
+    /* popup window for settings */
 
     $('.fa-gears').on('click', function () {
         $('.settings').load('pages/settings.html', function () {
@@ -28,14 +32,16 @@ $(document).ready(async function () {
     });
 
     /**** initialize SAFE app and data sets ****/
+    
     await safe_authoriseAndConnect();
     await safe_createUsers();
     await safe_createSafeCoin();
     await safe_createPosts();
     await safe_createOfficials();
     await safe_createComments();
-
-    // get the webId info that will be used throughout the app
+    
+    /***** get the webId from the browser *****/
+    
     const webId = await window.currentWebId["@id"];
     const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     const webIdName = await window.currentWebId["#me"]["name"];
@@ -46,6 +52,7 @@ $(document).ready(async function () {
         e.stopImmediatePropagation();
 
         /*** reset DB (for testing purposes) ***/
+        
         if ($(this).hasClass('reset')) {
             try {
                 await safe_deleteAllUsers();

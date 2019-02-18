@@ -1,0 +1,9 @@
+.localCandidates div,
+.localOfficials div {
+    position: relative;
+}
+.delete-official {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

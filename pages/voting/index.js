@@ -1,3 +1,6 @@
+var css = `<link rel="stylesheet" type="text/css" href="pages/voting/voting.css">`;
+$('head').append(css);
+
 function getScripts(scripts, callback) {
     var progress = 0;
     scripts.forEach(function (script) {
