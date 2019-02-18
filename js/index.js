@@ -1,10 +1,11 @@
 /***** TO DO *******
-- prefix all SAFE API calls with safe_
 - move page-specific css styles into their respective folders
 - replace all item.key == key with localcompare
 - create breadcrumbs
 - implement voting registration form
 - organize settings page into tabs (settings doesn't really need to be popup)
+- move reset button into initializeData.html
+- remove webId info on other pages so that they only declared once
 *******************/
 
 $(document).ready(async function () {
@@ -34,6 +35,7 @@ $(document).ready(async function () {
     await safe_createOfficials();
     await safe_createComments();
 
+    // get the webId info that will be used throughout the app
     const webId = await window.currentWebId["@id"];
     const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     const webIdName = await window.currentWebId["#me"]["name"];
