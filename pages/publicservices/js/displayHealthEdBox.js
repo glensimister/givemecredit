@@ -49,10 +49,10 @@ $(async function () {
                 Official<b class="pull-right">N/A</b>
             </li>
             <li>
-                Max Threshold<b class="pull-right"><span class="monthlyTarget">1000</span> IDX</b>
+                Max Threshold<b class="pull-right"><span class="monthlyTarget">1000</span> SFC</b>
             </li>
             <li>
-                Current Balance<b class="pull-right"><span class="creditsReceived">${item.value.educationCredits}</span> IDX</b>
+                Current Balance<b class="pull-right"><span class="creditsReceived">${item.value.educationCredits}</span> SFC</b>
             </li>
         </ul>
         <div class="progress-bar">
