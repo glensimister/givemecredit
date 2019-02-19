@@ -1,4 +1,5 @@
 /***** TO DO *******
+- officials profile page needs its own folder
 - move page-specific css styles into their respective folders
 - include page specific css in routing
 - change css media queries from mobile first to mobile last

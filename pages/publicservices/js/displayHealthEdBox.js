@@ -61,12 +61,7 @@ $(async function () {
         </div>
         <select class="form-control">
             <option>Social Credits</option>
-            <option>Education Credits</option>
-            <option>C20 - Crypto20 (Index Fund)</option>
-            <option>BTC - Bitcoin</option>
-            <option>ETH - Ethereum</option>
-            <option>LTC - Litecoin</option>
-            <option>DASH - Dash</option>
+            <option>SafeCoin</option>
         </select>
         <br />
         <div class="grid-input-button">

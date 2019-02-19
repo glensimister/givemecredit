@@ -14,22 +14,9 @@ async function getComments(postId) {
                             <span><a href="">${comment.value.name}</a><br />${comment.value.date}</span>
                             <div class="comment">${comment.value.post}</div>
                         </div>
-                        <div class="grid-toolbar">
-                            <div class="red"><i class="fa fa-thumbs-o-up"></i></div>
-                            <div>90</div>
-                            <div class="blue"><i class="fa fa-thumbs-o-down"></i></div>
-                            <div>10</div>
-                            <div class="red"><i class="fa fa-flag"></i></div>
-                            <div>0</div>
-                            <div class="rateYoToolbar"></div>
-                            <div>
-                                <select>
-                                    <option>SFC</option>
-                                </select>
-                            </div>
-                            <div><input type="number" placeholder="1"></div>
-                            <div class="red"><i class="fa fa-heart"></i></div>
-                        </div>
+                    <div class="grid-toolbar">
+                        ${toolbar}
+                    </div>
                     </div>`;
             array.push(template);
         }
