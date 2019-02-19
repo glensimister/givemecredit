@@ -16,7 +16,8 @@ $(async function () {
             let items = [];
             items = await safe_getPosts();
             items.forEach(async(item) => {
-                if (item.key == elemId) {
+            let str = elemId.localeCompare(item.key);
+                if (str == 0) {
                     item.value.post = post;
                     await safe_updatePost(item.key, item.value, item.version);
                 }

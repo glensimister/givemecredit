@@ -1,6 +1,7 @@
 (function ($) {
-    $(document.body).on('click', '.topup-hc, .topup-ec', function (e) {
+    $(document.body).on('click', '.topup-hc, .topup-ec', async function (e) {
         e.stopImmediatePropagation();
+        const webId = await window.currentWebId["@id"];
         let classToUpdate;
         if ($(this).hasClass('topup-hc')) {
             classToUpdate = '.hc div';
@@ -8,54 +9,43 @@
         if ($(this).hasClass('topup-ec')) {
             classToUpdate = '.ec div';
         }
-        let id = $(this).attr("title");
-        var input = $(this).parent().parent().find('input').val();
-        let raisedSoFar = $('#' + id + ' .creditsReceived').html();
-        let received = parseInt(raisedSoFar) + parseInt(input);
-        let progress = updateProgressBar(id, input, received);
-        transfer('.sc div', classToUpdate, input);
-        updateCredits(classToUpdate, input);
-    });
-
-    async function updateCredits(type, amount) {
-        const id = await window.currentWebId["@id"];
+        let divId = $(this).attr("title");
+        let input = $(this).parent().parent().find('input').val();
+        let monthlyTarget = $('#' + divId + ' .monthlyTarget').html();
+        let progressBarDiv = $('#' + divId + " .progress-bar > div");
+        let percentage;
+        let percentageString;
         let items = [];
         items = await safe_getUsers();
         items.forEach(async(item) => {
-            if (item.value.webID == id) {
-                if (type == '.hc div') {
-                    item.value.healthCredits = parseFloat(item.value.healthCredits) + parseFloat(amount);
-                } else if (type == '.ec div') {
-                    item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(amount);
+            let str = webId.localeCompare(item.value.webID);
+            if (str == 0) {
+                if (classToUpdate == '.hc div') {
+                    item.value.healthCredits = parseFloat(item.value.healthCredits) + parseFloat(input);
+                    $('#' + divId + ' .creditsReceived').html(item.value.healthCredits);
+                    $('.hc div').html(item.value.healthCredits);
+                    percentage = (parseInt(item.value.healthCredits) / parseInt(monthlyTarget)) * 100;
+                    percentageString = percentage.toFixed(0) + "%";
+                    if (percentage <= 100) {
+                        progressBarDiv.css("width", percentageString);
+                    } else {
+                        progressBarDiv.css("width", "100%");
+                    }
+                } else if (classToUpdate == '.ec div') {
+                    item.value.educationCredits = parseFloat(item.value.educationCredits) + parseFloat(input);
+                    $('#' + divId + ' .creditsReceived').html(item.value.educationCredits);
+                    $('.ec div').html(item.value.educationCredits);
+                    percentage = (parseInt(item.value.educationCredits) / parseInt(monthlyTarget)) * 100;
+                    percentageString = percentage.toFixed(0) + "%";
+                    if (percentage <= 100) {
+                        progressBarDiv.css("width", percentageString);
+                    } else {
+                        progressBarDiv.css("width", "100%");
+                    }
                 }
-                item.value.socialCredits = parseFloat(item.value.socialCredits) - parseFloat(amount);
+                item.value.socialCredits = parseFloat(item.value.socialCredits) - parseFloat(input);
                 await safe_updateUser(item.key, item.value, item.version);
             }
         });
-    }
-
-    /*** This will need to be a separate function ***/
-
-    function updateProgressBar(key, value, raised) {
-        $('#' + key + ' .creditsReceived').html(parseInt(raised) + parseInt(value));
-        let monthlyTarget = $('#' + key + ' .monthlyTarget').html();
-        let percentage = (parseInt(value) / parseInt(monthlyTarget)) * 100;
-        let percentageString = percentage.toFixed(0) + "%";
-        let progressBarDiv = $('#' + key + " .progress-bar > div");
-        if (percentage <= 100) {
-            progressBarDiv.css("width", percentageString);
-        } else {
-            progressBarDiv.css("width", "100%");
-        }
-        return percentageString;
-    }
-
-    function transfer(from, to, amount) {
-        var fromVal = $(from).html();
-        var toVal = $(to).html();
-        var new_value = (parseInt(fromVal) - parseInt(amount));
-        $(from).html(new_value.toFixed(0));
-        new_value = (parseInt(toVal) + parseInt(amount));
-        $(to).html(new_value).addClass('animated heartBeat');;
-    }
+    });
 })(jQuery);
