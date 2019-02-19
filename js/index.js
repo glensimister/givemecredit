@@ -1,6 +1,4 @@
 /***** TO DO *******
-- when updating health credits, progress bar is reset as opposed to incremented
-- fix bug on voting page (sometime there are duplicate officials and they are not being removed on delete)
 - move page-specific css styles into their respective folders
 - include page specific css in routing
 - change css media queries from mobile first to mobile last
@@ -19,19 +17,6 @@ $(document).ready(async function () {
     if (!safeExperimentsEnabled) {
         alert("You need to toggle experiments (top right) and/or select a webId (top left)");
     }
-
-    /* popup window for settings */
-
-    $('.fa-gears').on('click', function () {
-        $('.settings').load('pages/settings.html', function () {
-            $('.settings').dialog({
-                title: "General Settings",
-                width: "auto",
-                draggable: false,
-                height: 400
-            });
-        });
-    });
 
     /**** initialize SAFE app and data sets ****/
     

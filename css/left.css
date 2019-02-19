@@ -110,4 +110,8 @@ ul.treeview-menu {
     box-shadow: inset 0px 11px 8px -10px #888, inset 0px -11px 8px -10px #CCC;
 }
 
+.treeview_a {
+    cursor: pointer;
+}
+
 /******* end sidebar *******/
