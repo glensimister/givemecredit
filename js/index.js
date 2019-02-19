@@ -1,4 +1,5 @@
 /***** TO DO *******
+- fix bug on voting page (sometime there are duplicate officials and they are not being removed on delete)
 - move page-specific css styles into their respective folders
 - include page specific css in routing
 - change css media queries from mobile first to mobile last
@@ -10,6 +11,7 @@
 - remove webId info on other pages so that they only declared once
 - go through code and replace all var with let to be consistent
 - put all css in SAFE Search and replace image url
+- remove select box from toolbar and make SFC blue like on SAFE search
 *******************/
 
 $(document).ready(async function () {

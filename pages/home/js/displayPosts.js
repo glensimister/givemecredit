@@ -26,9 +26,7 @@ async function displayPosts() {
                         <div>0</div>
                         <div class="rateYoToolbar"></div>
                         <div>
-                            <select>
-                                <option>SFC</option>
-                            </select>
+                            <span class="sfc">SFC</span>
                         </div>
                         <div><input type="number" placeholder="1"></div>
                         <div class="red"><i class="fa fa-heart"></i></div>

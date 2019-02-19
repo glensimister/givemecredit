@@ -55,6 +55,10 @@ a {
 textarea.form-control {
     height: auto;
 }
+.sfc {
+    font-family: 'OpenSans-Bold';
+    color: #00acd6;
+}
 .relative-container > div {
     position: relative;
 }
