@@ -1,12 +1,15 @@
 (function ($) {
     $(document.body).on('click', '.donate-sc', async function (e) {
         e.stopImmediatePropagation();
+        
+        // get dom elements
         let input = $(this).parent().parent().find('input').val();
+        let divId = $(this).attr("id");
+        let raisedSoFar = $('#' + divId + ' .creditsReceived').html();
+        
         input = parseFloat(input);
-        let id = $(this).attr("id");
-        let raisedSoFar = $('#' + id + ' .creditsReceived').html();
         let received = parseInt(raisedSoFar) + input;
-        let progress = updateProgressBar(id, input, raisedSoFar);
+        let progress = updateProgressBar(divId, input, raisedSoFar);
         let newSocialCreditVal = updateCreditsBar('.sc div', input);
         updateService(id, newSocialCreditVal, progress, received);
         
@@ -21,9 +24,10 @@
         await safe_deductSocialCredits(webId, newSocialCreditVal);
 
         function updateProgressBar(key, value, raised) {
-            $('#' + key + ' .creditsReceived').html(parseInt(raised) + parseInt(value));
+            let newValue = parseInt(raised) + parseInt(value);
+            $('#' + key + ' .creditsReceived').html(newValue);
             let monthlyTarget = $('#' + key + ' .monthlyTarget').html();
-            let percentage = (parseInt(value) / parseInt(monthlyTarget)) * 100;
+            let percentage = (parseInt(newValue) / parseInt(monthlyTarget)) * 100;
             let percentageString = percentage.toFixed(0) + "%";
             let progressBarDiv = $('#' + key + " .progress-bar > div");
             if (percentage <= 100) {
