@@ -3,6 +3,7 @@
     $(document.body).on("click", '.delete-official', async function () {
         let id = $(this).parent().attr('id');
         await safe_deleteOfficial(id);
+        $('.localOfficials, .localCandidates').html("");
         listCandidates();
     });
 
