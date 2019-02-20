@@ -48,6 +48,10 @@ small {
     margin: 40px auto;
     text-align: center;
 }
+
+.breadcrumbs {text-transform: capitalize;}
+.breadcrumbs i{padding:5px;}
+
 a {
     color: #008d4c;
     text-decoration: none;

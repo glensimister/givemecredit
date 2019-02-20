@@ -22,35 +22,36 @@ function initializePageRouting() {
         });
         this.get('#/:page', function () {
             $('.sidebar ul li a.active').removeClass('active');
-            var page = this.params['page'];
-            let pageUrl = 'pages/' + page + '.html';
-            $(".content").load(pageUrl, function () {
+            let page = `pages/${this.params['page']}.html`;
+            $(".content").load(page, function () {
                 $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
                 initializePlugins();
             });
         });
         this.get('#/:folder/:page', function () {
             $('.sidebar ul li a.active').removeClass('active');
-            var folder = this.params['folder'];
-            var page = this.params['page'];
-            let pageUrl = 'pages/' + folder + '/' + page + '.html';
-            let scriptUrl = 'pages/' + folder + '/index.js';
+            let folder = this.params['folder'];
+            let page = this.params['page'];
+            let pageUrl = `pages/${folder}/${page}.html`;
+            let scriptUrl = `pages/${folder}/index.js`;
+            let menuItem = `a[href="#/${folder}/${page}"]`;
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
-                $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
+                $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
         });
         this.get('#/:folder/:subfolder/:page', function () {
             $('.sidebar ul li a.active').removeClass('active');
-            var folder = this.params['folder'];
-            var subfolder = this.params['subfolder'];
+            let folder = this.params['folder'];
+            let subfolder = this.params['subfolder'];
             var page = this.params['page'];
-            let pageUrl = 'pages/' + folder + '/' + subfolder + '/' + page + '.html';
-            let scriptUrl = 'pages/' + folder + '/index.js';
+            let pageUrl = `pages/${folder}/${subfolder}/${page}.html`;
+            let scriptUrl = `pages/${folder}/index.js`;
+            let menuItem = `a[href="#/${folder}/${page}"]`;
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
-                $('.sidebar').find('a[href="#/' + folder + '/' + page + '"]').addClass('active');
+                $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
         });
