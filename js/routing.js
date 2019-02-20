@@ -1,4 +1,4 @@
-/***** page routing with sammy.js *****/
+/***** page routing with sammy.js. Do i really need sammy.js? *****/
 
 function initializePageRouting() {
 
@@ -8,6 +8,7 @@ function initializePageRouting() {
             $.getScript("pages/home/index.js");
             initializePlugins();
         });
+        $(".breadcrumbs").html("");
     }
 
     var app = $.sammy(function () {
@@ -27,6 +28,7 @@ function initializePageRouting() {
                 $('.sidebar').find('a[href="#/' + page + '"]').addClass('active');
                 initializePlugins();
             });
+            $(".breadcrumbs").html("");
         });
         this.get('#/:folder/:page', function () {
             $('.sidebar ul li a.active').removeClass('active');
@@ -40,6 +42,7 @@ function initializePageRouting() {
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
+            $(".breadcrumbs").html("");
         });
         this.get('#/:folder/:subfolder/:page', function () {
             $('.sidebar ul li a.active').removeClass('active');
@@ -54,6 +57,8 @@ function initializePageRouting() {
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
+            let backButton = `<div class="back" onclick="history.back()"><i class="fa fa-caret-left"></i><span>Back</span>|<span>${page}</span></div>`;
+            $(".breadcrumbs").html(backButton);
         });
     });
 

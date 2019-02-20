@@ -49,8 +49,23 @@ small {
     text-align: center;
 }
 
-.breadcrumbs {text-transform: capitalize;}
-.breadcrumbs i{padding:5px;}
+#main {
+    padding: 20px;
+}
+
+.back {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.back span {
+    text-transform: capitalize;
+    margin: 5px;
+}
+.back i {
+    color: #dd4b39;
+    cursor: pointer;
+}
 
 a {
     color: #008d4c;
