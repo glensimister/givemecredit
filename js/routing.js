@@ -10,6 +10,13 @@ function initializePageRouting() {
         });
         $(".breadcrumbs").html("");
     }
+    
+    function splitPageString(page){
+        let res = page.split("-");
+        if (res[1])
+        return res[0]+ " " + res[1];
+        else return page;
+    }
 
     var app = $.sammy(function () {
         this.get('#/', function () {
@@ -57,7 +64,7 @@ function initializePageRouting() {
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
-            let backButton = `<div class="back" onclick="history.back()"><i class="fa fa-caret-left"></i><span>Back</span>|<span>${page}</span></div>`;
+            let backButton = `<div class="back" onclick="history.back()"><i class="fa fa-caret-left"></i><span>Back</span>|<span>${splitPageString(page)}</span></div>`;
             $(".breadcrumbs").html(backButton);
         });
     });
