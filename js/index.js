@@ -1,16 +1,15 @@
 /***** TO DO *******
+- sort out settings page
+- make sure all toolbars are the same
 - officials profile page needs its own folder
 - move page-specific css styles into their respective folders
 - include page specific css in routing
 - change css media queries from mobile first to mobile last
 - replace all item.key == key with localcompare
-- create breadcrumbs
 - sort out voting registration form
-- organize settings page into tabs (settings doesn't really need to be popup)
 - move reset button into initializeData.html
 - remove webId info on other pages so that they only declared once
 - go through code and replace all var with let to be consistent
-- remove select box from toolbar and make SFC blue like on SAFE search
 *******************/
 
 $(document).ready(async function () {
