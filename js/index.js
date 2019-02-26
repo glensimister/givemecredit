@@ -1,5 +1,4 @@
 /***** TO DO *******
-- remove all calls for window.currentWebId as this is now global.
 - Health/Ed Credits bug: Social credits are not being deducted
 - change all instances of webID to webId to be consistent
 - sort out settings page

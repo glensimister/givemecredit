@@ -20,9 +20,6 @@ getScripts([
     "pages/home/js/displayUserData.js"
 ], async function () {
     let date = await getDate();
-    //const id = await window.currentWebId["#me"]["@id"];
-    //const img = await window.currentWebId["#me"]["image"]["@id"];
-    //const name = await window.currentWebId["#me"]["name"];
     addPost(date, webId, webIdImg, webIdName);
     addComment(date, webId, webIdImg, webIdName);
     displayPosts();

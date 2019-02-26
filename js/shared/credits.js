@@ -1,5 +1,4 @@
 async function deductSocialCredits(newSocialCreditVal) {
-    const webId = await window.currentWebId["@id"];
     let users = [];
     users = await safe_getUsers();
     users.forEach(async(user) => {
@@ -16,7 +15,6 @@ async function deductSocialCredits(newSocialCreditVal) {
 // e.g. voting, posting updates, and anything else we want to charge users for.
 
 async function distributeSocCredits(credits) {
-    const webId = await window.currentWebId["@id"];
     let current_val = $('.sc div').html();
     let users = [];
     users = await safe_getUsers();
