@@ -19,15 +19,17 @@ async function safe_addFunds(key, value) {
     console.log("funds added to account");
 }
 
-async function safe_sendTo(pubKey, amount) {
+async function safe_sendTo(pubKey, amount, cb) {
     let items = [];
     items = await safe_getAllBalances();
     items.forEach(async(item) => {
         let str = pubKey.localeCompare(item.value.pubKey);
         if (str == 0) {
-            item.value.balance = amount;
+            item.value.balance = item.value.balance + amount;
             await safe_updateBalance(item.key, item.value, item.version);
-            console.log("balance of " + pubKey + " has been updated to " + amount + "SafeCoin");
+            if (cb){
+                cb(item.value.balance);
+            }
         }
     });
 }
@@ -40,8 +42,9 @@ async function safe_sendFrom(pubKey, amount, cb) {
         if (str == 0) {
             item.value.balance = item.value.balance - amount;
             await safe_updateBalance(item.key, item.value, item.version);
-            console.log("balance of " + pubKey + " has been updated to " + amount + "SafeCoin");
-            cb(item.value.balance);
+            if (cb){
+               cb(item.value.balance); 
+            }
         }
     });
 }

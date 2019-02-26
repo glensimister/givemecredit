@@ -31,5 +31,4 @@ async function distributeSocCredits(credits) {
     safe_sendFrom(pubKey, credits, function(result){
         $('.rebate div').html(result);
     });
-    
 }

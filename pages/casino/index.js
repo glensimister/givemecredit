@@ -14,7 +14,6 @@ function getScripts(scripts, callback) {
 getScripts([
     "pages/casino/js/roulette.js",
     "pages/casino/js/lottery.js",
-    "pages/casino/js/slotMachine.js",
-    "pages/casino/js/distributeSocCredits.js"], function () {
+    "pages/casino/js/slotMachine.js"], function () {
     console.log('casino scripts loaded');
 });

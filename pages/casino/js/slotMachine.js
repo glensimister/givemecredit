@@ -1,8 +1,7 @@
 // uses roulette.js 
 $(async function () {
     const webId = await window.currentWebId["@id"];
-    initializeSafeCoinBal();
-    
+    let pubKey = await safe_getUserPubKeyFromWebId(webId);
     let imgNum1 = 0;
     let imgNum2 = 0;
     let imgNum3 = 0;
@@ -47,63 +46,23 @@ $(async function () {
             if (count = 3) {
                 if (isWinner) {
                     win.play();
+                    safe_sendTo(pubKey, payout, function (newBal) {
+                        console.log(newBal);
+                        $('.rebate div').addClass('animated win-color heartBeat').html(newBal);
+                        $('.safeCoinBal div').addClass('animated win-color heartBeat').html(newBal);
+                        $('.result div').addClass('animated win-color heartBeat').html(result);
+                        $('.fa-star-o').addClass('animated rotateIn');
+                        setTimeout(function () {
+                            $('.rebate div').removeClass();
+                            $('.safeCoinBal div').removeClass();
+                            $('.result div').removeClass();
+                        }, 2000);
+                    })
                 } else {
                     lose.play();
                     distributeSocCredits(payout);
                 }
-                updateCredits(isWinner, payout);
-                $('.result div').addClass('animated heartBeat').html(result);
-                $('.fa-star-o').addClass('animated rotateIn');
-                updateSafeCoinBal();
             }
-        }
-    }
-
-    async function initializeSafeCoinBal() {
-        let pubKey = await safe_getUserPubKeyFromWebId(webId);
-        let accounts = [];
-        accounts = await safe_getAllBalances();
-        accounts.forEach(async(account) => {
-        let str = pubKey.localeCompare(account.value.pubKey);
-            if (str == 0) {
-                $('.safeCoinBal div').html(account.value.balance);
-            }
-        });
-    }
-
-    async function updateSafeCoinBal() {
-        // update safecoin balance with newSafeCoinBal
-        let pubKey = await safe_getUserPubKeyFromWebId(webId);
-        let accounts = [];
-        accounts = await safe_getAllBalances();
-        accounts.forEach(async(account) => {
-            let str = pubKey.localeCompare(account.value.pubKey);
-            if (str == 0) {
-                account.value.balance = newSafeCoinBal;
-                safe_updateBalance(account.key, account.value, account.version);
-            }
-        });
-    }
-
-    function updateCredits(isWin, amount) {
-        let element = $('.rebate div');
-        let safeCoinBal = $('.safeCoinBal div');
-        let current_bal;
-        current_bal = element.html();
-        if (isWin) {
-            newSafeCoinBal = parseFloat(current_bal) + amount;
-            element.html(newSafeCoinBal);
-            safeCoinBal.html(newSafeCoinBal);
-            element.addClass('animated win-color heartBeat');
-            safeCoinBal.addClass('animated win-color heartBeat');
-            setTimeout(function () {
-                element.removeClass();
-                safeCoinBal.removeClass();
-            }, 2000);
-        } else {
-            newSafeCoinBal = parseFloat(current_bal) - amount;
-            element.html(newSafeCoinBal);
-            safeCoinBal.html(newSafeCoinBal);
         }
     }
 
