@@ -19,16 +19,31 @@ $(document).ready(async function () {
     }
 
     /**** initialize SAFE app and data sets ****/
-    
+
     await safe_authoriseAndConnect();
-    await safe_createUsers();
-    await safe_createSafeCoin();
-    await safe_createPosts();
-    await safe_createOfficials();
-    await safe_createComments();
-    
+    try {
+        await createDatasets();
+    } catch (err) {
+        // If it is the first time the app has been used, the data will need to be initialized with dummy values.
+        // This is in case other developers wants to test the application. 
+        console.log(err + " Initializing Mutable Datasets...");
+        await initialzeData();
+        await createDatasets();
+    }
+
+    async function createDatasets() {
+        await safe_createUsers();
+        await safe_createSafeCoin();
+        await safe_createPosts();
+        await safe_createOfficials();
+        await safe_createComments();
+    }
+
+    // This is for testing purposes and is not yet used in the application
+    await safe_createSolidMd();
+
     /***** get the webId from the browser *****/
-    
+
     const webId = await window.currentWebId["@id"];
     const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     const webIdName = await window.currentWebId["#me"]["name"];
@@ -39,7 +54,7 @@ $(document).ready(async function () {
         e.stopImmediatePropagation();
 
         /*** reset DB (for testing purposes) ***/
-        
+
         if ($(this).hasClass('reset')) {
             try {
                 await safe_deleteAllUsers();
