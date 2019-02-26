@@ -20,8 +20,7 @@
         await safe_sendTo(pubKey, balance);
         
         /**** deduct social credits from donor ****/
-        const webId = await window.currentWebId["@id"];
-        await safe_deductSocialCredits(webId, newSocialCreditVal);
+        await deductSocialCredits(newSocialCreditVal);
 
         function updateProgressBar(key, value, raised) {
             let newValue = parseInt(raised) + parseInt(value);

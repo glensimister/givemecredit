@@ -13,14 +13,14 @@ let postId = `${webId}/posts/${Math.round( Math.random() * 100000 )}`;
     
 //sym() - Creates an RDF resource identified by a URI
 let postsUri = rdf.sym(postId); 
-console.log(postsUri);
+//console.log(postsUri);
 
 const ACTSTREAMS = rdf.namespace( 'https://www.w3.org/ns/activitystreams/' );
 await rdf.add(postsUri, ACTSTREAMS( 'type' ), rdf.literal('Post'));
 await rdf.add(postsUri, ACTSTREAMS( 'attributedTo' ), rdf.sym(webId));
 await rdf.add(postsUri, ACTSTREAMS( 'content' ), rdf.literal("Hello RDF! This is my first post!"));
 //const serial = await rdf.serialise('text/turtle');
-console.log(rdf);
+//console.log(rdf);
 
     
 /*
@@ -31,7 +31,7 @@ rdf.add(subject, VCARD('fn'), "John Bloggs", profile);*/
     
 const webIdMd = await md.emulateAs('WebId');
 await webIdMd.fetchContent();
-console.log(webIdMd);
+//console.log(webIdMd);
 const webIdTurtle = await webIdMd.serialise();
 console.log('WebID serialised as Turtle:', webIdTurtle);
 }

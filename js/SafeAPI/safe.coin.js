@@ -4,7 +4,7 @@ let safeCoin;
 
 async function safe_createSafeCoin() {
     console.log("Creating SAFE wallet...");
-        try {
+    try {
         const hash = await safeApp.crypto.sha3Hash('SAFECOIN_DATASET');
         safeCoin = await safeApp.mutableData.newPublic(hash, 15000);
     } catch (err) {
@@ -32,6 +32,20 @@ async function safe_sendTo(pubKey, amount) {
     });
 }
 
+async function safe_sendFrom(pubKey, amount, cb) {
+    let items = [];
+    items = await safe_getAllBalances();
+    await items.forEach(async(item) => {
+        let str = pubKey.localeCompare(item.value.pubKey);
+        if (str == 0) {
+            item.value.balance = item.value.balance - amount;
+            await safe_updateBalance(item.key, item.value, item.version);
+            console.log("balance of " + pubKey + " has been updated to " + amount + "SafeCoin");
+            cb(item.value.balance);
+        }
+    });
+}
+
 async function safe_updateBalance(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
@@ -42,11 +56,11 @@ async function safe_getBalance(pubKey) {
     let balance = 0;
     let items = [];
     items = await safe_getAllBalances();
-        items.forEach(async(item) => {
+    items.forEach(async(item) => {
         let str = pubKey.localeCompare(item.value.pubKey);
         if (str == 0) {
             balance = item.value.balance;
-        }     
+        }
     });
     return balance;
 }

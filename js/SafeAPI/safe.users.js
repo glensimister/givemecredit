@@ -49,48 +49,6 @@ async function safe_insertUser(key, value) {
 }
 
 
-async function safe_deductSocialCredits(webId, newSocialCreditVal) {
-    let users = [];
-    users = await safe_getUsers();
-    users.forEach(async(user) => {
-        let str = webId.localeCompare(user.value.webID);
-        if (str == 0) {
-            user.value.socialCredits = newSocialCreditVal;
-            safe_updateUser(user.key, user.value, user.version);
-            console.log('Social Credits Updated for ' + user.value.name);
-        }
-    });
-}
-
-// this function will be used by most events that perform POST requests
-// e.g. voting, posting updates, and anything else we want to charge users for.
-
-async function distributeSocCredits(credits) {
-    let current_val = $('.sc div').html();
-    let users = [];
-    users = await safe_getUsers();
-    let share = (credits / users.length);
-    let new_val = (parseFloat(share) + parseFloat(current_val));
-    $('.sc div').html(new_val.toFixed(2)).addClass('animated heartBeat');
-    users.forEach(async(user) => {
-        user.value.socialCredits = parseFloat(user.value.socialCredits) + parseFloat(share);
-        await safe_updateUser(user.key, user.value, user.version);
-    });
-}
-
-/*** this is for testing purposes ***/
-async function safe_resetUserCredits() {
-    let users = [];
-    users = await safe_getUsers();
-    users.forEach(async(user) => {
-        user.value.socialCredits = 0;
-        user.value.healthCredits = 0;
-        user.value.educationCredits = 0;
-        safe_updateUser(user.key, user.value, user.version);
-    });
-}
-
-
 async function safe_updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.update(key, JSON.stringify(value), version + 1);
@@ -106,6 +64,18 @@ async function safe_deleteAllUsers() {
         await mutations.delete(item.key, item.version + 1);
     });
     await users.applyEntriesMutation(mutations);
+}
+
+/*** this is for testing purposes ***/
+async function safe_resetUserCredits() {
+    let users = [];
+    users = await safe_getUsers();
+    users.forEach(async(user) => {
+        user.value.socialCredits = 0;
+        user.value.healthCredits = 0;
+        user.value.educationCredits = 0;
+        safe_updateUser(user.key, user.value, user.version);
+    });
 }
 
 async function safe_getUsers() {
