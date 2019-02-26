@@ -1,11 +1,10 @@
 /****** display the health and education credits boxes on the public services page ******/
 
 $(async function () {
-    const id = await window.currentWebId["@id"];
     let items = [];
     items = await safe_getUsers();
     items.forEach(async(item) => {
-        let str = id.localeCompare(item.value.webID);
+        let str = webId.localeCompare(item.value.webID);
         if (str == 0) {
             let percentHealth = (item.value.healthCredits / 1000) * 100;
             let percentEd = (item.value.educationCredits / 1000) * 100;

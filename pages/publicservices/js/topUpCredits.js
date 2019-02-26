@@ -1,7 +1,7 @@
 (function ($) {
     $(document.body).on('click', '.topup-hc, .topup-ec', async function (e) {
         e.stopImmediatePropagation();
-        const webId = await window.currentWebId["@id"];
+        //const webId = await window.currentWebId["@id"];
         let classToUpdate;
         if ($(this).hasClass('topup-hc')) {
             classToUpdate = '.hc div';

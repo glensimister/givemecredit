@@ -1,6 +1,5 @@
 // uses roulette.js 
 $(async function () {
-    const webId = await window.currentWebId["@id"];
     let pubKey = await safe_getUserPubKeyFromWebId(webId);
     let init = $('.rebate div').html()
     $('.safeCoinBal').html(init);

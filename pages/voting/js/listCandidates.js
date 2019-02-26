@@ -26,10 +26,8 @@ async function listCandidates() {
                   </div>
               </div>`;
             if (!item.value.elected) {
-                //$('.localCandidates').hide().append(candidate).fadeIn('slow');
                 $('.localCandidates').append(candidate);
             } else if (item.value.elected) {
-                //$('.localOfficials').hide().append(candidate).fadeIn('slow');
                 $('.localOfficials').append(candidate);
             }
             $(".rateYo").rateYo({
