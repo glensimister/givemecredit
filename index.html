@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="css/buttons.css">
     <!--<link rel="stylesheet" href="css/mailbox.css">-->
     <link rel="stylesheet" href="css/intro.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- this needs to go in vendor -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/vendor/rateyo.css">
     <link rel="stylesheet" href="css/vendor/select2.min.css">
     <link rel="stylesheet" href="css/vendor/animate.css">
@@ -213,7 +213,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="#/settings"><i class="fa fa-gears"></i></a></li>
+                            <li><a href="#/settings/index"><i class="fa fa-gears"></i></a></li>
                             <!--
                             <li>
                                 <a href=""><img src="img/default.gif" class="profile-pic-small user-image-small" alt="User Image"><span>Glen</span></a>
@@ -229,45 +229,16 @@
                     <li><a href="/"><span>Home</span></a></li>
                     <li><a href="#/legal/constitutionlocal"><span>Legal</span></a></li>
                     <li><a href="#/voting/index"><span>Voting</span></a></li>
+                    <li><a href="#/publicservices/index"><span>Fund Public Services</span></a></li>
                     <!--<li><a href="#/wallet"><span>Wallet</span></a></li>-->
-                    <li><a href="#/land/index"><span>Land</span></a>
-                    </li>
-                    <li>
-                        <a href="#/housing/modularhousing">
-                            <span>Housing</span>
-                        </a>
-                    </li>
+                    <li><a href="#/land/index"><span>Land</span></a></li>
+                    <li><a href="#/housing/modularhousing"><span>Housing</span></a></li>
+                    <li><a href="#/healthcare/healthcare"><span>Healthcare</span></a></li>
+                    <li><a href="#/education/education"><span>Education</span></a></li>
+                    <li><a href="#/business/index"><span>Business &amp; Employment</span></a></li>
+                    <li><a href="#/news"><span>News</span></a></li>
+                    <li><a target="_blank" href="/SAFESearch/index.html"><span>SAFE Search</span></a></li>
 
-                    <li>
-                        <a href="#/publicservices/index">
-                            <span>Fund Public Services</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/healthcare/healthcare">
-                            <span>Healthcare</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/education/education">
-                            <span>Education</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/business/index">
-                            <span>Business &amp; Employment</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/news">
-                            <span>News</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="/SAFESearch/index.html">
-                            <span>SAFE Search</span>
-                        </a>
-                    </li>
                     <li class="treeview">
                         <a class="treeview_a">
                             <span>Extensions</span>
@@ -321,6 +292,10 @@
     </div>
     <script src="js/vendor/jquery-3.3.1.js"></script>
     <script src="js/vendor/sammy-latest.min.js"></script>
+
+    <script src="js/routing.js"></script>
+    <script src="js/index.js"></script>
+
     <script src="js/vendor/select2.full.min.js"></script>
     <script src="js/vendor/rateyo.js"></script>
     <script src="js/vendor/jquery-ui.js"></script>
@@ -330,8 +305,10 @@
     <script src="js/SafeAPI/safe.coin.js"></script>
     <script src="js/SafeAPI/safe.users.js"></script>
     <script src="js/SafeAPI/safe.officials.js"></script>
-    <script src="js/SafeAPI/safe.solid.js"></script><!-- this will not be used in production -->
-    <script src="js/SafeAPI/safe.initializeMds.js"></script><!-- this will not be used in production -->
+    <!-- this will not be used in production -->
+    <script src="js/SafeAPI/safe.solid.js"></script>
+    <!-- this will not be used in production -->
+    <script src="js/SafeAPI/safe.initializeMds.js"></script>
     <script src="js/shared/sidebar.js"></script>
     <script src="js/shared/navTop.js"></script>
     <script src="js/shared/credits.js"></script>
@@ -339,8 +316,6 @@
     <script src="js/shared/toolbar.js"></script>
     <script src="js/shared/initializePlugins.js"></script>
     <script src="js/shared/getDate.js"></script>
-    <script src="js/routing.js"></script>
-    <script src="js/index.js"></script>
 </body>
 
 </html>

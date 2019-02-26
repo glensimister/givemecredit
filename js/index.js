@@ -1,4 +1,6 @@
 /***** TO DO *******
+- remove all calls for window.currentWebId as this is now global.
+- Health/Ed Credits bug: Social credits are not being deducted
 - sort out settings page
 - make sure all toolbars are the same
 - officials profile page needs its own folder
@@ -12,6 +14,7 @@
 - go through code and replace all var with let to be consistent
 *******************/
 
+
 $(document).ready(async function () {
 
     if (!safeExperimentsEnabled) {
@@ -19,8 +22,13 @@ $(document).ready(async function () {
     }
 
     /**** initialize SAFE app and data sets ****/
-
     await safe_authoriseAndConnect();
+
+    /***** get the webId from the browser *****/
+    window.webId = await window.currentWebId["@id"]; // perhaps change to window.webId
+    window.webIdImg = await window.currentWebId["#me"]["image"]["@id"];
+    window.webIdName = await window.currentWebId["#me"]["name"];
+
     try {
         await createDatasets();
     } catch (err) {
@@ -38,15 +46,9 @@ $(document).ready(async function () {
         await safe_createOfficials();
         await safe_createComments();
     }
-    
+
     // This is for testing purposes and is not yet used in the application
     await safe_createSolidMd();
-
-    /***** get the webId from the browser *****/
-
-    const webId = await window.currentWebId["@id"];
-    const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
-    const webIdName = await window.currentWebId["#me"]["name"];
 
     /* intro page */
 

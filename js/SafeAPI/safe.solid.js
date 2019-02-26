@@ -1,9 +1,6 @@
 // NOTE: This for testing purposes and is not used in the application
 async function safe_createSolidMd() { 
-const webId = await window.currentWebId["#me"]["@id"];
-const webIdImg = await window.currentWebId["#me"]["image"]["@id"];
-const webIdName = await window.currentWebId["#me"]["name"];
-    
+
 const hash = await safeApp.crypto.sha3Hash('SOLID');
 const md = await safeApp.mutableData.newPublic(hash, 15000); 
     
@@ -13,7 +10,7 @@ let postId = `${webId}/posts/${Math.round( Math.random() * 100000 )}`;
     
 //sym() - Creates an RDF resource identified by a URI
 let postsUri = rdf.sym(postId); 
-//console.log(postsUri);
+console.log(postsUri);
 
 const ACTSTREAMS = rdf.namespace( 'https://www.w3.org/ns/activitystreams/' );
 await rdf.add(postsUri, ACTSTREAMS( 'type' ), rdf.literal('Post'));
@@ -33,6 +30,6 @@ const webIdMd = await md.emulateAs('WebId');
 await webIdMd.fetchContent();
 //console.log(webIdMd);
 const webIdTurtle = await webIdMd.serialise();
-console.log('WebID serialised as Turtle:', webIdTurtle);
+//console.log('WebID serialised as Turtle:', webIdTurtle);
 }
 

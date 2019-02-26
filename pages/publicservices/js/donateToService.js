@@ -11,7 +11,7 @@
         let received = parseInt(raisedSoFar) + input;
         let progress = updateProgressBar(divId, input, raisedSoFar);
         let newSocialCreditVal = updateCreditsBar('.sc div', input);
-        updateService(id, newSocialCreditVal, progress, received);
+        updateService(divId, newSocialCreditVal, progress, received);
         
         /**** send the social credits to SafeCoin ****/
         let pubKey = $(this).attr("title");
