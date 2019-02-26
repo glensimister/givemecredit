@@ -2,6 +2,8 @@
 $(async function () {
     const webId = await window.currentWebId["@id"];
     let pubKey = await safe_getUserPubKeyFromWebId(webId);
+    let init = $('.rebate div').html()
+    $('.safeCoinBal').html(init);
     let imgNum1 = 0;
     let imgNum2 = 0;
     let imgNum3 = 0;
