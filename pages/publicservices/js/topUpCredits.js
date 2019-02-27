@@ -17,7 +17,7 @@
         let items = [];
         items = await safe_getUsers();
         items.forEach(async(item) => {
-            let str = webId.localeCompare(item.value.webID);
+            let str = webId.localeCompare(item.value.webId);
             if (str == 0) {
                 if (classToUpdate == '.hc div') {
                     item.value.healthCredits = parseFloat(item.value.healthCredits) + parseFloat(input);

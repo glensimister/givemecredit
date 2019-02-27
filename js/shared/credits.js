@@ -2,7 +2,7 @@ async function deductSocialCredits(newSocialCreditVal) {
     let users = [];
     users = await safe_getUsers();
     users.forEach(async(user) => {
-        let str = webId.localeCompare(user.value.webID);
+        let str = webId.localeCompare(user.value.webId);
         if (str == 0) {
             user.value.socialCredits = newSocialCreditVal;
             safe_updateUser(user.key, user.value, user.version);

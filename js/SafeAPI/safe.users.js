@@ -15,7 +15,7 @@ async function safe_isUserVerified(id) {
         let users = [];
         users = await safe_getUsers();
         users.forEach(async(user) => {
-            let str = id.localeCompare(user.value.webID);
+            let str = id.localeCompare(user.value.webId);
             if (str == 0) {
                 usrIsVerified = true;
             }
@@ -29,7 +29,7 @@ async function safe_isUserVerified(id) {
 async function safe_createNewUser(id, img, name, safeCoinPubKey) {
     let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     await safe_insertUser(guid, {
-        webID: id,
+        webId: id,
         photo: img,
         name: name,
         country: 'UK',
@@ -106,7 +106,7 @@ async function safe_getUserPubKeyFromWebId(webId) {
     let users = [];
     users = await safe_getUsers();
     users.forEach(async(user) => {
-        let str = webId.localeCompare(user.value.webID);
+        let str = webId.localeCompare(user.value.webId);
         if (str == 0) {
             pubKey = user.value.pubKey;
         }

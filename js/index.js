@@ -1,7 +1,7 @@
 /***** TO DO *******
 - Health/Ed Credits bug: Social credits are not being deducted
-- change all instances of webID to webId to be consistent
 - sort out settings page
+- add safeCoinPukKey to applyAsCandidate
 - make sure all toolbars are the same
 - officials profile page needs its own folder
 - move page-specific css styles into their respective folders
@@ -25,7 +25,7 @@ $(document).ready(async function () {
     await safe_authoriseAndConnect();
 
     /***** get the webId from the browser *****/
-    window.webId = await window.currentWebId["@id"]; // perhaps change to window.webId
+    window.webId = await window.currentWebId["@id"];
     window.webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     window.webIdName = await window.currentWebId["#me"]["name"];
 

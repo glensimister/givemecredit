@@ -4,7 +4,7 @@ $(async function () {
     let items = [];
     items = await safe_getUsers();
     items.forEach(async(item) => {
-        let str = webId.localeCompare(item.value.webID);
+        let str = webId.localeCompare(item.value.webId);
         if (str == 0) {
             let percentHealth = (item.value.healthCredits / 1000) * 100;
             let percentEd = (item.value.educationCredits / 1000) * 100;

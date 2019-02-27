@@ -15,7 +15,7 @@ async function displayPosts() {
                     <i data-type="${item.key}" class="fa fa-fw fa-pencil edit-post"></i>
                     <div class="post-body">
                     <img src="${item.value.img}" class="user-image-medium" alt="User Image">
-                    <span><a class="webID" href="${item.key}">${item.value.name}</a><br /><span class="date">${item.value.date}</span></span>
+                    <span><a class="webId" href="${item.key}">${item.value.name}</a><br /><span class="date">${item.value.date}</span></span>
                     <div class="post-desc">${item.value.post}</div></div>
                     <div class="grid-toolbar">
                         ${toolbar}

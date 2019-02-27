@@ -6,13 +6,12 @@
         var position = $('.candidate-position').val();
         let date = await getDate();        
         let pubKey = await safe_getUserPubKeyFromWebId(webId);
-
         let guid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-        //change webID to webId to be consistent
+
         try {
             await safe_insertOfficial(guid, {
                 pubKey: pubKey,
-                webID: webId,
+                webId: webId,
                 name: webIdName,
                 photo: webIdImg,
                 position: position,

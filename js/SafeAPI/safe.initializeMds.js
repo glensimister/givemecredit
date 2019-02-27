@@ -27,7 +27,7 @@ async function initialzeData() {
         let pubKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         const initialUsersData = {
             "random_key_1": JSON.stringify({
-                webID: "safe://bob.smith#me",
+                webId: "safe://bob.smith#me",
                 photo: "safe://hygjurftycox416pmiab3yrowypcxgxbx6op6bxynhz99mqhcbywyeac71pxy",
                 name: "Bob Smith",
                 country: 'UK',

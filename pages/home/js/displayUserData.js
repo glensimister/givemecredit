@@ -12,7 +12,7 @@ $(async function () {
     let users = [];
     users = await safe_getUsers();
     users.forEach(async(user) => {
-        let str = webId.localeCompare(user.value.webID);
+        let str = webId.localeCompare(user.value.webId);
         if (str == 0) {
             $('.sc div').html(parseFloat(user.value.socialCredits).toFixed(2));
             $('.hc div').html(user.value.healthCredits);
