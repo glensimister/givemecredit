@@ -1,8 +1,9 @@
 /***** page routing with sammy.js. Do i really need sammy.js? *****/
 
 function initializePageRouting() {
-
+    
     function loadHomePage() {
+        $('head').append(`<link rel="stylesheet" type="text/css" href="pages/home/css/home.css">`);
         $('.sidebar ul li a.active').removeClass('active');
         $(".content").load("pages/home/index.html", function () {
             $.getScript("pages/home/index.js");

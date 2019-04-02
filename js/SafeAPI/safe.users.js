@@ -43,11 +43,14 @@ async function safe_createNewUser(id, img, name, safeCoinPubKey) {
 }
 
 async function safe_insertUser(key, value) {
+    try {
     const mutations = await safeApp.mutableData.newMutation();
     await mutations.insert(key, JSON.stringify(value));
     await users.applyEntriesMutation(mutations);
+    } catch (err) {
+       console.log(err + ' - inserting user failed'); 
+    }
 }
-
 
 async function safe_updateUser(key, value, version) {
     const mutations = await safeApp.mutableData.newMutation();

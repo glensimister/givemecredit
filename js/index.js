@@ -29,23 +29,11 @@ $(document).ready(async function () {
     window.webIdImg = await window.currentWebId["#me"]["image"]["@id"];
     window.webIdName = await window.currentWebId["#me"]["name"];
 
-    try {
-        await createDatasets();
-    } catch (err) {
-        // If it is the first time the app has been used, the data will need to be initialized with dummy values.
-        // This is in case other developers wants to test the application. 
-        console.log(err + " Initializing Mutable Datasets...");
-        await initialzeData();
-        await createDatasets();
-    }
-
-    async function createDatasets() {
-        await safe_createUsers();
-        await safe_createSafeCoin();
-        await safe_createPosts();
-        await safe_createOfficials();
-        await safe_createComments();
-    }
+    await safe_createUsers();
+    await safe_createSafeCoin();
+    await safe_createPosts();
+    await safe_createOfficials();
+    await safe_createComments();
 
     // This is for testing purposes and is not yet used in the application
     await safe_createSolidMd();
@@ -62,6 +50,7 @@ $(document).ready(async function () {
                 await safe_deleteAllUsers();
                 await safe_deleteAllOfficials();
                 await safe_deleteAllAccounts();
+                await initialzeData();
             } catch (err) {
                 console.log(err + " Deleting datasets failed");
             }
@@ -93,7 +82,7 @@ $(document).ready(async function () {
         try {
             await safe_createNewUser(webId, webIdImg, webIdName, pubKey);
         } catch (err) {
-            console.log(err);
+            console.log(err + " - error creating new user");
         }
 
         try {
