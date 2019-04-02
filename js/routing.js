@@ -45,15 +45,15 @@ function initializePageRouting() {
             let pageUrl = `pages/${folder}/${page}.html`;
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
-            
-            //remove/add page specific CSS - maybe need to add this after load()
-            $('.dynamic-stylesheet').remove();
-            $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
 
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
+                //remove/add page specific CSS - maybe need to add this after load()
+                $('.dynamic-stylesheet').remove();
+                $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
+
             });
             $(".breadcrumbs").html("");
         });
@@ -65,17 +65,16 @@ function initializePageRouting() {
             let pageUrl = `pages/${folder}/${subfolder}/${page}.html`;
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
-            
-            //remove/add page specific CSS
-            $('.dynamic-stylesheet').remove();
-            $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
 
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
+                //remove/add page specific CSS
+                $('.dynamic-stylesheet').remove();
+                $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
             });
-            
+
             //breadcrumbs
             let backButton = `<div class="back" onclick="history.back()"><i class="fa fa-caret-left"></i><span>Back</span>|<span>${splitPageString(page)}</span></div>`;
             $(".breadcrumbs").html(backButton);
