@@ -75,6 +75,8 @@ function initializePageRouting() {
                 $('.sidebar').find('' + menuItem + '').addClass('active');
                 initializePlugins();
             });
+            
+            //breadcrumbs
             let backButton = `<div class="back" onclick="history.back()"><i class="fa fa-caret-left"></i><span>Back</span>|<span>${splitPageString(page)}</span></div>`;
             $(".breadcrumbs").html(backButton);
         });
