@@ -45,9 +45,11 @@ function initializePageRouting() {
             let pageUrl = `pages/${folder}/${page}.html`;
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
+            
+            //remove/add page specific CSS
             $('.dynamic-stylesheet').remove();
             $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
-            
+
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
                 $('.sidebar').find('' + menuItem + '').addClass('active');
@@ -63,6 +65,11 @@ function initializePageRouting() {
             let pageUrl = `pages/${folder}/${subfolder}/${page}.html`;
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
+            
+            //remove/add page specific CSS
+            $('.dynamic-stylesheet').remove();
+            $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
+
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
                 $('.sidebar').find('' + menuItem + '').addClass('active');
