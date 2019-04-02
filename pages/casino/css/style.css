@@ -1,0 +1,343 @@
+/*** lottery ****/
+
+ul.lottery-input {
+    margin-bottom: 10px;
+}
+ul.lottery-input li {
+    display: inline-block;
+    margin-right: 10px;
+}
+ul.lottery-input li input {
+    border: none;
+    width: 40px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #00acd6;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #222d32;
+}
+.lottery-numbers td {
+    text-align: center;
+    /*vertical-align: middle;*/
+}
+.lottery-numbers ul li {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    display: inline-block;
+    margin-right: 7px;
+    font-size: 20px;
+    background-color: #00c0ef;
+    color: #fff;
+}
+ul li.bonus-ball {
+    background-color: #dd4b39;
+}
+.buy-ticket {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+div.roulette_container {
+    background-color: #00acd6;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00acd6+0,d1d1d1+50,00acd6+100 */
+    background: rgb(0, 172, 214);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(0, 172, 214, 1) 0%, rgba(209, 209, 209, 1) 50%, rgba(0, 172, 214, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0, 172, 214, 1) 0%, rgba(209, 209, 209, 1) 50%, rgba(0, 172, 214, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 172, 214, 1) 0%, rgba(209, 209, 209, 1) 50%, rgba(0, 172, 214, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00acd6', endColorstr='#00acd6', GradientType=0);
+    /* IE6-9 */
+}
+div.led-grid-small {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    margin: 0 20px;
+}
+div.roulette_grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 20px;
+}
+div.roulette_grid > div {
+    background: #fff;
+    -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d3d3d3+0,ffffff+50,d3d3d3+100 */
+    background: rgb(211, 211, 211);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(211, 211, 211, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(211, 211, 211, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(211, 211, 211, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(211, 211, 211, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#d3d3d3', GradientType=0);
+    /* IE6-9 */
+}
+div.roulette_grid img {
+    margin: auto;
+}
+div.roulette_top {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding: 20px;
+    margin: auto;
+    background: #222d32;
+    color: #dd4b39;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: 5px solid #00acd6;
+    border-right: 5px solid #00acd6;
+    border-top: 5px solid #00acd6;
+    margin: 0;
+    font-weight: 700;
+    -webkit-box-shadow: inset 1px -10px 11px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 1px -10px 11px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 1px -10px 11px 1px rgba(0, 0, 0, 0.75);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222d32+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,222d32+100 */
+    background: rgb(34, 45, 50);
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#222d32', endColorstr='#222d32', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    /* IE6-9 */
+}
+div.roulette_top > div i {
+    color: #dd4b39;
+    font-size: 40px;
+    margin-top: 10px;
+}
+.result {
+    color: transparent;
+    font-size: 40px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    grid-column: 4 / 6;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #dd4b39;
+}
+.win-color {
+    color: #dd4b39;
+}
+.btn_container {
+    width: 100%;
+    border-left: 5px solid #00acd6;
+    border-right: 5px solid #00acd6;
+    border-bottom: 5px solid #00acd6;
+    padding: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    background: #222d32;
+    color: #fff;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222d32+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,222d32+100 */
+    background: rgb(34, 45, 50);
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#222d32', endColorstr='#222d32', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    /* IE6-9 */
+}
+.roulette_bottom_grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    text-align: center;
+    height: 90px;
+    line-height: 50px;
+    font-size: 18px;
+    padding: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 5px solid #00acd6;
+    border-right: 5px solid #00acd6;
+    border-bottom: 5px solid #00acd6;
+    -webkit-box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 1px 10px 11px 1px rgba(0, 0, 0, 0.75);
+    background: #222d32;
+    color: #fff;
+    background: rgb(34, 45, 50);
+    background: -moz-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    background: -webkit-linear-gradient(-45deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+    background: linear-gradient(135deg, rgba(34, 45, 50, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(34, 45, 50, 1) 100%);
+}
+.roulette_bottom_grid > div:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #e08e0b;
+}
+.roulette_bottom_grid > div:nth-child(2) input {
+    background: #fff;
+    -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    color: #555;
+    font-weight: 700;
+    height:100%;
+    width:100%;
+    font-size: 18px;
+    display: block;
+    border:none;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.roulette_bottom_grid > div:nth-child(4) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #008d4c;
+}
+.roulette_bottom_grid > div:nth-child(5) {
+    background: #fff;
+    -webkit-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 4px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    color: #555;
+    font-weight: 700;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.roulette_bottom_grid > div:nth-child(7) {
+    background-color: #dd4b39;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+}
+.roulette_bottom_grid > div:nth-child(8) {
+    background-color: #00acd6;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+}
+.btn_container .btn {
+    font-weight: 700;
+    color: #fff;
+    font-size: 30px;
+}
+.btn_container span {
+    padding: 0 10px;
+    font-weight: 700;
+    font-size: 30px;
+}
+.btn_container .form-control {
+    display: inline-block;
+    width: auto;
+    height: 31px;
+    font-weight: 700;
+    font-size: 30px;
+    /* this should be changed on all form elements to match buttons */
+}
+.led-yellow-small {
+    margin: 13px auto;
+    width: 10px;
+    height: 10px;
+    background-color: #FF0;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+    -webkit-animation: blinkYellow 1s infinite;
+    -moz-animation: blinkYellow 1s infinite;
+    -ms-animation: blinkYellow 1s infinite;
+    -o-animation: blinkYellow 1s infinite;
+    animation: blinkYellow 1s infinite;
+}
+.led-yellow {
+    margin: 13px auto;
+    width: 24px;
+    height: 24px;
+    background-color: #FF0;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+    -webkit-animation: blinkYellow 1s infinite;
+    -moz-animation: blinkYellow 1s infinite;
+    -ms-animation: blinkYellow 1s infinite;
+    -o-animation: blinkYellow 1s infinite;
+    animation: blinkYellow 1s infinite;
+}
+@-webkit-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-moz-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-ms-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@-o-keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}
+@keyframes blinkYellow {
+    from {
+        background-color: #FF0;
+    }
+    50% {
+        background-color: #AA0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+    }
+    to {
+        background-color: #FF0;
+    }
+}

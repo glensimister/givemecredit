@@ -1,7 +1,7 @@
 /***** page routing with sammy.js. Do i really need sammy.js? *****/
 
 function initializePageRouting() {
-    
+
     function loadHomePage() {
         $('head').append(`<link rel="stylesheet" type="text/css" href="pages/home/css/home.css">`);
         $('.sidebar ul li a.active').removeClass('active');
@@ -11,11 +11,11 @@ function initializePageRouting() {
         });
         $(".breadcrumbs").html("");
     }
-    
-    function splitPageString(page){
+
+    function splitPageString(page) {
         let res = page.split("-");
         if (res[1])
-        return res[0]+ " " + res[1];
+            return res[0] + " " + res[1];
         else return page;
     }
 
@@ -45,6 +45,9 @@ function initializePageRouting() {
             let pageUrl = `pages/${folder}/${page}.html`;
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
+            $('.dynamic-stylesheet').remove();
+            $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
+            
             $(".content").load(pageUrl, function () {
                 $.getScript(scriptUrl);
                 $('.sidebar').find('' + menuItem + '').addClass('active');
