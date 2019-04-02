@@ -1,4 +1,4 @@
-/***** page routing with sammy.js. Do i really need sammy.js? *****/
+/***** page routing with sammy.js *****/
 
 function initializePageRouting() {
 
@@ -46,7 +46,7 @@ function initializePageRouting() {
             let scriptUrl = `pages/${folder}/index.js`;
             let menuItem = `a[href="#/${folder}/${page}"]`;
             
-            //remove/add page specific CSS
+            //remove/add page specific CSS - maybe need to add this after load()
             $('.dynamic-stylesheet').remove();
             $('head').append(`<link rel="stylesheet" type="text/css" href="pages/${folder}/css/style.css" class="dynamic-stylesheet">`);
 
