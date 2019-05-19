@@ -7,3 +7,6 @@
     top: 10px;
     right: 10px;
 }
+.localOfficials a, .localCandidates a{
+    text-transform: capitalize;
+}

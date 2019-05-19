@@ -4,14 +4,14 @@ let initPosts;
 let initUsers;
 let initSafeCoin;
 
-async function initialzeData(webIdImg) {
+async function initialzeData() {
     try {
         const hash = await safeApp.crypto.sha3Hash('POSTS_DATASET');
         initPosts = await safeApp.mutableData.newPublic(hash, 15000);
         const initialPostsData = {
             "random_key_1": JSON.stringify({
                 date: "18 Feburary 2019",
-                img: webIdImg,
+                img: "img/avatar3.png",
                 name: "Bob Smith",
                 post: "Welcome to Devolution - the evolution of decentralized governance!"
             })
@@ -28,7 +28,7 @@ async function initialzeData(webIdImg) {
         const initialUsersData = {
             "random_key_1": JSON.stringify({
                 webId: "safe://bob.smith#me",
-                photo: webIdImg,
+                photo: "img/avatar3.png",
                 name: "Bob Smith",
                 country: 'UK',
                 postCode: 'TQ10XYZ',
