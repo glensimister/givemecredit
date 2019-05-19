@@ -9,7 +9,7 @@ $(async function () {
             let percentHealth = (item.value.healthCredits / 1000) * 100;
             let percentEd = (item.value.educationCredits / 1000) * 100;
             
-            let healthCreditsBox = `<div id="${item.key}-hc" class="animated slideInUp">
+            let healthCreditsBox = `<div id="${item.key}-hc">
         <h3>Health Credits</h3>
         <ul class="funds-raised">
             <li>
@@ -41,7 +41,7 @@ $(async function () {
         </div>
     </div>`;
             
-            let edCreditsBox = `<div id="${item.key}-ec" class="animated slideInUp">
+            let edCreditsBox = `<div id="${item.key}-ec">
         <h3>Education Credits</h3>
         <ul class="funds-raised">
             <li>

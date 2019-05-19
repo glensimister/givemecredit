@@ -26,7 +26,6 @@
         } catch (err) {
             console.log(err);
         }
-        
         listCandidates();
     });
 })(jQuery);

@@ -1,4 +1,18 @@
 (function ($) {
+    /*
+    $(document.body).on('click', '.elect, .unelect', function (e) {
+        e.stopImmediatePropagation();
+        if ($(this).hasClass("unelect")) {
+            $(this).text("ELECT");
+            $(this).addClass('elect');
+            $(this).addClass('unelect btn-red');
+            $(this).removeClass('btn-blue');
+        } else {
+            $(this).text("UNELECT");
+            $(this).addClass('unelect btn-blue');
+            $(this).removeClass('btn-red');
+        }
+    });*/
 
     $(document.body).on("click", '.delete-official', async function () {
         let id = $(this).parent().attr('id');
@@ -11,7 +25,7 @@
     var percentage = 0;
     var upVotes = 0;
     var downVotes = 0;
-    $(document.body).on("click", '.fa-thumbs-o-up, .fa-thumbs-o-down', async function (e) {
+    $(document.body).on("click", '.elect, .unelect', async function (e) {
         e.stopImmediatePropagation();
         //10 is an arbitrary number. This will need to be based on the cost of a PUT request. What about downvotes/updates? 
         distributeSocCredits(10);
@@ -21,9 +35,19 @@
         votes++;
         elem.html(votes);
 
-        if ($(this).hasClass('fa-thumbs-o-up')) {
+        if ($(this).hasClass('elect')) {
+            $(this).text("UNELECT");
+            $(this).addClass('unelect');
+            $(this).removeClass('elect');
+            $(this).addClass('btn-blue');
+            $(this).removeClass('btn-red');
             upVotes++;
-        } else if ($(this).hasClass('fa-thumbs-o-down')) {
+        } else if ($(this).hasClass('unelect')) {
+            $(this).text("ELECT");
+            $(this).addClass('elect');
+            $(this).removeClass('unelect');
+            $(this).addClass('btn-red');
+            $(this).removeClass('btn-blue');
             downVotes++;
         }
         totalVotes = upVotes + downVotes;

@@ -34,6 +34,7 @@ $(document).ready(async function () {
     await safe_createPosts();
     await safe_createOfficials();
     await safe_createComments();
+    await initialzeData();
 
     // This is for testing purposes and is not yet used in the application
     await safe_createSolidMd();
