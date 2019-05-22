@@ -22,8 +22,10 @@ async function listCandidates() {
                   <div class="rateYo"></div>
                   <h4><a href="#/voting/html/profile?id=${item.key}&status=candidate">${item.value.name}</a></h4>
                   <p class="position">${item.value.position}</p>
+                    <p>National</p>
                   <img src="${item.value.photo}" class="user-image-large animated rotateIn" alt="User Image">
                   <p>Approval rating: <b class="approval-rating">${item.value.approvalRating}</b></p>
+
                 <p><button title="${item.key}" class="btn ${btnClass}">${btnText}</button></p>
                   <div class="grid-votes">
                       <div class="red"><i title="${item.key}" class="fa fa-thumbs-o-up"></i></div>
